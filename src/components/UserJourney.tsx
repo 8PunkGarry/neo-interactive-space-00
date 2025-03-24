@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { ArrowRight, Users, Building } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const UserJourney = () => {
   const { t } = useLanguage();
@@ -52,8 +53,8 @@ const UserJourney = () => {
               <h3 className="text-2xl font-display font-bold mb-4">{t('journey.client')}</h3>
               <p className="text-teko-white/70 mb-6 flex-grow">{t('journey.client.description')}</p>
               
-              <a 
-                href="/client" 
+              <Link 
+                to="/client" 
                 className={`inline-flex items-center text-base font-medium transition-all duration-300 ${
                   hoveredCard === 'client' ? 'text-teko-purple-light' : 'text-teko-white/80'
                 }`}
@@ -62,7 +63,7 @@ const UserJourney = () => {
                 <ArrowRight className={`ml-2 transition-transform duration-300 ${
                   hoveredCard === 'client' ? 'transform translate-x-1' : ''
                 }`} size={16} />
-              </a>
+              </Link>
             </div>
             
             {/* Corner Glow */}
@@ -92,8 +93,8 @@ const UserJourney = () => {
               <h3 className="text-2xl font-display font-bold mb-4">{t('journey.company')}</h3>
               <p className="text-teko-white/70 mb-6 flex-grow">{t('journey.company.description')}</p>
               
-              <a 
-                href="/company" 
+              <Link 
+                to="/company" 
                 className={`inline-flex items-center text-base font-medium transition-all duration-300 ${
                   hoveredCard === 'company' ? 'text-teko-purple-light' : 'text-teko-white/80'
                 }`}
@@ -102,7 +103,7 @@ const UserJourney = () => {
                 <ArrowRight className={`ml-2 transition-transform duration-300 ${
                   hoveredCard === 'company' ? 'transform translate-x-1' : ''
                 }`} size={16} />
-              </a>
+              </Link>
             </div>
             
             {/* Corner Glow */}
