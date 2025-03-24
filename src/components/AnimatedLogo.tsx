@@ -1,18 +1,22 @@
-
 import React, { useEffect, useRef } from 'react';
 
 interface AnimatedLogoProps {
   size?: number;
   className?: string;
+  variant?: 'full' | 'minimal';
 }
 
-const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 80, className = '' }) => {
+const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ 
+  size = 80, 
+  className = '', 
+  variant = 'full' 
+}) => {
   const logoRef = useRef<SVGSVGElement>(null);
-  const textRef = useRef<SVGGElement>(null);
-  
+  const textRef = useRef<SVGSVGElement>(null);
+
   useEffect(() => {
     const animate = () => {
-      if (!logoRef.current || !textRef.current) return;
+      if (!logoRef.current) return;
       
       // Animate the wheel rotation
       const wheel = logoRef.current.querySelector('.wheel');
@@ -25,13 +29,6 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 80, className = '' }
       innerShapes.forEach((shape, index) => {
         (shape as SVGElement).setAttribute('style', 
           `animation: pulse 3s ease-in-out ${index * 0.5}s infinite alternate`);
-      });
-      
-      // Animate text
-      const textParts = textRef.current.querySelectorAll('path');
-      textParts.forEach((part, index) => {
-        (part as SVGElement).setAttribute('style', 
-          `opacity: 0; animation: fade-in 0.5s ease-out ${0.2 * index}s forwards`);
       });
     };
     
@@ -56,9 +53,9 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 80, className = '' }
       document.head.removeChild(style);
     };
   }, []);
-  
-  return (
-    <div className={`inline-flex items-center justify-center ${className}`}>
+
+  if (variant === 'minimal') {
+    return (
       <svg 
         ref={logoRef}
         width={size} 
@@ -66,8 +63,8 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 80, className = '' }
         viewBox="0 0 120 120" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
+        className={`${className} inline-block`}
       >
-        {/* Outer Circle */}
         <circle 
           className="wheel"
           cx="60" 
@@ -78,7 +75,6 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 80, className = '' }
           strokeDasharray="10 5" 
         />
         
-        {/* Middle Circle with gradient */}
         <circle 
           cx="60" 
           cy="60" 
@@ -87,7 +83,51 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 80, className = '' }
           fillOpacity="0.1" 
         />
         
-        {/* Inner shapes */}
+        <path 
+          className="inner-shape"
+          d="M60 30 L85 60 L60 90 L35 60 Z" 
+          fill="#7C3AED" 
+          fillOpacity="0.6" 
+        />
+        
+        <defs>
+          <radialGradient id="purpleGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(50)">
+            <stop offset="0%" stopColor="#7C3AED" />
+            <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
+    );
+  }
+
+  return (
+    <div className={`inline-flex items-center justify-center ${className}`}>
+      <svg 
+        ref={logoRef}
+        width={size} 
+        height={size} 
+        viewBox="0 0 120 120" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle 
+          className="wheel"
+          cx="60" 
+          cy="60" 
+          r="56" 
+          stroke="#7C3AED" 
+          strokeWidth="2"
+          strokeDasharray="10 5" 
+        />
+        
+        <circle 
+          cx="60" 
+          cy="60" 
+          r="45" 
+          fill="url(#purpleGradient)" 
+          fillOpacity="0.1" 
+        />
+        
         <path 
           className="inner-shape"
           d="M60 30 L85 60 L60 90 L35 60 Z" 
@@ -118,7 +158,6 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 80, className = '' }
           fill="#FFFFFF" 
         />
         
-        {/* Gradient definition */}
         <defs>
           <radialGradient id="purpleGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(50)">
             <stop offset="0%" stopColor="#7C3AED" />
@@ -127,7 +166,6 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 80, className = '' }
         </defs>
       </svg>
       
-      {/* Logo Text - separate for different animation */}
       <svg 
         ref={textRef}
         width={size * 1.5} 

@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '../context/LanguageContext';
+import AnimatedLogo from './AnimatedLogo';
 
 const Navbar = () => {
   const { t } = useLanguage();
@@ -50,10 +50,13 @@ const Navbar = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="text-2xl font-display font-bold purple-gradient-text hover:opacity-90 transition-opacity"
+            className="flex items-center space-x-2"
             aria-label="teko.sup home"
           >
-            teko.sup
+            <AnimatedLogo size={40} variant="minimal" />
+            <span className="text-2xl font-display font-bold purple-gradient-text hover:opacity-90 transition-opacity">
+              teko.sup
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
