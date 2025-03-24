@@ -1,30 +1,13 @@
 
 import React, { useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import AnimatedLogo from './AnimatedLogo';
 
 const Hero = () => {
   const { t } = useLanguage();
-  const logoRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const animateLogo = () => {
-      if (!logoRef.current) return;
-      
-      const logoElement = logoRef.current;
-      logoElement.classList.add('animate-fade-in');
-      
-      // Add a staggered animation to the letters
-      const letters = logoElement.querySelectorAll('.logo-letter');
-      letters.forEach((letter, index) => {
-        setTimeout(() => {
-          (letter as HTMLElement).style.opacity = '1';
-          (letter as HTMLElement).style.transform = 'translateY(0)';
-        }, 100 * index);
-      });
-    };
-    
-    animateLogo();
-    
     // Intersection Observer for scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
@@ -66,28 +49,14 @@ const Hero = () => {
         <div className="flex flex-col items-center justify-center text-center">
           {/* Animated Logo */}
           <div 
-            ref={logoRef} 
-            className="mb-12 relative"
+            ref={contentRef} 
+            className="mb-12 relative animate-on-scroll"
           >
-            <div className="text-4xl md:text-6xl lg:text-7xl font-display font-extrabold relative inline-block">
-              <span className="purple-gradient-text inline-block">
-                <span className="logo-letter inline-block opacity-0 transform translate-y-4 transition-all duration-500">t</span>
-                <span className="logo-letter inline-block opacity-0 transform translate-y-4 transition-all duration-500">e</span>
-                <span className="logo-letter inline-block opacity-0 transform translate-y-4 transition-all duration-500">k</span>
-                <span className="logo-letter inline-block opacity-0 transform translate-y-4 transition-all duration-500">o</span>
-                <span className="logo-letter inline-block opacity-0 transform translate-y-4 transition-all duration-500">.</span>
-                <span className="logo-letter inline-block opacity-0 transform translate-y-4 transition-all duration-500">s</span>
-                <span className="logo-letter inline-block opacity-0 transform translate-y-4 transition-all duration-500">u</span>
-                <span className="logo-letter inline-block opacity-0 transform translate-y-4 transition-all duration-500">p</span>
-              </span>
-              
-              {/* Glowing Effect */}
-              <div className="absolute inset-0 text-transparent bg-clip-text purple-gradient-text blur-[10px] opacity-70 text-glow"></div>
-            </div>
+            <AnimatedLogo size={120} className="mb-4" />
             
             {/* Digital Lines */}
-            <div className="absolute -inset-2 border border-teko-purple/30 rounded-lg opacity-0 animate-fade-in animate-pulse-border" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute -inset-4 border border-teko-purple/20 rounded-lg opacity-0 animate-fade-in animate-pulse-border" style={{ animationDelay: '1.5s' }}></div>
+            <div className="absolute -inset-8 border border-teko-purple/30 rounded-lg opacity-0 animate-fade-in animate-pulse-border" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute -inset-12 border border-teko-purple/20 rounded-lg opacity-0 animate-fade-in animate-pulse-border" style={{ animationDelay: '1.5s' }}></div>
           </div>
 
           {/* Main Content */}
