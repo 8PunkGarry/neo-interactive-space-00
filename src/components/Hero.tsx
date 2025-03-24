@@ -1,11 +1,12 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedLogo from './AnimatedLogo';
 
 const Hero = () => {
   const { t } = useLanguage();
   const contentRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     // Intersection Observer for scroll animations
@@ -23,8 +24,16 @@ const Hero = () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach((el) => observer.observe(el));
     
+    // Handle scroll for parallax sphere movement
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
     return () => {
       animatedElements.forEach((el) => observer.unobserve(el));
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -32,8 +41,25 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teko-purple/20 rounded-full filter blur-[100px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-teko-purple/30 rounded-full filter blur-[120px]"></div>
+        {/* Animated background spheres */}
+        <div 
+          className="absolute w-96 h-96 rounded-full filter blur-[100px] transition-transform duration-700 ease-out opacity-60"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(124, 58, 237, 0.8) 0%, rgba(124, 58, 237, 0.1) 70%)',
+            left: '10%',
+            top: '20%',
+            transform: `translate3d(${scrollY * -0.03}px, ${scrollY * 0.02}px, 0)`,
+          }}
+        />
+        <div 
+          className="absolute w-80 h-80 rounded-full filter blur-[120px] transition-transform duration-700 ease-out opacity-50"
+          style={{ 
+            background: 'radial-gradient(circle, rgba(167, 139, 250, 0.8) 0%, rgba(167, 139, 250, 0.1) 70%)',
+            right: '15%',
+            bottom: '25%',
+            transform: `translate3d(${scrollY * 0.04}px, ${scrollY * -0.01}px, 0)`,
+          }}
+        />
         
         {/* Grid Pattern */}
         <div 
