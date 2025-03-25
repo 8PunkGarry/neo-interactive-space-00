@@ -14,17 +14,35 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<SupportedLanguage>('en');
 
   const t = (key: string): string => {
-    if (translations[language] && translations[language][key]) {
-      return translations[language][key];
+    // Split the key by dots to access nested properties
+    const keys = key.split('.');
+    let value: any = translations[language];
+    
+    // Try to find the translation in the current language
+    for (const k of keys) {
+      if (value && value[k] !== undefined) {
+        value = value[k];
+      } else {
+        value = undefined;
+        break;
+      }
     }
     
-    // Fallback to English if translation doesn't exist
-    if (translations.en[key]) {
-      return translations.en[key];
+    // If translation doesn't exist in current language, try English as fallback
+    if (value === undefined && language !== 'en') {
+      value = translations.en;
+      for (const k of keys) {
+        if (value && value[k] !== undefined) {
+          value = value[k];
+        } else {
+          value = undefined;
+          break;
+        }
+      }
     }
     
-    // Return the key itself if no translation found
-    return key;
+    // Return the translation or the key itself if no translation found
+    return value !== undefined ? value : key;
   };
 
   return (

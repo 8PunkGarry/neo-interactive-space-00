@@ -1,6 +1,8 @@
 
 import { authTranslations } from './authTranslations';
 
+export type SupportedLanguage = 'en' | 'ru' | 'de';
+
 const translations = {
   en: {
     nav: {
@@ -90,7 +92,7 @@ const translations = {
       title: 'Ваш партнер для легких цифровых решений',
       subtitle: 'Мы создаем инновационное программное обеспечение, которое решает реальные бизнес-задачи',
       cta: 'Начать проект',
-      secondary_cта: 'Узнать больше',
+      secondary_cta: 'Узнать больше',
     },
     features: {
       title: 'Что мы предлагаем',
@@ -148,6 +150,81 @@ const translations = {
       ...authTranslations.ru,
     },
   },
+  de: {
+    nav: {
+      home: 'Startseite',
+      services: 'Dienstleistungen',
+      about: 'Über uns',
+      brief: 'Problemübersicht',
+      login: 'Anmelden',
+      signup: 'Registrieren',
+      register: 'Registrieren',
+      back: 'Zurück zur Startseite',
+    },
+    // Basic German translations - can be expanded later
+    hero: {
+      title: 'Ihr Partner für mühelose digitale Lösungen',
+      subtitle: 'Wir entwickeln innovative Software, die echte Geschäftsprobleme löst',
+      cta: 'Starten Sie Ihr Projekt',
+      secondary_cta: 'Mehr erfahren',
+    },
+    features: {
+      title: 'Was wir anbieten',
+      subtitle: 'Unser umfassendes Angebot an Dienstleistungen',
+    },
+    journey: {
+      title: 'Ihre Reise mit uns',
+      subtitle: 'Von der Konzeption bis zur Umsetzung sind wir bei jedem Schritt an Ihrer Seite',
+      step1: {
+        title: 'Entdeckung',
+        description: 'Wir tauchen tief ein, um Ihre Geschäftsziele und Herausforderungen zu verstehen',
+      },
+      step2: {
+        title: 'Planung',
+        description: 'Gemeinsam entwerfen wir die perfekte Lösung für Ihre Bedürfnisse',
+      },
+      step3: {
+        title: 'Entwicklung',
+        description: 'Wir bauen Ihre Lösung mit modernster Technologie',
+      },
+      step4: {
+        title: 'Start',
+        description: 'Wir bringen Ihr Produkt mit umfassender Unterstützung auf den Markt',
+      },
+    },
+    stats: {
+      title: 'Unser Einfluss in Zahlen',
+      projects: 'Abgeschlossene Projekte',
+      clients: 'Zufriedene Kunden',
+      years: 'Jahre Erfahrung',
+      team: 'Teammitglieder',
+    },
+    contact: {
+      title: 'Bereit, Ihr Unternehmen zu transformieren?',
+      subtitle: 'Kontaktieren Sie noch heute unsere Experten',
+      cta: 'Kontakt',
+    },
+    footer: {
+      company: 'Unternehmen',
+      about: 'Über uns',
+      careers: 'Karriere',
+      contact: 'Kontakt',
+      services: 'Dienstleistungen',
+      web: 'Webentwicklung',
+      mobile: 'Mobile Apps',
+      ai: 'KI-Lösungen',
+      cloud: 'Cloud-Dienste',
+      legal: 'Rechtliches',
+      privacy: 'Datenschutzrichtlinie',
+      terms: 'Nutzungsbedingungen',
+      cookies: 'Cookie-Richtlinie',
+      copyright: '© 2023 teko.sup. Alle Rechte vorbehalten.',
+    },
+    auth: {
+      ...authTranslations.en, // Fallback to English for now
+    },
+  }
 };
 
+export { translations };
 export default translations;
