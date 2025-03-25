@@ -18,11 +18,6 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
     // Add necessary keyframes if not already in CSS
     const style = document.createElement('style');
     style.textContent = `
-      @keyframes gentle-rotate {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      
       @keyframes gentle-pulse {
         0% { opacity: 0.7; transform: scale(0.97); }
         50% { opacity: 1; transform: scale(1.03); }
@@ -54,16 +49,6 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         className={`${className} inline-block`}
         style={{ animation: 'gentle-pulse 4s infinite ease-in-out' }}
       >
-        <circle 
-          cx="60" 
-          cy="60" 
-          r="56" 
-          stroke="#7C3AED" 
-          strokeWidth="2"
-          strokeDasharray="10 5" 
-          style={{ animation: 'gentle-rotate 30s infinite linear' }}
-        />
-        
         <circle 
           cx="60" 
           cy="60" 
@@ -100,16 +85,6 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         style={{ animation: 'gentle-pulse 4s infinite ease-in-out' }}
       >
-        <circle 
-          cx="60" 
-          cy="60" 
-          r="56" 
-          stroke="#7C3AED" 
-          strokeWidth="2"
-          strokeDasharray="10 5" 
-          style={{ animation: 'gentle-rotate 30s infinite linear' }}
-        />
-        
         <circle 
           cx="60" 
           cy="60" 

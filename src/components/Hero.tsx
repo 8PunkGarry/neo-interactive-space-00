@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedLogo from './AnimatedLogo';
-import { Star } from 'lucide-react';
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -44,12 +43,23 @@ const Hero = () => {
           }}
         />
         
-        {/* Single star accent */}
+        {/* Animated diamond */}
         <div 
-          className="absolute top-[15%] right-[15%] text-teko-purple animate-pulse"
-          style={{ animationDuration: '4s' }}
+          className="absolute top-[20%] right-[20%] opacity-0 transition-opacity duration-1000"
+          style={{ 
+            opacity: isVisible ? 0.7 : 0,
+            transitionDelay: '0.6s',
+            animation: 'float 6s infinite ease-in-out',
+          }}
         >
-          <Star className="h-8 w-8" fill="rgba(124, 58, 237, 0.3)" />
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path 
+              d="M20 2 L38 20 L20 38 L2 20 Z" 
+              fill="rgba(124, 58, 237, 0.3)"
+              stroke="rgba(124, 58, 237, 0.6)"
+              strokeWidth="1"
+            />
+          </svg>
         </div>
       </div>
 
@@ -62,10 +72,10 @@ const Hero = () => {
             }`}
             style={{ transitionDelay: '0.2s' }}
           >
-            <AnimatedLogo size={120} className="mb-4" />
+            <AnimatedLogo size={120} className="mb-4" variant="minimal" />
           </div>
 
-          {/* Simplified Content Animation */}
+          {/* Content Animation */}
           <h1 
             className={`text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6 max-w-4xl transition-all duration-1000 ease-out ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
