@@ -25,7 +25,7 @@ const translations = {
     },
     journey: {
       title: 'Your Journey With Us',
-      subtitle: 'From concept to implementation, we're with you at every step',
+      subtitle: 'From concept to implementation, we\'re with you at every step',
       step1: {
         title: 'Discovery',
         description: 'We dive deep into understanding your business goals and challenges',
@@ -90,7 +90,7 @@ const translations = {
       title: 'Ваш партнер для легких цифровых решений',
       subtitle: 'Мы создаем инновационное программное обеспечение, которое решает реальные бизнес-задачи',
       cta: 'Начать проект',
-      secondary_cta: 'Узнать больше',
+      secondary_cта: 'Узнать больше',
     },
     features: {
       title: 'Что мы предлагаем',
