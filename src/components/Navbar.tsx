@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogIn, UserPlus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedLogo from './AnimatedLogo';
+import { Button } from './ui/button';
 
 const Navbar = () => {
   const { t } = useLanguage();
@@ -78,12 +80,24 @@ const Navbar = () => {
               
               <div className="h-6 w-px bg-teko-purple/30"></div>
               
-              <Link
-                to="/login"
-                className="text-sm font-medium text-teko-white/90 hover:text-teko-purple transition-colors duration-300"
-              >
-                {t('nav.login')} / {t('nav.register')}
-              </Link>
+              <div className="flex items-center space-x-3">
+                <Link to="/login" className="flex items-center">
+                  <Button variant="ghost" size="sm" className="text-teko-white/90 hover:text-teko-purple">
+                    <LogIn className="mr-1 h-4 w-4" />
+                    {t('nav.login')}
+                  </Button>
+                </Link>
+                
+                <Link to="/signup">
+                  <Button 
+                    size="sm" 
+                    className="bg-teko-purple hover:bg-teko-purple-dark text-white"
+                  >
+                    <UserPlus className="mr-1 h-4 w-4" />
+                    {t('nav.signup') || 'Sign Up'}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -115,13 +129,25 @@ const Navbar = () => {
                 
                 <div className="h-px w-full bg-teko-purple/20 my-2"></div>
                 
-                <Link
-                  to="/login"
-                  className="text-base font-medium text-teko-white/90 hover:text-teko-purple transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {t('nav.login')} / {t('nav.register')}
-                </Link>
+                <div className="flex flex-col space-y-3">
+                  <Link
+                    to="/login"
+                    className="flex items-center text-teko-white/90 hover:text-teko-purple transition-colors py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <LogIn className="mr-2 h-5 w-5" />
+                    <span className="text-base font-medium">{t('nav.login')}</span>
+                  </Link>
+                  
+                  <Link
+                    to="/signup"
+                    className="flex items-center bg-teko-purple hover:bg-teko-purple-dark text-white py-2 px-3 rounded-md transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <UserPlus className="mr-2 h-5 w-5" />
+                    <span className="text-base font-medium">{t('nav.signup') || 'Sign Up'}</span>
+                  </Link>
+                </div>
                 
                 <div className="pt-2">
                   <LanguageSwitcher />
