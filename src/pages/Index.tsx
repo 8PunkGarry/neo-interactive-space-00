@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 
 const Index = () => {
   useEffect(() => {
-    // Add animation observer when component mounts
+    // Add simplified animation observer when component mounts
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -17,7 +17,7 @@ const Index = () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
     
     const animatedElements = document.querySelectorAll('.animate-on-scroll');

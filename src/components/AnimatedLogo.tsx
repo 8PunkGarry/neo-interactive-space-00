@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 interface AnimatedLogoProps {
@@ -12,39 +13,26 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
   variant = 'full' 
 }) => {
   const logoRef = useRef<SVGSVGElement>(null);
-  const textRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    const animate = () => {
-      if (!logoRef.current) return;
-      
-      // Animate the wheel rotation
-      const wheel = logoRef.current.querySelector('.wheel');
-      if (wheel) {
-        wheel.setAttribute('style', 'animation: spin 10s linear infinite');
-      }
-      
-      // Animate the inner shapes
-      const innerShapes = logoRef.current.querySelectorAll('.inner-shape');
-      innerShapes.forEach((shape, index) => {
-        (shape as SVGElement).setAttribute('style', 
-          `animation: pulse 3s ease-in-out ${index * 0.5}s infinite alternate`);
-      });
-    };
-    
-    animate();
-    
     // Add necessary keyframes if not already in CSS
     const style = document.createElement('style');
     style.textContent = `
-      @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+      @keyframes gentle-rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
       
-      @keyframes pulse {
-        0% { transform: scale(0.95); opacity: 0.7; }
-        100% { transform: scale(1.05); opacity: 1; }
+      @keyframes gentle-pulse {
+        0% { opacity: 0.7; transform: scale(0.97); }
+        50% { opacity: 1; transform: scale(1.03); }
+        100% { opacity: 0.7; transform: scale(0.97); }
+      }
+      
+      @keyframes soft-glow {
+        0% { filter: drop-shadow(0 0 2px rgba(124, 58, 237, 0.3)); }
+        50% { filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.6)); }
+        100% { filter: drop-shadow(0 0 2px rgba(124, 58, 237, 0.3)); }
       }
     `;
     document.head.appendChild(style);
@@ -64,34 +52,35 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
         className={`${className} inline-block`}
+        style={{ animation: 'gentle-pulse 4s infinite ease-in-out' }}
       >
         <circle 
-          className="wheel"
           cx="60" 
           cy="60" 
           r="56" 
           stroke="#7C3AED" 
           strokeWidth="2"
           strokeDasharray="10 5" 
+          style={{ animation: 'gentle-rotate 30s infinite linear' }}
         />
         
         <circle 
           cx="60" 
           cy="60" 
-          r="45" 
-          fill="url(#purpleGradient)" 
+          r="42" 
+          fill="url(#minGradient)" 
           fillOpacity="0.1" 
+          style={{ animation: 'soft-glow 4s infinite ease-in-out' }}
         />
         
         <path 
-          className="inner-shape"
-          d="M60 30 L85 60 L60 90 L35 60 Z" 
+          d="M60 35 L80 60 L60 85 L40 60 Z" 
           fill="#7C3AED" 
           fillOpacity="0.6" 
         />
         
         <defs>
-          <radialGradient id="purpleGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(50)">
+          <radialGradient id="minGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(50)">
             <stop offset="0%" stopColor="#7C3AED" />
             <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
           </radialGradient>
@@ -101,7 +90,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
   }
 
   return (
-    <div className={`inline-flex items-center justify-center ${className}`}>
+    <div className={`inline-flex items-center ${className}`}>
       <svg 
         ref={logoRef}
         width={size} 
@@ -109,57 +98,35 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         viewBox="0 0 120 120" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
+        style={{ animation: 'gentle-pulse 4s infinite ease-in-out' }}
       >
         <circle 
-          className="wheel"
           cx="60" 
           cy="60" 
           r="56" 
           stroke="#7C3AED" 
           strokeWidth="2"
           strokeDasharray="10 5" 
+          style={{ animation: 'gentle-rotate 30s infinite linear' }}
         />
         
         <circle 
           cx="60" 
           cy="60" 
-          r="45" 
-          fill="url(#purpleGradient)" 
+          r="42" 
+          fill="url(#fullGradient)" 
           fillOpacity="0.1" 
+          style={{ animation: 'soft-glow 4s infinite ease-in-out' }}
         />
         
         <path 
-          className="inner-shape"
-          d="M60 30 L85 60 L60 90 L35 60 Z" 
+          d="M60 35 L80 60 L60 85 L40 60 Z" 
           fill="#7C3AED" 
           fillOpacity="0.6" 
         />
         
-        <path 
-          className="inner-shape"
-          d="M46 46 L74 46 L74 74 L46 74 Z" 
-          fill="#FFFFFF" 
-          fillOpacity="0.7" 
-          transform="rotate(45 60 60)"
-        />
-        
-        <circle 
-          className="inner-shape"
-          cx="60" 
-          cy="60" 
-          r="15" 
-          fill="#A78BFA" 
-        />
-        
-        <circle 
-          cx="60" 
-          cy="60" 
-          r="8" 
-          fill="#FFFFFF" 
-        />
-        
         <defs>
-          <radialGradient id="purpleGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(50)">
+          <radialGradient id="fullGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(50)">
             <stop offset="0%" stopColor="#7C3AED" />
             <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
           </radialGradient>
@@ -167,7 +134,6 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
       </svg>
       
       <svg 
-        ref={textRef}
         width={size * 1.5} 
         height={size / 2} 
         viewBox="0 0 180 60" 
