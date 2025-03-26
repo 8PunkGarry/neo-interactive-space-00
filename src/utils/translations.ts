@@ -1,4 +1,3 @@
-
 import { z } from 'zod';
 
 export const translations = {
@@ -30,20 +29,32 @@ export const translations = {
       title: 'Your Journey With Us',
       subtitle: 'How we transform your ideas into powerful digital solutions',
       step1: {
-        title: 'Discovery & Planning',
-        description: 'We learn about your business, analyze requirements, and create a detailed project plan.'
+        title: 'Discovery & Strategy',
+        description: 'We analyze your business needs and develop a comprehensive project strategy.'
       },
       step2: {
-        title: 'Design & Prototyping',
-        description: 'Creating wireframes and interactive prototypes to visualize the solution.'
+        title: 'UX Design & Prototyping',
+        description: 'Creating intuitive interfaces and interactive prototypes that visualize the solution.'
       },
       step3: {
-        title: 'Development',
-        description: 'Building the solution with modern tech stack and regular progress updates.'
+        title: 'Development & Integration',
+        description: 'Building robust solutions with cutting-edge technologies and seamless integrations.'
       },
       step4: {
-        title: 'Launch & Support',
-        description: 'Deploying your solution and providing ongoing support and enhancements.'
+        title: 'Launch & Optimization',
+        description: 'Deploying your solution and continuously optimizing for peak performance.'
+      },
+      step5: {
+        title: 'Growth & Support',
+        description: 'Ongoing maintenance, feature enhancements, and technical support for your digital assets.'
+      },
+      step6: {
+        title: 'Scale & Evolution',
+        description: 'Expanding capabilities and adapting to new market demands as your business grows.'
+      },
+      step7: {
+        title: 'Innovation & Advancement',
+        description: 'Implementing advanced technologies like AI and analytics to keep you ahead of competition.'
       },
       clientType: 'For Clients',
       companyType: 'For Companies',
@@ -258,7 +269,7 @@ export const translations = {
       services: 'Услуги',
       about: 'О нас',
       brief: 'Бриф',
-      login: 'Войти',
+      login: 'Вход',
       signup: 'Регистрация',
       register: 'Регистрация',
       client: 'Клиентам',
@@ -278,22 +289,34 @@ export const translations = {
     },
     journey: {
       title: 'Ваш путь с нами',
-      subtitle: 'Как мы превращаем ваши идейи в мощные цифровые решения',
+      subtitle: 'Как мы превращаем ваши идеи в мощные цифровые решения',
       step1: {
-        title: 'Открытие и планирование',
-        description: 'Мы изучаем ваш бизнес, анализируем требования и создаем детальный план проекта.'
+        title: 'Анализ и Стратегия',
+        description: 'Мы анализируем потребности вашего бизнеса и разрабатываем комплексную стратегию проекта.'
       },
       step2: {
-        title: 'Дизайн и прототипирование',
-        description: 'Создание макетов и интерактивных прототипов для визуализации решения.'
+        title: 'UX Дизайн и Прототипирование',
+        description: 'Создание интуитивных интерфейсов и интерактивных прототипов, визуализирующих решение.'
       },
       step3: {
-        title: 'Разработка',
-        description: 'Построение решения с использованием современных технологий и регулярными обновлениями прогресса.'
+        title: 'Разработка и Интеграция',
+        description: 'Создание надежных решений с использованием современных технологий и безупречных интеграций.'
       },
       step4: {
-        title: 'Запуск и поддержка',
-        description: 'Запуск вашего решения и обеспечение постоянной поддержки и улучшений.'
+        title: 'Запуск и Оптимизация',
+        description: 'Развертывание вашего решения и постоянная оптимизация для максимальной производительности.'
+      },
+      step5: {
+        title: 'Рост и Поддержка',
+        description: 'Постоянное обслуживание, улучшение функций и техническая поддержка ваших цифровых активов.'
+      },
+      step6: {
+        title: 'Масштабирование и Эволюция',
+        description: 'Расширение возможностей и адаптация к новым требованиям рынка по мере роста вашего бизнеса.'
+      },
+      step7: {
+        title: 'Инновации и Прогресс',
+        description: 'Внедрение передовых технологий, таких как ИИ и аналитика, чтобы вы оставались впереди конкурентов.'
       },
       clientType: 'Для клиентов',
       companyType: 'Для компаний',
@@ -753,10 +776,3 @@ export const translations = {
     }
   }
 } as const;
-
-export type SupportedLanguage = keyof typeof translations;
-export type TranslationKeys = keyof typeof translations.en;
-
-export const languageSchema = z.object({
-  language: z.enum(['en', 'ru', 'cs'] as const)
-});

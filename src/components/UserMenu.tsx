@@ -24,12 +24,12 @@ const UserMenu = () => {
       <div className="flex items-center gap-2">
         <Link to="/login">
           <Button variant="ghost" className="text-teko-white/80 hover:text-teko-white hover:bg-teko-purple/10">
-            {t('auth.login')}
+            {t('navbar.login')}
           </Button>
         </Link>
         <Link to="/signup">
           <Button className="bg-teko-purple hover:bg-teko-purple-dark text-white">
-            {t('auth.signup')}
+            {t('navbar.signup')}
           </Button>
         </Link>
       </div>
@@ -58,7 +58,7 @@ const UserMenu = () => {
         <DropdownMenuItem className="cursor-pointer hover:bg-teko-purple/20 focus:bg-teko-purple/20">
           <Link to="/profile" className="flex items-center w-full">
             <Settings className="mr-2 h-4 w-4 text-teko-white/60" />
-            <span>{t('user.settings')}</span>
+            <span>{t('navbar.settings')}</span>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator className="bg-teko-purple/20" />
@@ -67,7 +67,7 @@ const UserMenu = () => {
           onClick={() => signOut()}
         >
           <LogOut className="mr-2 h-4 w-4" />
-          <span>{t('auth.logout')}</span>
+          <span>{t('navbar.logout')}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
