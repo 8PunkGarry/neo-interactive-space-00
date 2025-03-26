@@ -1,10 +1,8 @@
-import { authTranslations } from './authTranslations';
+import { z } from 'zod';
 
-export type SupportedLanguage = 'en' | 'ru' | 'cs';
-
-const translations = {
+export const translations = {
   en: {
-    nav: {
+    navbar: {
       home: 'Home',
       services: 'Services',
       about: 'About Us',
@@ -12,365 +10,333 @@ const translations = {
       login: 'Log In',
       signup: 'Sign Up',
       register: 'Register',
-      back: 'Back to home',
+      client: 'Client Area',
+      account: 'My Account',
+      admin: 'Admin',
+      company: 'Company Area',
+      settings: 'Settings',
+      logout: 'Log Out',
     },
     hero: {
-      title: 'Your Partner for Effortless Digital Solutions',
-      subtitle: 'We build innovative software that solves real business problems and transforms your ideas into reality',
-      cta: 'Start Your Project',
-      secondary_cta: 'Learn More',
+      title: 'Digital Solutions for Modern Business',
+      subtitle: 'We create high-performance websites, mobile apps, and enterprise solutions that help your business grow',
+      cta: 'Get Started',
+      learnMore: 'Learn More',
     },
-    features: {
-      title: 'What we offer',
-      subtitle: 'Our comprehensive suite of services',
-    },
-    journey: {
-      title: 'Your Journey With Us',
-      subtitle: 'From concept to implementation, we\'re with you at every step',
-      step1: {
-        title: 'Discovery',
-        description: 'We dive deep into understanding your business goals and challenges',
+    about: {
+      title: 'About Us',
+      description: 'Teko.sup is a team of professionals specializing in web development, integrations, and digital solutions. We combine cutting-edge technology, creativity, and experience to build powerful IT solutions for businesses.',
+      whoWeAre: {
+        title: 'Who We Are',
+        description1: 'Teko.sup is a team of professionals specializing in web development, integrations, and digital solutions. We combine cutting-edge technology, creativity, and experience to build powerful IT solutions for businesses.',
+        description2: 'Our mission is to help companies succeed in the digital world by developing modern websites, CRM systems, and automation tools that make businesses more efficient, faster, and more profitable.',
+        description3: 'We believe that design, code, and technology are not just tools but the key to innovation.'
       },
-      step2: {
-        title: 'Planning',
-        description: 'Collaboratively designing the perfect solution for your needs',
+      mission: {
+        title: 'Our Mission',
+        quote: 'We create technology that simplifies complexity, automates processes, and helps businesses operate more efficiently.',
+        description: 'We work at the intersection of development, UI/UX design, and marketing, ensuring that every project delivers real value to our clients.',
+        point1: 'We leverage technology to solve real business problems',
+        point2: 'We develop solutions that reduce manual work and errors',
+        point3: 'We focus on creating digital assets that generate results'
       },
-      step3: {
-        title: 'Development',
-        description: 'Building your solution with cutting-edge technology',
+      vision: {
+        title: 'Our Vision',
+        description: 'We envision a future where digital technology makes business operations seamless, allowing companies to focus on growth rather than routine tasks.',
+        point1: 'Become the leading digital solution provider in Central Europe',
+        point2: 'Help 500+ businesses transform their digital presence by 2025',
+        point3: 'Push the boundaries of what\'s possible with web technology'
       },
-      step4: {
-        title: 'Launch',
-        description: 'Bringing your product to market with comprehensive support',
+      values: {
+        title: 'Our Values',
+        description: 'These core principles guide our work and relationships with clients and partners.',
+        value1: {
+          title: 'Technology-Driven',
+          description: 'We use cutting-edge tools and stay ahead of trends.'
+        },
+        value2: {
+          title: 'Transparency',
+          description: 'Clear processes, realistic deadlines, and straightforward communication.'
+        },
+        value3: {
+          title: 'Creativity',
+          description: 'We find innovative solutions for complex challenges.'
+        },
+        value4: {
+          title: 'Results-Oriented',
+          description: 'We don\'t just build websites; we create digital ecosystems for business success.'
+        }
       },
-    },
-    stats: {
-      title: 'Our Impact in Numbers',
-      projects: 'Projects Completed',
-      clients: 'Happy Clients',
-      years: 'Years of Experience',
-      team: 'Team Members',
-    },
-    contact: {
-      title: 'Ready to transform your business?',
-      subtitle: 'Get in touch with our experts today',
-      cta: 'Contact Us',
+      team: {
+        title: 'Our Team',
+        description: 'Meet the experts who make the magic happen.',
+        experience: 'Experience',
+        years: 'years',
+        skills: 'Skills',
+        member1: {
+          name: 'Arkadiy Tkachenko',
+          role: 'CEO & Founder',
+          bio: 'We build ecosystems, not just websites.'
+        },
+        member2: {
+          name: 'Kai Kane',
+          role: 'Lead Designer',
+          bio: 'A great interface is where beauty meets functionality.'
+        },
+        member3: {
+          name: 'Adam Hrstka',
+          role: 'Developer',
+          bio: 'The best code is the one that makes life easier.'
+        },
+        member4: {
+          name: 'Petr Lichý',
+          role: 'Marketing Lead',
+          bio: 'Effective marketing isn\'t just ads; it\'s a strategy for success.'
+        }
+      },
+      contact: {
+        title: 'Contact Us',
+        description: 'Want to discuss a project or have a question? Reach out to us!',
+        office: 'Office',
+        email: 'Email',
+        phone: 'Phone',
+        form: {
+          title: 'Send us a message',
+          name: 'Your Name',
+          namePlaceholder: 'Enter your name',
+          email: 'Your Email',
+          emailPlaceholder: 'Enter your email',
+          message: 'Your Message',
+          messagePlaceholder: 'How can we help you?',
+          send: 'Send Message',
+          sending: 'Sending...',
+          success: {
+            title: 'Message Sent!',
+            message: 'Thanks for reaching out. We\'ll get back to you as soon as possible.',
+            newMessage: 'Send Another Message'
+          }
+        }
+      },
+      ready: 'Ready to get started?',
+      fillBrief: 'Fill out the brief'
     },
     brief: {
-      title: 'Submit your brief',
-      subtitle: 'Tell us about your project, and we will contact you to discuss the details',
+      title: 'Send us your brief',
+      subtitle: 'Tell us about your project, and we\'ll get back to you to discuss the details',
       name: 'Your name *',
       email: 'Your email *',
-      project_type: 'Project type *',
-      description: 'Project description *',
-      budget: 'Budget',
-      submit: 'Submit brief',
-      submitting: 'Submitting...',
-      website: 'Website',
-      integration: 'Integration',
-      design: 'Design',
-      other: 'Other',
-      success_title: 'Brief submitted',
-      success_message: 'Thank you! We will review your brief and contact you soon.',
-      error_title: 'Submission error',
-      error_message: 'There was an error submitting your brief. Please try again.',
-      missing_info_title: 'Missing information',
-      missing_info_message: 'Please fill in all required fields.',
-      name_placeholder: 'Enter your name',
-      email_placeholder: 'Enter your email',
-      description_placeholder: 'Describe your project and your requirements',
-      budget_placeholder: 'Specify your estimated project budget'
-    },
-    services: {
-      title: 'Our Services',
-      description: 'Comprehensive digital solutions tailored to your specific needs',
-      web: {
-        title: 'Web Development',
-        description: 'Custom websites and web applications built with cutting-edge technologies',
-        capabilities: {
-          responsive: 'Responsive Design',
-          ecommerce: 'E-commerce',
-          cms: 'CMS Integration',
-          spa: 'Single Page Apps'
-        }
+      phone: 'Your phone',
+      company: 'Company name',
+      website: 'Current website (if any)',
+      projectType: {
+        label: 'What type of project do you need? *',
+        website: 'Website',
+        mobileApp: 'Mobile App',
+        webApp: 'Web Application',
+        ecommerce: 'E-commerce',
+        brandIdentity: 'Brand Identity',
+        other: 'Other'
       },
-      crm: {
-        title: 'CRM Solutions',
-        description: 'Customer relationship management systems to streamline your business processes',
-        capabilities: {
-          automation: 'Workflow Automation',
-          analytics: 'Customer Analytics',
-          integration: 'Third-party Integration',
-          custom: 'Custom Dashboards'
-        }
+      budget: {
+        label: 'What is your budget range?',
+        small: 'Below $5,000',
+        medium: '$5,000 - $10,000',
+        large: '$10,000 - $25,000',
+        enterprise: 'Above $25,000',
+        notSure: 'Not sure yet'
       },
-      design: {
-        title: 'UI/UX Design',
-        description: 'Beautiful, intuitive interfaces that delight users and drive engagement',
-        capabilities: {
-          ui: 'Interface Design',
-          ux: 'User Experience',
-          branding: 'Brand Identity',
-          prototyping: 'Rapid Prototyping'
-        }
+      timeline: {
+        label: 'When do you need the project completed?',
+        asap: 'As soon as possible',
+        oneMonth: 'Within 1 month',
+        threeMonths: 'Within 3 months',
+        sixMonths: 'Within 6 months',
+        flexible: 'Flexible / Not sure'
       },
-      seo: {
-        title: 'SEO Optimization',
-        description: 'Improve your visibility and drive organic traffic to your website',
-        capabilities: {
-          audit: 'Technical Audit',
-          optimization: 'Content Optimization',
-          analytics: 'Performance Analytics',
-          local: 'Local SEO'
-        }
-      },
-      support: {
-        title: 'Technical Support',
-        description: 'Ongoing maintenance and support to keep your systems running smoothly',
-        capabilities: {
-          maintenance: 'Regular Maintenance',
-          hosting: 'Managed Hosting',
-          security: 'Security Updates',
-          updates: 'Feature Updates'
-        }
-      },
-      api: {
-        title: 'API Development',
-        description: 'Connect your systems and services with custom API solutions',
-        capabilities: {
-          integration: 'API Integration',
-          development: 'Custom API Development',
-          testing: 'Performance Testing',
-          documentation: 'API Documentation'
-        }
-      },
-      approach: {
-        title: 'Our Approach',
-        description: 'We follow a proven methodology to ensure successful project delivery and client satisfaction. Our step-by-step approach ensures transparency and alignment throughout the development process.',
-        step1: 'We start with a thorough analysis of your business needs, objectives, and current systems.',
-        step2: 'Our team creates a detailed roadmap with clear milestones and deliverables.',
-        step3: 'We implement solutions using agile methodologies, with regular client feedback and iterations.',
-        step4: 'Post-launch, we provide comprehensive support and continuous improvement strategies.'
-      },
-      benefits: {
-        title: 'Why Choose Us',
-        benefit1: 'Tailored solutions designed specifically for your unique business needs',
-        benefit2: 'Transparent communication and regular updates throughout the project',
-        benefit3: 'Cutting-edge technologies and industry best practices',
-        benefit4: 'Dedicated support team available to address any concerns',
-        benefit5: 'Flexible engagement models to accommodate your budget and timeline'
-      },
-      cta: {
-        title: 'Ready to Elevate Your Digital Presence?',
-        description: 'Schedule a free consultation with our team to discuss your project requirements.',
-        button: 'Submit Your Brief'
-      }
-    },
-    footer: {
-      company: 'Company',
-      about: 'About Us',
-      careers: 'Careers',
-      contact: 'Contact',
-      services: 'Services',
-      web: 'Web Development',
-      mobile: 'Mobile Apps',
-      ai: 'AI Solutions',
-      cloud: 'Cloud Services',
-      legal: 'Legal',
-      privacy: 'Privacy Policy',
-      terms: 'Terms of Service',
-      cookies: 'Cookie Policy',
-      copyright: '© 2023 teko.sup. All rights reserved.',
-    },
-    auth: {
-      ...authTranslations.en,
+      description: 'Project description and goals *',
+      descriptionPlaceholder: 'Please describe your project, including your goals, target audience, and any specific features you need...',
+      features: 'Specific features or requirements',
+      featuresPlaceholder: 'List any specific features, integrations, or technical requirements...',
+      references: 'References / Examples you like',
+      referencesPlaceholder: 'Share websites or apps that you like or that are similar to what you want...',
+      submit: 'Submit Brief',
+      sending: 'Sending...',
+      required: 'Required field',
+      errorMessage: 'Please fix the errors before submitting',
+      successTitle: 'Brief Submitted Successfully!',
+      successMessage: 'Thank you for submitting your brief! We\'ll review it and get back to you within 1-2 business days.',
+      successCta: 'Back to Home'
     },
   },
   ru: {
-    nav: {
+    navbar: {
       home: 'Главная',
       services: 'Услуги',
       about: 'О нас',
       brief: 'Бриф',
-      login: 'Вход',
+      login: 'Войти',
       signup: 'Регистрация',
       register: 'Регистрация',
-      back: 'На главную',
+      client: 'Клиентам',
+      account: 'Мой аккаунт',
+      admin: 'Админ',
+      company: 'Компаниям',
+      settings: 'Настройки',
+      logout: 'Выход',
     },
     hero: {
-      title: 'Ваш партнер для легких цифровых решений',
-      subtitle: 'Мы создаем инновационное программное обеспечение, которое решает реальные бизнес-задачи и превращает ваши идеи в реальность',
-      cta: 'Начать проект',
-      secondary_cta: 'Узнать больше',
-    },
-    features: {
-      title: 'Что мы предлагаем',
-      subtitle: 'Наш комплексный набор услуг',
-    },
-    journey: {
-      title: 'Ваш путь с нами',
-      subtitle: 'От концепции до реализации, мы с вами на каждом шагу',
-      step1: {
-        title: 'Анализ',
-        description: 'Мы глубоко погружаемся в понимание ваших бизнес-целей и задач',
-      },
-      step2: {
-        title: 'Планирование',
-        description: 'Совместно разрабатываем идеальное решение для ваших потребностей',
-      },
-      step3: {
-        title: 'Разработка',
-        description: 'Создаем ваше решение с использованием передовых технологий',
-      },
-      step4: {
-        title: 'Запуск',
-        description: 'Выводим ваш продукт на рынок с комплексной поддержкой',
-      },
-    },
-    stats: {
-      title: 'Наше влияние в цифрах',
-      projects: 'Завершенных проектов',
-      clients: 'Довольных клиентов',
-      years: 'Лет опыта',
-      team: 'Членов команды',
-    },
-    contact: {
-      title: 'Готовы трансформировать свой бизнес?',
-      subtitle: 'Свяжитесь с нашими экспертами сегодня',
+      title: 'Цифровые решения для современного бизнеса',
+      subtitle: 'Мы создаем высокопроизводительные веб-сайты, мобильные приложения и корпоративные решения, которые помогают вашему бизнесу расти',
       cta: 'Связаться с нами',
+      learnMore: 'Узнать больше',
+    },
+    about: {
+      title: 'О нас',
+      description: 'Teko.sup - это команда профессионалов, специализирующихся на веб-разработке, интеграциях и цифровых решениях. Мы объединяем передовые технологии, креативность и опыт для создания эффективных ИТ-решений для бизнеса.',
+      whoWeAre: {
+        title: 'Кто мы',
+        description1: 'Teko.sup - это команда профессионалов, специализирующихся на веб-разработке, интеграциях и цифровых решениях. Мы объединяем передовые технологии, креативность и опыт для создания эффективных ИТ-решений для бизнеса.',
+        description2: 'Наша миссия - помогать компаниям преуспевать в цифровом мире, разрабатывая современные веб-сайты, CRM-системы и инструменты автоматизации, которые делают бизнес более эффективным, быстрым и прибыльным.',
+        description3: 'Мы верим, что дизайн, код и технологии - это не просто инструменты, а ключ к инновациям.'
+      },
+      mission: {
+        title: 'Наша миссия',
+        quote: 'Мы создаем технологии, которые упрощают сложные процессы, автоматизируют рабочие операции и помогают бизнесу работать эффективнее.',
+        description: 'Мы работаем на стыке разработки, UI/UX дизайна и маркетинга, гарантируя, что каждый проект приносит реальную ценность нашим клиентам.',
+        point1: 'Мы используем технологии для решения реальных бизнес-задач',
+        point2: 'Мы разрабатываем решения, которые сокращают ручную работу и ошибки',
+        point3: 'Мы фокусируемся на создании цифровых активов, которые приносят результаты'
+      },
+      vision: {
+        title: 'Наше видение',
+        description: 'Мы представляем будущее, где цифровые технологии делают бизнес-операции более гладкими, позволяя компаниям сосредоточиться на росте, а не на рутинных задачах.',
+        point1: 'Стать ведущим поставщиком цифровых решений в Центральной Европе',
+        point2: 'Помочь более 500 предприятиям преобразовать их цифровое присутствие к 2025 году',
+        point3: 'Расширять границы возможного с помощью веб-технологий'
+      },
+      values: {
+        title: 'Наши ценности',
+        description: 'Эти основные принципы определяют нашу работу и отношения с клиентами и партнерами.',
+        value1: {
+          title: 'Технологичность',
+          description: 'Мы используем передовые инструменты и следим за тенденциями.'
+        },
+        value2: {
+          title: 'Прозрачность',
+          description: 'Четкие процессы, реалистичные сроки и прямая коммуникация.'
+        },
+        value3: {
+          title: 'Креативность',
+          description: 'Мы находим инновационные решения для сложных задач.'
+        },
+        value4: {
+          title: 'Ориентация на результат',
+          description: 'Мы создаем не просто веб-сайты, а цифровые экосистемы для успешного бизнеса.'
+        }
+      },
+      team: {
+        title: 'Наша команда',
+        description: 'Познакомьтесь с экспертами, которые создают магию.',
+        experience: 'Опыт',
+        years: 'лет',
+        skills: 'Навыки',
+        member1: {
+          name: 'Аркадий Ткаченко',
+          role: 'CEO и основатель',
+          bio: 'Мы строим экосистемы, а не просто веб-сайты.'
+        },
+        member2: {
+          name: 'Кай Кейн',
+          role: 'Ведущий дизайнер',
+          bio: 'Отличный интерфейс - это место, где красота встречается с функциональностью.'
+        },
+        member3: {
+          name: 'Адам Грстка',
+          role: 'Разработчик',
+          bio: 'Лучший код - тот, который делает жизнь проще.'
+        },
+        member4: {
+          name: 'Петр Лихий',
+          role: 'Маркетолог',
+          bio: 'Эффективный маркетинг - это не просто реклама, это стратегия успеха.'
+        }
+      },
+      contact: {
+        title: 'Свяжитесь с нами',
+        description: 'Хотите обсудить проект или у вас есть вопрос? Напишите нам!',
+        office: 'Офис',
+        email: 'Email',
+        phone: 'Телефон',
+        form: {
+          title: 'Отправьте нам сообщение',
+          name: 'Ваше имя',
+          namePlaceholder: 'Введите ваше имя',
+          email: 'Ваш Email',
+          emailPlaceholder: 'Введите ваш email',
+          message: 'Ваше сообщение',
+          messagePlaceholder: 'Чем мы можем вам помочь?',
+          send: 'Отправить сообщение',
+          sending: 'Отправка...',
+          success: {
+            title: 'Сообщение отправлено!',
+            message: 'Спасибо за обращение. Мы свяжемся с вами в ближайшее время.',
+            newMessage: 'Отправить другое сообщение'
+          }
+        }
+      },
+      ready: 'Готовы начать?',
+      fillBrief: 'Заполнить бриф'
     },
     brief: {
       title: 'Отправьте ваш бриф',
       subtitle: 'Расскажите нам о вашем проекте, и мы свяжемся с вами для обсуждения деталей',
       name: 'Ваше имя *',
       email: 'Ваш email *',
-      project_type: 'Тип проекта *',
-      description: 'Описание проекта *',
-      budget: 'Бюджет',
-      submit: 'Отправить заявку',
-      submitting: 'Отправка...',
-      website: 'Веб-сайт',
-      integration: 'Интеграция',
-      design: 'Дизайн',
-      other: 'Другое',
-      success_title: 'Заявка отправлена',
-      success_message: 'Спасибо! Мы рассмотрим вашу заявку и свяжемся с вами в ближайшее время.',
-      error_title: 'Ошибка отправки',
-      error_message: 'Произошла ошибка при отправке вашей заявки. Пожалуйста, попробуйте еще раз.',
-      missing_info_title: 'Отсутствует информация',
-      missing_info_message: 'Пожалуйста, заполните все обязательные поля.',
-      name_placeholder: 'Введите ваше имя',
-      email_placeholder: 'Введите ваш email',
-      description_placeholder: 'Опишите ваш проект и ваши требования',
-      budget_placeholder: 'Укажите предполагаемый бюджет проекта'
-    },
-    services: {
-      title: 'Наши Услуги',
-      description: 'Комплексные цифровые решения, адаптированные под ваши конкретные потребности',
-      web: {
-        title: 'Веб-разработка',
-        description: 'Индивидуальные веб-сайты и веб-приложения, созданные с использованием передовых технологий',
-        capabilities: {
-          responsive: 'Адаптивный дизайн',
-          ecommerce: 'Электронная коммерция',
-          cms: 'Интеграция CMS',
-          spa: 'Одностраничные приложения'
-        }
+      phone: 'Ваш телефон',
+      company: 'Название компании',
+      website: 'Текущий веб-сайт (если есть)',
+      projectType: {
+        label: 'Какой тип проекта вам нужен? *',
+        website: 'Веб-сайт',
+        mobileApp: 'Мобильное приложение',
+        webApp: 'Веб-приложение',
+        ecommerce: 'Интернет-магазин',
+        brandIdentity: 'Фирменный стиль',
+        other: 'Другое'
       },
-      crm: {
-        title: 'CRM-решения',
-        description: 'Системы управления взаимоотношениями с клиентами для оптимизации бизнес-процессов',
-        capabilities: {
-          automation: 'Автоматизация процессов',
-          analytics: 'Клиентская аналитика',
-          integration: 'Интеграция с сервисами',
-          custom: 'Индивидуальные панели'
-        }
+      budget: {
+        label: 'Каков ваш бюджет?',
+        small: 'До 400 000 ₽',
+        medium: '400 000 - 800 000 ₽',
+        large: '800 000 - 2 000 000 ₽',
+        enterprise: 'Более 2 000 000 ₽',
+        notSure: 'Пока не определился'
       },
-      design: {
-        title: 'UI/UX Дизайн',
-        description: 'Красивые, интуитивно понятные интерфейсы, которые привлекают пользователей',
-        capabilities: {
-          ui: 'Дизайн интерфейса',
-          ux: 'Пользовательский опыт',
-          branding: 'Фирменный стиль',
-          prototyping: 'Быстрое прототипирование'
-        }
+      timeline: {
+        label: 'Когда вам нужно завершить проект?',
+        asap: 'Как можно скорее',
+        oneMonth: 'В течение 1 месяца',
+        threeMonths: 'В течение 3 месяцев',
+        sixMonths: 'В течение 6 месяцев',
+        flexible: 'Гибкий график / Не уверен'
       },
-      seo: {
-        title: 'SEO-оптимизация',
-        description: 'Улучшение видимости и привлечение органического трафика на ваш сайт',
-        capabilities: {
-          audit: 'Технический аудит',
-          optimization: 'Оптимизация контента',
-          analytics: 'Аналитика эффективности',
-          local: 'Локальное SEO'
-        }
-      },
-      support: {
-        title: 'Техническая поддержка',
-        description: 'Постоянное обслуживание и поддержка для бесперебойной работы ваших систем',
-        capabilities: {
-          maintenance: 'Регулярное обслуживание',
-          hosting: 'Управляемый хостинг',
-          security: 'Обновления безопасности',
-          updates: 'Обновления функций'
-        }
-      },
-      api: {
-        title: 'Разработка API',
-        description: 'Соединение ваших систем и сервисов с помощью индивидуальных API-решений',
-        capabilities: {
-          integration: 'Интеграция API',
-          development: 'Разработка API',
-          testing: 'Тестирование производительности',
-          documentation: 'Документация API'
-        }
-      },
-      approach: {
-        title: 'Наш подход',
-        description: 'Мы следуем проверенной методологии для обеспечения успешной реализации проекта и удовлетворенности клиентов. Наш пошаговый подход обеспечивает прозрачность и согласованность на протяжении всего процесса разработки.',
-        step1: 'Мы начинаем с тщательного анализа ваших бизнес-потребностей, целей и текущих систем.',
-        step2: 'Наша команда создает детальную дорожную карту с четкими этапами и результатами.',
-        step3: 'Мы реализуем решения, используя гибкие методологии, с регулярной обратной связью от клиентов и итерациями.',
-        step4: 'После запуска мы обеспечиваем комплексную поддержку и стратегии постоянного улучшения.'
-      },
-      benefits: {
-        title: 'Почему выбирают нас',
-        benefit1: 'Индивидуальные решения, разработанные специально для ваших уникальных бизнес-потребностей',
-        benefit2: 'Прозрачное общение и регулярные обновления на протяжении всего проекта',
-        benefit3: 'Передовые технологии и лучшие отраслевые практики',
-        benefit4: 'Выделенная команда поддержки, готовая решить любые проблемы',
-        benefit5: 'Гибкие модели сотрудничества, учитывающие ваш бюджет и сроки'
-      },
-      cta: {
-        title: 'Готовы улучшить свое цифровое присутствие?',
-        description: 'Запланируйте бесплатную консультацию с нашей командой для обсуждения требований к вашему проекту.',
-        button: 'Отправить бриф'
-      }
-    },
-    footer: {
-      company: 'Компания',
-      about: 'О нас',
-      careers: 'Карьера',
-      contact: 'Контакты',
-      services: 'Услуги',
-      web: 'Веб-разработка',
-      mobile: 'Мобильные приложения',
-      ai: 'ИИ-решения',
-      cloud: 'Облачные сервисы',
-      legal: 'Юридическая информация',
-      privacy: 'Политика конфиденциальности',
-      terms: 'Условия использования',
-      cookies: 'Политика использования файлов cookie',
-      copyright: '© 2023 teko.sup. Все права защищены.',
-    },
-    auth: {
-      ...authTranslations.ru,
+      description: 'Описание проекта и цели *',
+      descriptionPlaceholder: 'Пожалуйста, опишите ваш проект, включая ваши цели, целевую аудиторию и любые конкретные функции, которые вам нужны...',
+      features: 'Особые требования или функции',
+      featuresPlaceholder: 'Перечислите любые конкретные функции, интеграции или технические требования...',
+      references: 'Примеры сайтов, которые вам нравятся',
+      referencesPlaceholder: 'Поделитесь сайтами или приложениями, которые вам нравятся или похожи на то, что вы хотите...',
+      submit: 'Отправить бриф',
+      sending: 'Отправка...',
+      required: 'Обязательное поле',
+      errorMessage: 'Пожалуйста, исправьте ошибки перед отправкой',
+      successTitle: 'Бриф успешно отправлен!',
+      successMessage: 'Спасибо за отправку брифа! Мы рассмотрим его и свяжемся с вами в течение 1-2 рабочих дней.',
+      successCta: 'Вернуться на главную'
     },
   },
   cs: {
-    nav: {
+    navbar: {
       home: 'Domů',
       services: 'Služby',
       about: 'O nás',
@@ -378,181 +344,169 @@ const translations = {
       login: 'Přihlášení',
       signup: 'Registrace',
       register: 'Registrace',
-      back: 'Zpět na domovskou stránku',
+      client: 'Klientský prostor',
+      account: 'Můj účet',
+      admin: 'Admin',
+      company: 'Firemní prostor',
+      settings: 'Nastavení',
+      logout: 'Odhlásit se',
     },
     hero: {
-      title: 'Váš partner pro snadná digitální řešení',
-      subtitle: 'Vytváříme inovativní software, který řeší skutečné obchodní problémy a přeměňuje vaše nápady ve skutečnost',
-      cta: 'Začněte svůj projekt',
-      secondary_cta: 'Zjistit více',
+      title: 'Digitální řešení pro moderní podnikání',
+      subtitle: 'Vytváříme vysoce výkonné webové stránky, mobilní aplikace a podniková řešení, která pomáhají vašemu podnikání růst',
+      cta: 'Začít',
+      learnMore: 'Zjistit více',
     },
-    features: {
-      title: 'Co nabízíme',
-      subtitle: 'Náš komplexní soubor služeb',
-    },
-    journey: {
-      title: 'Vaše cesta s námi',
-      subtitle: 'Od konceptu k implementaci jsme s vámi na každém kroku',
-      step1: {
-        title: 'Objevování',
-        description: 'Hloubkově zkoumáme vaše obchodní cíle a výzvy',
+    about: {
+      title: 'O nás',
+      description: 'Teko.sup je tým profesionálů specializující se na webový vývoj, integrace a digitální řešení. Kombinujeme nejmodernější technologie, kreativitu a zkušenosti k vytváření výkonných IT řešení pro firmy.',
+      whoWeAre: {
+        title: 'Kdo jsme',
+        description1: 'Teko.sup je tým profesionálů specializující se na webový vývoj, integrace a digitální řešení. Kombinujeme nejmodernější technologie, kreativitu a zkušenosti k vytváření výkonných IT řešení pro firmy.',
+        description2: 'Naším posl��ním je pomáhat firmám uspět v digitálním světě vytvářením moderních webových stránek, CRM systémů a automatizačních nástrojů, které činí podnikání efektivnějším, rychlejším a ziskovějším.',
+        description3: 'Věříme, že design, kód a technologie nejsou jen nástroje, ale klíč k inovacím.'
       },
-      step2: {
-        title: 'Plánování',
-        description: 'Společně navrhujeme dokonalé řešení pro vaše potřeby',
+      mission: {
+        title: 'Naše mise',
+        quote: 'Vytváříme technologie, které zjednodušují složitost, automatizují procesy a pomáhají firmám pracovat efektivněji.',
+        description: 'Pracujeme na průsečíku vývoje, UI/UX designu a marketingu, zajišťujeme, že každý projekt přináší reálnou hodnotu našim klientům.',
+        point1: 'Využíváme technologie k řešení reálných obchodních problémů',
+        point2: 'Vyvíjíme řešení, která snižují manuální práci a chyby',
+        point3: 'Zaměřujeme se na vytváření digitálních aktiv, které generují výsledky'
       },
-      step3: {
-        title: 'Vývoj',
-        description: 'Vytváříme vaše řešení s využitím nejmodernějších technologií',
+      vision: {
+        title: 'Naše vize',
+        description: 'Představujeme si budoucnost, kde digitální technologie činí obchodní operace bezproblémovými a umožňují firmám soustředit se na růst místo na rutinní úkoly.',
+        point1: 'Stát se vedoucím poskytovatelem digitálních řešení ve střední Evropě',
+        point2: 'Pomoci více než 500 firmám transformovat jejich digitální přítomnost do roku 2025',
+        point3: 'Posunovat hranice možností webových technologií'
       },
-      step4: {
-        title: 'Spuštění',
-        description: 'Uvádíme váš produkt na trh s komplexní podporou',
+      values: {
+        title: 'Naše hodnoty',
+        description: 'Tyto základní principy řídí naši práci a vztahy s klienty a partnery.',
+        value1: {
+          title: 'Technologicky zaměření',
+          description: 'Používáme nejmodernější nástroje a držíme krok s trendy.'
+        },
+        value2: {
+          title: 'Transparentnost',
+          description: 'Jasné procesy, realistické termíny a přímá komunikace.'
+        },
+        value3: {
+          title: 'Kreativita',
+          description: 'Nacházíme inovativní řešení pro složité výzvy.'
+        },
+        value4: {
+          title: 'Orientace na výsledky',
+          description: 'Nestavíme jen webové stránky; vytváříme digitální ekosystémy pro úspěch v podnikání.'
+        }
       },
-    },
-    stats: {
-      title: 'Náš dopad v číslech',
-      projects: 'Dokončených projektů',
-      clients: 'Spokojených klientů',
-      years: 'Let zkušeností',
-      team: 'Členů týmu',
-    },
-    contact: {
-      title: 'Jste připraveni transformovat své podnikání?',
-      subtitle: 'Kontaktujte naše odborníky ještě dnes',
-      cta: 'Kontaktujte nás',
+      team: {
+        title: 'Náš tým',
+        description: 'Seznamte se s experty, kteří tvoří magii.',
+        experience: 'Zkušenosti',
+        years: 'let',
+        skills: 'Dovednosti',
+        member1: {
+          name: 'Arkadiy Tkachenko',
+          role: 'CEO & zakladatel',
+          bio: 'Stavíme ekosystémy, ne jen webové stránky.'
+        },
+        member2: {
+          name: 'Kai Kane',
+          role: 'Vedoucí designer',
+          bio: 'Skvělé rozhraní je tam, kde se krása setkává s funkcionalitou.'
+        },
+        member3: {
+          name: 'Adam Hrstka',
+          role: 'Vývojář',
+          bio: 'Nejlepší kód je ten, který usnadňuje život.'
+        },
+        member4: {
+          name: 'Petr Lichý',
+          role: 'Vedoucí marketingu',
+          bio: 'Efektivní marketing není jen reklama; je to strategie úspěchu.'
+        }
+      },
+      contact: {
+        title: 'Kontaktujte nás',
+        description: 'Chcete prodiskutovat projekt nebo máte otázku? Ozvěte se nám!',
+        office: 'Kancelář',
+        email: 'Email',
+        phone: 'Telefon',
+        form: {
+          title: 'Pošlete nám zprávu',
+          name: 'Vaše jméno',
+          namePlaceholder: 'Zadejte vaše jméno',
+          email: 'Váš Email',
+          emailPlaceholder: 'Zadejte váš email',
+          message: 'Vaše zpráva',
+          messagePlaceholder: 'Jak vám můžeme pomoci?',
+          send: 'Odeslat zprávu',
+          sending: 'Odesílání...',
+          success: {
+            title: 'Zpráva odeslána!',
+            message: 'Děkujeme za kontaktování. Ozveme se vám co nejdříve.',
+            newMessage: 'Poslat další zprávu'
+          }
+        }
+      },
+      ready: 'Připraveni začít?',
+      fillBrief: 'Vyplnit brief'
     },
     brief: {
-      title: 'Odešlete svůj brief',
-      subtitle: 'Řekněte nám o svém projektu a my vás budeme kontaktovat pro další podrobnosti',
+      title: 'Zašlete nám váš brief',
+      subtitle: 'Řekněte nám o vašem projektu a my se vám ozveme pro projednání detailů',
       name: 'Vaše jméno *',
       email: 'Váš email *',
-      project_type: 'Typ projektu *',
-      description: 'Popis projektu *',
-      budget: 'Rozpočet',
+      phone: 'Váš telefon',
+      company: 'Název společnosti',
+      website: 'Současný web (pokud existuje)',
+      projectType: {
+        label: 'Jaký typ projektu potřebujete? *',
+        website: 'Webové stránky',
+        mobileApp: 'Mobilní aplikace',
+        webApp: 'Webová aplikace',
+        ecommerce: 'E-shop',
+        brandIdentity: 'Firemní identita',
+        other: 'Jiné'
+      },
+      budget: {
+        label: 'Jaký je váš rozpočet?',
+        small: 'Pod 100 000 Kč',
+        medium: '100 000 - 250 000 Kč',
+        large: '250 000 - 600 000 Kč',
+        enterprise: 'Nad 600 000 Kč',
+        notSure: 'Zatím nejsem si jistý/á'
+      },
+      timeline: {
+        label: 'Kdy potřebujete projekt dokončit?',
+        asap: 'Co nejdříve',
+        oneMonth: 'Do 1 měsíce',
+        threeMonths: 'Do 3 měsíců',
+        sixMonths: 'Do 6 měsíců',
+        flexible: 'Flexibilní / Nejsem si jistý/á'
+      },
+      description: 'Popis projektu a cíle *',
+      descriptionPlaceholder: 'Prosím popište váš projekt, včetně vašich cílů, cílové skupiny a konkrétních funkcí, které potřebujete...',
+      features: 'Specifické funkce nebo požadavky',
+      featuresPlaceholder: 'Uveďte jakékoli specifické funkce, integrace nebo technické požadavky...',
+      references: 'Reference / Příklady, které se vám líbí',
+      referencesPlaceholder: 'Podělte se o webové stránky nebo aplikace, které se vám líbí nebo jsou podobné tomu, co chcete...',
       submit: 'Odeslat brief',
-      submitting: 'Odesílání...',
-      website: 'Webové stránky',
-      integration: 'Integrace',
-      design: 'Design',
-      other: 'Ostatní',
-      success_title: 'Žádost odeslána',
-      success_message: 'Děkujeme! Prohlédneme si váš brief a brzy vás budeme kontaktovat.',
-      error_title: 'Chyba odeslání',
-      error_message: 'Při odesílání vašeho briefu došlo k chybě. Zkuste to prosím znovu.',
-      missing_info_title: 'Chybějící informace',
-      missing_info_message: 'Vyplňte prosím všechna povinná pole.',
-      name_placeholder: 'Zadejte své jméno',
-      email_placeholder: 'Zadejte svůj email',
-      description_placeholder: 'Popište svůj projekt a své požadavky',
-      budget_placeholder: 'Uveďte předpokládaný rozpočet projektu'
-    },
-    services: {
-      title: 'Naše služby',
-      description: 'Komplexní digitální řešení přizpůsobená vašim konkrétním potřebám',
-      web: {
-        title: 'Vývoj webových aplikací',
-        description: 'Vlastní webové stránky a webové aplikace vytvořené pomocí nejmodernějších technologií',
-        capabilities: {
-          responsive: 'Responzivní design',
-          ecommerce: 'E-commerce',
-          cms: 'Integrace CMS',
-          spa: 'Single Page Apps'
-        }
-      },
-      crm: {
-        title: 'CRM řešení',
-        description: 'Systémy pro řízení vztahů se zákazníky pro zefektivnění vašich obchodních procesů',
-        capabilities: {
-          automation: 'Automatizace procesů',
-          analytics: 'Zákaznická analytika',
-          integration: 'Integrace třetích stran',
-          custom: 'Vlastní dashboardy'
-        }
-      },
-      design: {
-        title: 'UI/UX Design',
-        description: 'Krásná, intuitivní rozhraní, která potěší uživatele a zvýší jejich zapojení',
-        capabilities: {
-          ui: 'Design rozhraní',
-          ux: 'Uživatelská zkušenost',
-          branding: 'Firemní identita',
-          prototyping: 'Rychlé prototypování'
-        }
-      },
-      seo: {
-        title: 'SEO optimalizace',
-        description: 'Zlepšete svou viditelnost a získejte organický provoz na svých webových stránkách',
-        capabilities: {
-          audit: 'Technický audit',
-          optimization: 'Optimalizace obsahu',
-          analytics: 'Analýza výkonu',
-          local: 'Lokální SEO'
-        }
-      },
-      support: {
-        title: 'Technická podpora',
-        description: 'Průběžná údržba a podpora pro bezproblémový chod vašich systémů',
-        capabilities: {
-          maintenance: 'Pravidelná údržba',
-          hosting: 'Spravovaný hosting',
-          security: 'Bezpečnostní aktualizace',
-          updates: 'Aktualizace funkcí'
-        }
-      },
-      api: {
-        title: 'Vývoj API',
-        description: 'Propojte své systémy a služby pomocí vlastních API řešení',
-        capabilities: {
-          integration: 'Integrace API',
-          development: 'Vývoj vlastních API',
-          testing: 'Testování výkonu',
-          documentation: 'Dokumentace API'
-        }
-      },
-      approach: {
-        title: 'Náš přístup',
-        description: 'Používáme osvědčenou metodologii pro zajištění úspěšného dodání projektu a spokojenosti klientů. Náš postupný přístup zajišťuje transparentnost a alignment v průběhu celého vývojového procesu.',
-        step1: 'Začínáme důkladnou analýzou vašich obchodních potřeb, cílů a současných systémů.',
-        step2: 'Náš tým vytváří podrobnou roadmapu s jasnými milníky a dodávkami.',
-        step3: 'Implementujeme řešení pomocí agilních metodik s pravidelnou zpětnou vazbou od klientů a iteracemi.',
-        step4: 'Po spuštění poskytujeme komplexní podporu a strategie kontinuálního zlepšování.'
-      },
-      benefits: {
-        title: 'Proč si vybrat nás',
-        benefit1: 'Řešení na míru navržená speciálně pro vaše jedinečné obchodní potřeby',
-        benefit2: 'Transparentní komunikace a pravidelné aktualizace v průběhu projektu',
-        benefit3: 'Nejmodernější technologie a osvědčené postupy z oboru',
-        benefit4: 'Dedikovaný tým podpory k dispozici pro řešení případných problémů',
-        benefit5: 'Flexibilní modely spolupráce přizpůsobené vašemu rozpočtu a časovému harmonogramu'
-      },
-      cta: {
-        title: 'Připraveni zlepšit svou digitální přítomnost?',
-        description: 'Naplánujte si bezplatnou konzultaci s naším týmem a prodiskutujte požadavky na váš projekt.',
-        button: 'Odeslat váš brief'
-      }
-    },
-    footer: {
-      company: 'Společnost',
-      about: 'O nás',
-      careers: 'Kariéra',
-      contact: 'Kontakt',
-      services: 'Služby',
-      web: 'Vývoj webových aplikací',
-      mobile: 'Mobilní aplikace',
-      ai: 'AI řešení',
-      cloud: 'Cloudové služby',
-      legal: 'Právní informace',
-      privacy: 'Zásady ochrany osobních údajů',
-      terms: 'Podmínky služby',
-      cookies: 'Zásady používání cookies',
-      copyright: '© 2023 teko.sup. Všechna práva vyhrazena.',
-    },
-    auth: {
-      ...authTranslations.en,
+      sending: 'Odesílání...',
+      required: 'Povinné pole',
+      errorMessage: 'Prosím opravte chyby před odesláním',
+      successTitle: 'Brief úspěšně odeslán!',
+      successMessage: 'Děkujeme za zaslání briefu! Prohlédneme si ho a ozveme se vám během 1-2 pracovních dnů.',
+      successCta: 'Zpět na hlavní stránku'
     },
   }
-};
+} as const;
 
-export { translations };
-export default translations;
+export type SupportedLanguage = keyof typeof translations;
+export type TranslationKeys = keyof typeof translations.en;
+
+export const languageSchema = z.object({
+  language: z.enum(['en', 'ru', 'cs'] as const)
+});
