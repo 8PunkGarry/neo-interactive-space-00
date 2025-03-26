@@ -46,7 +46,7 @@ const UserJourney = () => {
     }));
   };
 
-  // Проверяем, есть ли переводы для всех шагов, или используем запасные тексты
+  // Journey steps with fallback text
   const journeySteps = [
     { 
       title: t('journey.step1.title') || "Discovery & Planning", 
@@ -74,7 +74,7 @@ const UserJourney = () => {
     }
   ];
 
-  // Проверяем, есть ли переводы для клиентских особенностей, или используем запасные тексты
+  // Client features with fallback text
   const clientFeatures = [
     { 
       title: t('journey.client.features.1.title') || "Tailored Solutions", 
@@ -90,7 +90,7 @@ const UserJourney = () => {
     }
   ];
 
-  // Проверяем, есть ли переводы для компанийных особенностей, или используем запасные тексты
+  // Company features with fallback text
   const companyFeatures = [
     { 
       title: t('journey.company.features.1.title') || "Technical Expertise", 
@@ -105,6 +105,13 @@ const UserJourney = () => {
       description: t('journey.company.features.3.description') || "Exploring emerging tech for competitive advantages."
     }
   ];
+
+  // Get safe string value from translation or use fallback
+  const safeTranslation = (key: string, fallback: string): string => {
+    const translation = t(key);
+    // Check if translation exists and is a string
+    return typeof translation === 'string' ? translation : fallback;
+  };
 
   return (
     <section id="journey" className="py-20 relative overflow-hidden">
@@ -128,10 +135,10 @@ const UserJourney = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 animate-on-scroll">
-            {t('journey.title') || "Your Journey With Us"}
+            {safeTranslation('journey.title', "Your Journey With Us")}
           </h2>
           <p className="text-lg md:text-xl text-teko-white/80 max-w-3xl mx-auto animate-on-scroll" style={{ transitionDelay: '0.1s' }}>
-            {t('journey.subtitle') || "How we transform your ideas into powerful digital solutions"}
+            {safeTranslation('journey.subtitle', "How we transform your ideas into powerful digital solutions")}
           </p>
         </div>
 
@@ -194,8 +201,12 @@ const UserJourney = () => {
                 </button>
               </div>
               
-              <h3 className="text-xl font-display font-bold mb-2">{t('journey.client') || "For Clients"}</h3>
-              <p className="text-teko-white/70 text-sm mb-4">{t('journey.client.description') || "Custom-tailored digital solutions to meet your unique business needs."}</p>
+              <h3 className="text-xl font-display font-bold mb-2">
+                {safeTranslation('journey.client', "For Clients")}
+              </h3>
+              <p className="text-teko-white/70 text-sm mb-4">
+                {safeTranslation('journey.client.description', "Custom-tailored digital solutions to meet your unique business needs.")}
+              </p>
               
               {/* Client Features - Expand/Collapse */}
               <div className={`space-y-3 mb-4 transition-all duration-300 overflow-hidden ${
@@ -232,7 +243,7 @@ const UserJourney = () => {
                     hoveredCard === 'client' ? 'text-teko-purple-light' : 'text-teko-white/80'
                   }`}
                 >
-                  {t('journey.button') || "Learn More"} 
+                  {safeTranslation('journey.button', "Learn More")}
                   <ArrowRight className={`ml-1 transition-transform duration-300 ${
                     hoveredCard === 'client' ? 'transform translate-x-1' : ''
                   }`} size={14} />
@@ -279,8 +290,12 @@ const UserJourney = () => {
                 </button>
               </div>
               
-              <h3 className="text-xl font-display font-bold mb-2">{t('journey.company') || "For Companies"}</h3>
-              <p className="text-teko-white/70 text-sm mb-4">{t('journey.company.description') || "Powerful enterprise solutions to optimize operations and drive growth."}</p>
+              <h3 className="text-xl font-display font-bold mb-2">
+                {safeTranslation('journey.company', "For Companies")}
+              </h3>
+              <p className="text-teko-white/70 text-sm mb-4">
+                {safeTranslation('journey.company.description', "Powerful enterprise solutions to optimize operations and drive growth.")}
+              </p>
               
               {/* Company Features - Expand/Collapse */}
               <div className={`space-y-3 mb-4 transition-all duration-300 overflow-hidden ${
@@ -317,7 +332,7 @@ const UserJourney = () => {
                     hoveredCard === 'company' ? 'text-teko-purple-light' : 'text-teko-white/80'
                   }`}
                 >
-                  {t('journey.button') || "Learn More"} 
+                  {safeTranslation('journey.button', "Learn More")}
                   <ArrowRight className={`ml-1 transition-transform duration-300 ${
                     hoveredCard === 'company' ? 'transform translate-x-1' : ''
                   }`} size={14} />
