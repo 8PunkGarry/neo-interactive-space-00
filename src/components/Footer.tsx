@@ -92,17 +92,17 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link to="/about" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
-                  {t('nav.about')}
+                  {t('navbar.about')}
                 </Link>
               </li>
               <li>
                 <Link to="/portfolio" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
-                  {t('nav.portfolio')}
+                  {t('navbar.portfolio')}
                 </Link>
               </li>
               <li>
                 <Link to="/blog" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
-                  {t('nav.blog')}
+                  {t('navbar.blog')}
                 </Link>
               </li>
               <li>
