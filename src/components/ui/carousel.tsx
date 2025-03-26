@@ -88,11 +88,17 @@ const Carousel = React.forwardRef<
     }, [onSelect])
 
     const scrollPrev = React.useCallback(() => {
-      api?.scrollPrev({ duration: 800, easing: (x) => 1 - Math.pow(1 - x, 3) })
+      // Adding type checking to make sure api exists before calling scrollPrev
+      if (api) {
+        api.scrollPrev()
+      }
     }, [api])
 
     const scrollNext = React.useCallback(() => {
-      api?.scrollNext({ duration: 800, easing: (x) => 1 - Math.pow(1 - x, 3) })
+      // Adding type checking to make sure api exists before calling scrollNext
+      if (api) {
+        api.scrollNext()
+      }
     }, [api])
 
     const handleKeyDown = React.useCallback(
