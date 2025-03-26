@@ -40,7 +40,7 @@ const Navbar = () => {
     { to: '/', label: t('nav.home') },
     { to: '/services', label: t('nav.services') },
     { to: '/about', label: t('nav.about') },
-    { to: '/problem-brief', label: t('nav.brief') },
+    { to: '/brief', label: t('nav.brief') },
   ];
 
   return (

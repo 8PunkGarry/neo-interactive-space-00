@@ -10,7 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Services from "./pages/Services";
 import About from "./pages/About";
-import ProblemBrief from "./pages/ProblemBrief";
+import Brief from "./pages/Brief";
 import Client from "./pages/Client";
 import Company from "./pages/Company";
 import Login from "./pages/Login";
@@ -30,7 +30,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />
-              <Route path="/problem-brief" element={<ProblemBrief />} />
+              <Route path="/brief" element={<Brief />} />
               <Route path="/client" element={<Client />} />
               <Route path="/company" element={<Company />} />
               <Route path="/login" element={<Login />} />

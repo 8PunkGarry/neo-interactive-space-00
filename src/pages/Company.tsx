@@ -91,7 +91,7 @@ const Company = () => {
               className="bg-teko-purple hover:bg-teko-purple-dark text-white px-8 py-6 animate-on-scroll"
               asChild
             >
-              <a href="/problem-brief">
+              <a href="/brief">
                 {t('company.cta.button')}
               </a>
             </Button>
