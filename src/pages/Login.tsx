@@ -1,11 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft, LogIn, Mail, Lock } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { useAuthContext } from '@/context/AuthContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -41,6 +42,8 @@ const Login = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { signIn } = useAuthContext();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -53,14 +56,19 @@ const Login = () => {
 
   const onSubmit = async (data: LoginFormValues) => {
     try {
+      setIsSubmitting(true);
       console.log('Login data:', data);
-      // Here we would handle actual login logic with API calls
       
-      // Simulate successful login
-      toast({
-        title: "Login Successful",
-        description: "Welcome back to teko.sup!",
-      });
+      const result = await signIn(data.email, data.password);
+      
+      if (!result.success) {
+        toast({
+          variant: "destructive",
+          title: "Login Failed",
+          description: result.error || "Please check your credentials and try again.",
+        });
+        return;
+      }
       
       // Redirect to home page after successful login
       setTimeout(() => navigate('/'), 1000);
@@ -71,6 +79,8 @@ const Login = () => {
         title: "Login Failed",
         description: "Please check your credentials and try again.",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -173,9 +183,9 @@ const Login = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-teko-purple hover:bg-teko-purple-dark text-white" 
-                    disabled={form.formState.isSubmitting}
+                    disabled={isSubmitting}
                   >
-                    {form.formState.isSubmitting ? (
+                    {isSubmitting ? (
                       <div className="flex items-center">
                         <span className="mr-2">{t('auth.logging_in')}</span>
                         <div className="h-4 w-4 border-2 border-teko-white/50 border-t-transparent rounded-full animate-spin"></div>

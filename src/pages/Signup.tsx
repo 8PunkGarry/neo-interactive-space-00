@@ -1,11 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft, UserPlus, Mail, Lock, User } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { useAuthContext } from '@/context/AuthContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -48,6 +49,8 @@ const Signup = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { signUp } = useAuthContext();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
@@ -62,10 +65,22 @@ const Signup = () => {
 
   const onSubmit = async (data: SignupFormValues) => {
     try {
+      setIsSubmitting(true);
       console.log('Signup data:', data);
-      // Here we would handle actual signup logic with API calls
       
-      // Simulate successful signup
+      const result = await signUp(data.email, data.password, {
+        full_name: data.name
+      });
+      
+      if (!result.success) {
+        toast({
+          variant: "destructive",
+          title: "Signup Failed",
+          description: result.error || "There was an error creating your account.",
+        });
+        return;
+      }
+      
       toast({
         title: "Account Created",
         description: "Welcome to teko.sup! Your account has been created successfully.",
@@ -80,6 +95,8 @@ const Signup = () => {
         title: "Signup Failed",
         description: "There was an error creating your account. Please try again.",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -229,9 +246,9 @@ const Signup = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-teko-purple hover:bg-teko-purple-dark text-white" 
-                    disabled={form.formState.isSubmitting}
+                    disabled={isSubmitting}
                   >
-                    {form.formState.isSubmitting ? (
+                    {isSubmitting ? (
                       <div className="flex items-center">
                         <span className="mr-2">{t('auth.creating_account')}</span>
                         <div className="h-4 w-4 border-2 border-teko-white/50 border-t-transparent rounded-full animate-spin"></div>
