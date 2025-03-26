@@ -5,11 +5,16 @@ import { ArrowRight, Users, Building, Lightbulb, Code, Settings, Rocket, CheckCi
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from './ui/card';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from './ui/hover-card';
+import { Button } from './ui/button';
 
 const UserJourney = () => {
   const { t } = useLanguage();
   const [hoveredCard, setHoveredCard] = useState<'client' | 'company' | null>(null);
   const [animatedSteps, setAnimatedSteps] = useState<boolean[]>([false, false, false, false]);
+  const [isCardExpanded, setIsCardExpanded] = useState<{client: boolean, company: boolean}>({
+    client: false,
+    company: false
+  });
 
   useEffect(() => {
     // Sequential animation for journey steps
@@ -32,6 +37,13 @@ const UserJourney = () => {
 
   const handleMouseLeave = () => {
     setHoveredCard(null);
+  };
+
+  const toggleCardExpand = (card: 'client' | 'company') => {
+    setIsCardExpanded(prev => ({
+      ...prev,
+      [card]: !prev[card]
+    }));
   };
 
   const journeySteps = [
@@ -64,30 +76,30 @@ const UserJourney = () => {
   const clientFeatures = [
     { 
       title: t('journey.client.features.1.title') || "Tailored Solutions", 
-      description: t('journey.client.features.1.description') || "We create customized digital solutions that perfectly align with your unique business needs and goals."
+      description: t('journey.client.features.1.description') || "Custom digital solutions aligned with your needs."
     },
     { 
       title: t('journey.client.features.2.title') || "Transparent Process", 
-      description: t('journey.client.features.2.description') || "Our development process ensures you're informed at every stage, with clear communication and regular updates."
+      description: t('journey.client.features.2.description') || "Clear communication with regular updates."
     },
     { 
       title: t('journey.client.features.3.title') || "Ongoing Support", 
-      description: t('journey.client.features.3.description') || "We don't just deliver and disappear. Our team provides continued support to ensure your solution evolves with your business."
+      description: t('journey.client.features.3.description') || "Continued support for evolving solutions."
     }
   ];
 
   const companyFeatures = [
     { 
       title: t('journey.company.features.1.title') || "Technical Expertise", 
-      description: t('journey.company.features.1.description') || "Our team of experts brings deep knowledge across various technologies and frameworks to solve your most complex challenges."
+      description: t('journey.company.features.1.description') || "Deep knowledge across technologies and frameworks."
     },
     { 
       title: t('journey.company.features.2.title') || "Scalable Architecture", 
-      description: t('journey.company.features.2.description') || "We build solutions that grow with your organization, ensuring performance and reliability at any scale."
+      description: t('journey.company.features.2.description') || "Solutions that grow with your organization."
     },
     { 
       title: t('journey.company.features.3.title') || "Innovation Focus", 
-      description: t('journey.company.features.3.description') || "We constantly explore emerging technologies to provide you with competitive advantages and cutting-edge solutions."
+      description: t('journey.company.features.3.description') || "Exploring emerging tech for competitive advantages."
     }
   ];
 
@@ -136,7 +148,7 @@ const UserJourney = () => {
                 </div>
                 
                 <h3 className="text-xl font-display font-bold mb-2">{step.title}</h3>
-                <p className="text-teko-white/70">{step.description}</p>
+                <p className="text-teko-white/70 text-sm">{step.description}</p>
                 
                 <div className="absolute -bottom-5 -right-5 w-20 h-20 rounded-full bg-teko-purple/5 blur-xl"></div>
                 <div className="absolute top-4 right-4 text-white/30 text-xl font-bold">0{index + 1}</div>
@@ -148,51 +160,81 @@ const UserJourney = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Client Card */}
           <div 
-            className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-on-scroll ${
-              hoveredCard === 'client' 
-                ? 'bg-gradient-to-br from-teko-purple/20 to-teko-purple/5 scale-105 z-10' 
-                : 'bg-white/5 backdrop-blur-sm'
-            }`}
+            className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-on-scroll
+              ${isCardExpanded.client ? 'scale-105 z-20' : ''}
+              ${hoveredCard === 'client' 
+                ? 'bg-gradient-to-br from-teko-purple/20 to-teko-purple/5 z-10' 
+                : 'bg-white/5 backdrop-blur-sm'}`}
             onMouseEnter={() => handleMouseEnter('client')}
             onMouseLeave={handleMouseLeave}
             style={{ transitionDelay: '0.1s' }}
           >
-            <div className="p-8 border border-white/10 rounded-xl h-full flex flex-col">
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 transition-all duration-500 ${
-                hoveredCard === 'client' ? 'bg-teko-purple text-white' : 'bg-white/10 text-teko-purple-light'
-              }`}>
-                <Users size={30} />
+            <div className="p-6 border border-white/10 rounded-xl h-full flex flex-col">
+              <div className="flex justify-between items-start mb-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
+                  hoveredCard === 'client' ? 'bg-teko-purple text-white' : 'bg-white/10 text-teko-purple-light'
+                }`}>
+                  <Users size={24} />
+                </div>
+                <button 
+                  onClick={() => toggleCardExpand('client')}
+                  className="text-teko-white/50 hover:text-teko-purple-light transition-colors"
+                >
+                  {isCardExpanded.client ? 
+                    <div className="p-1 border border-white/20 rounded-md hover:border-teko-purple/40">
+                      <ArrowRight size={16} className="rotate-[-135deg]" />
+                    </div> : 
+                    <div className="p-1 border border-white/20 rounded-md hover:border-teko-purple/40">
+                      <ArrowRight size={16} className="rotate-45" />
+                    </div>
+                  }
+                </button>
               </div>
               
-              <h3 className="text-2xl font-display font-bold mb-4">{t('journey.client')}</h3>
-              <p className="text-teko-white/70 mb-6">{t('journey.client.description')}</p>
+              <h3 className="text-xl font-display font-bold mb-2">{t('journey.client')}</h3>
+              <p className="text-teko-white/70 text-sm mb-4">{t('journey.client.description')}</p>
               
-              {/* Added Client Features */}
-              <div className="space-y-4 mb-6 flex-grow">
+              {/* Client Features - Expand/Collapse */}
+              <div className={`space-y-3 mb-4 transition-all duration-300 overflow-hidden ${
+                isCardExpanded.client ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
+              }`}>
                 {clientFeatures.map((feature, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="mr-3 mt-1 text-teko-purple-light">
-                      <CheckCircle size={18} />
+                    <div className="mr-2 mt-0.5 text-teko-purple-light flex-shrink-0">
+                      <CheckCircle size={14} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-white/90 mb-1">{feature.title}</h4>
-                      <p className="text-sm text-white/70">{feature.description}</p>
+                      <h4 className="font-semibold text-white/90 text-sm">{feature.title}</h4>
+                      <p className="text-xs text-white/70">{feature.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
               
-              <Link 
-                to="/client" 
-                className={`inline-flex items-center text-base font-medium transition-all duration-300 ${
-                  hoveredCard === 'client' ? 'text-teko-purple-light' : 'text-teko-white/80'
-                }`}
-              >
-                {t('journey.button')} 
-                <ArrowRight className={`ml-2 transition-transform duration-300 ${
-                  hoveredCard === 'client' ? 'transform translate-x-1' : ''
-                }`} size={16} />
-              </Link>
+              {!isCardExpanded.client && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {clientFeatures.map((feature, index) => (
+                    <span key={index} className="inline-flex items-center text-xs bg-white/5 text-white/70 px-2 py-1 rounded-md">
+                      <CheckCircle size={10} className="mr-1 text-teko-purple-light" />
+                      {feature.title}
+                    </span>
+                  ))}
+                </div>
+              )}
+              
+              <div className="mt-auto pt-2">
+                <Link 
+                  to="/client" 
+                  className={`inline-flex items-center text-sm font-medium transition-all duration-300 ${
+                    hoveredCard === 'client' ? 'text-teko-purple-light' : 'text-teko-white/80'
+                  }`}
+                >
+                  {t('journey.button')} 
+                  <ArrowRight className={`ml-1 transition-transform duration-300 ${
+                    hoveredCard === 'client' ? 'transform translate-x-1' : ''
+                  }`} size={14} />
+                </Link>
+              </div>
             </div>
             
             {/* Corner Glow */}
@@ -203,51 +245,81 @@ const UserJourney = () => {
 
           {/* Company Card */}
           <div 
-            className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-on-scroll ${
-              hoveredCard === 'company' 
-                ? 'bg-gradient-to-br from-teko-purple/20 to-teko-purple/5 scale-105 z-10' 
-                : 'bg-white/5 backdrop-blur-sm'
-            }`}
+            className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-on-scroll
+              ${isCardExpanded.company ? 'scale-105 z-20' : ''}
+              ${hoveredCard === 'company' 
+                ? 'bg-gradient-to-br from-teko-purple/20 to-teko-purple/5 z-10' 
+                : 'bg-white/5 backdrop-blur-sm'}`}
             onMouseEnter={() => handleMouseEnter('company')}
             onMouseLeave={handleMouseLeave}
             style={{ transitionDelay: '0.2s' }}
           >
-            <div className="p-8 border border-white/10 rounded-xl h-full flex flex-col">
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 transition-all duration-500 ${
-                hoveredCard === 'company' ? 'bg-teko-purple text-white' : 'bg-white/10 text-teko-purple-light'
-              }`}>
-                <Building size={30} />
+            <div className="p-6 border border-white/10 rounded-xl h-full flex flex-col">
+              <div className="flex justify-between items-start mb-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
+                  hoveredCard === 'company' ? 'bg-teko-purple text-white' : 'bg-white/10 text-teko-purple-light'
+                }`}>
+                  <Building size={24} />
+                </div>
+                <button 
+                  onClick={() => toggleCardExpand('company')}
+                  className="text-teko-white/50 hover:text-teko-purple-light transition-colors"
+                >
+                  {isCardExpanded.company ? 
+                    <div className="p-1 border border-white/20 rounded-md hover:border-teko-purple/40">
+                      <ArrowRight size={16} className="rotate-[-135deg]" />
+                    </div> : 
+                    <div className="p-1 border border-white/20 rounded-md hover:border-teko-purple/40">
+                      <ArrowRight size={16} className="rotate-45" />
+                    </div>
+                  }
+                </button>
               </div>
               
-              <h3 className="text-2xl font-display font-bold mb-4">{t('journey.company')}</h3>
-              <p className="text-teko-white/70 mb-6">{t('journey.company.description')}</p>
+              <h3 className="text-xl font-display font-bold mb-2">{t('journey.company')}</h3>
+              <p className="text-teko-white/70 text-sm mb-4">{t('journey.company.description')}</p>
               
-              {/* Added Company Features */}
-              <div className="space-y-4 mb-6 flex-grow">
+              {/* Company Features - Expand/Collapse */}
+              <div className={`space-y-3 mb-4 transition-all duration-300 overflow-hidden ${
+                isCardExpanded.company ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
+              }`}>
                 {companyFeatures.map((feature, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="mr-3 mt-1 text-teko-purple-light">
-                      <CheckCircle size={18} />
+                    <div className="mr-2 mt-0.5 text-teko-purple-light flex-shrink-0">
+                      <CheckCircle size={14} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-white/90 mb-1">{feature.title}</h4>
-                      <p className="text-sm text-white/70">{feature.description}</p>
+                      <h4 className="font-semibold text-white/90 text-sm">{feature.title}</h4>
+                      <p className="text-xs text-white/70">{feature.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
               
-              <Link 
-                to="/company" 
-                className={`inline-flex items-center text-base font-medium transition-all duration-300 ${
-                  hoveredCard === 'company' ? 'text-teko-purple-light' : 'text-teko-white/80'
-                }`}
-              >
-                {t('journey.button')} 
-                <ArrowRight className={`ml-2 transition-transform duration-300 ${
-                  hoveredCard === 'company' ? 'transform translate-x-1' : ''
-                }`} size={16} />
-              </Link>
+              {!isCardExpanded.company && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {companyFeatures.map((feature, index) => (
+                    <span key={index} className="inline-flex items-center text-xs bg-white/5 text-white/70 px-2 py-1 rounded-md">
+                      <CheckCircle size={10} className="mr-1 text-teko-purple-light" />
+                      {feature.title}
+                    </span>
+                  ))}
+                </div>
+              )}
+              
+              <div className="mt-auto pt-2">
+                <Link 
+                  to="/company" 
+                  className={`inline-flex items-center text-sm font-medium transition-all duration-300 ${
+                    hoveredCard === 'company' ? 'text-teko-purple-light' : 'text-teko-white/80'
+                  }`}
+                >
+                  {t('journey.button')} 
+                  <ArrowRight className={`ml-1 transition-transform duration-300 ${
+                    hoveredCard === 'company' ? 'transform translate-x-1' : ''
+                  }`} size={14} />
+                </Link>
+              </div>
             </div>
             
             {/* Corner Glow */}
