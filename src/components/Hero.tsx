@@ -43,13 +43,14 @@ const Hero = () => {
           }}
         />
         
-        {/* Animated diamond */}
+        {/* Main glowing diamond */}
         <div 
           className="absolute top-[20%] right-[20%] opacity-0 transition-opacity duration-1000"
           style={{ 
-            opacity: isVisible ? 0.7 : 0,
+            opacity: isVisible ? 0.8 : 0,
             transitionDelay: '0.6s',
             animation: 'float 6s infinite ease-in-out',
+            filter: 'drop-shadow(0 0 8px rgba(124, 58, 237, 0.6))',
           }}
         >
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,6 +62,39 @@ const Hero = () => {
             />
           </svg>
         </div>
+        
+        {/* Smaller diamonds without glow */}
+        {[
+          { top: '15%', left: '15%', delay: '0.2s', size: 25, duration: '7s' },
+          { top: '35%', left: '10%', delay: '0.4s', size: 18, duration: '9s' },
+          { top: '60%', left: '20%', delay: '0.3s', size: 22, duration: '8s' },
+          { top: '75%', left: '40%', delay: '0.5s', size: 16, duration: '10s' },
+          { top: '65%', right: '15%', delay: '0.6s', size: 20, duration: '6s' },
+          { top: '30%', right: '10%', delay: '0.7s', size: 15, duration: '11s' },
+          { top: '45%', right: '30%', delay: '0.3s', size: 23, duration: '7.5s' },
+        ].map((diamond, index) => (
+          <div 
+            key={index}
+            className="absolute opacity-0 transition-opacity duration-1000"
+            style={{ 
+              top: diamond.top, 
+              left: diamond.left, 
+              right: diamond.right,
+              opacity: isVisible ? 0.5 : 0,
+              transitionDelay: diamond.delay,
+              animation: `float ${diamond.duration} infinite ease-in-out ${parseInt(diamond.delay) * 0.8}s`,
+            }}
+          >
+            <svg width={diamond.size} height={diamond.size} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path 
+                d="M20 2 L38 20 L20 38 L2 20 Z" 
+                fill="rgba(124, 58, 237, 0.15)"
+                stroke="rgba(124, 58, 237, 0.3)"
+                strokeWidth="1"
+              />
+            </svg>
+          </div>
+        ))}
       </div>
 
       <div className="container mx-auto relative z-10">

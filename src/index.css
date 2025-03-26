@@ -172,6 +172,18 @@
   }
 }
 
+@keyframes float-alt {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(15px) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
 @keyframes shimmer {
   0% { background-position: -500px 0; }
   100% { background-position: 500px 0; }

@@ -1,7 +1,6 @@
-
 import { authTranslations } from './authTranslations';
 
-export type SupportedLanguage = 'en' | 'ru' | 'de';
+export type SupportedLanguage = 'en' | 'ru' | 'cs';
 
 const translations = {
   en: {
@@ -17,7 +16,7 @@ const translations = {
     },
     hero: {
       title: 'Your Partner for Effortless Digital Solutions',
-      subtitle: 'We build innovative software that solves real business problems',
+      subtitle: 'We build innovative software that solves real business problems and transforms your ideas into reality',
       cta: 'Start Your Project',
       secondary_cta: 'Learn More',
     },
@@ -90,7 +89,7 @@ const translations = {
     },
     hero: {
       title: 'Ваш партнер для легких цифровых решений',
-      subtitle: 'Мы создаем инновационное программное обеспечение, которое решает реальные бизнес-задачи',
+      subtitle: 'Мы создаем инновационное программное обеспечение, которое решает реальные бизнес-задачи и превращает ваши идеи в реальность',
       cta: 'Начать проект',
       secondary_cta: 'Узнать больше',
     },
@@ -150,75 +149,74 @@ const translations = {
       ...authTranslations.ru,
     },
   },
-  de: {
+  cs: {
     nav: {
-      home: 'Startseite',
-      services: 'Dienstleistungen',
-      about: 'Über uns',
-      brief: 'Problemübersicht',
-      login: 'Anmelden',
-      signup: 'Registrieren',
-      register: 'Registrieren',
-      back: 'Zurück zur Startseite',
+      home: 'Domů',
+      services: 'Služby',
+      about: 'O nás',
+      brief: 'Zadání problému',
+      login: 'Přihlášení',
+      signup: 'Registrace',
+      register: 'Registrace',
+      back: 'Zpět na domovskou stránku',
     },
-    // Basic German translations - can be expanded later
     hero: {
-      title: 'Ihr Partner für mühelose digitale Lösungen',
-      subtitle: 'Wir entwickeln innovative Software, die echte Geschäftsprobleme löst',
-      cta: 'Starten Sie Ihr Projekt',
-      secondary_cta: 'Mehr erfahren',
+      title: 'Váš partner pro snadná digitální řešení',
+      subtitle: 'Vytváříme inovativní software, který řeší skutečné obchodní problémy a přeměňuje vaše nápady ve skutečnost',
+      cta: 'Začněte svůj projekt',
+      secondary_cta: 'Zjistit více',
     },
     features: {
-      title: 'Was wir anbieten',
-      subtitle: 'Unser umfassendes Angebot an Dienstleistungen',
+      title: 'Co nabízíme',
+      subtitle: 'Náš komplexní soubor služeb',
     },
     journey: {
-      title: 'Ihre Reise mit uns',
-      subtitle: 'Von der Konzeption bis zur Umsetzung sind wir bei jedem Schritt an Ihrer Seite',
+      title: 'Vaše cesta s námi',
+      subtitle: 'Od konceptu k implementaci jsme s vámi na každém kroku',
       step1: {
-        title: 'Entdeckung',
-        description: 'Wir tauchen tief ein, um Ihre Geschäftsziele und Herausforderungen zu verstehen',
+        title: 'Objevování',
+        description: 'Hloubkově zkoumáme vaše obchodní cíle a výzvy',
       },
       step2: {
-        title: 'Planung',
-        description: 'Gemeinsam entwerfen wir die perfekte Lösung für Ihre Bedürfnisse',
+        title: 'Plánování',
+        description: 'Společně navrhujeme dokonalé řešení pro vaše potřeby',
       },
       step3: {
-        title: 'Entwicklung',
-        description: 'Wir bauen Ihre Lösung mit modernster Technologie',
+        title: 'Vývoj',
+        description: 'Vytváříme vaše řešení s využitím nejmodernějších technologií',
       },
       step4: {
-        title: 'Start',
-        description: 'Wir bringen Ihr Produkt mit umfassender Unterstützung auf den Markt',
+        title: 'Spuštění',
+        description: 'Uvádíme váš produkt na trh s komplexní podporou',
       },
     },
     stats: {
-      title: 'Unser Einfluss in Zahlen',
-      projects: 'Abgeschlossene Projekte',
-      clients: 'Zufriedene Kunden',
-      years: 'Jahre Erfahrung',
-      team: 'Teammitglieder',
+      title: 'Náš dopad v číslech',
+      projects: 'Dokončených projektů',
+      clients: 'Spokojených klientů',
+      years: 'Let zkušeností',
+      team: 'Členů týmu',
     },
     contact: {
-      title: 'Bereit, Ihr Unternehmen zu transformieren?',
-      subtitle: 'Kontaktieren Sie noch heute unsere Experten',
-      cta: 'Kontakt',
+      title: 'Jste připraveni transformovat své podnikání?',
+      subtitle: 'Kontaktujte naše odborníky ještě dnes',
+      cta: 'Kontaktujte nás',
     },
     footer: {
-      company: 'Unternehmen',
-      about: 'Über uns',
-      careers: 'Karriere',
+      company: 'Společnost',
+      about: 'O nás',
+      careers: 'Kariéra',
       contact: 'Kontakt',
-      services: 'Dienstleistungen',
-      web: 'Webentwicklung',
-      mobile: 'Mobile Apps',
-      ai: 'KI-Lösungen',
-      cloud: 'Cloud-Dienste',
-      legal: 'Rechtliches',
-      privacy: 'Datenschutzrichtlinie',
-      terms: 'Nutzungsbedingungen',
-      cookies: 'Cookie-Richtlinie',
-      copyright: '© 2023 teko.sup. Alle Rechte vorbehalten.',
+      services: 'Služby',
+      web: 'Vývoj webových aplikací',
+      mobile: 'Mobilní aplikace',
+      ai: 'AI řešení',
+      cloud: 'Cloudové služby',
+      legal: 'Právní informace',
+      privacy: 'Zásady ochrany osobních údajů',
+      terms: 'Podmínky služby',
+      cookies: 'Zásady používání cookies',
+      copyright: '© 2023 teko.sup. Všechna práva vyhrazena.',
     },
     auth: {
       ...authTranslations.en, // Fallback to English for now

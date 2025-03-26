@@ -12,7 +12,7 @@ const LanguageSwitcher = () => {
   const languages: { code: SupportedLanguage; label: string }[] = [
     { code: 'en', label: 'English' },
     { code: 'ru', label: 'Русский' },
-    { code: 'de', label: 'Deutsch' },
+    { code: 'cs', label: 'Čeština' },
   ];
 
   const currentLanguage = languages.find(lang => lang.code === language);
