@@ -2,7 +2,7 @@
 import React from 'react';
 import ServiceCard from './ServiceCard';
 import { useLanguage } from '../context/LanguageContext';
-import { Globe, BarChart3, Palette, Search, Headphones, Code, Database, Smartphone, Server, LinkIcon } from 'lucide-react';
+import { Globe, BarChart3, Palette, Search, Headphones, Code, Database, Smartphone, Server, LinkIcon, Shield, Cloud, Mail, Target } from 'lucide-react';
 
 const ServiceGrid = () => {
   const { t } = useLanguage();
@@ -18,7 +18,8 @@ const ServiceGrid = () => {
         t('services.web.capabilities.cms'),
         t('services.web.capabilities.spa')
       ],
-      delay: 0.1
+      delay: 0.1,
+      url: "/services#web-development"
     },
     {
       title: t('services.crm.title'),
@@ -30,7 +31,8 @@ const ServiceGrid = () => {
         t('services.crm.capabilities.integration'),
         t('services.crm.capabilities.custom')
       ],
-      delay: 0.2
+      delay: 0.2,
+      url: "/services#crm-solutions"
     },
     {
       title: t('services.design.title'),
@@ -42,7 +44,8 @@ const ServiceGrid = () => {
         t('services.design.capabilities.branding'),
         t('services.design.capabilities.prototyping')
       ],
-      delay: 0.3
+      delay: 0.3,
+      url: "/services#ui-ux-design"
     },
     {
       title: t('services.seo.title'),
@@ -54,7 +57,8 @@ const ServiceGrid = () => {
         t('services.seo.capabilities.analytics'),
         t('services.seo.capabilities.local')
       ],
-      delay: 0.4
+      delay: 0.4,
+      url: "/services#seo-optimization"
     },
     {
       title: t('services.support.title'),
@@ -66,7 +70,8 @@ const ServiceGrid = () => {
         t('services.support.capabilities.security'),
         t('services.support.capabilities.updates')
       ],
-      delay: 0.5
+      delay: 0.5,
+      url: "/services#technical-support"
     },
     {
       title: t('services.api.title'),
@@ -78,7 +83,47 @@ const ServiceGrid = () => {
         t('services.api.capabilities.testing'),
         t('services.api.capabilities.documentation')
       ],
-      delay: 0.6
+      delay: 0.6,
+      url: "/services#api-integration"
+    },
+    {
+      title: t('services.database.title'),
+      description: t('services.database.description'),
+      icon: <Database size={24} />,
+      capabilities: [
+        t('services.database.capabilities.design'),
+        t('services.database.capabilities.optimization'),
+        t('services.database.capabilities.migration'),
+        t('services.database.capabilities.security')
+      ],
+      delay: 0.7,
+      url: "/services#database-solutions"
+    },
+    {
+      title: t('services.mobile.title'),
+      description: t('services.mobile.description'),
+      icon: <Smartphone size={24} />,
+      capabilities: [
+        t('services.mobile.capabilities.native'),
+        t('services.mobile.capabilities.hybrid'),
+        t('services.mobile.capabilities.responsive'),
+        t('services.mobile.capabilities.pwa')
+      ],
+      delay: 0.8,
+      url: "/services#mobile-development"
+    },
+    {
+      title: t('services.cloud.title'),
+      description: t('services.cloud.description'),
+      icon: <Cloud size={24} />,
+      capabilities: [
+        t('services.cloud.capabilities.aws'),
+        t('services.cloud.capabilities.azure'),
+        t('services.cloud.capabilities.google'),
+        t('services.cloud.capabilities.scaling')
+      ],
+      delay: 0.9,
+      url: "/services#cloud-solutions"
     }
   ];
 
@@ -88,6 +133,7 @@ const ServiceGrid = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-teko-black to-transparent"></div>
         <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-teko-purple/15 rounded-full filter blur-[100px]"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-teko-purple/10 rounded-full filter blur-[120px]"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -109,6 +155,7 @@ const ServiceGrid = () => {
               icon={service.icon}
               capabilities={service.capabilities}
               delay={service.delay}
+              url={service.url}
             />
           ))}
         </div>

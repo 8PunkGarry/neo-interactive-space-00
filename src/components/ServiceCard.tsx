@@ -9,9 +9,17 @@ interface ServiceCardProps {
   icon: React.ReactNode;
   capabilities?: string[];
   delay?: number;
+  url?: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, capabilities = [], delay = 0 }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ 
+  title, 
+  description, 
+  icon, 
+  capabilities = [], 
+  delay = 0,
+  url = "#services" 
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -51,7 +59,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, cap
           )}
           
           <a 
-            href="#" 
+            href={url}
             className={`inline-flex items-center text-base font-medium transition-all duration-300 
               ${isHovered ? 'text-teko-purple-light' : 'text-teko-white/80'}`}
           >
