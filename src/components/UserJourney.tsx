@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { ArrowRight, Users, Building, Lightbulb, Code, Settings, Rocket, CheckCircle, Clock, Star, FileText, Phone } from 'lucide-react';
@@ -6,6 +5,13 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent } from './ui/card';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from './ui/hover-card';
 import { Button } from './ui/button';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from './ui/carousel';
 
 const UserJourney = () => {
   const { t } = useLanguage();
@@ -60,6 +66,24 @@ const UserJourney = () => {
       description: t('journey.step4.description') || "Deploying your solution and providing ongoing support and enhancements.",
       icon: <Rocket size={22} />,
       delay: 0.4
+    },
+    { 
+      title: t('journey.step5.title') || "Continuous Improvement", 
+      description: t('journey.step5.description') || "Regular updates, performance optimization, and feature enhancements based on user feedback.",
+      icon: <CheckCircle size={22} />,
+      delay: 0.5
+    },
+    { 
+      title: t('journey.step6.title') || "Scaling", 
+      description: t('journey.step6.description') || "Growing your solution to handle increased user loads and expanding functionality.",
+      icon: <Clock size={22} />,
+      delay: 0.6
+    },
+    { 
+      title: t('journey.step7.title') || "Advanced Features", 
+      description: t('journey.step7.description') || "Implementing sophisticated capabilities like AI, advanced analytics, and integrations.",
+      icon: <Star size={22} />,
+      delay: 0.7
     }
   ];
 
@@ -99,33 +123,48 @@ const UserJourney = () => {
           </p>
         </div>
 
-        {/* Journey Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {journeySteps.map((step, index) => (
-            <div 
-              key={index}
-              className={`relative overflow-hidden rounded-xl transition-all duration-700 backdrop-blur-sm border border-white/10 h-full 
-                ${animatedSteps[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-                ${index % 2 === 0 ? 'bg-white/5' : 'bg-gradient-to-br from-teko-purple/10 to-transparent'}`}
-              style={{ transitionDelay: `${step.delay}s` }}
-            >
-              <div className="p-6 flex flex-col h-full">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4 bg-white/10 text-teko-purple-light">
-                  {step.icon}
-                </div>
-                
-                <h3 className="text-xl font-display font-bold mb-2">{step.title}</h3>
-                <p className="text-teko-white/70 text-sm">{step.description}</p>
-                
-                <div className="absolute -bottom-5 -right-5 w-20 h-20 rounded-full bg-teko-purple/5 blur-xl"></div>
-                <div className="absolute top-4 right-4 text-white/30 text-xl font-bold">0{index + 1}</div>
-              </div>
+        {/* Journey Steps Carousel */}
+        <div className="mb-16">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+              dragFree: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {journeySteps.map((step, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4">
+                  <div 
+                    className={`relative overflow-hidden rounded-xl transition-all duration-700 backdrop-blur-sm border border-white/10 h-full 
+                      ${animatedSteps[index % 4] ? 'opacity-100' : 'opacity-0'}
+                      ${index % 2 === 0 ? 'bg-white/5' : 'bg-gradient-to-br from-teko-purple/10 to-transparent'}`}
+                  >
+                    <div className="p-6 flex flex-col h-full">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4 bg-white/10 text-teko-purple-light">
+                        {step.icon}
+                      </div>
+                      
+                      <h3 className="text-xl font-display font-bold mb-2">{step.title}</h3>
+                      <p className="text-teko-white/70 text-sm">{step.description}</p>
+                      
+                      <div className="absolute -bottom-5 -right-5 w-20 h-20 rounded-full bg-teko-purple/5 blur-xl"></div>
+                      <div className="absolute top-4 right-4 text-white/30 text-xl font-bold">0{index + 1}</div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center mt-8 gap-2">
+              <CarouselPrevious className="relative -left-0 bg-white/10 hover:bg-white/20 border-white/10" />
+              <CarouselNext className="relative -right-0 bg-white/10 hover:bg-white/20 border-white/10" />
             </div>
-          ))}
+          </Carousel>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Fill Brief Card - Replacing Client Card */}
+          {/* Fill Brief Card */}
           <div 
             className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-on-scroll
               ${hoveredCard === 'brief' 
@@ -172,7 +211,7 @@ const UserJourney = () => {
             } blur-2xl`}></div>
           </div>
 
-          {/* Contact Us Card - Replacing Company Card */}
+          {/* Contact Us Card */}
           <div 
             className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-on-scroll
               ${hoveredCard === 'contact' 
