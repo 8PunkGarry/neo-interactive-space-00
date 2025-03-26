@@ -16,12 +16,71 @@ export const translations = {
       company: 'Company Area',
       settings: 'Settings',
       logout: 'Log Out',
+      portfolio: 'Portfolio',
+      blog: 'Blog',
     },
     hero: {
       title: 'Digital Solutions for Modern Business',
       subtitle: 'We create high-performance websites, mobile apps, and enterprise solutions that help your business grow',
       cta: 'Get Started',
       learnMore: 'Learn More',
+    },
+    journey: {
+      title: 'Your Journey With Us',
+      subtitle: 'How we transform your ideas into powerful digital solutions',
+      step1: {
+        title: 'Discovery & Planning',
+        description: 'We learn about your business, analyze requirements, and create a detailed project plan.'
+      },
+      step2: {
+        title: 'Design & Prototyping',
+        description: 'Creating wireframes and interactive prototypes to visualize the solution.'
+      },
+      step3: {
+        title: 'Development',
+        description: 'Building the solution with modern tech stack and regular progress updates.'
+      },
+      step4: {
+        title: 'Launch & Support',
+        description: 'Deploying your solution and providing ongoing support and enhancements.'
+      },
+      client: 'For Clients',
+      company: 'For Companies',
+      button: 'Learn More',
+      client: {
+        description: 'Custom-tailored digital solutions to meet your unique business needs.',
+        features: {
+          1: {
+            title: 'Tailored Solutions',
+            description: 'Custom digital solutions aligned with your needs.'
+          },
+          2: {
+            title: 'Transparent Process',
+            description: 'Clear communication with regular updates.'
+          },
+          3: {
+            title: 'Ongoing Support',
+            description: 'Continued support for evolving solutions.'
+          }
+        }
+      },
+      company: {
+        description: 'Powerful enterprise solutions to optimize operations and drive growth.',
+        features: {
+          1: {
+            title: 'Technical Expertise',
+            description: 'Deep knowledge across technologies and frameworks.'
+          },
+          2: {
+            title: 'Scalable Architecture',
+            description: 'Solutions that grow with your organization.'
+          },
+          3: {
+            title: 'Innovation Focus',
+            description: 'Exploring emerging tech for competitive advantages.'
+          }
+        }
+      }
     },
     about: {
       title: 'About Us',
@@ -167,6 +226,30 @@ export const translations = {
       successMessage: 'Thank you for submitting your brief! We\'ll review it and get back to you within 1-2 business days.',
       successCta: 'Back to Home'
     },
+    footer: {
+      services: 'Services',
+      contact: 'Contact Us',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Service',
+      rights: 'All rights reserved'
+    },
+    services: {
+      web: {
+        title: 'Web Development'
+      },
+      crm: {
+        title: 'CRM Integration'
+      },
+      design: {
+        title: 'UI/UX Design'
+      },
+      seo: {
+        title: 'SEO Optimization'
+      },
+      support: {
+        title: 'Tech Support'
+      }
+    }
   },
   ru: {
     navbar: {
@@ -183,12 +266,71 @@ export const translations = {
       company: 'Компаниям',
       settings: 'Настройки',
       logout: 'Выход',
+      portfolio: 'Портфолио',
+      blog: 'Блог',
     },
     hero: {
       title: 'Цифровые решения для современного бизнеса',
       subtitle: 'Мы создаем высокопроизводительные веб-сайты, мобильные приложения и корпоративные решения, которые помогают вашему бизнесу расти',
       cta: 'Связаться с нами',
       learnMore: 'Узнать больше',
+    },
+    journey: {
+      title: 'Ваш путь с нами',
+      subtitle: 'Как мы превращаем ваши идейи в мощные цифровые решения',
+      step1: {
+        title: 'Открытие и планирование',
+        description: 'Мы изучаем ваш бизнес, анализируем требования и создаем детальный план проекта.'
+      },
+      step2: {
+        title: 'Дизайн и прототипирование',
+        description: 'Создание макетов и интерактивных прототипов для визуализации решения.'
+      },
+      step3: {
+        title: 'Разработка',
+        description: 'Построение решения с использованием современных технологий и регулярными обновлениями прогресса.'
+      },
+      step4: {
+        title: 'Запуск и поддержка',
+        description: 'Запуск вашего решения и обеспечение постоянной поддержки и улучшений.'
+      },
+      client: 'Для клиентов',
+      company: 'Для компаний',
+      button: 'Узнать больше',
+      client: {
+        description: 'Индивидуальные цифровые решения для удовлетворения уникальных потребностей вашего бизнеса.',
+        features: {
+          1: {
+            title: 'Индивидуальные решения',
+            description: 'Специализированные цифровые решения, соответствующие вашим потребностям.'
+          },
+          2: {
+            title: 'Прозрачный процесс',
+            description: 'Четкое общение с регулярными обновлениями.'
+          },
+          3: {
+            title: 'Постоянная поддержка',
+            description: 'Постоянная поддержка для развивающихся решений.'
+          }
+        }
+      },
+      company: {
+        description: 'Мощные корпоративные решения для оптимизации операций и стимулирования роста.',
+        features: {
+          1: {
+            title: 'Техническая экспертиза',
+            description: 'Глубокие знания в области технологий и фреймворков.'
+          },
+          2: {
+            title: 'Масштабируемая архитектура',
+            description: 'Решения, которые растут вместе с вашей организацией.'
+          },
+          3: {
+            title: 'Фокус на инновации',
+            description: 'Изучение новых технологий для конкурентных преимуществ.'
+          }
+        }
+      }
     },
     about: {
       title: 'О нас',
@@ -334,6 +476,30 @@ export const translations = {
       successMessage: 'Спасибо за отправку брифа! Мы рассмотрим его и свяжемся с вами в течение 1-2 рабочих дней.',
       successCta: 'Вернуться на главную'
     },
+    footer: {
+      services: 'Услуги',
+      contact: 'Связаться с нами',
+      privacy: 'Политика конфиденциальности',
+      terms: 'Условия использования',
+      rights: 'Все права защищены'
+    },
+    services: {
+      web: {
+        title: 'Веб-разработка'
+      },
+      crm: {
+        title: 'Интеграция CRM'
+      },
+      design: {
+        title: 'UI/UX Дизайн'
+      },
+      seo: {
+        title: 'SEO Оптимизация'
+      },
+      support: {
+        title: 'Тех. поддержка'
+      }
+    }
   },
   cs: {
     navbar: {
@@ -350,6 +516,8 @@ export const translations = {
       company: 'Firemní prostor',
       settings: 'Nastavení',
       logout: 'Odhlásit se',
+      portfolio: 'Portfolio',
+      blog: 'Blog',
     },
     hero: {
       title: 'Digitální řešení pro moderní podnikání',
@@ -357,13 +525,70 @@ export const translations = {
       cta: 'Začít',
       learnMore: 'Zjistit více',
     },
+    journey: {
+      title: 'Vaše cesta s námi',
+      subtitle: 'Jak transformujeme vaše nápady do mocných digitálních řešení',
+      step1: {
+        title: 'Objevování a plánování',
+        description: 'Poznáváme váš byznys, analyzujeme požadavky a vytváříme detailní plán projektu.'
+      },
+      step2: {
+        title: 'Design a prototypování',
+        description: 'Vytváření wireframů a interaktivních prototypů pro vizualizaci řešení.'
+      },
+      step3: {
+        title: 'Vývoj',
+        description: 'Budování řešení s moderním technologickým stackem a pravidelnými aktualizacemi postupu.'
+      },
+      step4: {
+        title: 'Spuštění a podpora',
+        description: 'Nasazení vašeho řešení a poskytnutí probíhající podpory a vylepšení.'
+      },
+      client: 'Pro klienty',
+      company: 'Pro společnosti',
+      button: 'Zjistit více',
+      client: {
+        description: 'Digitální řešení na míru pro splnění jedinečných potřeb vašeho podnikání.',
+        features: {
+          1: {
+            title: 'Řešení na míru',
+            description: 'Digitální řešení přizpůsobená vašim potřebám.'
+          },
+          2: {
+            title: 'Transparentní proces',
+            description: 'Jasná komunikace s pravidelnými aktualizacemi.'
+          },
+          3: {
+            title: 'Průběžná podpora',
+            description: 'Pokračující podpora pro vyvíjející se řešení.'
+          }
+        }
+      },
+      company: {
+        description: 'Výkonná podniková řešení pro optimalizaci operací a podpoření růstu.',
+        features: {
+          1: {
+            title: 'Technická expertíza',
+            description: 'Hluboké znalosti napříč technologiemi a frameworky.'
+          },
+          2: {
+            title: 'Škálovatelná architektura',
+            description: 'Řešení, která rostou s vaší organizací.'
+          },
+          3: {
+            title: 'Zaměření na inovace',
+            description: 'Zkoumání nových technologií pro konkurenční výhody.'
+          }
+        }
+      }
+    },
     about: {
       title: 'O nás',
       description: 'Teko.sup je tým profesionálů specializující se na webový vývoj, integrace a digitální řešení. Kombinujeme nejmodernější technologie, kreativitu a zkušenosti k vytváření výkonných IT řešení pro firmy.',
       whoWeAre: {
         title: 'Kdo jsme',
         description1: 'Teko.sup je tým profesionálů specializující se na webový vývoj, integrace a digitální řešení. Kombinujeme nejmodernější technologie, kreativitu a zkušenosti k vytváření výkonných IT řešení pro firmy.',
-        description2: 'Naším posl��ním je pomáhat firmám uspět v digitálním světě vytvářením moderních webových stránek, CRM systémů a automatizačních nástrojů, které činí podnikání efektivnějším, rychlejším a ziskovějším.',
+        description2: 'Naším poslůním je pomáhat firmám uspět v digitálním světě vytvářením moderních webových stránek, CRM systémů a automatizačních nástrojů, které činí podnikání efektivnějším, rychlejším a ziskovějším.',
         description3: 'Věříme, že design, kód a technologie nejsou jen nástroje, ale klíč k inovacím.'
       },
       mission: {
@@ -501,6 +726,30 @@ export const translations = {
       successMessage: 'Děkujeme za zaslání briefu! Prohlédneme si ho a ozveme se vám během 1-2 pracovních dnů.',
       successCta: 'Zpět na hlavní stránku'
     },
+    footer: {
+      services: 'Služby',
+      contact: 'Kontaktujte nás',
+      privacy: 'Ochrana soukromí',
+      terms: 'Podmínky služby',
+      rights: 'Všechna práva vyhrazena'
+    },
+    services: {
+      web: {
+        title: 'Vývoj webu'
+      },
+      crm: {
+        title: 'Integrace CRM'
+      },
+      design: {
+        title: 'UI/UX Design'
+      },
+      seo: {
+        title: 'SEO Optimalizace'
+      },
+      support: {
+        title: 'Technická podpora'
+      }
+    }
   }
 } as const;
 

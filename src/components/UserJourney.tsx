@@ -46,33 +46,35 @@ const UserJourney = () => {
     }));
   };
 
+  // Проверяем, есть ли переводы для всех шагов, или используем запасные тексты
   const journeySteps = [
     { 
-      title: t('journey.step1.title'), 
-      description: t('journey.step1.description'),
+      title: t('journey.step1.title') || "Discovery & Planning", 
+      description: t('journey.step1.description') || "We learn about your business, analyze requirements, and create a detailed project plan.",
       icon: <Lightbulb size={22} />,
       delay: 0.1
     },
     { 
-      title: t('journey.step2.title'), 
-      description: t('journey.step2.description'),
+      title: t('journey.step2.title') || "Design & Prototyping", 
+      description: t('journey.step2.description') || "Creating wireframes and interactive prototypes to visualize the solution.",
       icon: <Settings size={22} />,
       delay: 0.2
     },
     { 
-      title: t('journey.step3.title'), 
-      description: t('journey.step3.description'),
+      title: t('journey.step3.title') || "Development", 
+      description: t('journey.step3.description') || "Building the solution with modern tech stack and regular progress updates.",
       icon: <Code size={22} />,
       delay: 0.3
     },
     { 
-      title: t('journey.step4.title'), 
-      description: t('journey.step4.description'),
+      title: t('journey.step4.title') || "Launch & Support", 
+      description: t('journey.step4.description') || "Deploying your solution and providing ongoing support and enhancements.",
       icon: <Rocket size={22} />,
       delay: 0.4
     }
   ];
 
+  // Проверяем, есть ли переводы для клиентских особенностей, или используем запасные тексты
   const clientFeatures = [
     { 
       title: t('journey.client.features.1.title') || "Tailored Solutions", 
@@ -88,6 +90,7 @@ const UserJourney = () => {
     }
   ];
 
+  // Проверяем, есть ли переводы для компанийных особенностей, или используем запасные тексты
   const companyFeatures = [
     { 
       title: t('journey.company.features.1.title') || "Technical Expertise", 
@@ -125,10 +128,10 @@ const UserJourney = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 animate-on-scroll">
-            {t('journey.title')}
+            {t('journey.title') || "Your Journey With Us"}
           </h2>
           <p className="text-lg md:text-xl text-teko-white/80 max-w-3xl mx-auto animate-on-scroll" style={{ transitionDelay: '0.1s' }}>
-            {t('journey.subtitle')}
+            {t('journey.subtitle') || "How we transform your ideas into powerful digital solutions"}
           </p>
         </div>
 
@@ -191,8 +194,8 @@ const UserJourney = () => {
                 </button>
               </div>
               
-              <h3 className="text-xl font-display font-bold mb-2">{t('journey.client')}</h3>
-              <p className="text-teko-white/70 text-sm mb-4">{t('journey.client.description')}</p>
+              <h3 className="text-xl font-display font-bold mb-2">{t('journey.client') || "For Clients"}</h3>
+              <p className="text-teko-white/70 text-sm mb-4">{t('journey.client.description') || "Custom-tailored digital solutions to meet your unique business needs."}</p>
               
               {/* Client Features - Expand/Collapse */}
               <div className={`space-y-3 mb-4 transition-all duration-300 overflow-hidden ${
@@ -229,7 +232,7 @@ const UserJourney = () => {
                     hoveredCard === 'client' ? 'text-teko-purple-light' : 'text-teko-white/80'
                   }`}
                 >
-                  {t('journey.button')} 
+                  {t('journey.button') || "Learn More"} 
                   <ArrowRight className={`ml-1 transition-transform duration-300 ${
                     hoveredCard === 'client' ? 'transform translate-x-1' : ''
                   }`} size={14} />
@@ -276,8 +279,8 @@ const UserJourney = () => {
                 </button>
               </div>
               
-              <h3 className="text-xl font-display font-bold mb-2">{t('journey.company')}</h3>
-              <p className="text-teko-white/70 text-sm mb-4">{t('journey.company.description')}</p>
+              <h3 className="text-xl font-display font-bold mb-2">{t('journey.company') || "For Companies"}</h3>
+              <p className="text-teko-white/70 text-sm mb-4">{t('journey.company.description') || "Powerful enterprise solutions to optimize operations and drive growth."}</p>
               
               {/* Company Features - Expand/Collapse */}
               <div className={`space-y-3 mb-4 transition-all duration-300 overflow-hidden ${
@@ -314,7 +317,7 @@ const UserJourney = () => {
                     hoveredCard === 'company' ? 'text-teko-purple-light' : 'text-teko-white/80'
                   }`}
                 >
-                  {t('journey.button')} 
+                  {t('journey.button') || "Learn More"} 
                   <ArrowRight className={`ml-1 transition-transform duration-300 ${
                     hoveredCard === 'company' ? 'transform translate-x-1' : ''
                   }`} size={14} />
