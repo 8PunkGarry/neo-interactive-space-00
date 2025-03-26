@@ -1,8 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { ArrowRight, Users, Building, Lightbulb, CodeIcon, Code, Settings, Rocket } from 'lucide-react';
+import { ArrowRight, Users, Building, Lightbulb, Code, Settings, Rocket, CheckCircle, Clock, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Card, CardContent } from './ui/card';
+import { HoverCard, HoverCardTrigger, HoverCardContent } from './ui/hover-card';
 
 const UserJourney = () => {
   const { t } = useLanguage();
@@ -56,6 +58,36 @@ const UserJourney = () => {
       description: t('journey.step4.description'),
       icon: <Rocket size={22} />,
       delay: 0.4
+    }
+  ];
+
+  const clientFeatures = [
+    { 
+      title: t('journey.client.features.1.title') || "Tailored Solutions", 
+      description: t('journey.client.features.1.description') || "We create customized digital solutions that perfectly align with your unique business needs and goals."
+    },
+    { 
+      title: t('journey.client.features.2.title') || "Transparent Process", 
+      description: t('journey.client.features.2.description') || "Our development process ensures you're informed at every stage, with clear communication and regular updates."
+    },
+    { 
+      title: t('journey.client.features.3.title') || "Ongoing Support", 
+      description: t('journey.client.features.3.description') || "We don't just deliver and disappear. Our team provides continued support to ensure your solution evolves with your business."
+    }
+  ];
+
+  const companyFeatures = [
+    { 
+      title: t('journey.company.features.1.title') || "Technical Expertise", 
+      description: t('journey.company.features.1.description') || "Our team of experts brings deep knowledge across various technologies and frameworks to solve your most complex challenges."
+    },
+    { 
+      title: t('journey.company.features.2.title') || "Scalable Architecture", 
+      description: t('journey.company.features.2.description') || "We build solutions that grow with your organization, ensuring performance and reliability at any scale."
+    },
+    { 
+      title: t('journey.company.features.3.title') || "Innovation Focus", 
+      description: t('journey.company.features.3.description') || "We constantly explore emerging technologies to provide you with competitive advantages and cutting-edge solutions."
     }
   ];
 
@@ -133,7 +165,22 @@ const UserJourney = () => {
               </div>
               
               <h3 className="text-2xl font-display font-bold mb-4">{t('journey.client')}</h3>
-              <p className="text-teko-white/70 mb-6 flex-grow">{t('journey.client.description')}</p>
+              <p className="text-teko-white/70 mb-6">{t('journey.client.description')}</p>
+              
+              {/* Added Client Features */}
+              <div className="space-y-4 mb-6 flex-grow">
+                {clientFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-start">
+                    <div className="mr-3 mt-1 text-teko-purple-light">
+                      <CheckCircle size={18} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white/90 mb-1">{feature.title}</h4>
+                      <p className="text-sm text-white/70">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
               
               <Link 
                 to="/client" 
@@ -173,7 +220,22 @@ const UserJourney = () => {
               </div>
               
               <h3 className="text-2xl font-display font-bold mb-4">{t('journey.company')}</h3>
-              <p className="text-teko-white/70 mb-6 flex-grow">{t('journey.company.description')}</p>
+              <p className="text-teko-white/70 mb-6">{t('journey.company.description')}</p>
+              
+              {/* Added Company Features */}
+              <div className="space-y-4 mb-6 flex-grow">
+                {companyFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-start">
+                    <div className="mr-3 mt-1 text-teko-purple-light">
+                      <CheckCircle size={18} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white/90 mb-1">{feature.title}</h4>
+                      <p className="text-sm text-white/70">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
               
               <Link 
                 to="/company" 
