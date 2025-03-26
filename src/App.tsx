@@ -16,7 +16,15 @@ import Company from "./pages/Company";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
-const queryClient = new QueryClient();
+// Создание нового queryClient, чтобы избежать проблем с кэшированием
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
