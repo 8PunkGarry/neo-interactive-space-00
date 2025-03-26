@@ -1,4 +1,3 @@
-
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -56,6 +55,31 @@ const translations = {
       title: 'Ready to transform your business?',
       subtitle: 'Get in touch with our experts today',
       cta: 'Contact Us',
+    },
+    brief: {
+      title: 'Submit your brief',
+      subtitle: 'Tell us about your project, and we will contact you to discuss the details',
+      name: 'Your name *',
+      email: 'Your email *',
+      project_type: 'Project type *',
+      description: 'Project description *',
+      budget: 'Budget',
+      submit: 'Submit brief',
+      submitting: 'Submitting...',
+      website: 'Website',
+      integration: 'Integration',
+      design: 'Design',
+      other: 'Other',
+      success_title: 'Brief submitted',
+      success_message: 'Thank you! We will review your brief and contact you soon.',
+      error_title: 'Submission error',
+      error_message: 'There was an error submitting your brief. Please try again.',
+      missing_info_title: 'Missing information',
+      missing_info_message: 'Please fill in all required fields.',
+      name_placeholder: 'Enter your name',
+      email_placeholder: 'Enter your email',
+      description_placeholder: 'Describe your project and your requirements',
+      budget_placeholder: 'Specify your estimated project budget'
     },
     services: {
       title: 'Our Services',
@@ -215,6 +239,31 @@ const translations = {
       subtitle: 'Свяжитесь с нашими экспертами сегодня',
       cta: 'Связаться с нами',
     },
+    brief: {
+      title: 'Отправьте вашу заявку',
+      subtitle: 'Расскажите нам о вашем проекте, и мы свяжемся с вами для обсуждения деталей',
+      name: 'Ваше имя *',
+      email: 'Ваш email *',
+      project_type: 'Тип проекта *',
+      description: 'Описание проекта *',
+      budget: 'Бюджет',
+      submit: 'Отправить заявку',
+      submitting: 'Отправка...',
+      website: 'Веб-сайт',
+      integration: 'Интеграция',
+      design: 'Дизайн',
+      other: 'Другое',
+      success_title: 'Заявка отправлена',
+      success_message: 'Спасибо! Мы рассмотрим вашу заявку и свяжемся с вами в ближайшее время.',
+      error_title: 'Ошибка отправки',
+      error_message: 'Произошла ошибка при отправке вашей заявки. Пожалуйста, попробуйте еще раз.',
+      missing_info_title: 'Отсутствует информация',
+      missing_info_message: 'Пожалуйста, заполните все обязательные поля.',
+      name_placeholder: 'Введите ваше имя',
+      email_placeholder: 'Введите ваш email',
+      description_placeholder: 'Опишите ваш проект и ваши требования',
+      budget_placeholder: 'Укажите предполагаемый бюджет проекта'
+    },
     services: {
       title: 'Наши Услуги',
       description: 'Комплексные цифровые решения, адаптированные под ваши конкретные потребности',
@@ -373,6 +422,31 @@ const translations = {
       subtitle: 'Kontaktujte naše odborníky ještě dnes',
       cta: 'Kontaktujte nás',
     },
+    brief: {
+      title: 'Odešlete svůj brief',
+      subtitle: 'Řekněte nám o svém projektu a my vás budeme kontaktovat pro další podrobnosti',
+      name: 'Vaše jméno *',
+      email: 'Váš email *',
+      project_type: 'Typ projektu *',
+      description: 'Popis projektu *',
+      budget: 'Rozpočet',
+      submit: 'Odeslat brief',
+      submitting: 'Odesílání...',
+      website: 'Webové stránky',
+      integration: 'Integrace',
+      design: 'Design',
+      other: 'Ostatní',
+      success_title: 'Žádost odeslána',
+      success_message: 'Děkujeme! Prohlédneme si váš brief a brzy vás budeme kontaktovat.',
+      error_title: 'Chyba odeslání',
+      error_message: 'Při odesílání vašeho briefu došlo k chybě. Zkuste to prosím znovu.',
+      missing_info_title: 'Chybějící informace',
+      missing_info_message: 'Vyplňte prosím všechna povinná pole.',
+      name_placeholder: 'Zadejte své jméno',
+      email_placeholder: 'Zadejte svůj email',
+      description_placeholder: 'Popište svůj projekt a své požadavky',
+      budget_placeholder: 'Uveďte předpokládaný rozpočet projektu'
+    },
     services: {
       title: 'Naše služby',
       description: 'Komplexní digitální řešení přizpůsobená vašim konkrétním potřebám',
@@ -475,7 +549,7 @@ const translations = {
       copyright: '© 2023 teko.sup. Všechna práva vyhrazena.',
     },
     auth: {
-      ...authTranslations.en, // Fallback to English for now
+      ...authTranslations.en,
     },
   }
 };

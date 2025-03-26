@@ -14,7 +14,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 const Brief = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { user } = useAuthContext();
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -32,8 +32,12 @@ const Brief = () => {
     if (!name || !email || !projectType || !description) {
       toast({
         variant: "destructive",
-        title: "Отсутствует информация",
-        description: "Пожалуйста, заполните все обязательные поля.",
+        title: language === 'en' ? "Missing information" : 
+               language === 'ru' ? "Отсутствует информация" : 
+               "Chybějící informace",
+        description: language === 'en' ? "Please fill in all required fields." : 
+                     language === 'ru' ? "Пожалуйста, заполните все обязательные поля." : 
+                     "Vyplňte prosím všechna povinná pole.",
       });
       return;
     }
@@ -57,25 +61,35 @@ const Brief = () => {
       if (error) throw error;
       
       toast({
-        title: "Заявка отправлена",
-        description: "Спасибо! Мы рассмотрим вашу заявку и свяжемся с вами в ближайшее время.",
+        title: language === 'en' ? "Brief submitted" : 
+               language === 'ru' ? "Заявка отправлена" : 
+               "Žádost odeslána",
+        description: language === 'en' ? "Thank you! We will review your brief and contact you soon." : 
+                     language === 'ru' ? "Спасибо! Мы рассмотрим вашу заявку и свяжемся с вами в ближайшее время." : 
+                     "Děkujeme! Prohlédneme si váš brief a brzy vás budeme kontaktovat.",
       });
       
-      // Сброс формы
+      // Reset form
       setName('');
       setEmail('');
       setProjectType('website');
       setDescription('');
       setBudget('');
       
-      // Редирект на главную страницу после отправки
+      // Redirect to home page after submission
       setTimeout(() => navigate('/'), 2000);
     } catch (error) {
-      console.error('Ошибка при отправке заявки:', error);
+      console.error(language === 'en' ? 'Error submitting brief:' : 
+                    language === 'ru' ? 'Ошибка при отправке заявки:' : 
+                    'Chyba při odesílání žádosti:', error);
       toast({
         variant: "destructive",
-        title: "Ошибка отправки",
-        description: "Произошла ошибка при отправке вашей заявки. Пожалуйста, попробуйте еще раз.",
+        title: language === 'en' ? "Submission error" : 
+               language === 'ru' ? "Ошибка отправки" : 
+               "Chyba odeslání",
+        description: language === 'en' ? "There was an error submitting your brief. Please try again." : 
+                     language === 'ru' ? "Произошла ошибка при отправке вашей заявки. Пожалуйста, попробуйте еще раз." : 
+                     "Při odesílání vašeho briefu došlo k chybě. Zkuste to prosím znovu.",
       });
     } finally {
       setIsSubmitting(false);
@@ -92,10 +106,14 @@ const Brief = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-teko-white">
-              Отправьте вашу заявку
+              {language === 'en' ? 'Submit your brief' : 
+               language === 'ru' ? 'Отправьте вашу заявку' : 
+               'Odešlete svůj brief'}
             </h1>
             <p className="text-teko-white/70 max-w-2xl mx-auto">
-              Расскажите нам о вашем проекте, и мы свяжемся с вами для обсуждения деталей
+              {language === 'en' ? 'Tell us about your project, and we will contact you to discuss the details' : 
+               language === 'ru' ? 'Расскажите нам о вашем проекте, и мы свяжемся с вами для обсуждения деталей' : 
+               'Řekněte nám o svém projektu a my vás budeme kontaktovat pro další podrobnosti'}
             </p>
           </div>
           
@@ -103,12 +121,16 @@ const Brief = () => {
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <Label className="text-teko-white/90 mb-2">
-                  Ваше имя *
+                  {language === 'en' ? 'Your name *' : 
+                   language === 'ru' ? 'Ваше имя *' : 
+                   'Vaše jméno *'}
                 </Label>
                 <Input 
                   type="text" 
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-teko-purple/50 text-teko-white"
-                  placeholder="Введите ваше имя"
+                  placeholder={language === 'en' ? 'Enter your name' : 
+                               language === 'ru' ? 'Введите ваше имя' : 
+                               'Zadejte své jméno'}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -117,12 +139,16 @@ const Brief = () => {
               
               <div>
                 <Label className="text-teko-white/90 mb-2">
-                  Ваш email *
+                  {language === 'en' ? 'Your email *' : 
+                   language === 'ru' ? 'Ваш email *' : 
+                   'Váš email *'}
                 </Label>
                 <Input 
                   type="email" 
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-teko-purple/50 text-teko-white"
-                  placeholder="Введите ваш email"
+                  placeholder={language === 'en' ? 'Enter your email' : 
+                               language === 'ru' ? 'Введите ваш email' : 
+                               'Zadejte svůj email'}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -131,7 +157,9 @@ const Brief = () => {
               
               <div>
                 <Label className="text-teko-white/90 mb-2">
-                  Тип проекта *
+                  {language === 'en' ? 'Project type *' : 
+                   language === 'ru' ? 'Тип проекта *' : 
+                   'Typ projektu *'}
                 </Label>
                 <select 
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-teko-purple/50 text-teko-white"
@@ -139,21 +167,41 @@ const Brief = () => {
                   onChange={(e) => setProjectType(e.target.value)}
                   required
                 >
-                  <option value="website">Веб-сайт</option>
-                  <option value="integration">Интеграция</option>
-                  <option value="design">Дизайн</option>
+                  <option value="website">
+                    {language === 'en' ? 'Website' : 
+                     language === 'ru' ? 'Веб-сайт' : 
+                     'Webové stránky'}
+                  </option>
+                  <option value="integration">
+                    {language === 'en' ? 'Integration' : 
+                     language === 'ru' ? 'Интеграция' : 
+                     'Integrace'}
+                  </option>
+                  <option value="design">
+                    {language === 'en' ? 'Design' : 
+                     language === 'ru' ? 'Дизайн' : 
+                     'Design'}
+                  </option>
                   <option value="seo">SEO</option>
-                  <option value="other">Другое</option>
+                  <option value="other">
+                    {language === 'en' ? 'Other' : 
+                     language === 'ru' ? 'Другое' : 
+                     'Ostatní'}
+                  </option>
                 </select>
               </div>
               
               <div>
                 <Label className="text-teko-white/90 mb-2">
-                  Описание проекта *
+                  {language === 'en' ? 'Project description *' : 
+                   language === 'ru' ? 'Описание проекта *' : 
+                   'Popis projektu *'}
                 </Label>
                 <Textarea 
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-teko-purple/50 text-teko-white h-32"
-                  placeholder="Опишите ваш проект и ваши требования"
+                  placeholder={language === 'en' ? 'Describe your project and your requirements' : 
+                               language === 'ru' ? 'Опишите ваш проект и ваши требования' : 
+                               'Popište svůj projekt a své požadavky'}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   required
@@ -162,12 +210,16 @@ const Brief = () => {
               
               <div>
                 <Label className="text-teko-white/90 mb-2">
-                  Бюджет
+                  {language === 'en' ? 'Budget' : 
+                   language === 'ru' ? 'Бюджет' : 
+                   'Rozpočet'}
                 </Label>
                 <Input 
                   type="text" 
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-teko-purple/50 text-teko-white"
-                  placeholder="Укажите предполагаемый бюджет проекта"
+                  placeholder={language === 'en' ? 'Specify your estimated project budget' : 
+                               language === 'ru' ? 'Укажите предполагаемый бюджет проекта' : 
+                               'Uveďte předpokládaný rozpočet projektu'}
                   value={budget}
                   onChange={(e) => setBudget(e.target.value)}
                 />
@@ -182,11 +234,17 @@ const Brief = () => {
                   {isSubmitting ? (
                     <div className="flex items-center justify-center">
                       <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                      <span>Отправка...</span>
+                      <span>
+                        {language === 'en' ? 'Submitting...' : 
+                         language === 'ru' ? 'Отправка...' : 
+                         'Odesílání...'}
+                      </span>
                     </div>
                   ) : (
                     <>
-                      Отправить заявку
+                      {language === 'en' ? 'Submit brief' : 
+                       language === 'ru' ? 'Отправить заявку' : 
+                       'Odeslat brief'}
                       <ArrowRight className="ml-2" size={16} />
                     </>
                   )}

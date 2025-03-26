@@ -40,6 +40,11 @@ const LanguageSwitcher = () => {
     };
   }, []);
 
+  // Display "CZ" for Czech language instead of "CS"
+  const getDisplayCode = (code: SupportedLanguage) => {
+    return code === 'cs' ? 'CZ' : code.toUpperCase();
+  };
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -48,7 +53,7 @@ const LanguageSwitcher = () => {
         aria-label="Select language"
       >
         <Globe size={16} className="text-teko-purple-light" />
-        <span className="text-teko-white/90">{currentLanguage?.code.toUpperCase()}</span>
+        <span className="text-teko-white/90">{getDisplayCode(currentLanguage?.code || 'en')}</span>
         <ChevronDown 
           size={16} 
           className={`text-teko-white/50 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
