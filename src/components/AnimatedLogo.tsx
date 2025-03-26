@@ -108,27 +108,9 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         </defs>
       </svg>
       
-      <svg 
-        width={size * 1.5} 
-        height={size / 2} 
-        viewBox="0 0 180 60" 
-        className="ml-2"
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g className="logo-text">
-          <path d="M10 10 H20 V40 H10 V10 Z" fill="#7C3AED" />
-          <path d="M25 10 H50 V20 H25 V10 Z" fill="#7C3AED" />
-          <path d="M25 25 H45 V35 H25 V25 Z" fill="#7C3AED" />
-          <path d="M55 10 H65 V40 H55 V10 Z" fill="#7C3AED" />
-          <path d="M70 10 H95 V20 H70 V10 Z" fill="#7C3AED" />
-          <path d="M70 25 H90 V35 H70 V25 Z" fill="#7C3AED" />
-          <path d="M100 10 H110 V40 H100 V10 Z" fill="#FFFFFF" />
-          <path d="M115 25 V10 H155 V20 H125 V40 H115 V25 Z" fill="#FFFFFF" />
-          <path d="M130 25 H155 V40 H145 V35 H130 V25 Z" fill="#FFFFFF" />
-          <circle cx="165" cy="15" r="5" fill="#FFFFFF" />
-        </g>
-      </svg>
+      <div className="ml-2">
+        <div className="text-teko-white font-bold text-xl">teko<span className="text-teko-purple">.sup</span></div>
+      </div>
     </div>
   );
 };

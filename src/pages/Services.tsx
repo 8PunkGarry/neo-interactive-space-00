@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -271,7 +270,7 @@ const Services = () => {
               </p>
               <div className="flex justify-center">
                 <a 
-                  href="/problem-brief" 
+                  href="/brief" 
                   className="group relative overflow-hidden rounded-lg bg-teko-purple px-6 py-3 text-white text-lg font-medium transition-all duration-300 hover:bg-teko-purple-dark"
                 >
                   <span className="relative z-10">{t('services.cta.button')}</span>
