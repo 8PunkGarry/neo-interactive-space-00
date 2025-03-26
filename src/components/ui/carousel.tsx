@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -18,7 +17,6 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
-  onSelect?: (index: number) => void
 }
 
 type CarouselContextProps = {
@@ -28,7 +26,6 @@ type CarouselContextProps = {
   scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
-  selectedIndex: number
 } & CarouselProps
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
@@ -55,7 +52,6 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
-      onSelect,
       ...props
     },
     ref
@@ -69,30 +65,22 @@ const Carousel = React.forwardRef<
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
-    const [selectedIndex, setSelectedIndex] = React.useState(0)
 
-    const onSelectHandler = React.useCallback((api: CarouselApi) => {
+    const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
         return
       }
 
-      const currentIndex = api.selectedScrollSnap()
-      setSelectedIndex(currentIndex)
-      
-      if (onSelect) {
-        onSelect(currentIndex)
-      }
-
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
-    }, [onSelect])
+    }, [])
 
     const scrollPrev = React.useCallback(() => {
-      api?.scrollPrev({ duration: 800, easing: (x) => 1 - Math.pow(1 - x, 3) })
+      api?.scrollPrev()
     }, [api])
 
     const scrollNext = React.useCallback(() => {
-      api?.scrollNext({ duration: 800, easing: (x) => 1 - Math.pow(1 - x, 3) })
+      api?.scrollNext()
     }, [api])
 
     const handleKeyDown = React.useCallback(
@@ -121,14 +109,14 @@ const Carousel = React.forwardRef<
         return
       }
 
-      onSelectHandler(api)
-      api.on("reInit", onSelectHandler)
-      api.on("select", onSelectHandler)
+      onSelect(api)
+      api.on("reInit", onSelect)
+      api.on("select", onSelect)
 
       return () => {
-        api?.off("select", onSelectHandler)
+        api?.off("select", onSelect)
       }
-    }, [api, onSelectHandler])
+    }, [api, onSelect])
 
     return (
       <CarouselContext.Provider
@@ -142,7 +130,6 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
-          selectedIndex,
         }}
       >
         <div
@@ -172,7 +159,7 @@ const CarouselContent = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "flex transition-all ease-in-out duration-500",
+          "flex",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
@@ -187,7 +174,7 @@ const CarouselItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { orientation, selectedIndex } = useCarousel()
+  const { orientation } = useCarousel()
 
   return (
     <div
@@ -195,7 +182,7 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full transition-all duration-700",
+        "min-w-0 shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
@@ -217,7 +204,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full transition-all duration-300 hover:scale-110",
+        "absolute  h-8 w-8 rounded-full",
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -246,7 +233,7 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full transition-all duration-300 hover:scale-110",
+        "absolute h-8 w-8 rounded-full",
         orientation === "horizontal"
           ? "-right-12 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
