@@ -1,3 +1,4 @@
+
 import { z } from 'zod';
 
 export const translations = {
@@ -44,10 +45,10 @@ export const translations = {
         title: 'Launch & Support',
         description: 'Deploying your solution and providing ongoing support and enhancements.'
       },
-      client: 'For Clients',
-      company: 'For Companies',
+      clientType: 'For Clients',
+      companyType: 'For Companies',
       button: 'Learn More',
-      client: {
+      clientInfo: {
         description: 'Custom-tailored digital solutions to meet your unique business needs.',
         features: {
           1: {
@@ -64,7 +65,7 @@ export const translations = {
           }
         }
       },
-      company: {
+      companyInfo: {
         description: 'Powerful enterprise solutions to optimize operations and drive growth.',
         features: {
           1: {
@@ -294,10 +295,10 @@ export const translations = {
         title: 'Запуск и поддержка',
         description: 'Запуск вашего решения и обеспечение постоянной поддержки и улучшений.'
       },
-      client: 'Для клиентов',
-      company: 'Для компаний',
+      clientType: 'Для клиентов',
+      companyType: 'Для компаний',
       button: 'Узнать больше',
-      client: {
+      clientInfo: {
         description: 'Индивидуальные цифровые решения для удовлетворения уникальных потребностей вашего бизнеса.',
         features: {
           1: {
@@ -314,7 +315,7 @@ export const translations = {
           }
         }
       },
-      company: {
+      companyInfo: {
         description: 'Мощные корпоративные решения для оптимизации операций и стимулирования роста.',
         features: {
           1: {
@@ -544,10 +545,10 @@ export const translations = {
         title: 'Spuštění a podpora',
         description: 'Nasazení vašeho řešení a poskytnutí probíhající podpory a vylepšení.'
       },
-      client: 'Pro klienty',
-      company: 'Pro společnosti',
+      clientType: 'Pro klienty',
+      companyType: 'Pro společnosti',
       button: 'Zjistit více',
-      client: {
+      clientInfo: {
         description: 'Digitální řešení na míru pro splnění jedinečných potřeb vašeho podnikání.',
         features: {
           1: {
@@ -564,7 +565,7 @@ export const translations = {
           }
         }
       },
-      company: {
+      companyInfo: {
         description: 'Výkonná podniková řešení pro optimalizaci operací a podpoření růstu.',
         features: {
           1: {
