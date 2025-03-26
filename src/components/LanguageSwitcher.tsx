@@ -40,7 +40,7 @@ const LanguageSwitcher = () => {
     };
   }, []);
 
-  // Updated function to display "CZ" for Czech language instead of "CS"
+  // Display "CZ" for Czech language instead of "CS"
   const getDisplayCode = (code: SupportedLanguage) => {
     return code === 'cs' ? 'CZ' : code.toUpperCase();
   };

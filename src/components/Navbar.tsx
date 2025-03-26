@@ -37,10 +37,10 @@ const Navbar = () => {
   `;
 
   const navLinks = [
-    { to: '/', label: t('nav.home') },
-    { to: '/services', label: t('nav.services') },
-    { to: '/about', label: t('nav.about') },
-    { to: '/brief', label: t('nav.brief') },
+    { to: '/', label: t('navbar.home') },
+    { to: '/services', label: t('navbar.services') },
+    { to: '/about', label: t('navbar.about') },
+    { to: '/brief', label: t('navbar.brief') },
   ];
 
   return (
