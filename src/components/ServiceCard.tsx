@@ -1,15 +1,17 @@
 
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Badge } from './ui/badge';
 
 interface ServiceCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
+  capabilities?: string[];
   delay?: number;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, delay = 0 }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, capabilities = [], delay = 0 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -31,6 +33,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, del
           
           <h3 className="text-xl md:text-2xl font-display font-bold mb-4">{title}</h3>
           <p className="text-teko-white/70 mb-6 flex-grow">{description}</p>
+          
+          {capabilities.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-6">
+              {capabilities.map((capability, index) => (
+                <Badge 
+                  key={index}
+                  className={`transition-all duration-300 text-xs font-medium px-2.5 py-1 
+                    ${isHovered 
+                      ? 'bg-teko-purple/30 text-teko-white border-teko-purple/30' 
+                      : 'bg-white/10 text-teko-white/80 border-white/10'}`}
+                >
+                  {capability}
+                </Badge>
+              ))}
+            </div>
+          )}
           
           <a 
             href="#" 

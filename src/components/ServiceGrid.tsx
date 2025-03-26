@@ -2,7 +2,7 @@
 import React from 'react';
 import ServiceCard from './ServiceCard';
 import { useLanguage } from '../context/LanguageContext';
-import { Globe, BarChart3, Palette, Search, Headphones } from 'lucide-react';
+import { Globe, BarChart3, Palette, Search, Headphones, Code, Database, Smartphone, Server, LinkIcon } from 'lucide-react';
 
 const ServiceGrid = () => {
   const { t } = useLanguage();
@@ -12,31 +12,73 @@ const ServiceGrid = () => {
       title: t('services.web.title'),
       description: t('services.web.description'),
       icon: <Globe size={24} />,
+      capabilities: [
+        t('services.web.capabilities.responsive'),
+        t('services.web.capabilities.ecommerce'),
+        t('services.web.capabilities.cms'),
+        t('services.web.capabilities.spa')
+      ],
       delay: 0.1
     },
     {
       title: t('services.crm.title'),
       description: t('services.crm.description'),
       icon: <BarChart3 size={24} />,
+      capabilities: [
+        t('services.crm.capabilities.automation'),
+        t('services.crm.capabilities.analytics'),
+        t('services.crm.capabilities.integration'),
+        t('services.crm.capabilities.custom')
+      ],
       delay: 0.2
     },
     {
       title: t('services.design.title'),
       description: t('services.design.description'),
       icon: <Palette size={24} />,
+      capabilities: [
+        t('services.design.capabilities.ui'),
+        t('services.design.capabilities.ux'),
+        t('services.design.capabilities.branding'),
+        t('services.design.capabilities.prototyping')
+      ],
       delay: 0.3
     },
     {
       title: t('services.seo.title'),
       description: t('services.seo.description'),
       icon: <Search size={24} />,
+      capabilities: [
+        t('services.seo.capabilities.audit'),
+        t('services.seo.capabilities.optimization'),
+        t('services.seo.capabilities.analytics'),
+        t('services.seo.capabilities.local')
+      ],
       delay: 0.4
     },
     {
       title: t('services.support.title'),
       description: t('services.support.description'),
       icon: <Headphones size={24} />,
+      capabilities: [
+        t('services.support.capabilities.maintenance'),
+        t('services.support.capabilities.hosting'),
+        t('services.support.capabilities.security'),
+        t('services.support.capabilities.updates')
+      ],
       delay: 0.5
+    },
+    {
+      title: t('services.api.title'),
+      description: t('services.api.description'),
+      icon: <Code size={24} />,
+      capabilities: [
+        t('services.api.capabilities.integration'),
+        t('services.api.capabilities.development'),
+        t('services.api.capabilities.testing'),
+        t('services.api.capabilities.documentation')
+      ],
+      delay: 0.6
     }
   ];
 
@@ -65,6 +107,7 @@ const ServiceGrid = () => {
               title={service.title}
               description={service.description}
               icon={service.icon}
+              capabilities={service.capabilities}
               delay={service.delay}
             />
           ))}

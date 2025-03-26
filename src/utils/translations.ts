@@ -1,3 +1,4 @@
+
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -55,6 +56,91 @@ const translations = {
       title: 'Ready to transform your business?',
       subtitle: 'Get in touch with our experts today',
       cta: 'Contact Us',
+    },
+    services: {
+      title: 'Our Services',
+      description: 'Comprehensive digital solutions tailored to your specific needs',
+      web: {
+        title: 'Web Development',
+        description: 'Custom websites and web applications built with cutting-edge technologies',
+        capabilities: {
+          responsive: 'Responsive Design',
+          ecommerce: 'E-commerce',
+          cms: 'CMS Integration',
+          spa: 'Single Page Apps'
+        }
+      },
+      crm: {
+        title: 'CRM Solutions',
+        description: 'Customer relationship management systems to streamline your business processes',
+        capabilities: {
+          automation: 'Workflow Automation',
+          analytics: 'Customer Analytics',
+          integration: 'Third-party Integration',
+          custom: 'Custom Dashboards'
+        }
+      },
+      design: {
+        title: 'UI/UX Design',
+        description: 'Beautiful, intuitive interfaces that delight users and drive engagement',
+        capabilities: {
+          ui: 'Interface Design',
+          ux: 'User Experience',
+          branding: 'Brand Identity',
+          prototyping: 'Rapid Prototyping'
+        }
+      },
+      seo: {
+        title: 'SEO Optimization',
+        description: 'Improve your visibility and drive organic traffic to your website',
+        capabilities: {
+          audit: 'Technical Audit',
+          optimization: 'Content Optimization',
+          analytics: 'Performance Analytics',
+          local: 'Local SEO'
+        }
+      },
+      support: {
+        title: 'Technical Support',
+        description: 'Ongoing maintenance and support to keep your systems running smoothly',
+        capabilities: {
+          maintenance: 'Regular Maintenance',
+          hosting: 'Managed Hosting',
+          security: 'Security Updates',
+          updates: 'Feature Updates'
+        }
+      },
+      api: {
+        title: 'API Development',
+        description: 'Connect your systems and services with custom API solutions',
+        capabilities: {
+          integration: 'API Integration',
+          development: 'Custom API Development',
+          testing: 'Performance Testing',
+          documentation: 'API Documentation'
+        }
+      },
+      approach: {
+        title: 'Our Approach',
+        description: 'We follow a proven methodology to ensure successful project delivery and client satisfaction. Our step-by-step approach ensures transparency and alignment throughout the development process.',
+        step1: 'We start with a thorough analysis of your business needs, objectives, and current systems.',
+        step2: 'Our team creates a detailed roadmap with clear milestones and deliverables.',
+        step3: 'We implement solutions using agile methodologies, with regular client feedback and iterations.',
+        step4: 'Post-launch, we provide comprehensive support and continuous improvement strategies.'
+      },
+      benefits: {
+        title: 'Why Choose Us',
+        benefit1: 'Tailored solutions designed specifically for your unique business needs',
+        benefit2: 'Transparent communication and regular updates throughout the project',
+        benefit3: 'Cutting-edge technologies and industry best practices',
+        benefit4: 'Dedicated support team available to address any concerns',
+        benefit5: 'Flexible engagement models to accommodate your budget and timeline'
+      },
+      cta: {
+        title: 'Ready to Elevate Your Digital Presence?',
+        description: 'Schedule a free consultation with our team to discuss your project requirements.',
+        button: 'Submit Your Brief'
+      }
     },
     footer: {
       company: 'Company',
@@ -129,6 +215,91 @@ const translations = {
       subtitle: 'Свяжитесь с нашими экспертами сегодня',
       cta: 'Связаться с нами',
     },
+    services: {
+      title: 'Наши Услуги',
+      description: 'Комплексные цифровые решения, адаптированные под ваши конкретные потребности',
+      web: {
+        title: 'Веб-разработка',
+        description: 'Индивидуальные веб-сайты и веб-приложения, созданные с использованием передовых технологий',
+        capabilities: {
+          responsive: 'Адаптивный дизайн',
+          ecommerce: 'Электронная коммерция',
+          cms: 'Интеграция CMS',
+          spa: 'Одностраничные приложения'
+        }
+      },
+      crm: {
+        title: 'CRM-решения',
+        description: 'Системы управления взаимоотношениями с клиентами для оптимизации бизнес-процессов',
+        capabilities: {
+          automation: 'Автоматизация процессов',
+          analytics: 'Клиентская аналитика',
+          integration: 'Интеграция с сервисами',
+          custom: 'Индивидуальные панели'
+        }
+      },
+      design: {
+        title: 'UI/UX Дизайн',
+        description: 'Красивые, интуитивно понятные интерфейсы, которые привлекают пользователей',
+        capabilities: {
+          ui: 'Дизайн интерфейса',
+          ux: 'Пользовательский опыт',
+          branding: 'Фирменный стиль',
+          prototyping: 'Быстрое прототипирование'
+        }
+      },
+      seo: {
+        title: 'SEO-оптимизация',
+        description: 'Улучшение видимости и привлечение органического трафика на ваш сайт',
+        capabilities: {
+          audit: 'Технический аудит',
+          optimization: 'Оптимизация контента',
+          analytics: 'Аналитика эффективности',
+          local: 'Локальное SEO'
+        }
+      },
+      support: {
+        title: 'Техническая поддержка',
+        description: 'Постоянное обслуживание и поддержка для бесперебойной работы ваших систем',
+        capabilities: {
+          maintenance: 'Регулярное обслуживание',
+          hosting: 'Управляемый хостинг',
+          security: 'Обновления безопасности',
+          updates: 'Обновления функций'
+        }
+      },
+      api: {
+        title: 'Разработка API',
+        description: 'Соединение ваших систем и сервисов с помощью индивидуальных API-решений',
+        capabilities: {
+          integration: 'Интеграция API',
+          development: 'Разработка API',
+          testing: 'Тестирование производительности',
+          documentation: 'Документация API'
+        }
+      },
+      approach: {
+        title: 'Наш подход',
+        description: 'Мы следуем проверенной методологии для обеспечения успешной реализации проекта и удовлетворенности клиентов. Наш пошаговый подход обеспечивает прозрачность и согласованность на протяжении всего процесса разработки.',
+        step1: 'Мы начинаем с тщательного анализа ваших бизнес-потребностей, целей и текущих систем.',
+        step2: 'Наша команда создает детальную дорожную карту с четкими этапами и результатами.',
+        step3: 'Мы реализуем решения, используя гибкие методологии, с регулярной обратной связью от клиентов и итерациями.',
+        step4: 'После запуска мы обеспечиваем комплексную поддержку и стратегии постоянного улучшения.'
+      },
+      benefits: {
+        title: 'Почему выбирают нас',
+        benefit1: 'Индивидуальные решения, разработанные специально для ваших уникальных бизнес-потребностей',
+        benefit2: 'Прозрачное общение и регулярные обновления на протяжении всего проекта',
+        benefit3: 'Передовые технологии и лучшие отраслевые практики',
+        benefit4: 'Выделенная команда поддержки, готовая решить любые проблемы',
+        benefit5: 'Гибкие модели сотрудничества, учитывающие ваш бюджет и сроки'
+      },
+      cta: {
+        title: 'Готовы улучшить свое цифровое присутствие?',
+        description: 'Запланируйте бесплатную консультацию с нашей командой для обсуждения требований к вашему проекту.',
+        button: 'Отправить бриф'
+      }
+    },
     footer: {
       company: 'Компания',
       about: 'О нас',
@@ -201,6 +372,91 @@ const translations = {
       title: 'Jste připraveni transformovat své podnikání?',
       subtitle: 'Kontaktujte naše odborníky ještě dnes',
       cta: 'Kontaktujte nás',
+    },
+    services: {
+      title: 'Naše služby',
+      description: 'Komplexní digitální řešení přizpůsobená vašim konkrétním potřebám',
+      web: {
+        title: 'Vývoj webových aplikací',
+        description: 'Vlastní webové stránky a webové aplikace vytvořené pomocí nejmodernějších technologií',
+        capabilities: {
+          responsive: 'Responzivní design',
+          ecommerce: 'E-commerce',
+          cms: 'Integrace CMS',
+          spa: 'Single Page Apps'
+        }
+      },
+      crm: {
+        title: 'CRM řešení',
+        description: 'Systémy pro řízení vztahů se zákazníky pro zefektivnění vašich obchodních procesů',
+        capabilities: {
+          automation: 'Automatizace procesů',
+          analytics: 'Zákaznická analytika',
+          integration: 'Integrace třetích stran',
+          custom: 'Vlastní dashboardy'
+        }
+      },
+      design: {
+        title: 'UI/UX Design',
+        description: 'Krásná, intuitivní rozhraní, která potěší uživatele a zvýší jejich zapojení',
+        capabilities: {
+          ui: 'Design rozhraní',
+          ux: 'Uživatelská zkušenost',
+          branding: 'Firemní identita',
+          prototyping: 'Rychlé prototypování'
+        }
+      },
+      seo: {
+        title: 'SEO optimalizace',
+        description: 'Zlepšete svou viditelnost a získejte organický provoz na svých webových stránkách',
+        capabilities: {
+          audit: 'Technický audit',
+          optimization: 'Optimalizace obsahu',
+          analytics: 'Analýza výkonu',
+          local: 'Lokální SEO'
+        }
+      },
+      support: {
+        title: 'Technická podpora',
+        description: 'Průběžná údržba a podpora pro bezproblémový chod vašich systémů',
+        capabilities: {
+          maintenance: 'Pravidelná údržba',
+          hosting: 'Spravovaný hosting',
+          security: 'Bezpečnostní aktualizace',
+          updates: 'Aktualizace funkcí'
+        }
+      },
+      api: {
+        title: 'Vývoj API',
+        description: 'Propojte své systémy a služby pomocí vlastních API řešení',
+        capabilities: {
+          integration: 'Integrace API',
+          development: 'Vývoj vlastních API',
+          testing: 'Testování výkonu',
+          documentation: 'Dokumentace API'
+        }
+      },
+      approach: {
+        title: 'Náš přístup',
+        description: 'Používáme osvědčenou metodologii pro zajištění úspěšného dodání projektu a spokojenosti klientů. Náš postupný přístup zajišťuje transparentnost a alignment v průběhu celého vývojového procesu.',
+        step1: 'Začínáme důkladnou analýzou vašich obchodních potřeb, cílů a současných systémů.',
+        step2: 'Náš tým vytváří podrobnou roadmapu s jasnými milníky a dodávkami.',
+        step3: 'Implementujeme řešení pomocí agilních metodik s pravidelnou zpětnou vazbou od klientů a iteracemi.',
+        step4: 'Po spuštění poskytujeme komplexní podporu a strategie kontinuálního zlepšování.'
+      },
+      benefits: {
+        title: 'Proč si vybrat nás',
+        benefit1: 'Řešení na míru navržená speciálně pro vaše jedinečné obchodní potřeby',
+        benefit2: 'Transparentní komunikace a pravidelné aktualizace v průběhu projektu',
+        benefit3: 'Nejmodernější technologie a osvědčené postupy z oboru',
+        benefit4: 'Dedikovaný tým podpory k dispozici pro řešení případných problémů',
+        benefit5: 'Flexibilní modely spolupráce přizpůsobené vašemu rozpočtu a časovému harmonogramu'
+      },
+      cta: {
+        title: 'Připraveni zlepšit svou digitální přítomnost?',
+        description: 'Naplánujte si bezplatnou konzultaci s naším týmem a prodiskutujte požadavky na váš projekt.',
+        button: 'Odeslat váš brief'
+      }
     },
     footer: {
       company: 'Společnost',
