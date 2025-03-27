@@ -1,4 +1,3 @@
-
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -35,6 +34,21 @@ interface HomeTranslations {
     search_placeholder: string;
     no_results: string;
     items: ServiceItem[];
+    web: {
+      title: string;
+    };
+    crm: {
+      title: string;
+    };
+    design: {
+      title: string;
+    };
+    seo: {
+      title: string;
+    };
+    support: {
+      title: string;
+    };
   };
   journey: {
     title: string;
@@ -47,6 +61,11 @@ interface HomeTranslations {
     }
   };
   footer: {
+    services: string;
+    contact: string;
+    privacy: string;
+    terms: string;
+    rights: string;
     about: {
       title: string;
       description: string;
@@ -64,7 +83,6 @@ interface HomeTranslations {
     };
     copyright: string;
   };
-  // Add other sections as needed
 }
 
 interface Translations {
@@ -139,6 +157,21 @@ export const translations: Translations = {
           price: "From $2,500"
         }
       ],
+      web: {
+        title: "Web Development"
+      },
+      crm: {
+        title: "CRM Integration"
+      },
+      design: {
+        title: "UI/UX Design"
+      },
+      seo: {
+        title: "SEO Optimization"
+      },
+      support: {
+        title: "Technical Support"
+      }
     },
     journey: {
       title: "Your Journey With Us",
@@ -151,6 +184,11 @@ export const translations: Translations = {
       }
     },
     footer: {
+      services: "Services",
+      contact: "Contact Us",
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+      rights: "All rights reserved",
       about: {
         title: "About Teko",
         description: "We are a digital agency focused on creating innovative solutions for businesses looking to thrive in the digital era."
@@ -231,11 +269,26 @@ export const translations: Translations = {
         {
           id: 6,
           title: "Интеграция программного обеспечения",
-          description: "Подключение и автоматизация ваших бизнес-систем для повышения эффективности и потока данных.",
+          description: "Подключение и автоматизация ваших биз��ес-систем для повышения эффективности и потока данных.",
           icon: "git-merge",
           price: "От $2,500"
         }
       ],
+      web: {
+        title: "Веб-разработка"
+      },
+      crm: {
+        title: "Интеграция CRM"
+      },
+      design: {
+        title: "UI/UX Дизайн"
+      },
+      seo: {
+        title: "SEO Оптимизация"
+      },
+      support: {
+        title: "Техническая поддержка"
+      }
     },
     journey: {
       title: "Ваш путь с нами",
@@ -248,6 +301,11 @@ export const translations: Translations = {
       }
     },
     footer: {
+      services: "Услуги",
+      contact: "Связаться с нами",
+      privacy: "Политика конфиденциальности",
+      terms: "Условия использования",
+      rights: "Все права защищены",
       about: {
         title: "О Теко",
         description: "Мы - цифровое агентство, ориентированное на создание инновационных решений для бизнеса, стремящегося к процветанию в цифровую эпоху."
@@ -333,6 +391,21 @@ export const translations: Translations = {
           price: "Od $2,500"
         }
       ],
+      web: {
+        title: "Vývoj webových stránek"
+      },
+      crm: {
+        title: "Integrace CRM"
+      },
+      design: {
+        title: "UI/UX Design"
+      },
+      seo: {
+        title: "SEO Optimalizace"
+      },
+      support: {
+        title: "Technická podpora"
+      }
     },
     journey: {
       title: "Vaše cesta s námi",
@@ -345,6 +418,11 @@ export const translations: Translations = {
       }
     },
     footer: {
+      services: "Služby",
+      contact: "Kontaktujte nás",
+      privacy: "Zásady ochrany osobních údajů",
+      terms: "Podmínky služby",
+      rights: "Všechna práva vyhrazena",
       about: {
         title: "O Teko",
         description: "Jsme digitální agentura zaměřená na vytváření inovativních řešení pro podniky, které chtějí prosperovat v digitální éře."

@@ -79,7 +79,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Quick Links - обновлено согласно вашему запросу */}
+          {/* Quick Links */}
           <div>
             <h4 className="text-lg font-display font-bold mb-6">Quick Links</h4>
             <ul className="space-y-3">
@@ -111,7 +111,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info - обновленная контактная информация */}
+          {/* Contact Info - Fixed the object rendering issue */}
           <div>
             <h4 className="text-lg font-display font-bold mb-6">{t('footer.contact')}</h4>
             <ul className="space-y-4">
