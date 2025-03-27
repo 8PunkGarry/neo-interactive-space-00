@@ -1,13 +1,24 @@
+
 import React from 'react';
 import ServiceCard from './ServiceCard';
 import { useLanguage } from '../context/LanguageContext';
-import { Globe, BarChart3, Palette } from 'lucide-react';
+import { Globe, BarChart3, Palette, Search, Headphones, Code, Database, Smartphone, Cloud } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+interface ServiceItem {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  capabilities: string[];
+  delay: number;
+  url: string;
+  isViewAll?: boolean;
+}
 
 const ServiceGrid = ({ limitToThree = false }) => {
   const { t } = useLanguage();
 
-  const services = [
+  const services: ServiceItem[] = [
     {
       title: t('services.web.title'),
       description: t('services.web.description'),
@@ -49,7 +60,7 @@ const ServiceGrid = ({ limitToThree = false }) => {
       isViewAll: true
     });
   } else {
-    const allOtherServices = [
+    const allOtherServices: ServiceItem[] = [
       {
         title: t('services.design.title'),
         description: t('services.design.description'),
