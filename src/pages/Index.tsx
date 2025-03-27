@@ -33,8 +33,12 @@ const Index = () => {
     <div className="min-h-screen bg-teko-black">
       <Navbar />
       <Hero />
-      <UserJourney />
-      <ServiceGrid limitToThree={true} />
+      <div id="journey">
+        <UserJourney />
+      </div>
+      <div id="services">
+        <ServiceGrid limitToThree={true} />
+      </div>
       <Footer />
     </div>
   );

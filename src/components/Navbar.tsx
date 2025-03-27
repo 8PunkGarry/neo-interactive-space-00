@@ -37,7 +37,7 @@ const Navbar = () => {
   `;
 
   const navLinks = [
-    { to: '/', label: t('navbar.home') },
+    // Убрали пункт "home" из навигации, оставив его только при клике на лого
     { to: '/services', label: t('navbar.services') },
     { to: '/about', label: t('navbar.about') },
     { to: '/brief', label: t('navbar.brief') },

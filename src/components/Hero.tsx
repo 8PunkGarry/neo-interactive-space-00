@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedLogo from './AnimatedLogo';
+import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -145,7 +146,7 @@ const Hero = () => {
               
               <a 
                 href="#services" 
-                className="group relative overflow-hidden rounded-lg bg-transparent border border-teko-purple/50 px-6 py-3 text-white text-lg font-medium transition-all duration-500 hover:border-teko-purple"
+                className="group relative overflow-hidden rounded-lg bg-transparent border border-teko-purple/50 px-6 py-3 text-white text-lg font-medium transition-all duration-500 hover:border-teko-purple hover:bg-teko-purple/10"
               >
                 <span className="relative z-10">{t('hero.secondary_cta')}</span>
                 <span className="absolute inset-0 bg-teko-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
@@ -153,17 +154,14 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Minimal Scroll Indicator */}
+          {/* Улучшенная стрелка прокрутки */}
           <div 
             className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 transition-opacity duration-1000 ${
               isVisible ? 'opacity-70' : 'opacity-0'
             }`}
             style={{ transitionDelay: '1s', animation: 'bounce 2s infinite ease-in-out' }}
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" 
-                 className="text-teko-purple hover:opacity-100 transition-opacity duration-300">
-              <path d="M12 5V19M12 19L18 13M12 19L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <ArrowDown width="28" height="28" className="text-teko-purple animate-bounce hover:opacity-100 transition-opacity duration-300" />
           </div>
         </div>
       </div>

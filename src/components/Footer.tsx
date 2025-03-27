@@ -2,7 +2,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, Phone, Github, Twitter, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Send, Instagram, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -31,25 +31,18 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="#" 
+                href="https://t.me/teko.sup" 
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-teko-white/70 hover:text-teko-purple hover:border-teko-purple transition-colors duration-300"
-                aria-label="Twitter"
+                aria-label="Telegram"
               >
-                <Twitter size={18} />
+                <Send size={18} />
               </a>
               <a 
-                href="#" 
+                href="https://instagram.com/teko.sup" 
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-teko-white/70 hover:text-teko-purple hover:border-teko-purple transition-colors duration-300"
-                aria-label="LinkedIn"
+                aria-label="Instagram"
               >
-                <Linkedin size={18} />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-teko-white/70 hover:text-teko-purple hover:border-teko-purple transition-colors duration-300"
-                aria-label="GitHub"
-              >
-                <Github size={18} />
+                <Instagram size={18} />
               </a>
             </div>
           </div>
@@ -86,23 +79,23 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links - обновлено согласно вашему запросу */}
           <div>
             <h4 className="text-lg font-display font-bold mb-6">Quick Links</h4>
             <ul className="space-y-3">
+              <li>
+                <Link to="/services" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
+                  {t('navbar.services')}
+                </Link>
+              </li>
               <li>
                 <Link to="/about" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
                   {t('navbar.about')}
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
-                  {t('navbar.portfolio')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
-                  {t('navbar.blog')}
+                <Link to="/brief" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
+                  {t('navbar.brief')}
                 </Link>
               </li>
               <li>
@@ -118,14 +111,14 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info - обновленная контактная информация */}
           <div>
             <h4 className="text-lg font-display font-bold mb-6">{t('footer.contact')}</h4>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="text-teko-purple mr-3 mt-1 flex-shrink-0" size={18} />
                 <span className="text-teko-white/70">
-                  123 Tech Street, Digital City, 10001
+                  Прага, Чешская Республика
                 </span>
               </li>
               <li className="flex items-start">
@@ -135,9 +128,9 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-start">
-                <Phone className="text-teko-purple mr-3 mt-1 flex-shrink-0" size={18} />
-                <a href="tel:+1234567890" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
-                  +1 (234) 567-890
+                <MessageCircle className="text-teko-purple mr-3 mt-1 flex-shrink-0" size={18} />
+                <a href="https://t.me/teko.sup_bot" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
+                  @teko.sup_bot
                 </a>
               </li>
             </ul>
