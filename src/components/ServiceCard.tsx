@@ -27,7 +27,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
   return (
     <div 
-      className="animate-on-scroll" 
+      className="animate-on-scroll relative z-50" 
       style={{ transitionDelay: `${delay}s` }}
     >
       <div 
