@@ -148,7 +148,7 @@ const Hero = () => {
                 href="#services" 
                 className="group relative overflow-hidden rounded-lg bg-transparent border border-teko-purple/50 px-6 py-3 text-white text-lg font-medium transition-all duration-500 hover:border-teko-purple hover:bg-teko-purple/10"
               >
-                <span className="relative z-10">Our Services</span>
+                <span className="relative z-10">{t('hero.secondary_cta')}</span>
                 <span className="absolute inset-0 bg-teko-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
               </a>
             </div>
@@ -156,31 +156,33 @@ const Hero = () => {
           
           {/* Improved down arrow with slower animation */}
           <div 
-            className={`absolute bottom-6 left-1/2 transform -translate-x-1/2 transition-opacity duration-1000 ${
+            className={`absolute bottom-12 left-1/2 transform -translate-x-1/2 transition-opacity duration-1000 ${
               isVisible ? 'opacity-70' : 'opacity-0'
             }`}
             style={{ 
               transitionDelay: '1s', 
-              animation: 'arrow-bounce 3s infinite ease-in-out' 
+              animation: 'arrow-bounce 4s infinite ease-in-out' 
             }}
           >
             <ArrowDown width="28" height="28" className="text-teko-purple hover:opacity-100 transition-opacity duration-300" />
           </div>
 
-          {/* Add custom animation for the arrow */}
-          <style jsx>{`
-            @keyframes arrow-bounce {
-              0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
+          {/* Add custom animation keyframes for the arrow */}
+          <style dangerouslySetInnerHTML={{
+            __html: `
+              @keyframes arrow-bounce {
+                0%, 20%, 50%, 80%, 100% {
+                  transform: translateY(0);
+                }
+                40% {
+                  transform: translateY(-10px);
+                }
+                60% {
+                  transform: translateY(-5px);
+                }
               }
-              40% {
-                transform: translateY(-10px);
-              }
-              60% {
-                transform: translateY(-5px);
-              }
-            }
-          `}</style>
+            `
+          }} />
         </div>
       </div>
     </section>

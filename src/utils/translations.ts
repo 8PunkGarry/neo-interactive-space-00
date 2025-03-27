@@ -1,4 +1,5 @@
-import { AuthTranslations } from './authTranslations';
+
+import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
 
