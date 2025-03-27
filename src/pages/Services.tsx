@@ -1,7 +1,9 @@
-import React from 'react';
+
+import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ServiceGrid from '../components/ServiceGrid';
+import ServiceSearch from '../components/ServiceSearch';
 import { useLanguage } from '../context/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,6 +11,7 @@ import { Server, Code, Globe, Database, Smartphone, Cloud, BarChart3, Shield, Se
 
 const Services = () => {
   const { t } = useLanguage();
+  const [searchTerm, setSearchTerm] = useState('');
   
   // Service details with more content
   const serviceDetails = [
@@ -130,6 +133,19 @@ const Services = () => {
       ]
     }
   ];
+
+  // Filter services based on search term
+  const filteredServices = useMemo(() => {
+    if (!searchTerm) return serviceDetails;
+    
+    const term = searchTerm.toLowerCase();
+    return serviceDetails.filter(service => 
+      service.title.toLowerCase().includes(term) || 
+      service.description.toLowerCase().includes(term) ||
+      service.technologies.some(tech => tech.toLowerCase().includes(term)) ||
+      service.capabilities.some(cap => cap.name.toLowerCase().includes(term))
+    );
+  }, [searchTerm, serviceDetails]);
   
   return (
     <div className="min-h-screen bg-teko-black">
@@ -151,14 +167,16 @@ const Services = () => {
             <ServiceGrid limitToThree={false} />
           </div>
           
-          {/* Detailed services section */}
+          {/* Search bar for detailed services */}
           <div className="mt-32 relative z-40">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 text-center animate-on-scroll">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-center animate-on-scroll">
               {t('services.detailedServicesTitle')}
             </h2>
             
+            <ServiceSearch onSearch={setSearchTerm} />
+            
             <div className="space-y-24">
-              {serviceDetails.map((service, index) => (
+              {filteredServices.map((service, index) => (
                 <div 
                   key={service.id} 
                   id={service.id}
@@ -217,6 +235,14 @@ const Services = () => {
                   </div>
                 </div>
               ))}
+              
+              {filteredServices.length === 0 && (
+                <div className="text-center py-12">
+                  <p className="text-teko-white/70 text-lg">
+                    {t('services.search.noResults')}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
           
