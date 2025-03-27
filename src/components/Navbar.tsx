@@ -37,10 +37,10 @@ const Navbar = () => {
   `;
 
   const navLinks = [
-    // Убрали пункт "home" из навигации, оставив его только при клике на лого
+    // Reordered navigation items as requested
     { to: '/services', label: t('navbar.services') },
-    { to: '/about', label: t('navbar.about') },
     { to: '/brief', label: t('navbar.brief') },
+    { to: '/about', label: t('navbar.about') },
   ];
 
   return (
