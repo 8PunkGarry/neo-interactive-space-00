@@ -147,6 +147,7 @@ const Services = () => {
             </p>
           </div>
           
+          {/* Add the ServiceGrid to show all services at the top */}
           <ServiceGrid limitToThree={false} />
           
           {/* Detailed services section */}
