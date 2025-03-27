@@ -1,6 +1,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { translations, SupportedLanguage } from '../utils/translations';
+import { authTranslations } from '../utils/authTranslations';
 
 interface LanguageContextType {
   language: SupportedLanguage;
@@ -16,6 +17,19 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const t = (key: string): string => {
     // Split the key by dots to access nested properties
     const keys = key.split('.');
+    
+    // Check if we're accessing auth translations
+    if (keys[0] === 'auth' && keys.length > 1) {
+      const authKey = keys[1];
+      if (authTranslations[language] && authTranslations[language][authKey] !== undefined) {
+        return authTranslations[language][authKey];
+      } else if (language !== 'en' && authTranslations.en && authTranslations.en[authKey] !== undefined) {
+        // Fallback to English
+        return authTranslations.en[authKey];
+      }
+    }
+    
+    // Try regular translations
     let value: any = translations[language];
     
     // Try to find the translation in the current language
