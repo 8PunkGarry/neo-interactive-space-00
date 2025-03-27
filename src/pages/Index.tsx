@@ -34,7 +34,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <UserJourney />
-      <ServiceGrid />
+      <ServiceGrid limitToThree={true} />
       <Footer />
     </div>
   );

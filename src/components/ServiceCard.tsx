@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Badge } from './ui/badge';
+import { Link } from 'react-router-dom';
 
 interface ServiceCardProps {
   title: string;
@@ -10,6 +11,7 @@ interface ServiceCardProps {
   capabilities?: string[];
   delay?: number;
   url?: string;
+  isViewAll?: boolean;
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ 
@@ -18,7 +20,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   icon, 
   capabilities = [], 
   delay = 0,
-  url = "#services" 
+  url = "#services",
+  isViewAll = false
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -29,11 +32,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     >
       <div 
         className={`relative group overflow-hidden rounded-xl transition-all duration-500 h-full 
-          ${isHovered ? 'bg-gradient-to-br from-teko-purple/20 to-transparent scale-[1.02] z-10' : 'bg-white/5 backdrop-blur-sm'}`}
+          ${isHovered ? 'bg-gradient-to-br from-teko-purple/20 to-transparent scale-[1.02] z-10' : 'bg-white/5 backdrop-blur-sm'}
+          ${isViewAll ? 'border-2 border-dashed border-teko-purple/30' : 'border border-white/10'}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="p-6 md:p-8 border border-white/10 rounded-xl h-full flex flex-col">
+        <div className="p-6 md:p-8 rounded-xl h-full flex flex-col">
           <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-all duration-500 
             ${isHovered ? 'bg-teko-purple text-white' : 'bg-white/10 text-teko-purple-light'}`}>
             {icon}
@@ -58,15 +62,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             </div>
           )}
           
-          <a 
-            href={url}
+          <Link 
+            to={url}
             className={`inline-flex items-center text-base font-medium transition-all duration-300 
               ${isHovered ? 'text-teko-purple-light' : 'text-teko-white/80'}`}
           >
-            Learn more 
+            {isViewAll ? 'View all services' : 'Learn more'}
             <ArrowRight className={`ml-2 transition-transform duration-300 
               ${isHovered ? 'transform translate-x-1' : ''}`} size={16} />
-          </a>
+          </Link>
         </div>
         
         {/* Border Glow Effect */}
