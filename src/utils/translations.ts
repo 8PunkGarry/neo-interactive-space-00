@@ -1,4 +1,7 @@
+
 import { z } from 'zod';
+
+export type SupportedLanguage = 'en' | 'ru' | 'cs';
 
 export const translations = {
   en: {
