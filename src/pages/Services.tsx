@@ -136,7 +136,7 @@ const Services = () => {
     <div className="min-h-screen bg-teko-black">
       <Navbar />
       
-      <main className="pt-32 pb-20">
+      <main className="pt-32 pb-20 relative z-10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-on-scroll">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
@@ -147,11 +147,13 @@ const Services = () => {
             </p>
           </div>
           
-          {/* Add the ServiceGrid to show all services at the top */}
-          <ServiceGrid limitToThree={false} />
+          {/* Add the ServiceGrid to show all services at the top with higher z-index */}
+          <div className="relative z-20">
+            <ServiceGrid limitToThree={false} />
+          </div>
           
           {/* Detailed services section */}
-          <div className="mt-32">
+          <div className="mt-32 relative z-20">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 text-center animate-on-scroll">
               {t('services.detailedServicesTitle')}
             </h2>
@@ -164,7 +166,7 @@ const Services = () => {
                   className="scroll-mt-32 animate-on-scroll"
                   style={{ transitionDelay: `${index * 0.1}s` }}
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10">
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 relative z-10">
                     <div className="flex flex-col md:flex-row gap-8">
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
@@ -219,7 +221,7 @@ const Services = () => {
             </div>
           </div>
           
-          <div className="mt-20 max-w-5xl mx-auto">
+          <div className="mt-20 max-w-5xl mx-auto relative z-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
               <div className="animate-on-scroll">
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
