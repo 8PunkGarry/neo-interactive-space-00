@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
@@ -27,7 +26,7 @@ const Footer = () => {
               teko.sup
             </Link>
             <p className="text-teko-white/70 mb-6">
-              Modern websites and integrations for your business. We create digital solutions that help your business grow.
+              {t('footer.about.short_description')}
             </p>
             <div className="flex space-x-4">
               <a 

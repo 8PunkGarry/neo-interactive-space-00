@@ -1,3 +1,4 @@
+
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -431,7 +432,8 @@ export const translations: Translations = {
       address: "Prague, Czech Republic",
       about: {
         title: "About Teko",
-        description: "We are a digital agency focused on creating innovative solutions for businesses looking to thrive in the digital era."
+        description: "We are a digital agency focused on creating innovative solutions for businesses looking to thrive in the digital era.",
+        short_description: "Modern websites and integrations for your business. We create digital solutions that help your business grow."
       },
       links: {
         title: "Quick Links",
@@ -665,7 +667,8 @@ export const translations: Translations = {
       address: "Прага, Чешская Республика",
       about: {
         title: "О Теко",
-        description: "Мы - цифровое агентство, ориентированное на создание инновационных решений для бизнеса, стремящегося к процветанию в цифровую эпоху."
+        description: "Мы - цифровое агентство, ориентированное на создание инновационных решений для бизнеса, стремящегося к процветанию в цифровую эпоху.",
+        short_description: "Современные веб-сайты и интеграции для вашего бизнеса. Мы создаем цифровые решения, которые помогают вашему бизнесу расти."
       },
       links: {
         title: "Быстрые ссылки",
@@ -899,7 +902,8 @@ export const translations: Translations = {
       address: "Praha, Česká republika",
       about: {
         title: "O Teko",
-        description: "Jsme digitální agentura zaměřená na vytváření inovativních řešení pro podniky, které chtějí prosperovat v digitální éře."
+        description: "Jsme digitální agentura zaměřená na vytváření inovativních řešení pro podniky, které chtějí prosperovat v digitální éře.",
+        short_description: "Moderní webové stránky a integrace pro vaše podnikání. Vytváříme digitální řešení, která pomáhají vašemu podnikání růst."
       },
       links: {
         title: "Rychlé odkazy",
