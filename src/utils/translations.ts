@@ -1,4 +1,3 @@
-
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -91,7 +90,17 @@ interface HomeTranslations {
       design: string;
       development: string;
       launch: string;
-    }
+    };
+    brief: {
+      title: string;
+      description: string;
+      button: string;
+    };
+    contact: {
+      title: string;
+      description: string;
+      button: string;
+    };
   };
   footer: {
     services: string;
@@ -201,45 +210,55 @@ export const translations: Translations = {
       }
     },
     journey: {
-      title: "Your Journey With Us",
-      subtitle: "How we transform your ideas into powerful digital solutions",
+      title: "Your Digital Transformation Journey",
+      subtitle: "We transform your ideas into effective digital solutions that change the game",
       step1: {
-        title: "Discovery & Analysis",
-        description: "We thoroughly analyze your business needs, understand your target audience, and define clear project objectives."
+        title: "Analysis & Research",
+        description: "We analyze your business in detail, identify target audience, and formulate key objectives for maximum impact."
       },
       step2: {
         title: "Strategic Planning",
-        description: "Creating a comprehensive project roadmap with timelines, resource allocation, and technical specifications."
+        description: "We develop a detailed roadmap with precise timelines, budget, and technical requirements for your project."
       },
       step3: {
         title: "UI/UX Design",
-        description: "Designing intuitive interfaces and user experiences through wireframes, mockups, and interactive prototypes."
+        description: "We create intuitive and attractive interfaces that surprise users and increase conversion rates."
       },
       step4: {
         title: "Development",
-        description: "Building your solution with clean, efficient code using the latest technologies and best practices."
+        description: "We turn concepts into reality using modern technologies and best programming practices for reliable results."
       },
       step5: {
-        title: "Quality Assurance",
-        description: "Rigorous testing across multiple devices and environments to ensure a flawless user experience."
+        title: "Quality Control",
+        description: "We conduct comprehensive testing on various devices, ensuring flawless operation and high performance."
       },
       step6: {
         title: "Deployment",
-        description: "Carefully launching your solution to production with continuous monitoring and performance optimization."
+        description: "We launch your product in a working environment with continuous monitoring and optimization for stable operation."
       },
       step7: {
         title: "Training & Support",
-        description: "Providing comprehensive documentation and training to ensure your team can manage the solution effectively."
+        description: "We provide detailed documentation and training for your team to efficiently manage the new solution."
       },
       step8: {
-        title: "Project Completion",
-        description: "Celebrating the successful delivery of your project and planning for future growth and enhancements."
+        title: "Successful Completion",
+        description: "We celebrate the launch of your successful project and plan further improvements for your business growth."
       },
       steps: {
         research: "Research & Strategy",
         design: "Design & Prototyping",
         development: "Development & Testing",
         launch: "Launch & Support"
+      },
+      brief: {
+        title: "Fill Out Project Brief",
+        description: "Tell us more about your project — describe your tasks, goals, and expected results. We will study your needs and contact you to discuss them.",
+        button: "Fill Out Brief"
+      },
+      contact: {
+        title: "Contact Us Directly",
+        description: "Have questions or want to discuss your project in person? Our team is ready to listen to your ideas and offer the optimal solution for your business.",
+        button: "Contact Us"
       }
     },
     footer: {
@@ -344,45 +363,55 @@ export const translations: Translations = {
       }
     },
     journey: {
-      title: "Ваш путь с нами",
-      subtitle: "Как мы превращаем ваши идеи в мощные цифровые решения",
+      title: "Ваш путь к цифровому преображению",
+      subtitle: "Мы превращаем ваши идеи в эффективные цифровые решения, которые меняют правила игры",
       step1: {
-        title: "Изучение и анализ",
-        description: "Мы тщательно анализируем потребности вашего бизнеса, понимаем вашу целевую аудиторию и определяем четкие цели проекта."
+        title: "Анализ и исследование",
+        description: "Мы детально анализируем ваш бизнес, определяем целевую аудиторию и формулируем ключевые цели для максимального эффекта."
       },
       step2: {
         title: "Стратегическое планирование",
-        description: "Создание комплексной дорожной карты проекта с графиками, распределением ресурсов и техническими спецификациями."
+        description: "Разрабатываем подробную дорожную карту с точными сроками, бюджетом и техническими требованиями для вашего проекта."
       },
       step3: {
-        title: "UI/UX Дизайн",
-        description: "Разработка интуитивно понятных интерфейсов и пользовательского опыта через каркасы, макеты и интерактивные прототипы."
+        title: "UI/UX дизайн",
+        description: "Создаем интуитивно понятные и привлекательные интерфейсы, которые удивляют пользователей и повышают конверсию."
       },
       step4: {
         title: "Разработка",
-        description: "Создание вашего решения с чистым, эффективным кодом с использованием новейших технологий и лучших практик."
+        description: "Превращаем концепцию в реальность, используя современные технологии и лучшие практики программирования для надежного результата."
       },
       step5: {
         title: "Контроль качества",
-        description: "Тщательное тестирование на различных устройствах и в различных средах для обеспечения безупречного пользовательского опыта."
+        description: "Проводим всестороннее тестирование на различных устройствах, гарантируя безупречную работу и высокую производительность."
       },
       step6: {
         title: "Развертывание",
-        description: "Тщательный запуск вашего решения в производство с постоянным мониторингом и оптимизацией производительности."
+        description: "Запускаем ваш продукт в рабочую среду с непрерывным мониторингом и оптимизацией для стабильной работы."
       },
       step7: {
         title: "Обучение и поддержка",
-        description: "Предоставление полной документации и обучения, чтобы гарантировать, что ваша команда может эффективно управлять решением."
+        description: "Предоставляем подробную документацию и обучение вашей команды для эффективного управления новым решением."
       },
       step8: {
-        title: "Завершение проекта",
-        description: "Празднование успешной реализации вашего проекта и планирование будущего роста и улучшений."
+        title: "Успешное завершение",
+        description: "Празднуем запуск вашего успешного проекта и планируем дальнейшие улучшения для роста вашего бизнеса."
       },
       steps: {
         research: "Исследование и стратегия",
         design: "Дизайн и прототипирование",
         development: "Разработка и тестирование",
         launch: "Запуск и поддержка"
+      },
+      brief: {
+        title: "Заполните бриф проекта",
+        description: "Расскажите о вашем проекте подробнее — опишите задачи, цели и ожидаемые результаты. Мы изучим ваши потребности и свяжемся для обсуждения.",
+        button: "Заполнить бриф"
+      },
+      contact: {
+        title: "Cвяжитесь с нами напрямую",
+        description: "Остались вопросы или хотите обсудить проект лично? Наша команда готова выслушать ваши идеи и предложить оптимальное решение для вашего бизнеса.",
+        button: "Связаться с нами"
       }
     },
     footer: {
@@ -487,45 +516,55 @@ export const translations: Translations = {
       }
     },
     journey: {
-      title: "Vaše cesta s námi",
-      subtitle: "Jak přeměňujeme vaše nápady na výkonná digitální řešení",
+      title: "Vaše cesta k digitální transformaci",
+      subtitle: "Přeměňujeme vaše nápady na efektivní digitální řešení, která mění pravidla hry",
       step1: {
-        title: "Objevování a analýza",
-        description: "Důkladně analyzujeme potřeby vašeho podnikání, chápeme vaše cílové publikum a definujeme jasné cíle projektu."
+        title: "Analýza a výzkum",
+        description: "Podrobně analyzujeme váš podnik, identifikujeme cílovou skupinu a formulujeme klíčové cíle pro maximální dopad."
       },
       step2: {
         title: "Strategické plánování",
-        description: "Vytváření komplexního plánu projektu s časovými osami, alokací zdrojů a technickými specifikacemi."
+        description: "Vytváříme podrobný plán s přesnými termíny, rozpočtem a technickými požadavky pro váš projekt."
       },
       step3: {
-        title: "UI/UX Design",
-        description: "Navrhování intuitivních rozhraní a uživatelských zkušeností prostřednictvím drátěných modelů, maket a interaktivních prototypů."
+        title: "UI/UX design",
+        description: "Vytváříme intuitivní a atraktivní rozhraní, která překvapují uživatele a zvyšují konverzi."
       },
       step4: {
         title: "Vývoj",
-        description: "Budování vašeho řešení s čistým, efektivním kódem pomocí nejnovějších technologií a osvědčených postupů."
+        description: "Přeměňujeme koncept v realitu pomocí moderních technologií a nejlepších programátorských postupů pro spolehlivé výsledky."
       },
       step5: {
-        title: "Zajištění kvality",
-        description: "Důkladné testování na více zařízeních a v různých prostředích pro zajištění bezchybného uživatelského zážitku."
+        title: "Kontrola kvality",
+        description: "Provádíme komplexní testování na různých zařízeních, zajišťujeme bezchybný provoz a vysoký výkon."
       },
       step6: {
         title: "Nasazení",
-        description: "Pečlivé spuštění vašeho řešení do produkce s nepřetržitým monitorováním a optimalizací výkonu."
+        description: "Spouštíme váš produkt v pracovním prostředí s nepřetržitým sledováním a optimalizací pro stabilní provoz."
       },
       step7: {
         title: "Školení a podpora",
-        description: "Poskytování komplexní dokumentace a školení, aby váš tým mohl efektivně spravovat řešení."
+        description: "Poskytujeme podrobnou dokumentaci a školení vašeho týmu pro efektivní správu nového řešení."
       },
       step8: {
-        title: "Dokončení projektu",
-        description: "Oslavujeme úspěšné dodání vašeho projektu a plánujeme budoucí růst a vylepšení."
+        title: "Úspěšné dokončení",
+        description: "Slavíme spuštění vašeho úspěšného projektu a plánujeme další vylepšení pro růst vašeho podnikání."
       },
       steps: {
         research: "Výzkum a strategie",
         design: "Design a prototypování",
         development: "Vývoj a testování",
         launch: "Spuštění a podpora"
+      },
+      brief: {
+        title: "Vyplňte projektový brief",
+        description: "Řekněte nám více o vašem projektu — popište své úkoly, cíle a očekávané výsledky. Prostudujeme vaše potřeby a kontaktujeme vás k diskusi.",
+        button: "Vyplnit brief"
+      },
+      contact: {
+        title: "Kontaktujte nás přímo",
+        description: "Máte otázky nebo chcete osobně projednat váš projekt? Náš tým je připraven vyslechnout vaše nápady a nabídnout optimální řešení pro vaše podnikání.",
+        button: "Kontaktujte nás"
       }
     },
     footer: {

@@ -42,53 +42,53 @@ const UserJourney = () => {
     setHoveredCard(null);
   };
 
-  // Journey steps with improved text
+  // Journey steps using translations
   const journeySteps = [
     { 
-      title: "Анализ и исследование", 
-      description: "Мы детально анализируем ваш бизнес, определяем целевую аудиторию и формулируем ключевые цели для максимального эффекта.",
+      title: t('journey.step1.title'), 
+      description: t('journey.step1.description'),
       icon: <Lightbulb size={22} />,
       delay: 0.1
     },
     { 
-      title: "Стратегическое планирование", 
-      description: "Разрабатываем подробную дорожную карту с точными сроками, бюджетом и техническими требованиями для вашего проекта.",
+      title: t('journey.step2.title'), 
+      description: t('journey.step2.description'),
       icon: <Settings size={22} />,
       delay: 0.2
     },
     { 
-      title: "UI/UX дизайн", 
-      description: "Создаем интуитивно понятные и привлекательные интерфейсы, которые удивляют пользователей и повышают конверсию.",
+      title: t('journey.step3.title'), 
+      description: t('journey.step3.description'),
       icon: <Star size={22} />,
       delay: 0.3
     },
     { 
-      title: "Разработка", 
-      description: "Превращаем концепцию в реальность, используя современные технологии и лучшие практики программирования для надежного результата.",
+      title: t('journey.step4.title'), 
+      description: t('journey.step4.description'),
       icon: <Code size={22} />,
       delay: 0.4
     },
     { 
-      title: "Контроль качества", 
-      description: "Проводим всестороннее тестирование на различных устройствах, гарантируя безупречную работу и высокую производительность.",
+      title: t('journey.step5.title'), 
+      description: t('journey.step5.description'),
       icon: <CheckCircle size={22} />,
       delay: 0.5
     },
     { 
-      title: "Развертывание", 
-      description: "Запускаем ваш продукт в рабочую среду с непрерывным мониторингом и оптимизацией для стабильной работы.",
+      title: t('journey.step6.title'), 
+      description: t('journey.step6.description'),
       icon: <Rocket size={22} />,
       delay: 0.6
     },
     { 
-      title: "Обучение и поддержка", 
-      description: "Предоставляем подробную документацию и обучение вашей команды для эффективного управления новым решением.",
+      title: t('journey.step7.title'), 
+      description: t('journey.step7.description'),
       icon: <Users size={22} />,
       delay: 0.7
     },
     { 
-      title: "Успешное завершение", 
-      description: "Празднуем запуск вашего успешного проекта и планируем дальнейшие улучшения для роста вашего бизнеса.",
+      title: t('journey.step8.title'), 
+      description: t('journey.step8.description'),
       icon: <PartyPopper size={22} />,
       delay: 0.8,
       celebration: true
@@ -124,10 +124,10 @@ const UserJourney = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 animate-on-scroll">
-            Ваш путь к цифровому преображению
+            {t('journey.title')}
           </h2>
           <p className="text-lg md:text-xl text-teko-white/80 max-w-3xl mx-auto animate-on-scroll" style={{ transitionDelay: '0.1s' }}>
-            Мы превращаем ваши идеи в эффективные цифровые решения, которые меняют правила игры
+            {t('journey.subtitle')}
           </p>
         </div>
 
@@ -218,10 +218,10 @@ const UserJourney = () => {
               </div>
               
               <h3 className="text-xl font-display font-bold mb-2">
-                Заполните бриф проекта
+                {t('journey.brief.title') || safeTranslation('journey.brief.title', 'Fill Out Project Brief')}
               </h3>
               <p className="text-teko-white/70 text-sm mb-6">
-                Расскажите о вашем проекте подробнее — опишите задачи, цели и ожидаемые результаты. Мы изучим ваши потребности и свяжемся для обсуждения.
+                {t('journey.brief.description') || safeTranslation('journey.brief.description', 'Tell us more about your project — describe your tasks, goals, and expected results. We will study your needs and contact you to discuss them.')}
               </p>
               
               <div className="mt-auto pt-4">
@@ -233,7 +233,7 @@ const UserJourney = () => {
                       : 'bg-white/10 text-teko-white/80 hover:bg-white/20'
                   }`}
                 >
-                  Заполнить бриф
+                  {t('journey.brief.button') || safeTranslation('journey.brief.button', 'Fill Out Brief')}
                   <ArrowRight className="transition-transform duration-300 transform group-hover:translate-x-1" size={16} />
                 </Link>
               </div>
@@ -264,10 +264,10 @@ const UserJourney = () => {
               </div>
               
               <h3 className="text-xl font-display font-bold mb-2">
-                Cвяжитесь с нами напрямую
+                {t('journey.contact.title') || safeTranslation('journey.contact.title', 'Contact Us Directly')}
               </h3>
               <p className="text-teko-white/70 text-sm mb-6">
-                Остались вопросы или хотите обсудить проект лично? Наша команда готова выслушать ваши идеи и предложить оптимальное решение для вашего бизнеса.
+                {t('journey.contact.description') || safeTranslation('journey.contact.description', 'Have questions or want to discuss your project in person? Our team is ready to listen to your ideas and offer the optimal solution for your business.')}
               </p>
               
               <div className="mt-auto pt-4">
@@ -279,7 +279,7 @@ const UserJourney = () => {
                       : 'bg-white/10 text-teko-white/80 hover:bg-white/20'
                   }`}
                 >
-                  Связаться с нами
+                  {t('journey.contact.button') || safeTranslation('journey.contact.button', 'Contact Us')}
                   <ArrowRight className="transition-transform duration-300 transform group-hover:translate-x-1" size={16} />
                 </Link>
               </div>
