@@ -36,8 +36,8 @@ const Navbar = () => {
     ${scrolled ? 'backdrop-blur-lg bg-teko-black/80 py-3 shadow-lg' : 'py-5'}
   `;
 
+  // Reordered navigation items as requested: services, brief, about
   const navLinks = [
-    // Reordered navigation items as requested
     { to: '/services', label: t('navbar.services') },
     { to: '/brief', label: t('navbar.brief') },
     { to: '/about', label: t('navbar.about') },
@@ -64,10 +64,10 @@ const Navbar = () => {
             </Link>
           ))}
           
-          <div className="flex items-center ml-4 gap-2">
-            <div className="border-r border-teko-purple/20 h-8 mx-1"></div>
-            <LanguageSwitcher />
+          <div className="flex items-center ml-auto gap-2">
             <UserMenu />
+            <div className="border-l border-teko-purple/20 h-8 mx-1"></div>
+            <LanguageSwitcher />
           </div>
         </div>
 
