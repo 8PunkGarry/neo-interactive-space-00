@@ -78,7 +78,6 @@ interface HomeTranslations {
     };
     copyright: string;
   };
-  location: string;
 }
 
 interface Translations {
@@ -195,8 +194,7 @@ export const translations: Translations = {
         terms: "Terms of Service"
       },
       copyright: "© 2023 Teko. All rights reserved."
-    },
-    location: "Prague, Czech Republic"
+    }
   },
   ru: {
     hero: {
@@ -260,7 +258,7 @@ export const translations: Translations = {
         {
           id: 6,
           title: "Интеграция программного обеспечения",
-          description: "Подключение и автоматизация ваших бизнес систем для повышения эффективности и потока данных.",
+          description: "Подключение и автоматизация ваших биз��ес-систем для повышения эффективности и потока данных.",
           icon: "git-merge",
           price: "От $2,500"
         }
@@ -307,8 +305,7 @@ export const translations: Translations = {
         terms: "Условия использования"
       },
       copyright: "© 2023 Teko. Все права защищены."
-    },
-    location: "Прага, Чешская Республика"
+    }
   },
   cs: {
     hero: {
@@ -419,7 +416,6 @@ export const translations: Translations = {
         terms: "Podmínky služby"
       },
       copyright: "© 2023 Teko. Všechna práva vyhrazena."
-    },
-    location: "Praha, Česká republika"
+    }
   }
 };

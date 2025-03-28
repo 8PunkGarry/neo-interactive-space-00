@@ -64,7 +64,7 @@ const Hero = () => {
           </svg>
         </div>
         
-        {/* Smaller diamonds with animation */}
+        {/* Smaller diamonds without glow */}
         {[
           { top: '15%', left: '15%', delay: '0.2s', size: 25, duration: '7s' },
           { top: '35%', left: '10%', delay: '0.4s', size: 18, duration: '9s' },
@@ -179,30 +179,6 @@ const Hero = () => {
                 }
                 60% {
                   transform: translateY(-5px);
-                }
-              }
-
-              @keyframes float {
-                0% {
-                  transform: translateY(0) rotate(0deg);
-                }
-                50% {
-                  transform: translateY(-15px) rotate(5deg);
-                }
-                100% {
-                  transform: translateY(0) rotate(0deg);
-                }
-              }
-              
-              @keyframes float-alt {
-                0% {
-                  transform: translateY(0) rotate(0deg);
-                }
-                50% {
-                  transform: translateY(15px) rotate(-3deg);
-                }
-                100% {
-                  transform: translateY(0) rotate(0deg);
                 }
               }
             `
