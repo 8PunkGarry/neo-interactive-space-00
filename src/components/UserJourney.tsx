@@ -147,7 +147,7 @@ const UserJourney = () => {
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/4 lg:basis-1/4">
                   <div 
                     className={`relative overflow-hidden rounded-xl transition-all duration-700 backdrop-blur-sm border border-white/10 h-full 
-                      ${animatedSteps[index] ? 'opacity-100 transform-none' : 'opacity-0 translate-y-4'}
+                      ${animatedSteps[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
                       ${index % 2 === 0 ? 'bg-white/5' : 'bg-gradient-to-br from-teko-purple/10 to-transparent'}
                       ${step.celebration ? 'celebration-card' : ''}`}
                   >
@@ -201,13 +201,12 @@ const UserJourney = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Fill Brief Card */}
           <div 
-            className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-on-scroll
+            className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-fade-in 
               ${hoveredCard === 'brief' 
                 ? 'bg-gradient-to-br from-teko-purple/20 to-teko-purple/5 z-10 scale-105' 
                 : 'bg-white/5 backdrop-blur-sm'}`}
             onMouseEnter={() => handleMouseEnter('brief')}
             onMouseLeave={handleMouseLeave}
-            style={{ transitionDelay: '0.1s' }}
           >
             <div className="p-6 border border-white/10 rounded-xl h-full flex flex-col">
               <div className="flex justify-between items-start mb-4">
@@ -248,13 +247,12 @@ const UserJourney = () => {
 
           {/* Contact Us Card */}
           <div 
-            className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-on-scroll
+            className={`relative overflow-hidden rounded-xl transition-all duration-500 animate-fade-in
               ${hoveredCard === 'contact' 
                 ? 'bg-gradient-to-br from-teko-purple/20 to-teko-purple/5 z-10 scale-105' 
                 : 'bg-white/5 backdrop-blur-sm'}`}
             onMouseEnter={() => handleMouseEnter('contact')}
             onMouseLeave={handleMouseLeave}
-            style={{ transitionDelay: '0.2s' }}
           >
             <div className="p-6 border border-white/10 rounded-xl h-full flex flex-col">
               <div className="flex justify-between items-start mb-4">
@@ -328,6 +326,15 @@ const UserJourney = () => {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes fade-in {
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 0.5s ease-out forwards;
         }
         `}
       </style>

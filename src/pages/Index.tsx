@@ -14,6 +14,13 @@ const Index = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            // Make sure the element stays visible
+            setTimeout(() => {
+              if (entry.target.classList.contains('animate-on-scroll')) {
+                entry.target.classList.remove('animate-on-scroll');
+                entry.target.classList.add('animation-complete');
+              }
+            }, 1000);
           }
         });
       },
