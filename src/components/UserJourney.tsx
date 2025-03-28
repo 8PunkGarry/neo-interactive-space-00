@@ -45,50 +45,50 @@ const UserJourney = () => {
   // Journey steps with improved text
   const journeySteps = [
     { 
-      title: t('journey.step1.title') || "Анализ и исследование", 
-      description: t('journey.step1.description') || "Мы тщательно анализируем ваши бизнес-потребности, изучаем целевую аудиторию и определяем четкие цели проекта.",
+      title: "Анализ и исследование", 
+      description: "Мы детально анализируем ваш бизнес, определяем целевую аудиторию и формулируем ключевые цели для максимального эффекта.",
       icon: <Lightbulb size={22} />,
       delay: 0.1
     },
     { 
-      title: t('journey.step2.title') || "Стратегическое планирование", 
-      description: t('journey.step2.description') || "Создание детальной дорожной карты проекта с временными рамками, распределением ресурсов и техническими спецификациями.",
+      title: "Стратегическое планирование", 
+      description: "Разрабатываем подробную дорожную карту с точными сроками, бюджетом и техническими требованиями для вашего проекта.",
       icon: <Settings size={22} />,
       delay: 0.2
     },
     { 
-      title: t('journey.step3.title') || "UI/UX дизайн", 
-      description: t('journey.step3.description') || "Разработка интуитивно понятных интерфейсов и пользовательского опыта через прототипы, макеты и интерактивные модели.",
+      title: "UI/UX дизайн", 
+      description: "Создаем интуитивно понятные и привлекательные интерфейсы, которые удивляют пользователей и повышают конверсию.",
       icon: <Star size={22} />,
       delay: 0.3
     },
     { 
-      title: t('journey.step4.title') || "Разработка", 
-      description: t('journey.step4.description') || "Создание вашего решения с чистым, эффективным кодом, используя новейшие технологии и лучшие практики отрасли.",
+      title: "Разработка", 
+      description: "Превращаем концепцию в реальность, используя современные технологии и лучшие практики программирования для надежного результата.",
       icon: <Code size={22} />,
       delay: 0.4
     },
     { 
-      title: t('journey.step5.title') || "Контроль качества", 
-      description: t('journey.step5.description') || "Тщательное тестирование на различных устройствах и в разных средах для обеспечения безупречного пользовательского опыта.",
+      title: "Контроль качества", 
+      description: "Проводим всестороннее тестирование на различных устройствах, гарантируя безупречную работу и высокую производительность.",
       icon: <CheckCircle size={22} />,
       delay: 0.5
     },
     { 
-      title: t('journey.step6.title') || "Развертывание", 
-      description: t('journey.step6.description') || "Аккуратный запуск вашего решения в производство с постоянным мониторингом и оптимизацией производительности.",
+      title: "Развертывание", 
+      description: "Запускаем ваш продукт в рабочую среду с непрерывным мониторингом и оптимизацией для стабильной работы.",
       icon: <Rocket size={22} />,
       delay: 0.6
     },
     { 
-      title: t('journey.step7.title') || "Обучение и поддержка", 
-      description: t('journey.step7.description') || "Предоставление комплексной документации и обучения, чтобы ваша команда могла эффективно управлять решением.",
+      title: "Обучение и поддержка", 
+      description: "Предоставляем подробную документацию и обучение вашей команды для эффективного управления новым решением.",
       icon: <Users size={22} />,
       delay: 0.7
     },
     { 
-      title: t('journey.step8.title') || "Завершение проекта", 
-      description: t('journey.step8.description') || "Празднование успешной доставки вашего проекта и планирование будущего роста и улучшений.",
+      title: "Успешное завершение", 
+      description: "Празднуем запуск вашего успешного проекта и планируем дальнейшие улучшения для роста вашего бизнеса.",
       icon: <PartyPopper size={22} />,
       delay: 0.8,
       celebration: true
@@ -124,10 +124,10 @@ const UserJourney = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 animate-on-scroll">
-            {safeTranslation('journey.title', "Ваш путь с нами")}
+            Ваш путь к цифровому преображению
           </h2>
           <p className="text-lg md:text-xl text-teko-white/80 max-w-3xl mx-auto animate-on-scroll" style={{ transitionDelay: '0.1s' }}>
-            {safeTranslation('journey.subtitle', "Как мы превращаем ваши идеи в мощные цифровые решения")}
+            Мы превращаем ваши идеи в эффективные цифровые решения, которые меняют правила игры
           </p>
         </div>
 
@@ -218,10 +218,10 @@ const UserJourney = () => {
               </div>
               
               <h3 className="text-xl font-display font-bold mb-2">
-                {safeTranslation('brief.title', "Отправьте нам ваше техническое задание")}
+                Заполните бриф проекта
               </h3>
               <p className="text-teko-white/70 text-sm mb-6">
-                {safeTranslation('brief.subtitle', "Расскажите нам о вашем проекте, и мы свяжемся с вами для обсуждения деталей")}
+                Расскажите о вашем проекте подробнее — опишите задачи, цели и ожидаемые результаты. Мы изучим ваши потребности и свяжемся для обсуждения.
               </p>
               
               <div className="mt-auto pt-4">
@@ -233,7 +233,7 @@ const UserJourney = () => {
                       : 'bg-white/10 text-teko-white/80 hover:bg-white/20'
                   }`}
                 >
-                  {safeTranslation('about.fillBrief', "Заполнить бриф")}
+                  Заполнить бриф
                   <ArrowRight className="transition-transform duration-300 transform group-hover:translate-x-1" size={16} />
                 </Link>
               </div>
@@ -264,10 +264,10 @@ const UserJourney = () => {
               </div>
               
               <h3 className="text-xl font-display font-bold mb-2">
-                {safeTranslation('about.contact.title', "Свяжитесь с нами")}
+                Cвяжитесь с нами напрямую
               </h3>
               <p className="text-teko-white/70 text-sm mb-6">
-                {safeTranslation('about.contact.description', "Хотите обсудить проект или у вас есть вопрос? Напишите нам!")}
+                Остались вопросы или хотите обсудить проект лично? Наша команда готова выслушать ваши идеи и предложить оптимальное решение для вашего бизнеса.
               </p>
               
               <div className="mt-auto pt-4">
@@ -279,7 +279,7 @@ const UserJourney = () => {
                       : 'bg-white/10 text-teko-white/80 hover:bg-white/20'
                   }`}
                 >
-                  {safeTranslation('footer.contact', "Связаться с нами")}
+                  Связаться с нами
                   <ArrowRight className="transition-transform duration-300 transform group-hover:translate-x-1" size={16} />
                 </Link>
               </div>
