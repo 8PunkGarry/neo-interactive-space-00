@@ -66,17 +66,18 @@ const Navbar = () => {
           
           <div className="flex items-center gap-2 ml-auto">
             <div className="border-r border-teko-purple/20 h-8 mx-1"></div>
-            <LanguageSwitcher />
             <UserMenu />
+            <LanguageSwitcher />
           </div>
         </div>
 
         {/* Mobile Navigation Controls */}
         <div className="flex items-center gap-2 lg:hidden">
-          <LanguageSwitcher />
           <Button variant="ghost" size="icon" onClick={toggleMenu} className="text-teko-white">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </Button>
+          <UserMenu />
+          <LanguageSwitcher />
         </div>
       </div>
 
@@ -98,9 +99,6 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <div className="pt-4">
-            <UserMenu />
-          </div>
         </div>
       </div>
     </nav>
