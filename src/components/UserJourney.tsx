@@ -17,12 +17,12 @@ import {
 const UserJourney = () => {
   const { t } = useLanguage();
   const [hoveredCard, setHoveredCard] = useState<'brief' | 'contact' | null>(null);
-  const [animatedSteps, setAnimatedSteps] = useState<boolean[]>([false, false, false, false, false, false, false, false, false, false, false]);
+  const [animatedSteps, setAnimatedSteps] = useState<boolean[]>([false, false, false, false, false, false, false, false]);
   const [celebrationActive, setCelebrationActive] = useState(false);
 
   useEffect(() => {
     // Sequential animation for journey steps
-    const stepDelays = [300, 800, 1300, 1800, 2300, 2800, 3300, 3800, 4300, 4800, 5300];
+    const stepDelays = [300, 800, 1300, 1800, 2300, 2800, 3300, 3800];
     
     stepDelays.forEach((delay, index) => {
       setTimeout(() => {
@@ -37,7 +37,7 @@ const UserJourney = () => {
     // Set celebration animation
     setTimeout(() => {
       setCelebrationActive(true);
-    }, 5500);
+    }, 4000);
   }, []);
 
   const handleMouseEnter = (card: 'brief' | 'contact') => {
@@ -48,7 +48,7 @@ const UserJourney = () => {
     setHoveredCard(null);
   };
 
-  // Journey steps with fallback text
+  // Journey steps with fallback text - updated to 8 steps total
   const journeySteps = [
     { 
       title: t('journey.step1.title') || "Discovery & Planning", 
@@ -69,53 +69,34 @@ const UserJourney = () => {
       delay: 0.3
     },
     { 
-      title: t('journey.step4.title') || "Launch & Support", 
-      description: t('journey.step4.description') || "Deploying your solution and providing ongoing support and enhancements",
-      icon: <Rocket size={22} />,
+      title: t('journey.step4.title') || "Quality Assurance", 
+      description: t('journey.step4.description') || "Comprehensive testing to ensure reliability, performance, and security of your application",
+      icon: <CheckCircle size={22} />,
       delay: 0.4
     },
     { 
-      title: t('journey.step5.title') || "Continuous Improvement", 
-      description: t('journey.step5.description') || "Regular updates, performance optimization, and feature enhancements based on user feedback",
-      icon: <CheckCircle size={22} />,
+      title: t('journey.step5.title') || "User Training", 
+      description: t('journey.step5.description') || "Providing detailed documentation and training sessions for your team to maximize effectiveness",
+      icon: <Users size={22} />,
       delay: 0.5
     },
     { 
-      title: t('journey.step6.title') || "Scaling", 
-      description: t('journey.step6.description') || "Growing your solution to handle increased user loads and expanding functionality",
-      icon: <Clock size={22} />,
+      title: t('journey.step6.title') || "Launch & Support", 
+      description: t('journey.step6.description') || "Deploying your solution to production and providing ongoing technical support",
+      icon: <Rocket size={22} />,
       delay: 0.6
     },
     { 
-      title: t('journey.step7.title') || "Advanced Features", 
-      description: t('journey.step7.description') || "Implementing sophisticated capabilities like AI, advanced analytics, and integrations",
-      icon: <Star size={22} />,
+      title: t('journey.step7.title') || "Growth Strategy", 
+      description: t('journey.step7.description') || "Creating a roadmap for future enhancements and helping you plan for long-term success",
+      icon: <Trophy size={22} />,
       delay: 0.7
     },
-    // New steps added
     { 
-      title: t('journey.step8.title') || "Quality Assurance", 
-      description: t('journey.step8.description') || "Comprehensive testing to ensure reliability, performance, and security of your application",
-      icon: <Award size={22} />,
-      delay: 0.8
-    },
-    { 
-      title: t('journey.step9.title') || "User Training", 
-      description: t('journey.step9.description') || "Providing detailed documentation and training sessions for your team to maximize effectiveness",
-      icon: <Users size={22} />,
-      delay: 0.9
-    },
-    { 
-      title: t('journey.step10.title') || "Growth Strategy", 
-      description: t('journey.step10.description') || "Creating a roadmap for future enhancements and helping you plan for long-term success",
-      icon: <Trophy size={22} />,
-      delay: 1.0
-    },
-    { 
-      title: t('journey.step11.title') || "Project Completion", 
-      description: t('journey.step11.description') || "Celebrating the successful delivery of your vision transformed into a powerful digital solution",
+      title: t('journey.step8.title') || "Project Completion", 
+      description: t('journey.step8.description') || "Celebrating the successful delivery of your vision transformed into a powerful digital solution",
       icon: <PartyPopper size={22} />,
-      delay: 1.1,
+      delay: 0.8,
       isCelebration: true
     }
   ];
@@ -172,7 +153,7 @@ const UserJourney = () => {
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4 xl:basis-1/4">
                   <div 
                     className={`relative overflow-hidden rounded-xl transition-all duration-700 backdrop-blur-sm border border-white/10 h-full 
-                      ${animatedSteps[index % 11] ? 'opacity-100' : 'opacity-0 transform translate-y-6'}
+                      ${animatedSteps[index % 8] ? 'opacity-100' : 'opacity-0 transform translate-y-6'}
                       ${step.isCelebration ? 'bg-gradient-to-br from-teko-purple/30 to-teko-purple/5' : 
                         index % 2 === 0 ? 'bg-white/5' : 'bg-gradient-to-br from-teko-purple/10 to-transparent'}`}
                     style={{ minHeight: '220px' }}
