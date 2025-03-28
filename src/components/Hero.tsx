@@ -152,21 +152,21 @@ const Hero = () => {
                 <span className="absolute inset-0 bg-teko-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
               </a>
             </div>
+            
+            {/* Moved down arrow here, below the buttons */}
+            <div 
+              className={`mt-16 transition-opacity duration-1000 ${
+                isVisible ? 'opacity-70' : 'opacity-0'
+              }`}
+              style={{ 
+                transitionDelay: '1s', 
+                animation: 'arrow-bounce 4s infinite ease-in-out' 
+              }}
+            >
+              <ArrowDown width="28" height="28" className="text-teko-purple hover:opacity-100 transition-opacity duration-300" />
+            </div>
           </div>
           
-          {/* Improved down arrow with slower animation */}
-          <div 
-            className={`absolute bottom-12 left-1/2 transform -translate-x-1/2 transition-opacity duration-1000 ${
-              isVisible ? 'opacity-70' : 'opacity-0'
-            }`}
-            style={{ 
-              transitionDelay: '1s', 
-              animation: 'arrow-bounce 4s infinite ease-in-out' 
-            }}
-          >
-            <ArrowDown width="28" height="28" className="text-teko-purple hover:opacity-100 transition-opacity duration-300" />
-          </div>
-
           {/* Add custom animation keyframes for the arrow */}
           <style dangerouslySetInnerHTML={{
             __html: `
