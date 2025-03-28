@@ -46,43 +46,43 @@ const UserJourney = () => {
   const journeySteps = [
     { 
       title: t('journey.step1.title') || "Discovery & Planning", 
-      description: t('journey.step1.description') || "We learn about your business, analyze requirements, and create a detailed project plan.",
+      description: t('journey.step1.description') || "We learn about your business, analyze requirements, and create a detailed project plan",
       icon: <Lightbulb size={22} />,
       delay: 0.1
     },
     { 
       title: t('journey.step2.title') || "Design & Prototyping", 
-      description: t('journey.step2.description') || "Creating wireframes and interactive prototypes to visualize the solution.",
+      description: t('journey.step2.description') || "Creating wireframes and interactive prototypes to visualize the solution",
       icon: <Settings size={22} />,
       delay: 0.2
     },
     { 
       title: t('journey.step3.title') || "Development", 
-      description: t('journey.step3.description') || "Building the solution with modern tech stack and regular progress updates.",
+      description: t('journey.step3.description') || "Building the solution with modern tech stack and regular progress updates",
       icon: <Code size={22} />,
       delay: 0.3
     },
     { 
       title: t('journey.step4.title') || "Launch & Support", 
-      description: t('journey.step4.description') || "Deploying your solution and providing ongoing support and enhancements.",
+      description: t('journey.step4.description') || "Deploying your solution and providing ongoing support and enhancements",
       icon: <Rocket size={22} />,
       delay: 0.4
     },
     { 
       title: t('journey.step5.title') || "Continuous Improvement", 
-      description: t('journey.step5.description') || "Regular updates, performance optimization, and feature enhancements based on user feedback.",
+      description: t('journey.step5.description') || "Regular updates, performance optimization, and feature enhancements based on user feedback",
       icon: <CheckCircle size={22} />,
       delay: 0.5
     },
     { 
       title: t('journey.step6.title') || "Scaling", 
-      description: t('journey.step6.description') || "Growing your solution to handle increased user loads and expanding functionality.",
+      description: t('journey.step6.description') || "Growing your solution to handle increased user loads and expanding functionality",
       icon: <Clock size={22} />,
       delay: 0.6
     },
     { 
       title: t('journey.step7.title') || "Advanced Features", 
-      description: t('journey.step7.description') || "Implementing sophisticated capabilities like AI, advanced analytics, and integrations.",
+      description: t('journey.step7.description') || "Implementing sophisticated capabilities like AI, advanced analytics, and integrations",
       icon: <Star size={22} />,
       delay: 0.7
     }
@@ -124,19 +124,19 @@ const UserJourney = () => {
           </p>
         </div>
 
-        {/* Journey Steps Carousel */}
-        <div className="mb-16">
+        {/* Journey Steps Carousel - Updated with wider cards */}
+        <div className="mb-16 overflow-visible">
           <Carousel
             opts={{
               align: "start",
               loop: true,
               dragFree: true,
             }}
-            className="w-full"
+            className="w-full overflow-visible"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {journeySteps.map((step, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4">
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-2/3 lg:basis-1/3 xl:basis-1/4">
                   <div 
                     className={`relative overflow-hidden rounded-xl transition-all duration-700 backdrop-blur-sm border border-white/10 h-full 
                       ${animatedSteps[index % 4] ? 'opacity-100' : 'opacity-0'}
