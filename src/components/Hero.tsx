@@ -153,9 +153,9 @@ const Hero = () => {
               </a>
             </div>
             
-            {/* Moved down arrow here, below the buttons */}
+            {/* Moved down arrow here, below the buttons and centered */}
             <div 
-              className={`mt-16 transition-opacity duration-1000 ${
+              className={`mt-16 flex justify-center transition-opacity duration-1000 ${
                 isVisible ? 'opacity-70' : 'opacity-0'
               }`}
               style={{ 
