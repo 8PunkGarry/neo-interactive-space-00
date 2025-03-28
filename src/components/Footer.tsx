@@ -111,7 +111,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info - Fixed the object rendering issue */}
+          {/* Contact Info */}
           <div>
             <h4 className="text-lg font-display font-bold mb-6">{t('footer.contact')}</h4>
             <ul className="space-y-4">

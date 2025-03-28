@@ -1,3 +1,4 @@
+
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -74,12 +75,6 @@ interface HomeTranslations {
       title: string;
       privacy: string;
       terms: string;
-    };
-    contact: {
-      title: string;
-      address: string;
-      phone: string;
-      email: string;
     };
     copyright: string;
   };
@@ -198,12 +193,6 @@ export const translations: Translations = {
         privacy: "Privacy Policy",
         terms: "Terms of Service"
       },
-      contact: {
-        title: "Contact Us",
-        address: "Prague, Czech Republic",
-        phone: "Telegram bot: @teko.sup_bot",
-        email: "info@teko.agency"
-      },
       copyright: "© 2023 Teko. All rights reserved."
     }
   },
@@ -315,12 +304,6 @@ export const translations: Translations = {
         privacy: "Политика конфиденциальности",
         terms: "Условия использования"
       },
-      contact: {
-        title: "Свяжитесь с нами",
-        address: "Прага, Чешская Республика",
-        phone: "Телеграм бот: @teko.sup_bot",
-        email: "info@teko.agency"
-      },
       copyright: "© 2023 Teko. Все права защищены."
     }
   },
@@ -431,12 +414,6 @@ export const translations: Translations = {
         title: "Rychlé odkazy",
         privacy: "Zásady ochrany osobních údajů",
         terms: "Podmínky služby"
-      },
-      contact: {
-        title: "Kontaktujte nás",
-        address: "Praha, Česká republika",
-        phone: "Telegram bot: @teko.sup_bot",
-        email: "info@teko.agency"
       },
       copyright: "© 2023 Teko. Všechna práva vyhrazena."
     }
