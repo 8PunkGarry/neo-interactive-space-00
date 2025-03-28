@@ -1,3 +1,4 @@
+
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -108,6 +109,7 @@ interface HomeTranslations {
     privacy: string;
     terms: string;
     rights: string;
+    address: string;
     about: {
       title: string;
       description: string;
@@ -267,6 +269,7 @@ export const translations: Translations = {
       privacy: "Privacy Policy",
       terms: "Terms of Service",
       rights: "All rights reserved",
+      address: "Prague, Czech Republic",
       about: {
         title: "About Teko",
         description: "We are a digital agency focused on creating innovative solutions for businesses looking to thrive in the digital era."
@@ -420,6 +423,7 @@ export const translations: Translations = {
       privacy: "Политика конфиденциальности",
       terms: "Условия использования",
       rights: "Все права защищены",
+      address: "Прага, Чешская Республика",
       about: {
         title: "О Теко",
         description: "Мы - цифровое агентство, ориентированное на создание инновационных решений для бизнеса, стремящегося к процветанию в цифровую эпоху."
@@ -573,6 +577,7 @@ export const translations: Translations = {
       privacy: "Zásady ochrany osobních údajů",
       terms: "Podmínky služby",
       rights: "Všechna práva vyhrazena",
+      address: "Praha, Česká republika",
       about: {
         title: "O Teko",
         description: "Jsme digitální agentura zaměřená na vytváření inovativních řešení pro podniky, které chtějí prosperovat v digitální éře."

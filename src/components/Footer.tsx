@@ -118,7 +118,7 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="text-teko-purple mr-3 mt-1 flex-shrink-0" size={18} />
                 <span className="text-teko-white/70">
-                  Прага, Чешская Республика
+                  {t('footer.address')}
                 </span>
               </li>
               <li className="flex items-start">
