@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import AnimatedLogo from './AnimatedLogo';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -64,7 +64,7 @@ const Navbar = () => {
             </Link>
           ))}
           
-          <div className="flex items-center ml-4 gap-2">
+          <div className="flex items-center gap-2 ml-auto">
             <div className="border-r border-teko-purple/20 h-8 mx-1"></div>
             <LanguageSwitcher />
             <UserMenu />

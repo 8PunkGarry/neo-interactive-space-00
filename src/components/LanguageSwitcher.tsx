@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { SupportedLanguage } from '../utils/translations';
-import { ChevronDown, Globe } from 'lucide-react';
+import { Globe } from 'lucide-react';
 
 const LanguageSwitcher = () => {
   const { language, setLanguage } = useLanguage();
@@ -46,18 +46,15 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative ml-auto" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className="flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 bg-teko-purple/10 hover:bg-teko-purple/20 group"
+        onMouseEnter={() => setIsOpen(true)}
+        className="flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 bg-teko-purple/10 hover:bg-teko-purple/20 group"
         aria-label="Select language"
       >
         <Globe size={16} className="text-teko-purple-light" />
-        <span className="text-teko-white/90">{getDisplayCode(currentLanguage?.code || 'en')}</span>
-        <ChevronDown 
-          size={16} 
-          className={`text-teko-white/50 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
-        />
+        <span className="text-teko-white/90 ml-1">{getDisplayCode(currentLanguage?.code || 'en')}</span>
       </button>
 
       {isOpen && (
