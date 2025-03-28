@@ -296,7 +296,8 @@ const UserJourney = () => {
       </div>
 
       {/* Add CSS for celebration effects */}
-      <style jsx>{`
+      <style>
+        {`
         @keyframes pulse-glow {
           0%, 100% { box-shadow: 0 0 10px 2px rgba(124, 58, 237, 0.3); }
           50% { box-shadow: 0 0 20px 5px rgba(124, 58, 237, 0.6); }
@@ -328,7 +329,8 @@ const UserJourney = () => {
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 };
