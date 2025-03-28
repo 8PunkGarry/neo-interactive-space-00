@@ -1,4 +1,3 @@
-
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -31,24 +30,104 @@ interface HomeTranslations {
   services: {
     title: string;
     subtitle: string;
+    description: string;
     show_all: string;
     search_placeholder: string;
     no_results: string;
     items: ServiceItem[];
     web: {
       title: string;
+      description: string;
+      capabilities: {
+        responsive: string;
+        ecommerce: string;
+        cms: string;
+        spa: string;
+      };
     };
     crm: {
       title: string;
+      description: string;
+      capabilities: {
+        automation: string;
+        analytics: string;
+        integration: string;
+        custom: string;
+      };
     };
     design: {
       title: string;
+      description: string;
+      capabilities: {
+        ui: string;
+        ux: string;
+        branding: string;
+        prototyping: string;
+      };
     };
     seo: {
       title: string;
+      description: string;
+      capabilities: {
+        audit: string;
+        optimization: string;
+        analytics: string;
+        local: string;
+      };
     };
     support: {
       title: string;
+      description: string;
+      capabilities: {
+        maintenance: string;
+        hosting: string;
+        security: string;
+        updates: string;
+      };
+    };
+    api: {
+      title: string;
+      description: string;
+      capabilities: {
+        integration: string;
+        development: string;
+        testing: string;
+        documentation: string;
+      };
+    };
+    database: {
+      title: string;
+      description: string;
+      capabilities: {
+        design: string;
+        optimization: string;
+        migration: string;
+        security: string;
+      };
+    };
+    mobile: {
+      title: string;
+      description: string;
+      capabilities: {
+        native: string;
+        hybrid: string;
+        responsive: string;
+        pwa: string;
+      };
+    };
+    cloud: {
+      title: string;
+      description: string;
+      capabilities: {
+        aws: string;
+        azure: string;
+        google: string;
+        scaling: string;
+      };
+    };
+    viewAll: {
+      title: string;
+      description: string;
     };
   };
   journey: {
@@ -148,6 +227,7 @@ export const translations: Translations = {
     services: {
       title: "Our Services",
       subtitle: "Comprehensive digital solutions to meet your business needs",
+      description: "We offer a wide range of digital services to help your business grow and succeed in the digital age",
       show_all: "View All Services",
       search_placeholder: "Search for a service...",
       no_results: "No services found. Try a different search term.",
@@ -196,19 +276,98 @@ export const translations: Translations = {
         }
       ],
       web: {
-        title: "Web Development"
+        title: "Web Development",
+        description: "Creating modern, responsive websites and web applications tailored to your business needs and objectives.",
+        capabilities: {
+          responsive: "Responsive Design",
+          ecommerce: "E-commerce Integration",
+          cms: "Content Management",
+          spa: "Single Page Applications"
+        }
       },
       crm: {
-        title: "CRM Integration"
+        title: "CRM Integration",
+        description: "Streamlining your business processes with custom CRM solutions that help manage customer relationships effectively.",
+        capabilities: {
+          automation: "Workflow Automation",
+          analytics: "Customer Analytics",
+          integration: "Third-party Integration",
+          custom: "Custom Solutions"
+        }
       },
       design: {
-        title: "UI/UX Design"
+        title: "UI/UX Design",
+        description: "Crafting intuitive and engaging user experiences with beautiful interfaces that enhance user satisfaction and conversion.",
+        capabilities: {
+          ui: "Interface Design",
+          ux: "User Experience",
+          branding: "Visual Identity",
+          prototyping: "Interactive Prototypes"
+        }
       },
       seo: {
-        title: "SEO Optimization"
+        title: "SEO Optimization",
+        description: "Improving your online visibility and organic search rankings to drive more qualified traffic to your website.",
+        capabilities: {
+          audit: "Technical SEO Audit",
+          optimization: "Content Optimization",
+          analytics: "Performance Tracking",
+          local: "Local SEO"
+        }
       },
       support: {
-        title: "Technical Support"
+        title: "Technical Support",
+        description: "Providing ongoing maintenance and support to ensure your digital assets perform optimally at all times.",
+        capabilities: {
+          maintenance: "Regular Maintenance",
+          hosting: "Hosting Solutions",
+          security: "Security Updates",
+          updates: "Content Updates"
+        }
+      },
+      api: {
+        title: "API Development",
+        description: "Building robust APIs that enable seamless communication between different software systems and services.",
+        capabilities: {
+          integration: "System Integration",
+          development: "Custom API Development",
+          testing: "Performance Testing",
+          documentation: "Comprehensive Documentation"
+        }
+      },
+      database: {
+        title: "Database Solutions",
+        description: "Designing and implementing efficient database structures that securely store and manage your business data.",
+        capabilities: {
+          design: "Database Architecture",
+          optimization: "Performance Optimization",
+          migration: "Data Migration",
+          security: "Data Security"
+        }
+      },
+      mobile: {
+        title: "Mobile Development",
+        description: "Developing intuitive mobile applications for iOS and Android platforms that extend your business reach.",
+        capabilities: {
+          native: "Native Applications",
+          hybrid: "Hybrid Solutions",
+          responsive: "Responsive Web Apps",
+          pwa: "Progressive Web Apps"
+        }
+      },
+      cloud: {
+        title: "Cloud Solutions",
+        description: "Leveraging cloud technologies to increase scalability, reliability, and security of your digital infrastructure.",
+        capabilities: {
+          aws: "AWS Integration",
+          azure: "Microsoft Azure",
+          google: "Google Cloud",
+          scaling: "Auto-scaling"
+        }
+      },
+      viewAll: {
+        title: "View All Services",
+        description: "Explore our complete range of digital services designed to help your business thrive in the digital landscape."
       }
     },
     journey: {
@@ -302,6 +461,7 @@ export const translations: Translations = {
     services: {
       title: "Наши услуги",
       subtitle: "Комплексные цифровые решения для удовлетворения потребностей вашего бизнеса",
+      description: "Мы предлагаем широкий спектр цифровых услуг, чтобы помочь вашему бизнесу расти и преуспевать в цифровую эпоху",
       show_all: "Показать все услуги",
       search_placeholder: "Поиск услуги...",
       no_results: "Услуги не найдены. Попробуйте другой поисковый запрос.",
@@ -350,19 +510,98 @@ export const translations: Translations = {
         }
       ],
       web: {
-        title: "Веб-разработка"
+        title: "Веб-разработка",
+        description: "Создание современных, адаптивных веб-сайтов и веб-приложений, соответствующих потребностям и целям вашего бизнеса.",
+        capabilities: {
+          responsive: "Адаптивный дизайн",
+          ecommerce: "Интеграция E-commerce",
+          cms: "Управление контентом",
+          spa: "Однос��раничные приложения"
+        }
       },
       crm: {
-        title: "Интеграция CRM"
+        title: "Интеграция CRM",
+        description: "Оптимизация бизнес-процессов с помощью индивидуальных CRM-решений, которые помогают эффективно управлять отношениями с клиентами.",
+        capabilities: {
+          automation: "Автоматизация рабочих процессов",
+          analytics: "Аналитика клиентов",
+          integration: "Интеграция с третьими сервисами",
+          custom: "Индивидуальные решения"
+        }
       },
       design: {
-        title: "UI/UX Дизайн"
+        title: "UI/UX Дизайн",
+        description: "Создание интуитивно понятных и привлекательных пользовательских интерфейсов, которые улучшают удовлетворенность пользователей и конверсию.",
+        capabilities: {
+          ui: "Дизайн интерфейса",
+          ux: "Пользовательский опыт",
+          branding: "Визуальная идентичность",
+          prototyping: "Интерактивные прототипы"
+        }
       },
       seo: {
-        title: "SEO Оптимизация"
+        title: "SEO Оптимизация",
+        description: "Повышение вашей видимости в интернете и органических позиций в поисковой выдаче для привлечения более квалифицированного трафика на ваш сайт.",
+        capabilities: {
+          audit: "Технический SEO аудит",
+          optimization: "Оптимизация контента",
+          analytics: "Отслеживание производительности",
+          local: "Локальное SEO"
+        }
       },
       support: {
-        title: "Техническая поддержка"
+        title: "Техническая поддержка",
+        description: "Предоставление постоянного обслуживания и поддержки для обеспечения оптимальной работы ваших цифровых активов в любое время.",
+        capabilities: {
+          maintenance: "Регулярное обслуживание",
+          hosting: "Хостинг решения",
+          security: "Обновления безопасности",
+          updates: "Обновления контента"
+        }
+      },
+      api: {
+        title: "Разработка API",
+        description: "Создание надежных API, обеспечивающих беспрепятственную коммуникацию между различными программными системами и сервисами.",
+        capabilities: {
+          integration: "Системная интеграция",
+          development: "Разработка индивидуальных API",
+          testing: "Тестирование производительности",
+          documentation: "Подробная документация"
+        }
+      },
+      database: {
+        title: "Решения для баз данных",
+        description: "Проектирование и внедрение эффективных структур баз данных, которые безопасно хранят и управляют данными вашего бизнеса.",
+        capabilities: {
+          design: "Архитектура базы данных",
+          optimization: "Оптимизация производительности",
+          migration: "Миграция данных",
+          security: "Безопасность данных"
+        }
+      },
+      mobile: {
+        title: "Мобильн��я разработка",
+        description: "Разработка интуитивно понятных мобильных приложений для платформ iOS и Android, расширяющих охват вашего бизнеса.",
+        capabilities: {
+          native: "Нативные приложения",
+          hybrid: "Гибридные решения",
+          responsive: "Адаптивные веб-приложения",
+          pwa: "Прогрессивные веб-приложения"
+        }
+      },
+      cloud: {
+        title: "Облачные решения",
+        description: "Использование облачных технологий для повышения масштабируемости, надежности и безопасности вашей цифровой инфраструктуры.",
+        capabilities: {
+          aws: "Интеграция с AWS",
+          azure: "Microsoft Azure",
+          google: "Google Cloud",
+          scaling: "Автомасштабирование"
+        }
+      },
+      viewAll: {
+        title: "Посмотреть все услуги",
+        description: "Изучите наш полный спектр цифровых услуг, разработанных для процветания вашего бизнеса в цифровом ландшафте."
       }
     },
     journey: {
@@ -386,7 +625,7 @@ export const translations: Translations = {
       },
       step5: {
         title: "Контроль качества",
-        description: "Проводим всестороннее тестирование на различных устройствах, гарантируя безупречную работу и высокую производительность."
+        description: "Проводим всестороннее тестирование на различных устройствах, гарантируем безупречную работу и высокую производительность."
       },
       step6: {
         title: "Развертывание",
@@ -456,6 +695,7 @@ export const translations: Translations = {
     services: {
       title: "Naše služby",
       subtitle: "Komplexní digitální řešení pro potřeby vašeho podnikání",
+      description: "Nabízíme širokou škálu digitálních služeb, které pomohou vašemu podnikání růst a uspět v digitálním věku",
       show_all: "Zobrazit všechny služby",
       search_placeholder: "Hledat službu...",
       no_results: "Žádné služby nenalezeny. Zkuste jiný vyhledávací dotaz.",
@@ -504,19 +744,98 @@ export const translations: Translations = {
         }
       ],
       web: {
-        title: "Vývoj webových stránek"
+        title: "Vývoj webových stránek",
+        description: "Vytváření moderních, responzivních webových stránek a aplikací přizpůsobených potřebám a cílům vašeho podnikání.",
+        capabilities: {
+          responsive: "Responzivní design",
+          ecommerce: "E-commerce integrace",
+          cms: "Správa obsahu",
+          spa: "Jednostránkové aplikace"
+        }
       },
       crm: {
-        title: "Integrace CRM"
+        title: "Integrace CRM",
+        description: "Zefektivnění vašich obchodních procesů pomocí vlastních CRM řešení, která pomáhají efektivně řídit vztahy se zákazníky.",
+        capabilities: {
+          automation: "Automatizace pracovních postupů",
+          analytics: "Zákaznická analytika",
+          integration: "Integrace třetích stran",
+          custom: "Vlastní řešení"
+        }
       },
       design: {
-        title: "UI/UX Design"
+        title: "UI/UX Design",
+        description: "Vytváření intuitivních a poutavých uživatelských zkušeností s krásnými rozhraními, které zvyšují spokojenost uživatelů a konverzi.",
+        capabilities: {
+          ui: "Design rozhraní",
+          ux: "Uživatelská zkušenost",
+          branding: "Vizuální identita",
+          prototyping: "Interaktivní prototypy"
+        }
       },
       seo: {
-        title: "SEO Optimalizace"
+        title: "SEO Optimalizace",
+        description: "Zlepšení vaší online viditelnosti a organických pozic ve vyhledávání k přilákání více kvalifikovaného provozu na váš web.",
+        capabilities: {
+          audit: "Technický SEO audit",
+          optimization: "Optimalizace obsahu",
+          analytics: "Sledování výkonu",
+          local: "Lokální SEO"
+        }
       },
       support: {
-        title: "Technická podpora"
+        title: "Technická podpora",
+        description: "Poskytování průběžné údržby a podpory pro zajištění optimálního výkonu vašich digitálních aktiv za všech okolností.",
+        capabilities: {
+          maintenance: "Pravidelná údržba",
+          hosting: "Hostingová řešení",
+          security: "Bezpečnostní aktualizace",
+          updates: "Aktualizace obsahu"
+        }
+      },
+      api: {
+        title: "Vývoj API",
+        description: "Vytváření robustních API, které umožňují bezproblémovou komunikaci mezi různými softwarovými systémy a službami.",
+        capabilities: {
+          integration: "Systémová integrace",
+          development: "Vývoj vlastních API",
+          testing: "Testování výkonu",
+          documentation: "Komplexní dokumentace"
+        }
+      },
+      database: {
+        title: "Databázová řešení",
+        description: "Navrhování a implementace efektivních databázových struktur, které bezpečně ukládají a spravují data vašeho podnikání.",
+        capabilities: {
+          design: "Databázová architektura",
+          optimization: "Optimalizace výkonu",
+          migration: "Migrace dat",
+          security: "Zabezpečení dat"
+        }
+      },
+      mobile: {
+        title: "Vývoj mobilních aplikací",
+        description: "Vývoj intuitivních mobilních aplikací pro platformy iOS a Android, které rozšiřují dosah vašeho podnikání.",
+        capabilities: {
+          native: "Nativní aplikace",
+          hybrid: "Hybridní řešení",
+          responsive: "Responzivní webové aplikace",
+          pwa: "Progresivní webové aplikace"
+        }
+      },
+      cloud: {
+        title: "Cloudová řešení",
+        description: "Využití cloudových technologií ke zvýšení škálovatelnosti, spolehlivosti a bezpečnosti vaší digitální infrastruktury.",
+        capabilities: {
+          aws: "AWS integrace",
+          azure: "Microsoft Azure",
+          google: "Google Cloud",
+          scaling: "Automatické škálování"
+        }
+      },
+      viewAll: {
+        title: "Zobrazit všechny služby",
+        description: "Prozkoumejte naši kompletní nabídku digitálních služeb navržených pro rozvoj vašeho podnikání v digitálním prostředí."
       }
     },
     journey: {
