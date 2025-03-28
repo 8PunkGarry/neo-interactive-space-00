@@ -5,8 +5,11 @@ import Hero from '../components/Hero';
 import UserJourney from '../components/UserJourney';
 import ServiceGrid from '../components/ServiceGrid';
 import Footer from '../components/Footer';
+import { useLanguage } from '../context/LanguageContext';
 
 const Index = () => {
+  const { language } = useLanguage();
+
   useEffect(() => {
     // Add simplified animation observer when component mounts
     const observer = new IntersectionObserver(
@@ -34,7 +37,7 @@ const Index = () => {
       // Clean up observer when component unmounts
       animatedElements.forEach((el) => observer.unobserve(el));
     };
-  }, []);
+  }, [language]); // Re-run when language changes to ensure proper animations
 
   return (
     <div className="min-h-screen bg-teko-black">

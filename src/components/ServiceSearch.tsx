@@ -23,7 +23,7 @@ const ServiceSearch: React.FC<ServiceSearchProps> = ({ onSearch }) => {
       <div className="relative">
         <Input
           type="text"
-          placeholder={t('services.search.placeholder')}
+          placeholder={t('services.search_placeholder')}
           value={searchTerm}
           onChange={handleChange}
           className="pl-10 py-6 bg-white/5 border-white/10 text-teko-white placeholder:text-teko-white/50 focus-visible:ring-teko-purple"

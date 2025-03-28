@@ -1,3 +1,4 @@
+
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -321,7 +322,7 @@ export const translations: Translations = {
         {
           id: 6,
           title: "Интеграция программного обеспечения",
-          description: "Подключение и автоматизация ваших биз��ес-систем для повышения эффективности и потока данных.",
+          description: "Подключение и автоматизация ваших бизнес-систем для повышения эффективности и потока данных.",
           icon: "git-merge",
           price: "От $2,500"
         }
