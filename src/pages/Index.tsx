@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -39,6 +38,20 @@ const Index = () => {
     };
   }, []);
 
+  // Create an array of circular gradient backgrounds with different sizes, positions, and colors
+  const gradientCircles = [
+    { size: '300px', top: '10%', left: '5%', color: 'rgba(124, 58, 237, 0.08)', blur: '90px', speed: 0.05 },
+    { size: '250px', top: '35%', right: '10%', color: 'rgba(167, 139, 250, 0.07)', blur: '80px', speed: -0.03 },
+    { size: '200px', top: '60%', left: '15%', color: 'rgba(139, 92, 246, 0.06)', blur: '70px', speed: 0.04 },
+    { size: '350px', bottom: '15%', right: '5%', color: 'rgba(124, 58, 237, 0.08)', blur: '100px', speed: -0.02 },
+    { size: '180px', top: '20%', left: '40%', color: 'rgba(167, 139, 250, 0.05)', blur: '60px', speed: 0.06 },
+    { size: '220px', bottom: '30%', left: '35%', color: 'rgba(139, 92, 246, 0.06)', blur: '75px', speed: -0.04 },
+    { size: '280px', top: '40%', right: '35%', color: 'rgba(124, 58, 237, 0.07)', blur: '85px', speed: 0.03 },
+    { size: '150px', top: '70%', right: '25%', color: 'rgba(167, 139, 250, 0.06)', blur: '65px', speed: -0.05 },
+    { size: '190px', bottom: '10%', left: '60%', color: 'rgba(139, 92, 246, 0.05)', blur: '55px', speed: 0.02 },
+    { size: '230px', top: '15%', right: '60%', color: 'rgba(124, 58, 237, 0.04)', blur: '75px', speed: -0.06 },
+  ];
+
   return (
     <div className="min-h-screen bg-teko-black">
       {/* Animated background patterns that appear during scroll */}
@@ -52,24 +65,35 @@ const Index = () => {
           }}
         />
         
-        {/* Animated grid pattern */}
+        {/* Replaced diagonal lines with gradient circles */}
+        {gradientCircles.map((circle, index) => (
+          <div 
+            key={index}
+            className="absolute rounded-full"
+            style={{ 
+              width: circle.size,
+              height: circle.size,
+              top: circle.top,
+              left: circle.left,
+              right: circle.right,
+              bottom: circle.bottom,
+              background: circle.color,
+              filter: `blur(${circle.blur})`,
+              opacity: Math.min(0.1 + (scrollPosition * 0.0002), 0.8),
+              transform: `translateY(${scrollPosition * circle.speed}px)`,
+              transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+            }}
+          />
+        ))}
+        
+        {/* Animated grid pattern - keep for subtle texture */}
         <div 
           className="absolute inset-0"
           style={{ 
             backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.15) 1px, transparent 0)',
             backgroundSize: '50px 50px',
-            opacity: 0.05 + (scrollPosition * 0.0001),
+            opacity: 0.03 + (scrollPosition * 0.0001),
             transform: `translateY(${scrollPosition * 0.05}px)`,
-          }}
-        />
-        
-        {/* Animated diagonal lines */}
-        <div className="absolute inset-0 opacity-10" 
-          style={{
-            backgroundImage: 'linear-gradient(135deg, rgba(124, 58, 237, 0.2) 25%, transparent 25%, transparent 50%, rgba(124, 58, 237, 0.2) 50%, rgba(124, 58, 237, 0.2) 75%, transparent 75%, transparent)',
-            backgroundSize: '100px 100px',
-            opacity: Math.min(0.05 + (scrollPosition * 0.0001), 0.1),
-            transform: `translateY(${scrollPosition * -0.02}px)`,
           }}
         />
         

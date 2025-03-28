@@ -124,23 +124,25 @@ const UserJourney = () => {
           </p>
         </div>
 
-        {/* Journey Steps Carousel - Updated with wider cards */}
+        {/* Journey Steps Carousel - Updated to show 4 items and scroll 2 at a time */}
         <div className="mb-16 overflow-visible">
           <Carousel
             opts={{
               align: "start",
               loop: true,
               dragFree: true,
+              slidesToScroll: 2  // Scroll 2 items at a time
             }}
             className="w-full overflow-visible"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {journeySteps.map((step, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-2/3 lg:basis-1/3 xl:basis-1/4">
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4 xl:basis-1/4">
                   <div 
                     className={`relative overflow-hidden rounded-xl transition-all duration-700 backdrop-blur-sm border border-white/10 h-full 
-                      ${animatedSteps[index % 4] ? 'opacity-100' : 'opacity-0'}
+                      ${animatedSteps[index % 4] ? 'opacity-100' : 'opacity-0 transform translate-y-6'}
                       ${index % 2 === 0 ? 'bg-white/5' : 'bg-gradient-to-br from-teko-purple/10 to-transparent'}`}
+                    style={{ minHeight: '220px' }}
                   >
                     <div className="p-6 flex flex-col h-full">
                       <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4 bg-white/10 text-teko-purple-light">
@@ -148,7 +150,7 @@ const UserJourney = () => {
                       </div>
                       
                       <h3 className="text-xl font-display font-bold mb-2">{step.title}</h3>
-                      <p className="text-teko-white/70 text-sm">{step.description}</p>
+                      <p className="text-teko-white/70 text-sm flex-grow">{step.description}</p>
                       
                       <div className="absolute -bottom-5 -right-5 w-20 h-20 rounded-full bg-teko-purple/5 blur-xl"></div>
                       <div className="absolute top-4 right-4 text-white/30 text-xl font-bold">0{index + 1}</div>
