@@ -1,17 +1,21 @@
-
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ServiceGrid from '../components/ServiceGrid';
 import ServiceSearch from '../components/ServiceSearch';
+import ServiceFilter from '../components/ServiceFilter';
 import { useLanguage } from '../context/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Server, Code, Globe, Database, Smartphone, Cloud, BarChart3, Shield, Search, Palette, Headphones } from 'lucide-react';
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 
 const Services = () => {
   const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [currentPage, setCurrentPage] = useState(1);
+  const servicesPerPage = 9;
   
   // Service details with more content
   const serviceDetails = [
@@ -146,6 +150,12 @@ const Services = () => {
       service.capabilities.some(cap => cap.name.toLowerCase().includes(term))
     );
   }, [searchTerm, serviceDetails]);
+
+  // Calculate pagination
+  const indexOfLastService = currentPage * servicesPerPage;
+  const indexOfFirstService = indexOfLastService - servicesPerPage;
+  const currentServices = filteredServices.slice(indexOfFirstService, indexOfLastService);
+  const totalPages = Math.ceil(filteredServices.length / servicesPerPage);
   
   return (
     <div className="min-h-screen bg-teko-black">
@@ -153,7 +163,8 @@ const Services = () => {
       
       <main className="pt-32 pb-20 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-on-scroll">
+          {/* Title Section - Now at the very top */}
+          <div className="text-center mb-12 animate-on-scroll">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
               {t('services.title')}
             </h1>
@@ -162,29 +173,28 @@ const Services = () => {
             </p>
           </div>
           
-          {/* Add the ServiceGrid to show all services at the top with higher z-index */}
-          <div className="relative z-50">
-            <ServiceGrid limitToThree={false} />
-          </div>
+          {/* Search Bar - Now directly below the title */}
+          <ServiceSearch onSearch={setSearchTerm} />
           
-          {/* Search bar for detailed services */}
-          <div className="mt-32 relative z-40">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-center animate-on-scroll">
-              {t('services.detailedServicesTitle')}
-            </h2>
-            
-            <ServiceSearch onSearch={setSearchTerm} />
-            
-            <div className="space-y-24">
-              {filteredServices.map((service, index) => (
+          {/* Filter Controls - Added below search */}
+          <ServiceFilter 
+            viewMode={viewMode} 
+            onViewModeChange={setViewMode} 
+            totalServices={filteredServices.length}
+          />
+          
+          {/* Services Grid/List */}
+          <div className="mt-8 mb-12 relative z-40">
+            <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'} gap-8`}>
+              {currentServices.map((service, index) => (
                 <div 
                   key={service.id} 
                   id={service.id}
                   className="scroll-mt-32 animate-on-scroll"
                   style={{ transitionDelay: `${index * 0.1}s` }}
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 relative z-30">
-                    <div className="flex flex-col md:flex-row gap-8">
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 relative z-30 h-full">
+                    <div className={`flex ${viewMode === 'grid' ? 'flex-col' : 'flex-col md:flex-row'} gap-8`}>
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
                           {service.icon}
@@ -216,20 +226,24 @@ const Services = () => {
                           ))}
                         </div>
                         
-                        <h4 className="text-xl font-display font-medium mb-3 text-teko-white">
-                          {t('services.technologies')}
-                        </h4>
-                        
-                        <div className="flex flex-wrap gap-2">
-                          {service.technologies.map((tech, idx) => (
-                            <Badge 
-                              key={idx}
-                              className="bg-white/10 text-teko-white/80 border-white/10"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
+                        {viewMode === 'list' && (
+                          <>
+                            <h4 className="text-xl font-display font-medium mb-3 text-teko-white">
+                              {t('services.technologies')}
+                            </h4>
+                            
+                            <div className="flex flex-wrap gap-2">
+                              {service.technologies.map((tech, idx) => (
+                                <Badge 
+                                  key={idx}
+                                  className="bg-white/10 text-teko-white/80 border-white/10"
+                                >
+                                  {tech}
+                                </Badge>
+                              ))}
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -237,15 +251,49 @@ const Services = () => {
               ))}
               
               {filteredServices.length === 0 && (
-                <div className="text-center py-12">
+                <div className="text-center py-12 col-span-3">
                   <p className="text-teko-white/70 text-lg">
                     {t('services.search.noResults')}
                   </p>
                 </div>
               )}
             </div>
+            
+            {/* Pagination */}
+            {filteredServices.length > servicesPerPage && (
+              <Pagination className="mt-12">
+                <PaginationContent>
+                  <PaginationItem>
+                    <PaginationPrevious 
+                      onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                      className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
+                    />
+                  </PaginationItem>
+                  
+                  {[...Array(totalPages)].map((_, index) => (
+                    <PaginationItem key={index}>
+                      <PaginationLink 
+                        isActive={currentPage === index + 1}
+                        onClick={() => setCurrentPage(index + 1)}
+                        className="cursor-pointer hover:bg-teko-purple/20 data-[active=true]:bg-teko-purple/30"
+                      >
+                        {index + 1}
+                      </PaginationLink>
+                    </PaginationItem>
+                  ))}
+                  
+                  <PaginationItem>
+                    <PaginationNext 
+                      onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                      className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
+                    />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+            )}
           </div>
           
+          {/* The rest of the page content */}
           <div className="mt-20 max-w-5xl mx-auto relative z-30">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
               <div className="animate-on-scroll">
