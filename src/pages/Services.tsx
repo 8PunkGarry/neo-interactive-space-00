@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -162,8 +161,8 @@ const Services = () => {
       
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-4">
-          {/* Title Section - Now at the very top */}
-          <div className="text-center mb-12 animate-on-scroll relative z-[60]">
+          {/* Title Section */}
+          <div className="text-center mb-12 relative z-[999]">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white">
               {t('services.title')}
             </h1>
@@ -172,13 +171,13 @@ const Services = () => {
             </p>
           </div>
           
-          {/* Search Bar - Now directly below the title */}
-          <div className="relative z-[60]">
+          {/* Search Bar */}
+          <div className="relative z-[999]">
             <ServiceSearch onSearch={setSearchTerm} />
           </div>
           
-          {/* Filter Controls - Added below search */}
-          <div className="relative z-[60]">
+          {/* Filter Controls */}
+          <div className="relative z-[999]">
             <ServiceFilter 
               viewMode={viewMode} 
               onViewModeChange={setViewMode} 
@@ -186,16 +185,15 @@ const Services = () => {
           </div>
           
           {/* Services Grid/List */}
-          <div className="mt-8 mb-12 relative z-[60]">
+          <div className="mt-8 mb-12 relative z-[999]">
             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'} gap-8`}>
               {currentServices.map((service, index) => (
                 <div 
                   key={service.id} 
                   id={service.id}
-                  className="scroll-mt-32 animate-on-scroll"
-                  style={{ transitionDelay: `${index * 0.1}s` }}
+                  className="relative z-[999]"
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full relative z-[60]">
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full relative z-[999]">
                     <div className={`flex ${viewMode === 'grid' ? 'flex-col' : 'flex-col md:flex-row'} gap-8`}>
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
@@ -263,7 +261,7 @@ const Services = () => {
             
             {/* Pagination */}
             {filteredServices.length > servicesPerPage && (
-              <div className="relative z-[60]">
+              <div className="relative z-[999]">
                 <Pagination className="mt-12">
                   <PaginationContent>
                     <PaginationItem>
@@ -298,9 +296,9 @@ const Services = () => {
           </div>
           
           {/* The rest of the page content */}
-          <div className="mt-20 max-w-5xl mx-auto relative z-[60]">
+          <div className="mt-20 max-w-5xl mx-auto relative z-[999]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
-              <div className="animate-on-scroll">
+              <div className="relative z-[999]">
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
                   {t('services.approach.title')}
                 </h2>
@@ -321,7 +319,7 @@ const Services = () => {
                 </ul>
               </div>
               
-              <div className="glass-card rounded-xl p-8 animate-on-scroll" style={{ transitionDelay: "0.1s" }}>
+              <div className="glass-card rounded-xl p-8 relative z-[999]">
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
                   {t('services.benefits.title')}
                 </h2>
@@ -342,7 +340,7 @@ const Services = () => {
               </div>
             </div>
             
-            <div className="glass-card p-8 rounded-xl animate-on-scroll">
+            <div className="glass-card p-8 rounded-xl relative z-[999]">
               <h2 className="text-2xl font-display font-bold mb-6 text-center text-teko-purple-light">
                 {t('services.cta.title')}
               </h2>
