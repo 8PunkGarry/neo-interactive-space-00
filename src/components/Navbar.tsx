@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Home, MessageCircle } from 'lucide-react';
+import { Menu, X, Home, MessageCircle, Briefcase, FileText } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import AnimatedLogo from './AnimatedLogo';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -37,11 +37,9 @@ const Navbar = () => {
   `;
 
   const navLinks = [
-    // Added Home link at the beginning
     { to: '/', label: 'Home', icon: Home },
-    { to: '/services', label: t('navbar.services') },
-    { to: '/brief', label: t('navbar.brief') },
-    // Replaced About with Chat
+    { to: '/services', label: t('navbar.services'), icon: Briefcase },
+    { to: '/brief', label: t('navbar.brief'), icon: FileText },
     { to: '/chat', label: 'Chat', icon: MessageCircle },
   ];
 
