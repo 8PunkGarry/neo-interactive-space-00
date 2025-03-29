@@ -3,12 +3,6 @@ import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
 
-type AboutSection = {
-  title: string;
-  description: string;
-  short_description: string;
-};
-
 interface ServiceItem {
   id: number;
   title: string;
@@ -23,7 +17,6 @@ interface HomeTranslations {
     subtitle: string;
     cta: string;
     secondary_cta: string;
-    contact_us: string;
   };
   navbar: {
     home: string;
@@ -197,7 +190,10 @@ interface HomeTranslations {
     terms: string;
     rights: string;
     address: string;
-    about: AboutSection;
+    about: {
+      title: string;
+      description: string;
+    };
     links: {
       title: string;
       privacy: string;
@@ -207,14 +203,17 @@ interface HomeTranslations {
   };
 }
 
-export const translations: Record<SupportedLanguage, any> = {
+interface Translations {
+  [language: string]: HomeTranslations;
+}
+
+export const translations: Translations = {
   en: {
     hero: {
       title: "Digital Innovation for Your Business",
       subtitle: "We create innovative digital solutions that help your business grow and thrive in the modern technological landscape.",
       cta: "Explore Our Process",
       secondary_cta: "Our Services",
-      contact_us: "Contact Us",
     },
     navbar: {
       home: "Home",
@@ -450,7 +449,6 @@ export const translations: Record<SupportedLanguage, any> = {
       subtitle: "Мы создаем инновационные цифровые решения, которые помогают вашему бизнесу расти и процветать в современном технологическом ландшафте.",
       cta: "Изучить наш процесс",
       secondary_cta: "Наши услуги",
-      contact_us: "Связаться с нами",
     },
     navbar: {
       home: "Главная",
@@ -617,7 +615,7 @@ export const translations: Record<SupportedLanguage, any> = {
       },
       step2: {
         title: "Стратегическое планирование",
-        description: "Разрабатываем ��одробную дорожную карту с точными сроками, бюджетом и техническими требованиями для вашего проекта."
+        description: "Разрабатываем подробную дорожную карту с точными сроками, бюджетом и техническими требованиями для вашего проекта."
       },
       step3: {
         title: "UI/UX дизайн",
@@ -670,7 +668,7 @@ export const translations: Record<SupportedLanguage, any> = {
       about: {
         title: "О Теко",
         description: "Мы - цифровое агентство, ориентированное на создание инновационных решений для бизнеса, стремящегося к процветанию в цифровую эпоху.",
-        short_description: "Современные веб-сайты и интеграции для вашего бизнеса. Мы создаем цифровые ре��ения, которые помогают вашему бизнесу расти."
+        short_description: "Современные веб-сайты и интеграции для вашего бизнеса. Мы создаем цифровые решения, которые помогают вашему бизнесу расти."
       },
       links: {
         title: "Быстрые ссылки",
@@ -686,7 +684,6 @@ export const translations: Record<SupportedLanguage, any> = {
       subtitle: "Vytváříme inovativní digitální řešení, která pomáhají vašemu podnikání růst a prosperovat v moderní technologické krajině.",
       cta: "Prozkoumejte náš proces",
       secondary_cta: "Naše služby",
-      contact_us: "Kontaktujte nás",
     },
     navbar: {
       home: "Domů",

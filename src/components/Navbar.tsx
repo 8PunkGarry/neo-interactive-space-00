@@ -37,10 +37,10 @@ const Navbar = () => {
   `;
 
   const navLinks = [
-    { to: '/', label: t('navbar.home') },
+    // Reordered navigation items as requested
     { to: '/services', label: t('navbar.services') },
     { to: '/brief', label: t('navbar.brief') },
-    { to: '/chat', label: 'Chat' },
+    { to: '/about', label: t('navbar.about') },
   ];
 
   return (
