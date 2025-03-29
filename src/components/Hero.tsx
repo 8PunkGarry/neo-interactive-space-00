@@ -1,188 +1,64 @@
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import AnimatedLogo from './AnimatedLogo';
-import { ArrowDown } from 'lucide-react';
+import { Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const { t } = useLanguage();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // Set animation visible after a short delay for entrance effect
-    const timer = setTimeout(() => setIsVisible(true), 300);
-    
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
-      {/* Simplified Background Elements */}
-      <div className="absolute inset-0 z-0">
-        {/* Single animated background sphere with simplified animation */}
-        <div 
-          className="absolute w-[500px] h-[500px] rounded-full filter blur-[130px] transition-opacity duration-1000"
-          style={{ 
-            background: 'radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, rgba(124, 58, 237, 0.0) 70%)',
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            opacity: isVisible ? 0.6 : 0,
-            animation: 'pulse 8s infinite ease-in-out',
-          }}
+    <section className="relative bg-teko-black overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero-bg.webp"
+          alt="Abstract background"
+          className="w-full h-full object-cover opacity-20"
         />
-        
-        {/* Minimal grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-0 transition-opacity duration-1000"
-          style={{ 
-            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.15) 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-            opacity: isVisible ? 0.15 : 0,
-          }}
-        />
-        
-        {/* Main glowing diamond */}
-        <div 
-          className="absolute top-[20%] right-[20%] opacity-0 transition-opacity duration-1000"
-          style={{ 
-            opacity: isVisible ? 0.8 : 0,
-            transitionDelay: '0.6s',
-            animation: 'float 6s infinite ease-in-out',
-            filter: 'drop-shadow(0 0 8px rgba(124, 58, 237, 0.6))',
-          }}
-        >
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path 
-              d="M20 2 L38 20 L20 38 L2 20 Z" 
-              fill="rgba(124, 58, 237, 0.3)"
-              stroke="rgba(124, 58, 237, 0.6)"
-              strokeWidth="1"
-            />
-          </svg>
-        </div>
-        
-        {/* Smaller diamonds without glow */}
-        {[
-          { top: '15%', left: '15%', delay: '0.2s', size: 25, duration: '7s' },
-          { top: '35%', left: '10%', delay: '0.4s', size: 18, duration: '9s' },
-          { top: '60%', left: '20%', delay: '0.3s', size: 22, duration: '8s' },
-          { top: '75%', left: '40%', delay: '0.5s', size: 16, duration: '10s' },
-          { top: '65%', right: '15%', delay: '0.6s', size: 20, duration: '6s' },
-          { top: '30%', right: '10%', delay: '0.7s', size: 15, duration: '11s' },
-          { top: '45%', right: '30%', delay: '0.3s', size: 23, duration: '7.5s' },
-        ].map((diamond, index) => (
-          <div 
-            key={index}
-            className="absolute opacity-0 transition-opacity duration-1000"
-            style={{ 
-              top: diamond.top, 
-              left: diamond.left, 
-              right: diamond.right,
-              opacity: isVisible ? 0.5 : 0,
-              transitionDelay: diamond.delay,
-              animation: `float ${diamond.duration} infinite ease-in-out ${parseInt(diamond.delay) * 0.8}s`,
-            }}
-          >
-            <svg width={diamond.size} height={diamond.size} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path 
-                d="M20 2 L38 20 L20 38 L2 20 Z" 
-                fill="rgba(124, 58, 237, 0.15)"
-                stroke="rgba(124, 58, 237, 0.3)"
-                strokeWidth="1"
-              />
-            </svg>
-          </div>
-        ))}
       </div>
 
-      <div className="container mx-auto relative z-10">
-        <div className="flex flex-col items-center justify-center text-center">
-          {/* Simplified Animated Logo */}
-          <div 
-            className={`mb-12 relative transition-all duration-1000 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-            style={{ transitionDelay: '0.2s' }}
-          >
-            <AnimatedLogo size={120} className="mb-4" variant="minimal" />
+      {/* Animated Gradients */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-teko-purple/10 rounded-full filter blur-[100px] animate-pulse"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-teko-blue/10 rounded-full filter blur-[100px] animate-pulse"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10 py-24 md:py-32 lg:py-40">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Text Content */}
+          <div className="text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-teko-white purple-gradient-text mb-6 animate-on-scroll">
+              {t('hero.title')}
+            </h1>
+            <p className="text-teko-white/80 text-lg mb-8 animate-on-scroll delay-100">
+              {t('hero.subtitle')}
+            </p>
+            <div className="space-x-4 animate-on-scroll delay-200">
+              <Link 
+                to="/about" 
+                className="inline-block mt-4 px-8 py-3 bg-teko-purple text-white font-medium rounded-md hover:bg-teko-purple/90 transition-colors duration-300"
+              >
+                About Us
+              </Link>
+              <a
+                href="https://t.me/teko.sup_bot"
+                className="inline-flex items-center px-6 py-2 border border-teko-purple text-teko-white rounded-md hover:bg-teko-purple hover:text-white transition-colors duration-300"
+                aria-label="Telegram Chat"
+              >
+                {t('hero.contact_us')}
+                <Send size={18} className="ml-2" />
+              </a>
+            </div>
           </div>
 
-          {/* Content Animation */}
-          <h1 
-            className={`text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6 max-w-4xl transition-all duration-1000 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-            style={{ transitionDelay: '0.4s' }}
-          >
-            {t('hero.title')}
-          </h1>
-          
-          <p 
-            className={`text-lg md:text-xl text-teko-white/80 max-w-2xl mb-12 transition-all duration-1000 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-            style={{ transitionDelay: '0.6s' }}
-          >
-            {t('hero.subtitle')}
-          </p>
-          
-          <div 
-            className={`transition-all duration-1000 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-            style={{ transitionDelay: '0.8s' }}
-          >
-            <div className="flex flex-row items-center justify-center gap-4">
-              <a 
-                href="#journey" 
-                className="group relative overflow-hidden rounded-lg bg-teko-purple px-6 py-3 text-white text-lg font-medium transition-all duration-500 hover:bg-teko-purple-dark"
-              >
-                <span className="relative z-10">{t('hero.cta')}</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-teko-purple to-teko-gradient-end opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-              </a>
-              
-              <a 
-                href="#services" 
-                className="group relative overflow-hidden rounded-lg bg-transparent border border-teko-purple/50 px-6 py-3 text-white text-lg font-medium transition-all duration-500 hover:border-teko-purple hover:bg-teko-purple/10"
-              >
-                <span className="relative z-10">{t('hero.secondary_cta')}</span>
-                <span className="absolute inset-0 bg-teko-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-              </a>
-            </div>
-            
-            {/* Moved down arrow here, below the buttons and centered */}
-            <div 
-              className={`mt-16 flex justify-center transition-opacity duration-1000 ${
-                isVisible ? 'opacity-70' : 'opacity-0'
-              }`}
-              style={{ 
-                transitionDelay: '1s', 
-                animation: 'arrow-bounce 4s infinite ease-in-out' 
-              }}
-            >
-              <ArrowDown width="28" height="28" className="text-teko-purple hover:opacity-100 transition-opacity duration-300" />
-            </div>
+          {/* Image Content */}
+          <div className="flex justify-center">
+            <img
+              src="/images/hero-img.webp"
+              alt="Hero Image"
+              className="rounded-lg shadow-lg w-full max-w-md animate-on-scroll"
+            />
           </div>
-          
-          {/* Add custom animation keyframes for the arrow */}
-          <style dangerouslySetInnerHTML={{
-            __html: `
-              @keyframes arrow-bounce {
-                0%, 20%, 50%, 80%, 100% {
-                  transform: translateY(0);
-                }
-                40% {
-                  transform: translateY(-10px);
-                }
-                60% {
-                  transform: translateY(-5px);
-                }
-              }
-            `
-          }} />
         </div>
       </div>
     </section>

@@ -1,7 +1,12 @@
-
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
+
+type AboutSection = {
+  title: string;
+  description: string;
+  short_description: string;
+};
 
 interface ServiceItem {
   id: number;
@@ -190,10 +195,7 @@ interface HomeTranslations {
     terms: string;
     rights: string;
     address: string;
-    about: {
-      title: string;
-      description: string;
-    };
+    about: AboutSection;
     links: {
       title: string;
       privacy: string;
@@ -203,11 +205,7 @@ interface HomeTranslations {
   };
 }
 
-interface Translations {
-  [language: string]: HomeTranslations;
-}
-
-export const translations: Translations = {
+export const translations: Record<SupportedLanguage, any> = {
   en: {
     hero: {
       title: "Digital Innovation for Your Business",
@@ -615,7 +613,7 @@ export const translations: Translations = {
       },
       step2: {
         title: "Стратегическое планирование",
-        description: "Разрабатываем подробную дорожную карту с точными сроками, бюджетом и техническими требованиями для вашего проекта."
+        description: "Разрабатываем ��одробную дорожную карту с точными сроками, бюджетом и техническими требованиями для вашего проекта."
       },
       step3: {
         title: "UI/UX дизайн",
@@ -668,7 +666,7 @@ export const translations: Translations = {
       about: {
         title: "О Теко",
         description: "Мы - цифровое агентство, ориентированное на создание инновационных решений для бизнеса, стремящегося к процветанию в цифровую эпоху.",
-        short_description: "Современные веб-сайты и интеграции для вашего бизнеса. Мы создаем цифровые решения, которые помогают вашему бизнесу расти."
+        short_description: "Современные веб-сайты и интеграции для вашего бизнеса. Мы создаем цифровые ре��ения, которые помогают вашему бизнесу расти."
       },
       links: {
         title: "Быстрые ссылки",
