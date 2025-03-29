@@ -1,4 +1,3 @@
-
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -193,6 +192,7 @@ interface HomeTranslations {
     about: {
       title: string;
       description: string;
+      short_description: string; // Added this property to fix the type error
     };
     links: {
       title: string;
@@ -518,7 +518,7 @@ export const translations: Translations = {
           responsive: "Адаптивный дизайн",
           ecommerce: "Интеграция E-commerce",
           cms: "Управление контентом",
-          spa: "Однос��раничные приложения"
+          spa: "Одностраничные приложения"
         }
       },
       crm: {
@@ -582,7 +582,7 @@ export const translations: Translations = {
         }
       },
       mobile: {
-        title: "Мобильн��я разработка",
+        title: "Мобильная разработка",
         description: "Разработка интуитивно понятных мобильных приложений для платформ iOS и Android, расширяющих охват вашего бизнеса.",
         capabilities: {
           native: "Нативные приложения",
@@ -898,19 +898,4 @@ export const translations: Translations = {
       contact: "Kontaktujte nás",
       privacy: "Zásady ochrany osobních údajů",
       terms: "Podmínky služby",
-      rights: "Všechna práva vyhrazena",
-      address: "Praha, Česká republika",
-      about: {
-        title: "O Teko",
-        description: "Jsme digitální agentura zaměřená na vytváření inovativních řešení pro podniky, které chtějí prosperovat v digitální éře.",
-        short_description: "Moderní webové stránky a integrace pro vaše podnikání. Vytváříme digitální řešení, která pomáhají vašemu podnikání růst."
-      },
-      links: {
-        title: "Rychlé odkazy",
-        privacy: "Zásady ochrany osobních údajů",
-        terms: "Podmínky služby"
-      },
-      copyright: "© 2023 Teko. Všechna práva vyhrazena."
-    }
-  }
-};
+      rights: "
