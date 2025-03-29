@@ -485,7 +485,7 @@ export const translations: Translations = {
         {
           id: 3,
           title: "Мобильные приложения",
-          description: "Разработка нативных и кроссплатформенных мобильных приложений для iOS и Android.",
+          description: "Разработка нативных и кроссплатформменных мобильных приложений для iOS и Android.",
           icon: "smartphone",
           price: "От $5,000"
         },
@@ -668,7 +668,7 @@ export const translations: Translations = {
       about: {
         title: "О Теко",
         description: "Мы - цифровое агентство, ориентированное на создание инновационных решений для бизнеса, стремящегося к процветанию в цифровую эпоху.",
-        short_description: "Современные веб-сайты и интеграции для вашего бизнеса. Мы создаем цифровые решения, которые помогают вашему бизнесу расти."
+        short_description: "Современные веб-сайты и интеграции для вашего бизнеса. Мы создаём цифровые решения, которые помогают вашему бизнесу расти."
       },
       links: {
         title: "Быстрые ссылки",
@@ -898,4 +898,19 @@ export const translations: Translations = {
       contact: "Kontaktujte nás",
       privacy: "Zásady ochrany osobních údajů",
       terms: "Podmínky služby",
-      rights: "Všechna práva
+      rights: "Všechna práva vyhrazena",
+      address: "Praha, Česká republika",
+      about: {
+        title: "O Teko",
+        description: "Jsme digitální agentura zaměřená na vytváření inovativních řešení pro firmy, které chtějí prosperovat v digitální éře.",
+        short_description: "Moderní webové stránky a integrace pro vaše podnikání. Vytváříme digitální řešení, která pomáhají vašemu podnikání růst."
+      },
+      links: {
+        title: "Rychlé odkazy",
+        privacy: "Zásady ochrany osobních údajů",
+        terms: "Podmínky služby"
+      },
+      copyright: "© 2023 Teko. Všechna práva vyhrazena."
+    }
+  }
+};
