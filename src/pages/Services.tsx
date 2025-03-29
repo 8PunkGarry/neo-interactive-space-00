@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -5,8 +6,10 @@ import ServiceSearch from '../components/ServiceSearch';
 import ServiceFilter from '../components/ServiceFilter';
 import { useLanguage } from '../context/LanguageContext';
 import { Badge } from '@/components/ui/badge';
-import { Server, Code, Globe, Database, Smartphone, Cloud, BarChart3, Shield, Search, Palette, Headphones } from 'lucide-react';
+import { Server, Code, Globe, Database, Smartphone, Cloud, BarChart3, Shield, Search, Palette, Headphones, ArrowRight } from 'lucide-react';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const { t } = useLanguage();
@@ -14,6 +17,7 @@ const Services = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
   const servicesPerPage = 9;
+  const navigate = useNavigate();
   
   // Service details with more content
   const serviceDetails = [
@@ -155,29 +159,33 @@ const Services = () => {
   const currentServices = filteredServices.slice(indexOfFirstService, indexOfLastService);
   const totalPages = Math.ceil(filteredServices.length / servicesPerPage);
   
+  const goToContactPage = () => {
+    navigate('/brief');
+  };
+  
   return (
     <div className="min-h-screen bg-teko-black">
       <Navbar />
       
       <main className="pt-24 pb-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4" style={{ position: 'relative', zIndex: 10 }}>
           {/* Title Section */}
-          <div className="text-center mb-12 relative z-[999]">
+          <div className="text-center mb-12" style={{ position: 'relative', zIndex: 10 }}>
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white">
               {t('services.title')}
             </h1>
-            <p className="text-teko-white/70 max-w-3xl mx-auto">
+            <p className="text-teko-white max-w-3xl mx-auto">
               {t('services.description')}
             </p>
           </div>
           
           {/* Search Bar */}
-          <div className="relative z-[999]">
+          <div style={{ position: 'relative', zIndex: 10 }}>
             <ServiceSearch onSearch={setSearchTerm} />
           </div>
           
           {/* Filter Controls */}
-          <div className="relative z-[999]">
+          <div style={{ position: 'relative', zIndex: 10 }}>
             <ServiceFilter 
               viewMode={viewMode} 
               onViewModeChange={setViewMode} 
@@ -185,15 +193,15 @@ const Services = () => {
           </div>
           
           {/* Services Grid/List */}
-          <div className="mt-8 mb-12 relative z-[999]">
+          <div className="mt-8 mb-12" style={{ position: 'relative', zIndex: 10 }}>
             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'} gap-8`}>
               {currentServices.map((service, index) => (
                 <div 
                   key={service.id} 
                   id={service.id}
-                  className="relative z-[999]"
+                  style={{ position: 'relative', zIndex: 10 }}
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full relative z-[999]">
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full" style={{ position: 'relative', zIndex: 10 }}>
                     <div className={`flex ${viewMode === 'grid' ? 'flex-col' : 'flex-col md:flex-row'} gap-8`}>
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
@@ -206,7 +214,7 @@ const Services = () => {
                           {service.title}
                         </h3>
                         
-                        <p className="text-teko-white/80 mb-6">
+                        <p className="text-teko-white mb-6">
                           {service.description}
                         </p>
                         
@@ -236,7 +244,7 @@ const Services = () => {
                               {service.technologies.map((tech, idx) => (
                                 <Badge 
                                   key={idx}
-                                  className="bg-white/10 text-teko-white/80 border-white/10"
+                                  className="bg-white/10 text-teko-white border-white/10"
                                 >
                                   {tech}
                                 </Badge>
@@ -252,7 +260,7 @@ const Services = () => {
               
               {filteredServices.length === 0 && (
                 <div className="text-center py-12 col-span-3">
-                  <p className="text-teko-white/70 text-lg">
+                  <p className="text-teko-white text-lg">
                     {t('services.search.noResults')}
                   </p>
                 </div>
@@ -261,7 +269,7 @@ const Services = () => {
             
             {/* Pagination */}
             {filteredServices.length > servicesPerPage && (
-              <div className="relative z-[999]">
+              <div style={{ position: 'relative', zIndex: 10 }}>
                 <Pagination className="mt-12">
                   <PaginationContent>
                     <PaginationItem>
@@ -296,13 +304,13 @@ const Services = () => {
           </div>
           
           {/* The rest of the page content */}
-          <div className="mt-20 max-w-5xl mx-auto relative z-[999]">
+          <div className="mt-20 max-w-5xl mx-auto" style={{ position: 'relative', zIndex: 10 }}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
-              <div className="relative z-[999]">
+              <div style={{ position: 'relative', zIndex: 10 }}>
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
                   {t('services.approach.title')}
                 </h2>
-                <p className="text-teko-white/80 mb-6">
+                <p className="text-teko-white mb-6">
                   {t('services.approach.description')}
                 </p>
                 <ul className="space-y-4">
@@ -311,7 +319,7 @@ const Services = () => {
                       <div className="w-6 h-6 rounded-full bg-teko-purple/20 flex items-center justify-center mt-0.5">
                         <span className="text-teko-purple font-bold text-sm">{i}</span>
                       </div>
-                      <p className="text-teko-white/80">
+                      <p className="text-teko-white">
                         {t(`services.approach.step${i}`)}
                       </p>
                     </li>
@@ -319,7 +327,7 @@ const Services = () => {
                 </ul>
               </div>
               
-              <div className="glass-card rounded-xl p-8 relative z-[999]">
+              <div className="glass-card rounded-xl p-8" style={{ position: 'relative', zIndex: 10 }}>
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
                   {t('services.benefits.title')}
                 </h2>
@@ -331,7 +339,7 @@ const Services = () => {
                           <path d="M20 6L9 17l-5-5"></path>
                         </svg>
                       </div>
-                      <p className="text-teko-white/80">
+                      <p className="text-teko-white">
                         {t(`services.benefits.benefit${i}`)}
                       </p>
                     </li>
@@ -340,11 +348,11 @@ const Services = () => {
               </div>
             </div>
             
-            <div className="glass-card p-8 rounded-xl relative z-[999]">
+            <div className="glass-card p-8 rounded-xl" style={{ position: 'relative', zIndex: 10 }}>
               <h2 className="text-2xl font-display font-bold mb-6 text-center text-teko-purple-light">
                 {t('services.cta.title')}
               </h2>
-              <p className="text-teko-white/80 text-center mb-8">
+              <p className="text-teko-white text-center mb-8">
                 {t('services.cta.description')}
               </p>
               <div className="flex justify-center">
@@ -356,6 +364,17 @@ const Services = () => {
                   <span className="absolute inset-0 bg-gradient-to-r from-teko-purple to-teko-gradient-end opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </a>
               </div>
+            </div>
+            
+            {/* Navigation Button */}
+            <div className="flex justify-center mt-16" style={{ position: 'relative', zIndex: 10 }}>
+              <Button 
+                onClick={goToContactPage}
+                className="bg-teko-purple hover:bg-teko-purple-dark text-white flex items-center gap-2 px-8 py-6 text-lg rounded-xl"
+              >
+                {t('services.nextPage')}
+                <ArrowRight size={20} />
+              </Button>
             </div>
           </div>
         </div>
