@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -18,6 +19,7 @@ const Services = () => {
   const servicesPerPage = 9;
   const navigate = useNavigate();
   
+  // Service details with more content
   const serviceDetails = [
     {
       id: 'web-development',
@@ -138,6 +140,7 @@ const Services = () => {
     }
   ];
 
+  // Filter services based on search term
   const filteredServices = useMemo(() => {
     if (!searchTerm) return serviceDetails;
     
@@ -150,6 +153,7 @@ const Services = () => {
     );
   }, [searchTerm, serviceDetails]);
 
+  // Calculate pagination
   const indexOfLastService = currentPage * servicesPerPage;
   const indexOfFirstService = indexOfLastService - servicesPerPage;
   const currentServices = filteredServices.slice(indexOfFirstService, indexOfLastService);
@@ -164,8 +168,9 @@ const Services = () => {
       <Navbar />
       
       <main className="pt-24 pb-20">
-        <div className="container mx-auto px-4" style={{ position: 'relative', zIndex: 999 }}>
-          <div className="text-center mb-12" style={{ position: 'relative', zIndex: 999 }}>
+        <div className="container mx-auto px-4" style={{ position: 'relative', zIndex: 10 }}>
+          {/* Title Section */}
+          <div className="text-center mb-12" style={{ position: 'relative', zIndex: 10 }}>
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white">
               {t('services.title')}
             </h1>
@@ -174,27 +179,29 @@ const Services = () => {
             </p>
           </div>
           
-          <div style={{ position: 'relative', zIndex: 999 }}>
+          {/* Search Bar */}
+          <div style={{ position: 'relative', zIndex: 10 }}>
             <ServiceSearch onSearch={setSearchTerm} />
           </div>
           
-          <div style={{ position: 'relative', zIndex: 999 }}>
+          {/* Filter Controls */}
+          <div style={{ position: 'relative', zIndex: 10 }}>
             <ServiceFilter 
               viewMode={viewMode} 
               onViewModeChange={setViewMode} 
-              totalServices={filteredServices.length}
             />
           </div>
           
-          <div className="mt-8 mb-12" style={{ position: 'relative', zIndex: 999 }}>
+          {/* Services Grid/List */}
+          <div className="mt-8 mb-12" style={{ position: 'relative', zIndex: 10 }}>
             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'} gap-8`}>
               {currentServices.map((service, index) => (
                 <div 
                   key={service.id} 
                   id={service.id}
-                  style={{ position: 'relative', zIndex: 999 }}
+                  style={{ position: 'relative', zIndex: 10 }}
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full" style={{ position: 'relative', zIndex: 999 }}>
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full" style={{ position: 'relative', zIndex: 10 }}>
                     <div className={`flex ${viewMode === 'grid' ? 'flex-col' : 'flex-col md:flex-row'} gap-8`}>
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
@@ -260,8 +267,9 @@ const Services = () => {
               )}
             </div>
             
+            {/* Pagination */}
             {filteredServices.length > servicesPerPage && (
-              <div style={{ position: 'relative', zIndex: 999 }}>
+              <div style={{ position: 'relative', zIndex: 10 }}>
                 <Pagination className="mt-12">
                   <PaginationContent>
                     <PaginationItem>
@@ -295,9 +303,10 @@ const Services = () => {
             )}
           </div>
           
-          <div className="mt-20 max-w-5xl mx-auto" style={{ position: 'relative', zIndex: 999 }}>
+          {/* The rest of the page content */}
+          <div className="mt-20 max-w-5xl mx-auto" style={{ position: 'relative', zIndex: 10 }}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
-              <div style={{ position: 'relative', zIndex: 999 }}>
+              <div style={{ position: 'relative', zIndex: 10 }}>
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
                   {t('services.approach.title')}
                 </h2>
@@ -318,7 +327,7 @@ const Services = () => {
                 </ul>
               </div>
               
-              <div className="glass-card rounded-xl p-8" style={{ position: 'relative', zIndex: 999 }}>
+              <div className="glass-card rounded-xl p-8" style={{ position: 'relative', zIndex: 10 }}>
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
                   {t('services.benefits.title')}
                 </h2>
@@ -339,7 +348,7 @@ const Services = () => {
               </div>
             </div>
             
-            <div className="glass-card p-8 rounded-xl" style={{ position: 'relative', zIndex: 999 }}>
+            <div className="glass-card p-8 rounded-xl" style={{ position: 'relative', zIndex: 10 }}>
               <h2 className="text-2xl font-display font-bold mb-6 text-center text-teko-purple-light">
                 {t('services.cta.title')}
               </h2>
@@ -357,7 +366,8 @@ const Services = () => {
               </div>
             </div>
             
-            <div className="flex justify-center mt-16" style={{ position: 'relative', zIndex: 999 }}>
+            {/* Navigation Button */}
+            <div className="flex justify-center mt-16" style={{ position: 'relative', zIndex: 10 }}>
               <Button 
                 onClick={goToContactPage}
                 className="bg-teko-purple hover:bg-teko-purple-dark text-white flex items-center gap-2 px-8 py-6 text-lg rounded-xl"
