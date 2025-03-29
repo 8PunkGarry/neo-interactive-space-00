@@ -17,28 +17,15 @@ const ServiceFilter: React.FC<ServiceFilterProps> = ({
   const { t } = useLanguage();
   
   return (
-    <div className="flex flex-col sm:flex-row justify-end items-center mb-8 relative z-[999]">
+    <div className="flex flex-col sm:flex-row justify-end items-center mb-8">
       <div className="flex items-center gap-4">
         <span className="text-teko-white/70 hidden md:inline">{t('services.viewAs')}:</span>
-        <ToggleGroup 
-          type="single" 
-          value={viewMode} 
-          onValueChange={(value) => value && onViewModeChange(value as 'grid' | 'list')}
-          className="bg-white/5 backdrop-blur-sm p-1 rounded-md border border-white/10"
-        >
-          <ToggleGroupItem 
-            value="grid" 
-            aria-label="Grid view" 
-            className="data-[state=on]:bg-teko-purple/30 text-teko-white"
-          >
+        <ToggleGroup type="single" value={viewMode} onValueChange={(value) => value && onViewModeChange(value as 'grid' | 'list')}>
+          <ToggleGroupItem value="grid" aria-label="Grid view" className="data-[state=on]:bg-teko-purple/30">
             <Grid size={18} className="mr-1" />
             <span className="hidden md:inline">{t('services.gridView')}</span>
           </ToggleGroupItem>
-          <ToggleGroupItem 
-            value="list" 
-            aria-label="List view" 
-            className="data-[state=on]:bg-teko-purple/30 text-teko-white"
-          >
+          <ToggleGroupItem value="list" aria-label="List view" className="data-[state=on]:bg-teko-purple/30">
             <List size={18} className="mr-1" />
             <span className="hidden md:inline">{t('services.listView')}</span>
           </ToggleGroupItem>
