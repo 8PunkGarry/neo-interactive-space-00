@@ -39,7 +39,7 @@ const Hero = () => {
                 to="/about" 
                 className="inline-block mt-4 px-8 py-3 bg-teko-purple text-white font-medium rounded-md hover:bg-teko-purple/90 transition-colors duration-300"
               >
-                About Us
+                {t('about.title') || 'About Us'}
               </Link>
               <a
                 href="https://t.me/teko.sup_bot"
