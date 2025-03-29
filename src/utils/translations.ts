@@ -192,7 +192,7 @@ interface HomeTranslations {
     about: {
       title: string;
       description: string;
-      short_description: string; // Added this property to fix the type error
+      short_description: string;
     };
     links: {
       title: string;
@@ -898,4 +898,4 @@ export const translations: Translations = {
       contact: "Kontaktujte nás",
       privacy: "Zásady ochrany osobních údajů",
       terms: "Podmínky služby",
-      rights: "
+      rights: "Všechna práva
