@@ -3,8 +3,11 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { MessageCircle } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Chat = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen flex flex-col bg-teko-black text-teko-white">
       <Navbar />
@@ -14,7 +17,7 @@ const Chat = () => {
             <div className="flex justify-center mb-6">
               <MessageCircle size={64} className="text-teko-purple" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Chat</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('navbar.chat')}</h1>
             <p className="text-xl text-teko-white/80 mb-10">
               This is the chat page. You can start a conversation with us here.
             </p>
