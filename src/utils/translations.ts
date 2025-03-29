@@ -1,3 +1,4 @@
+
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -22,6 +23,7 @@ interface HomeTranslations {
     subtitle: string;
     cta: string;
     secondary_cta: string;
+    contact_us: string;
   };
   navbar: {
     home: string;
@@ -212,6 +214,7 @@ export const translations: Record<SupportedLanguage, any> = {
       subtitle: "We create innovative digital solutions that help your business grow and thrive in the modern technological landscape.",
       cta: "Explore Our Process",
       secondary_cta: "Our Services",
+      contact_us: "Contact Us",
     },
     navbar: {
       home: "Home",
@@ -447,6 +450,7 @@ export const translations: Record<SupportedLanguage, any> = {
       subtitle: "Мы создаем инновационные цифровые решения, которые помогают вашему бизнесу расти и процветать в современном технологическом ландшафте.",
       cta: "Изучить наш процесс",
       secondary_cta: "Наши услуги",
+      contact_us: "Связаться с нами",
     },
     navbar: {
       home: "Главная",
@@ -682,6 +686,7 @@ export const translations: Record<SupportedLanguage, any> = {
       subtitle: "Vytváříme inovativní digitální řešení, která pomáhají vašemu podnikání růst a prosperovat v moderní technologické krajině.",
       cta: "Prozkoumejte náš proces",
       secondary_cta: "Naše služby",
+      contact_us: "Kontaktujte nás",
     },
     navbar: {
       home: "Domů",

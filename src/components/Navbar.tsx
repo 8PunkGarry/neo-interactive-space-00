@@ -37,8 +37,7 @@ const Navbar = () => {
   `;
 
   const navLinks = [
-    // Updated navigation items
-    { to: '/', label: 'Home' },
+    { to: '/', label: t('navbar.home') },
     { to: '/services', label: t('navbar.services') },
     { to: '/brief', label: t('navbar.brief') },
     { to: '/chat', label: 'Chat' },
