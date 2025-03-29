@@ -1,3 +1,4 @@
+
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -129,6 +130,12 @@ interface HomeTranslations {
       title: string;
       description: string;
     };
+    // Add the new properties here
+    singleResult: string;
+    multipleResults: string;
+    viewAs: string;
+    gridView: string;
+    listView: string;
   };
   journey: {
     title: string;
