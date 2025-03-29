@@ -6,7 +6,7 @@ import { MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 const Chat = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   return (
     <div className="min-h-screen flex flex-col bg-teko-black text-teko-white">
@@ -19,11 +19,15 @@ const Chat = () => {
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('navbar.chat')}</h1>
             <p className="text-xl text-teko-white/80 mb-10">
-              This is the chat page. You can start a conversation with us here.
+              {language === 'ru' ? 'Это страница чата. Здесь вы можете начать общение с нами.' : 
+               language === 'cs' ? 'Toto je stránka chatu. Zde můžete zahájit konverzaci s námi.' :
+               'This is the chat page. You can start a conversation with us here.'}
             </p>
             <div className="bg-teko-dark-gray p-6 rounded-lg">
               <p className="text-lg text-teko-white/70 mb-4">
-                Chat functionality coming soon!
+                {language === 'ru' ? 'Функция чата скоро появится!' : 
+                 language === 'cs' ? 'Funkce chatu bude brzy k dispozici!' :
+                 'Chat functionality coming soon!'}
               </p>
             </div>
           </div>
