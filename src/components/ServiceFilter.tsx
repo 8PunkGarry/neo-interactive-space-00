@@ -7,24 +7,17 @@ import { useLanguage } from '@/context/LanguageContext';
 interface ServiceFilterProps {
   viewMode: 'grid' | 'list';
   onViewModeChange: (mode: 'grid' | 'list') => void;
-  totalServices: number;
+  totalServices?: number; // Make this optional
 }
 
 const ServiceFilter: React.FC<ServiceFilterProps> = ({ 
   viewMode, 
   onViewModeChange,
-  totalServices
 }) => {
   const { t } = useLanguage();
   
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
-      <div className="mb-4 sm:mb-0">
-        <p className="text-teko-white/70">
-          {totalServices} {totalServices === 1 ? t('services.singleResult') : t('services.multipleResults')}
-        </p>
-      </div>
-      
+    <div className="flex flex-col sm:flex-row justify-end items-center mb-8">
       <div className="flex items-center gap-4">
         <span className="text-teko-white/70 hidden md:inline">{t('services.viewAs')}:</span>
         <ToggleGroup type="single" value={viewMode} onValueChange={(value) => value && onViewModeChange(value as 'grid' | 'list')}>

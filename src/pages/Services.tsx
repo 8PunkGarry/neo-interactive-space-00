@@ -1,14 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import ServiceGrid from '../components/ServiceGrid';
 import ServiceSearch from '../components/ServiceSearch';
 import ServiceFilter from '../components/ServiceFilter';
 import { useLanguage } from '../context/LanguageContext';
-import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Server, Code, Globe, Database, Smartphone, Cloud, BarChart3, Shield, Search, Palette, Headphones } from 'lucide-react';
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 
 const Services = () => {
   const { t } = useLanguage();
@@ -161,7 +159,7 @@ const Services = () => {
     <div className="min-h-screen bg-teko-black">
       <Navbar />
       
-      <main className="pt-32 pb-20 relative z-10">
+      <main className="pt-24 pb-20 relative z-50">
         <div className="container mx-auto px-4">
           {/* Title Section - Now at the very top */}
           <div className="text-center mb-12 animate-on-scroll">
@@ -180,20 +178,19 @@ const Services = () => {
           <ServiceFilter 
             viewMode={viewMode} 
             onViewModeChange={setViewMode} 
-            totalServices={filteredServices.length}
           />
           
           {/* Services Grid/List */}
-          <div className="mt-8 mb-12 relative z-40">
+          <div className="mt-8 mb-12 z-50 relative">
             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'} gap-8`}>
               {currentServices.map((service, index) => (
                 <div 
                   key={service.id} 
                   id={service.id}
-                  className="scroll-mt-32 animate-on-scroll"
+                  className="scroll-mt-32 animate-on-scroll z-50 relative"
                   style={{ transitionDelay: `${index * 0.1}s` }}
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 relative z-30 h-full">
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 relative z-50 h-full">
                     <div className={`flex ${viewMode === 'grid' ? 'flex-col' : 'flex-col md:flex-row'} gap-8`}>
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
@@ -294,7 +291,7 @@ const Services = () => {
           </div>
           
           {/* The rest of the page content */}
-          <div className="mt-20 max-w-5xl mx-auto relative z-30">
+          <div className="mt-20 max-w-5xl mx-auto relative z-50">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
               <div className="animate-on-scroll">
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
