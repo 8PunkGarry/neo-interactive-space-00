@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import AnimatedLogo from './AnimatedLogo';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -37,10 +37,12 @@ const Navbar = () => {
   `;
 
   const navLinks = [
-    // Reordered navigation items as requested
+    // Added Home link at the beginning
+    { to: '/', label: 'Home', icon: Home },
     { to: '/services', label: t('navbar.services') },
     { to: '/brief', label: t('navbar.brief') },
-    { to: '/about', label: t('navbar.about') },
+    // Replaced About with Chat
+    { to: '/chat', label: 'Chat', icon: MessageCircle },
   ];
 
   return (
@@ -56,10 +58,11 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`text-teko-white/80 hover:text-teko-purple transition-colors
+              className={`text-teko-white/80 hover:text-teko-purple transition-colors flex items-center gap-1
                 ${location.pathname === link.to ? 'text-teko-purple font-medium' : ''}
               `}
             >
+              {link.icon && <link.icon size={16} />}
               {link.label}
             </Link>
           ))}
@@ -91,11 +94,12 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`text-teko-white/80 py-2 border-b border-teko-purple/10 hover:text-teko-purple transition-colors
+              className={`text-teko-white/80 py-2 border-b border-teko-purple/10 hover:text-teko-purple transition-colors flex items-center gap-2
                 ${location.pathname === link.to ? 'text-teko-purple font-medium' : ''}
               `}
               onClick={() => setIsMenuOpen(false)}
             >
+              {link.icon && <link.icon size={18} />}
               {link.label}
             </Link>
           ))}
