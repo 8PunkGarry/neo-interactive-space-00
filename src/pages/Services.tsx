@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -159,11 +160,11 @@ const Services = () => {
     <div className="min-h-screen bg-teko-black">
       <Navbar />
       
-      <main className="pt-24 pb-20 relative z-50">
+      <main className="pt-24 pb-20">
         <div className="container mx-auto px-4">
           {/* Title Section - Now at the very top */}
-          <div className="text-center mb-12 animate-on-scroll">
-            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
+          <div className="text-center mb-12 animate-on-scroll relative z-[60]">
+            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white">
               {t('services.title')}
             </h1>
             <p className="text-teko-white/70 max-w-3xl mx-auto">
@@ -172,25 +173,29 @@ const Services = () => {
           </div>
           
           {/* Search Bar - Now directly below the title */}
-          <ServiceSearch onSearch={setSearchTerm} />
+          <div className="relative z-[60]">
+            <ServiceSearch onSearch={setSearchTerm} />
+          </div>
           
           {/* Filter Controls - Added below search */}
-          <ServiceFilter 
-            viewMode={viewMode} 
-            onViewModeChange={setViewMode} 
-          />
+          <div className="relative z-[60]">
+            <ServiceFilter 
+              viewMode={viewMode} 
+              onViewModeChange={setViewMode} 
+            />
+          </div>
           
           {/* Services Grid/List */}
-          <div className="mt-8 mb-12 z-50 relative">
+          <div className="mt-8 mb-12 relative z-[60]">
             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'} gap-8`}>
               {currentServices.map((service, index) => (
                 <div 
                   key={service.id} 
                   id={service.id}
-                  className="scroll-mt-32 animate-on-scroll z-50 relative"
+                  className="scroll-mt-32 animate-on-scroll"
                   style={{ transitionDelay: `${index * 0.1}s` }}
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 relative z-50 h-full">
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full relative z-[60]">
                     <div className={`flex ${viewMode === 'grid' ? 'flex-col' : 'flex-col md:flex-row'} gap-8`}>
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
@@ -258,40 +263,42 @@ const Services = () => {
             
             {/* Pagination */}
             {filteredServices.length > servicesPerPage && (
-              <Pagination className="mt-12">
-                <PaginationContent>
-                  <PaginationItem>
-                    <PaginationPrevious 
-                      onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                      className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
-                    />
-                  </PaginationItem>
-                  
-                  {[...Array(totalPages)].map((_, index) => (
-                    <PaginationItem key={index}>
-                      <PaginationLink 
-                        isActive={currentPage === index + 1}
-                        onClick={() => setCurrentPage(index + 1)}
-                        className="cursor-pointer hover:bg-teko-purple/20 data-[active=true]:bg-teko-purple/30"
-                      >
-                        {index + 1}
-                      </PaginationLink>
+              <div className="relative z-[60]">
+                <Pagination className="mt-12">
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious 
+                        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                        className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
+                      />
                     </PaginationItem>
-                  ))}
-                  
-                  <PaginationItem>
-                    <PaginationNext 
-                      onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                      className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
-                    />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
+                    
+                    {[...Array(totalPages)].map((_, index) => (
+                      <PaginationItem key={index}>
+                        <PaginationLink 
+                          isActive={currentPage === index + 1}
+                          onClick={() => setCurrentPage(index + 1)}
+                          className="cursor-pointer hover:bg-teko-purple/20 data-[active=true]:bg-teko-purple/30"
+                        >
+                          {index + 1}
+                        </PaginationLink>
+                      </PaginationItem>
+                    ))}
+                    
+                    <PaginationItem>
+                      <PaginationNext 
+                        onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                        className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              </div>
             )}
           </div>
           
           {/* The rest of the page content */}
-          <div className="mt-20 max-w-5xl mx-auto relative z-50">
+          <div className="mt-20 max-w-5xl mx-auto relative z-[60]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
               <div className="animate-on-scroll">
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
