@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -300,10 +299,10 @@ const Services = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
               <div className="relative z-[10]">
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
-                  {t('services.approach.title')}
+                  Our Approach
                 </h2>
                 <p className="text-teko-white mb-6">
-                  {t('services.approach.description')}
+                  We follow a systematic methodology to deliver exceptional digital solutions tailored to your specific business needs.
                 </p>
                 <ul className="space-y-4">
                   {[1, 2, 3, 4].map((i) => (
@@ -321,7 +320,7 @@ const Services = () => {
               
               <div className="glass-card rounded-xl p-8 relative z-[10]">
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
-                  {t('services.benefits.title')}
+                  Benefits of Our Services
                 </h2>
                 <ul className="space-y-4">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -342,10 +341,10 @@ const Services = () => {
             
             <div className="glass-card p-8 rounded-xl relative z-[10]">
               <h2 className="text-2xl font-display font-bold mb-6 text-center text-teko-purple-light">
-                {t('services.cta.title')}
+                Ready to Start Your Digital Transformation?
               </h2>
               <p className="text-teko-white text-center mb-8">
-                {t('services.cta.description')}
+                Contact us today to discuss your project and discover how our services can help your business grow in the digital landscape.
               </p>
               <div className="flex justify-center">
                 <a 
