@@ -15,7 +15,9 @@ import Client from "./pages/Client";
 import Company from "./pages/Company";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Chat from "./pages/Chat"; // Added Chat import
+import Chat from "./pages/Chat";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings"; // Added Settings import
 
 // Создание нового queryClient, чтобы избежать проблем с кэшированием
 const queryClient = new QueryClient({
@@ -44,7 +46,9 @@ const App = () => (
               <Route path="/company" element={<Company />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/chat" element={<Chat />} /> {/* Added Chat route */}
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/settings" element={<Settings />} /> {/* Added Settings route */}
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

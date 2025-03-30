@@ -86,8 +86,8 @@ const Signup = () => {
         description: "Welcome to teko.sup! Your account has been created successfully.",
       });
       
-      // Redirect to home page after successful signup
-      setTimeout(() => navigate('/'), 1500);
+      // Changed: Redirect to profile page after successful signup
+      setTimeout(() => navigate('/profile'), 1500);
     } catch (error) {
       console.error('Signup error:', error);
       toast({
