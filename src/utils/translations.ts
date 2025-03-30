@@ -1,3 +1,4 @@
+
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
 
 export const translations = {
@@ -165,13 +166,6 @@ export const translations = {
         step2: 'Planning & Strategy: We develop a detailed plan and strategy to achieve your objectives.',
         step3: 'Design & Development: Our team creates and develops solutions tailored to your needs.',
         step4: 'Testing & Deployment: We thoroughly test and deploy the solutions to ensure optimal performance.'
-      },
-      benefits: {
-        title: 'Key Benefits',
-        description: 'Partnering with us offers numerous benefits, including:'
-      },
-      benefits: {
-        title: 'Key Benefits',
       },
       benefits: {
         title: 'Key Benefits',
@@ -377,13 +371,6 @@ export const translations = {
       },
       benefits: {
         title: 'Ключевые преимущества',
-        description: 'Сотрудничество с нами предлагает множество преимуществ, в том числе:'
-      },
-      benefits: {
-        title: 'Ключевые преимущества',
-      },
-      benefits: {
-        title: 'Ключевые преимущества',
         benefit1: 'Повышение эффективности: Оптимизируйте свои процессы и повысьте производительность.',
         benefit2: 'Сокращение затрат: Сократите операционные расходы за счет оптимизированных решений.',
         benefit3: 'Улучшение качества обслуживания клиентов: Предоставляйте исключительный опыт своим клиентам.',
@@ -557,6 +544,7 @@ export const translations = {
       mobile: {
         title: "Vývoj mobilních aplikací",
         description: "Vývoj intuitivních mobilních aplikací pro platformy iOS a Android, které rozšiřují dosah vašeho podnikání.",
+        fullDescription: "Naše mobilní vývojové služby se zaměřují na vytváření intuitivních a poutavých mobilních aplikací pro platformy iOS a Android. Používáme nejnovější technologie k zajištění vysoce kvalitních mobilních zážitků, které splňují vaše obchodní cíle.",
         capabilities: {
           native: "Nativní aplikace",
           hybrid: "Hybridní řešení",
@@ -582,13 +570,6 @@ export const translations = {
         step2: "Plánování a strategie: Vyvíjíme podrobný plán a strategii k dosažení vašich cílů.",
         step3: "Návrh a vývoj: Náš tým vytváří a vyvíjí řešení šitá na míru vašim potřebám.",
         step4: "Testování a nasazení: Důkladně testujeme a nasazujeme řešení, abychom zajistili optimální výkon."
-      },
-      benefits: {
-        title: "Klíčové výhody",
-        description: "Partnerství s námi nabízí řadu výhod, včetně:"
-      },
-      benefits: {
-        title: "Klíčové výhody",
       },
       benefits: {
         title: "Klíčové výhody",
