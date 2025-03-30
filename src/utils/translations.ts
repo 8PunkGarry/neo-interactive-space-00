@@ -906,4 +906,4 @@ export const translations: Translations = {
       },
       mobile: {
         title: "Vývoj mobilních aplikací",
-        description: "Vývoj intuitivních mobilních aplikací pro platformy iOS a Android, které rozšiřují dosah vašeho podnikání
+        description: "Vývoj intuitivních mobilních aplikací pro platformy iOS a Android, které rozšiřují dosah vaše
