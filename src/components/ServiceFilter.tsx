@@ -25,13 +25,15 @@ const ServiceFilter: React.FC<ServiceFilterProps> = ({
   return (
     <div className="flex flex-col sm:flex-row justify-between items-center mb-8 relative" style={{ zIndex: 1000 }}>
       {totalServices > 0 && (
-        <div className="text-teko-white/90 mb-4 sm:mb-0">
+        <div className="text-teko-white mb-4 sm:mb-0 font-medium" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.3)' }}>
           {resultsText}
         </div>
       )}
       
       <div className="flex items-center gap-4">
-        <span className="text-teko-white hidden md:inline">{t('services.viewAs')}:</span>
+        <span className="text-teko-white font-medium hidden md:inline" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.3)' }}>
+          {t('services.viewAs')}:
+        </span>
         <ToggleGroup 
           type="single" 
           value={viewMode} 
