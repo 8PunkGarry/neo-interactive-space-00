@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -160,25 +161,25 @@ const Services = () => {
   };
   
   return (
-    <div className="min-h-screen bg-teko-black">
+    <div className="min-h-screen bg-teko-black relative">
       <Navbar />
       
-      <main className="pt-24 pb-20">
-        <div className="container mx-auto px-4" style={{ position: 'relative', zIndex: 999 }}>
-          <div className="text-center mb-12" style={{ position: 'relative', zIndex: 999 }}>
-            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white">
+      <main className="pt-24 pb-20 relative z-[5]">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12 relative z-[20]">
+            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white" style={{ textShadow: '0 0 10px rgba(0, 0, 0, 0.5)' }}>
               {t('services.title')}
             </h1>
-            <p className="text-teko-white max-w-3xl mx-auto">
+            <p className="text-teko-white max-w-3xl mx-auto" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.5)' }}>
               {t('services.description')}
             </p>
           </div>
           
-          <div style={{ position: 'relative', zIndex: 999 }}>
+          <div className="relative z-[30]">
             <ServiceSearch onSearch={setSearchTerm} />
           </div>
           
-          <div style={{ position: 'relative', zIndex: 999 }}>
+          <div className="relative z-[25]">
             <ServiceFilter 
               viewMode={viewMode} 
               onViewModeChange={setViewMode} 
@@ -186,15 +187,15 @@ const Services = () => {
             />
           </div>
           
-          <div className="mt-8 mb-12" style={{ position: 'relative', zIndex: 999 }}>
+          <div className="mt-8 mb-12 relative z-[20]">
             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'} gap-8`}>
               {currentServices.map((service, index) => (
                 <div 
                   key={service.id} 
                   id={service.id}
-                  style={{ position: 'relative', zIndex: 999 }}
+                  className="relative z-[15]"
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full" style={{ position: 'relative', zIndex: 999 }}>
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full relative z-[10]">
                     <div className={`flex ${viewMode === 'grid' ? 'flex-col' : 'flex-col md:flex-row'} gap-8`}>
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
@@ -261,8 +262,8 @@ const Services = () => {
             </div>
             
             {filteredServices.length > servicesPerPage && (
-              <div style={{ position: 'relative', zIndex: 999 }}>
-                <Pagination className="mt-12">
+              <div className="relative z-[15] mt-12">
+                <Pagination>
                   <PaginationContent>
                     <PaginationItem>
                       <PaginationPrevious 
@@ -295,9 +296,9 @@ const Services = () => {
             )}
           </div>
           
-          <div className="mt-20 max-w-5xl mx-auto" style={{ position: 'relative', zIndex: 999 }}>
+          <div className="mt-20 max-w-5xl mx-auto relative z-[15]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
-              <div style={{ position: 'relative', zIndex: 999 }}>
+              <div className="relative z-[10]">
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
                   {t('services.approach.title')}
                 </h2>
@@ -318,7 +319,7 @@ const Services = () => {
                 </ul>
               </div>
               
-              <div className="glass-card rounded-xl p-8" style={{ position: 'relative', zIndex: 999 }}>
+              <div className="glass-card rounded-xl p-8 relative z-[10]">
                 <h2 className="text-2xl font-display font-bold mb-6 text-teko-purple-light">
                   {t('services.benefits.title')}
                 </h2>
@@ -339,7 +340,7 @@ const Services = () => {
               </div>
             </div>
             
-            <div className="glass-card p-8 rounded-xl" style={{ position: 'relative', zIndex: 999 }}>
+            <div className="glass-card p-8 rounded-xl relative z-[10]">
               <h2 className="text-2xl font-display font-bold mb-6 text-center text-teko-purple-light">
                 {t('services.cta.title')}
               </h2>
@@ -357,7 +358,7 @@ const Services = () => {
               </div>
             </div>
             
-            <div className="flex justify-center mt-16" style={{ position: 'relative', zIndex: 999 }}>
+            <div className="flex justify-center mt-16 relative z-[10]">
               <Button 
                 onClick={goToContactPage}
                 className="bg-teko-purple hover:bg-teko-purple-dark text-white flex items-center gap-2 px-8 py-6 text-lg rounded-xl"

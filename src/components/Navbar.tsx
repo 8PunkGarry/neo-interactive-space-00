@@ -32,7 +32,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navClasses = `
-    fixed top-0 left-0 w-full z-50 transition-all duration-300
+    fixed top-0 left-0 w-full z-[9999] transition-all duration-300
     ${scrolled ? 'backdrop-blur-lg bg-teko-black/80 py-3 shadow-lg' : 'py-5'}
   `;
 
