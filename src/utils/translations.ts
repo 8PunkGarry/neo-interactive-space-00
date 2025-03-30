@@ -1,3 +1,4 @@
+
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -135,30 +136,6 @@ interface HomeTranslations {
     viewAs: string;
     gridView: string;
     listView: string;
-    approach: {
-      title: string;
-      description: string;
-      step1: string;
-      step2: string;
-      step3: string;
-      step4: string;
-    };
-    benefits: {
-      title: string;
-      benefit1: string;
-      benefit2: string;
-      benefit3: string;
-      benefit4: string;
-      benefit5: string;
-    };
-    cta: {
-      title: string;
-      description: string;
-      button: string;
-    };
-    nextPage: string;
-    technologies: string;
-    capabilities: string;
   };
   journey: {
     title: string;
@@ -404,31 +381,7 @@ export const translations: Translations = {
       multipleResults: "services found",
       viewAs: "View as",
       gridView: "Grid",
-      listView: "List",
-      approach: {
-        title: "Our Approach",
-        description: "We follow a systematic methodology to deliver exceptional digital solutions tailored to your specific business needs.",
-        step1: "Detailed analysis of your business requirements and objectives to create a tailored solution strategy.",
-        step2: "Collaborative design process focusing on intuitive user experience and attractive interface.",
-        step3: "Development using the latest technologies and best coding practices for performance and security.",
-        step4: "Comprehensive testing, optimization, and ongoing support to ensure your digital solution performs at its best."
-      },
-      benefits: {
-        title: "Benefits of Our Services",
-        benefit1: "Increased online visibility and brand recognition in your target market",
-        benefit2: "Improved customer engagement and higher conversion rates",
-        benefit3: "Streamlined business processes and reduced operational costs",
-        benefit4: "Data-driven insights to guide strategic business decisions",
-        benefit5: "Scalable solutions that grow alongside your business"
-      },
-      cta: {
-        title: "Ready to Start Your Digital Transformation?",
-        description: "Contact us today to discuss your project and discover how our services can help your business grow in the digital landscape.",
-        button: "Get Started"
-      },
-      nextPage: "Go to Brief",
-      technologies: "Technologies",
-      capabilities: "Capabilities"
+      listView: "List"
     },
     journey: {
       title: "Your Digital Transformation Journey",
@@ -668,31 +621,7 @@ export const translations: Translations = {
       multipleResults: "услуг найдено",
       viewAs: "Вид",
       gridView: "Сетка",
-      listView: "Список",
-      approach: {
-        title: "Наш подход",
-        description: "Мы следуем систематической методологии для предоставления исключительных цифровых решений, адаптированных к конкретным потребностям вашего бизнеса.",
-        step1: "Детальный анализ требований и целей вашего бизнеса для создания индивидуальной стратегии решения.",
-        step2: "Совместный процесс проектирования, ориентированный на интуитивно понятный пользовательский опыт и привлекательный интерфейс.",
-        step3: "Разработка с использованием новейших технологий и лучших практик кодирования для обеспечения производительности и безопасности.",
-        step4: "Комплексное тестирование, оптимизация и постоянная поддержка для обеспечения наилучшей работы вашего цифрового решения."
-      },
-      benefits: {
-        title: "Преимущества наших услуг",
-        benefit1: "Повышение онлайн-видимости и узнаваемости бренда на целевом рынке",
-        benefit2: "Улучшение взаимодействия с клиентами и повышение коэффициента конверсии",
-        benefit3: "Оптимизация бизнес-процессов и снижение операционных расходов",
-        benefit4: "Аналитические данные для принятия стратегических бизнес-решений",
-        benefit5: "Масштабируемые решения, которые растут вместе с вашим бизнесом"
-      },
-      cta: {
-        title: "Готовы начать цифровую трансформацию?",
-        description: "Свяжитесь с нами сегодня, чтобы обсудить ваш проект и узнать, как наши услуги могут помочь вашему бизнесу расти в цифровом ландшафте.",
-        button: "Начать"
-      },
-      nextPage: "Перейти к брифу",
-      technologies: "Технологии",
-      capabilities: "Возможности"
+      listView: "Список"
     },
     journey: {
       title: "Ваш путь к цифровому преображению",
@@ -906,4 +835,104 @@ export const translations: Translations = {
       },
       mobile: {
         title: "Vývoj mobilních aplikací",
-        description: "Vývoj intuitivních mobilních aplikací pro platformy iOS a Android, které rozšiřují dosah vaše
+        description: "Vývoj intuitivních mobilních aplikací pro platformy iOS a Android, které rozšiřují dosah vašeho podnikání.",
+        capabilities: {
+          native: "Nativní aplikace",
+          hybrid: "Hybridní řešení",
+          responsive: "Responzivní webové aplikace",
+          pwa: "Progresivní webové aplikace"
+        }
+      },
+      cloud: {
+        title: "Cloudová řešení",
+        description: "Využití cloudových technologií ke zvýšení škálovatelnosti, spolehlivosti a bezpečnosti vaší digitální infrastruktury.",
+        capabilities: {
+          aws: "AWS integrace",
+          azure: "Microsoft Azure",
+          google: "Google Cloud",
+          scaling: "Automatické škálování"
+        }
+      },
+      viewAll: {
+        title: "Zobrazit všechny služby",
+        description: "Prozkoumejte naši kompletní nabídku digitálních služeb navržených pro rozvoj vašeho podnikání v digitálním prostředí."
+      },
+      singleResult: "služba nalezena",
+      multipleResults: "služeb nalezeno",
+      viewAs: "Zobrazit jako",
+      gridView: "Mřížka",
+      listView: "Seznam"
+    },
+    journey: {
+      title: "Vaše cesta k digitální transformaci",
+      subtitle: "Přeměňujeme vaše nápady na efektivní digitální řešení, která mění pravidla hry",
+      step1: {
+        title: "Analýza a výzkum",
+        description: "Podrobně analyzujeme váš podnik, identifikujeme cílovou skupinu a formulujeme klíčové cíle pro maximální dopad."
+      },
+      step2: {
+        title: "Strategické plánování",
+        description: "Vytváříme podrobný plán s přesnými termíny, rozpočtem a technickými požadavky pro váš projekt."
+      },
+      step3: {
+        title: "UI/UX design",
+        description: "Vytváříme intuitivní a atraktivní rozhraní, které překvapují uživatele a zvyšují konverzi."
+      },
+      step4: {
+        title: "Vývoj",
+        description: "Přeměňujeme koncept v realitu pomocí moderních technologií a nejlepších programátorských postupů pro spolehlivé výsledky."
+      },
+      step5: {
+        title: "Kontrola kvality",
+        description: "Provádíme komplexní testování na různých zařízeních, zajišťujeme bezchybný provoz a vysoký výkon."
+      },
+      step6: {
+        title: "Nasazení",
+        description: "Spouštíme váš produkt v pracovním prostředí s nepřetržitým sledováním a optimalizací pro stabilní provoz."
+      },
+      step7: {
+        title: "Školení a podpora",
+        description: "Poskytujeme podrobnou dokumentaci a školení vašeho týmu pro efektivní správu nového řešení."
+      },
+      step8: {
+        title: "Úspěšné dokončení",
+        description: "Slavíme spuštění vašeho úspěšného projektu a plánujeme další vylepšení pro růst vašeho podnikání."
+      },
+      steps: {
+        research: "Výzkum a strategie",
+        design: "Design a prototypování",
+        development: "Vývoj a testování",
+        launch: "Spuštění a podpora"
+      },
+      brief: {
+        title: "Vyplňte projektový brief",
+        description: "Řekněte nám více o vašem projektu — popište své úkoly, cíle a očekávané výsledky. Prostudujeme vaše potřeby a kontaktujeme vás k diskusi.",
+        button: "Vyplnit brief"
+      },
+      contact: {
+        title: "Kontaktujte nás přímo",
+        description: "Máte otázky nebo chcete osobně projednat váš projekt? Náš tým je připraven vyslechnout vaše nápady a nabídnout optimální řešení pro vaše podnikání.",
+        button: "Kontaktujte nás"
+      }
+    },
+    footer: {
+      services: "Služby",
+      contact: "Kontaktujte nás",
+      privacy: "Zásady ochrany osobních údajů",
+      terms: "Podmínky služby",
+      rights: "Všechna práva vyhrazena",
+      address: "Praha, Česká republika",
+      about: {
+        title: "O Teko",
+        description: "Jsme digitální agentura zaměřená na vytváření inovativních řešení pro firmy, které chtějí prosperovat v digitální éře.",
+        short_description: "Moderní webové stránky a integrace pro vaše podnikání. Vytváříme digitální řešení, která pomáhají vašemu podnikání růst."
+      },
+      links: {
+        title: "Rychlé odkazy",
+        privacy: "Zásady ochrany osobních údajů",
+        terms: "Podmínky služby"
+      },
+      copyright: "© 2023 Teko. Všechna práva vyhrazena."
+    }
+  }
+};
