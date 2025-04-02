@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ServiceSearch from '../components/ServiceSearch';
 import ServiceFilter from '../components/ServiceFilter';
+import ServiceDetailsModal from '../components/ServiceDetailsModal';
 import { useLanguage } from '../context/LanguageContext';
 import { Badge } from '@/components/ui/badge';
 import { Server, Code, Globe, Database, Smartphone, Cloud, BarChart3, Shield, Search, Palette, Headphones, ArrowRight } from 'lucide-react';
@@ -15,6 +16,8 @@ const Services = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedService, setSelectedService] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const servicesPerPage = 6;
   const navigate = useNavigate();
   
@@ -237,6 +240,15 @@ const Services = () => {
     navigate('/brief');
   };
   
+  const handleServiceClick = (service: any) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+  
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  
   return (
     <div className="min-h-screen bg-teko-black relative">
       <Navbar />
@@ -271,8 +283,9 @@ const Services = () => {
                   key={service.id} 
                   id={service.id}
                   className="relative z-[15]"
+                  onClick={() => handleServiceClick(service)}
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full relative z-[10]">
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full relative z-[10] transition-all duration-300 hover:bg-white/5 cursor-pointer hover:border-teko-purple/20 hover:shadow-lg hover:shadow-teko-purple/5">
                     <div className={`flex ${viewMode === 'grid' ? 'flex-col' : 'flex-col md:flex-row'} gap-8`}>
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
@@ -447,6 +460,12 @@ const Services = () => {
           </div>
         </div>
       </main>
+      
+      <ServiceDetailsModal 
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        service={selectedService}
+      />
       
       <Footer />
     </div>
