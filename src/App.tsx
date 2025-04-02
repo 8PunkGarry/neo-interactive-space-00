@@ -1,62 +1,48 @@
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LanguageProvider } from "./context/LanguageContext";
-import { AuthProvider } from "./context/AuthContext";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Services from "./pages/Services";
-import About from "./pages/About";
-import Brief from "./pages/Brief";
-import Client from "./pages/Client";
-import Company from "./pages/Company";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Chat from "./pages/Chat";
-import Profile from "./pages/Profile";
-import Settings from "./pages/Settings"; // Added Settings import
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Index from './pages/Index';
+import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import About from './pages/About';
+import Services from './pages/Services';
+import Brief from './pages/Brief';
+import Profile from './pages/Profile';
+import Settings from './pages/Settings';
+import Chat from './pages/Chat';
+import Client from './pages/Client';
+import Company from './pages/Company';
+import { LanguageProvider } from './context/LanguageContext';
+import { AuthProvider } from './context/AuthContext';
+import { Toaster } from './components/ui/toaster';
+import { CapabilitiesProvider } from './context/CapabilitiesContext';
 
-// Создание нового queryClient, чтобы избежать проблем с кэшированием
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: false,
-    },
-  },
-});
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <AuthProvider>
-        <LanguageProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
+function App() {
+  return (
+    <AuthProvider>
+      <LanguageProvider>
+        <CapabilitiesProvider>
+          <Router>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
               <Route path="/brief" element={<Brief />} />
-              <Route path="/client" element={<Client />} />
-              <Route path="/company" element={<Company />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/chat" element={<Chat />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/settings" element={<Settings />} /> {/* Added Settings route */}
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/client/:id" element={<Client />} />
+              <Route path="/company/:id" element={<Company />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-        </LanguageProvider>
-      </AuthProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+          </Router>
+          <Toaster />
+        </CapabilitiesProvider>
+      </LanguageProvider>
+    </AuthProvider>
+  );
+}
 
 export default App;

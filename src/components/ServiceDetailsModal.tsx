@@ -3,9 +3,11 @@ import React from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { useCapabilities } from '@/context/CapabilitiesContext';
+import { motion } from 'framer-motion';
 
 interface ServiceCapability {
   name: string;
@@ -32,12 +34,21 @@ const ServiceDetailsModal: React.FC<ServiceDetailsModalProps> = ({
 }) => {
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const { addCapability } = useCapabilities();
   
   if (!service) return null;
   
   const handleContactClick = () => {
     navigate('/brief');
     onClose();
+  };
+  
+  const handleCapabilityClick = (capability: ServiceCapability) => {
+    addCapability({
+      name: capability.name,
+      serviceId: service.id,
+      serviceName: service.title
+    });
   };
   
   return (
@@ -64,14 +75,30 @@ const ServiceDetailsModal: React.FC<ServiceDetailsModalProps> = ({
             </h3>
             <div className="space-y-3">
               {service.capabilities.map((capability, idx) => (
-                <div key={idx} className="flex items-start gap-3">
+                <motion.div 
+                  key={idx} 
+                  className="flex items-start gap-3 relative group"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <div className="w-8 h-8 rounded-full bg-teko-purple/20 flex items-center justify-center mt-0.5 flex-shrink-0">
                     {capability.icon}
                   </div>
-                  <div>
+                  <div className="flex-grow">
                     <p className="font-medium text-teko-white">{capability.name}</p>
                   </div>
-                </div>
+                  <Button 
+                    onClick={() => handleCapabilityClick(capability)}
+                    size="sm"
+                    variant="ghost" 
+                    className="absolute right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-teko-purple/20 hover:bg-teko-purple/30 text-teko-white"
+                  >
+                    <Plus size={14} className="mr-1" />
+                    <span className="text-xs">
+                      {t('services.addCapability')}
+                    </span>
+                  </Button>
+                </motion.div>
               ))}
             </div>
           </div>

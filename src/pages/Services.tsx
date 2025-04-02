@@ -11,9 +11,13 @@ import { Server, Code, Globe, Database, Smartphone, Cloud, BarChart3, Shield, Se
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import SelectedCapabilities from '@/components/SelectedCapabilities';
+import { useCapabilities } from '@/context/CapabilitiesContext';
+import { motion } from 'framer-motion';
 
 const Services = () => {
   const { t } = useLanguage();
+  const { selectedCapabilities, removeCapability } = useCapabilities();
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
@@ -250,6 +254,22 @@ const Services = () => {
     setIsModalOpen(false);
   };
   
+  // Animation variants for selected capabilities
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.1
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+  
   return (
     <div className="min-h-screen bg-teko-black relative">
       <Navbar />
@@ -276,6 +296,20 @@ const Services = () => {
               totalServices={filteredServices.length}
             />
           </div>
+          
+          {selectedCapabilities.length > 0 && (
+            <motion.div 
+              className="relative z-[22] mt-6"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <SelectedCapabilities
+                capabilities={selectedCapabilities}
+                onRemove={removeCapability}
+              />
+            </motion.div>
+          )}
           
           <div className="mt-8 mb-12 relative z-[20]">
             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'} gap-8`}>
