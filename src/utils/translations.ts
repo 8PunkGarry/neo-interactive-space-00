@@ -274,10 +274,6 @@ interface HomeTranslations {
   };
 }
 
-interface Translations {
-  [language: string]: HomeTranslations;
-}
-
 export const translations: Translations = {
   en: {
     hero: {
@@ -738,4 +734,6 @@ export const translations: Translations = {
           native: "Нативные приложения",
           hybrid: "Гибридные решения",
           responsive: "Адаптивные веб-приложения",
-          pwa: "Про
+          pwa: "Прогрессивные веб-приложения"
+        }
+      },
