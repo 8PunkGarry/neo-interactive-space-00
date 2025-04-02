@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -26,7 +27,7 @@ const Services = () => {
       id: 'web-development',
       icon: <Globe size={36} className="text-teko-purple" />,
       title: t('services.web.title'),
-      description: t('services.web.fullDescription'),
+      description: t('services.web.description'),
       technologies: ['React', 'Angular', 'Vue.js', 'Next.js', 'WordPress', 'PHP', 'Node.js', 'Express'],
       capabilities: [
         { name: t('services.web.capabilities.responsive'), icon: <Smartphone size={16} /> },
@@ -39,7 +40,7 @@ const Services = () => {
       id: 'crm-solutions',
       icon: <BarChart3 size={36} className="text-teko-purple" />,
       title: t('services.crm.title'),
-      description: t('services.crm.fullDescription'),
+      description: t('services.crm.description'),
       technologies: ['Salesforce', 'HubSpot', 'Zoho', 'Microsoft Dynamics', 'Custom CRM Solutions'],
       capabilities: [
         { name: t('services.crm.capabilities.automation'), icon: <Server size={16} /> },
@@ -52,7 +53,7 @@ const Services = () => {
       id: 'ui-ux-design',
       icon: <Palette size={36} className="text-teko-purple" />,
       title: t('services.design.title'),
-      description: t('services.design.fullDescription'),
+      description: t('services.design.description'),
       technologies: ['Figma', 'Adobe XD', 'Sketch', 'Photoshop', 'Illustrator', 'InVision'],
       capabilities: [
         { name: t('services.design.capabilities.ui'), icon: <Palette size={16} /> },
@@ -65,7 +66,7 @@ const Services = () => {
       id: 'seo-optimization',
       icon: <Search size={36} className="text-teko-purple" />,
       title: t('services.seo.title'),
-      description: t('services.seo.fullDescription'),
+      description: t('services.seo.description'),
       technologies: ['Google Analytics', 'SEMrush', 'Ahrefs', 'Moz', 'Google Search Console', 'Yoast SEO'],
       capabilities: [
         { name: t('services.seo.capabilities.audit'), icon: <Search size={16} /> },
@@ -78,7 +79,7 @@ const Services = () => {
       id: 'technical-support',
       icon: <Headphones size={36} className="text-teko-purple" />,
       title: t('services.support.title'),
-      description: t('services.support.fullDescription'),
+      description: t('services.support.description'),
       technologies: ['24/7 Support', 'Ticketing Systems', 'Live Chat', 'Remote Assistance', 'Proactive Monitoring'],
       capabilities: [
         { name: t('services.support.capabilities.maintenance'), icon: <Server size={16} /> },
@@ -91,7 +92,7 @@ const Services = () => {
       id: 'api-integration',
       icon: <Code size={36} className="text-teko-purple" />,
       title: t('services.api.title'),
-      description: t('services.api.fullDescription'),
+      description: t('services.api.description'),
       technologies: ['REST', 'GraphQL', 'SOAP', 'Webhook', 'OAuth', 'Swagger', 'Postman'],
       capabilities: [
         { name: t('services.api.capabilities.integration'), icon: <Server size={16} /> },
@@ -104,7 +105,7 @@ const Services = () => {
       id: 'database-solutions',
       icon: <Database size={36} className="text-teko-purple" />,
       title: t('services.database.title'),
-      description: t('services.database.fullDescription'),
+      description: t('services.database.description'),
       technologies: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase', 'Redis', 'SQLite', 'Oracle', 'SQL Server'],
       capabilities: [
         { name: t('services.database.capabilities.design'), icon: <Palette size={16} /> },
@@ -117,7 +118,7 @@ const Services = () => {
       id: 'mobile-development',
       icon: <Smartphone size={36} className="text-teko-purple" />,
       title: t('services.mobile.title'),
-      description: t('services.mobile.fullDescription'),
+      description: t('services.mobile.description'),
       technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'iOS', 'Android', 'Xamarin', 'Ionic'],
       capabilities: [
         { name: t('services.mobile.capabilities.native'), icon: <Smartphone size={16} /> },
@@ -130,7 +131,7 @@ const Services = () => {
       id: 'cloud-solutions',
       icon: <Cloud size={36} className="text-teko-purple" />,
       title: t('services.cloud.title'),
-      description: t('services.cloud.fullDescription'),
+      description: t('services.cloud.description'),
       technologies: ['AWS', 'Azure', 'Google Cloud', 'Digital Ocean', 'Heroku', 'Netlify', 'Vercel', 'Docker', 'Kubernetes'],
       capabilities: [
         { name: t('services.cloud.capabilities.aws'), icon: <Cloud size={16} /> },
@@ -142,8 +143,8 @@ const Services = () => {
     {
       id: 'ai-solutions',
       icon: <BarChart3 size={36} className="text-teko-purple" />,
-      title: 'AI Solutions',
-      description: 'Advanced artificial intelligence solutions for businesses that want to automate processes, gain deeper insights, and create innovative products and services. Our AI specialists can help implement machine learning, natural language processing, and computer vision solutions.',
+      title: t('services.ai.title'),
+      description: t('services.ai.description'),
       technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Hugging Face', 'Computer Vision', 'NLP', 'MLOps'],
       capabilities: [
         { name: 'Machine Learning', icon: <Code size={16} /> },
@@ -155,8 +156,8 @@ const Services = () => {
     {
       id: 'cybersecurity',
       icon: <Shield size={36} className="text-teko-purple" />,
-      title: 'Cybersecurity',
-      description: 'Protect your digital assets with our comprehensive cybersecurity services. We offer vulnerability assessments, penetration testing, security audits, and implementation of robust security measures to safeguard your business against cyber threats.',
+      title: t('services.cybersecurity.title'),
+      description: t('services.cybersecurity.description'),
       technologies: ['Firewall', 'Encryption', 'Multi-factor Authentication', 'Security Audits', 'Penetration Testing'],
       capabilities: [
         { name: 'Vulnerability Assessment', icon: <Search size={16} /> },
@@ -168,8 +169,8 @@ const Services = () => {
     {
       id: 'blockchain',
       icon: <Database size={36} className="text-teko-purple" />,
-      title: 'Blockchain Development',
-      description: 'Leverage the power of blockchain technology for your business with our specialized development services. We build secure, transparent, and efficient blockchain solutions for various industries including finance, supply chain, and digital identity.',
+      title: t('services.blockchain.title'),
+      description: t('services.blockchain.description'),
       technologies: ['Ethereum', 'Solidity', 'Smart Contracts', 'DeFi', 'NFTs', 'Web3.js'],
       capabilities: [
         { name: 'Smart Contracts', icon: <Code size={16} /> },
@@ -181,8 +182,8 @@ const Services = () => {
     {
       id: 'iot-solutions',
       icon: <Smartphone size={36} className="text-teko-purple" />,
-      title: 'IoT Solutions',
-      description: 'Connect your physical and digital worlds with our Internet of Things (IoT) solutions. We design and implement custom IoT systems that enable remote monitoring, automation, and data collection for smarter decision-making.',
+      title: t('services.iot.title'),
+      description: t('services.iot.description'),
       technologies: ['Arduino', 'Raspberry Pi', 'MQTT', 'IoT Platforms', 'Sensors', 'Embedded Systems'],
       capabilities: [
         { name: 'Connected Devices', icon: <Smartphone size={16} /> },
@@ -194,8 +195,8 @@ const Services = () => {
     {
       id: 'ar-vr',
       icon: <Globe size={36} className="text-teko-purple" />,
-      title: 'AR/VR Development',
-      description: 'Create immersive experiences with our Augmented Reality (AR) and Virtual Reality (VR) development services. We build interactive applications for training, marketing, entertainment, and more that engage users in entirely new ways.',
+      title: t('services.arvr.title'),
+      description: t('services.arvr.description'),
       technologies: ['Unity3D', 'Unreal Engine', 'ARKit', 'ARCore', 'WebXR', 'VR Headsets'],
       capabilities: [
         { name: 'Interactive Experiences', icon: <Palette size={16} /> },
@@ -207,8 +208,8 @@ const Services = () => {
     {
       id: 'data-science',
       icon: <BarChart3 size={36} className="text-teko-purple" />,
-      title: 'Data Science',
-      description: 'Transform your raw data into valuable business insights with our data science services. Our team of data scientists and analysts use advanced statistical techniques and machine learning algorithms to uncover patterns and predict trends.',
+      title: t('services.datascience.title'),
+      description: t('services.datascience.description'),
       technologies: ['Python', 'R', 'SQL', 'Tableau', 'Power BI', 'Pandas', 'Hadoop', 'Spark'],
       capabilities: [
         { name: 'Data Analysis', icon: <BarChart3 size={16} /> },

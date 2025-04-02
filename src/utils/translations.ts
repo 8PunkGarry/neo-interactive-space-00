@@ -1,4 +1,3 @@
-
 import { authTranslations } from './authTranslations';
 
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
@@ -39,6 +38,7 @@ interface HomeTranslations {
     web: {
       title: string;
       description: string;
+      fullDescription: string;
       capabilities: {
         responsive: string;
         ecommerce: string;
@@ -49,6 +49,7 @@ interface HomeTranslations {
     crm: {
       title: string;
       description: string;
+      fullDescription: string;
       capabilities: {
         automation: string;
         analytics: string;
@@ -59,6 +60,7 @@ interface HomeTranslations {
     design: {
       title: string;
       description: string;
+      fullDescription: string;
       capabilities: {
         ui: string;
         ux: string;
@@ -69,6 +71,7 @@ interface HomeTranslations {
     seo: {
       title: string;
       description: string;
+      fullDescription: string;
       capabilities: {
         audit: string;
         optimization: string;
@@ -79,6 +82,7 @@ interface HomeTranslations {
     support: {
       title: string;
       description: string;
+      fullDescription: string;
       capabilities: {
         maintenance: string;
         hosting: string;
@@ -89,6 +93,7 @@ interface HomeTranslations {
     api: {
       title: string;
       description: string;
+      fullDescription: string;
       capabilities: {
         integration: string;
         development: string;
@@ -99,6 +104,7 @@ interface HomeTranslations {
     database: {
       title: string;
       description: string;
+      fullDescription: string;
       capabilities: {
         design: string;
         optimization: string;
@@ -109,6 +115,7 @@ interface HomeTranslations {
     mobile: {
       title: string;
       description: string;
+      fullDescription: string;
       capabilities: {
         native: string;
         hybrid: string;
@@ -119,6 +126,7 @@ interface HomeTranslations {
     cloud: {
       title: string;
       description: string;
+      fullDescription: string;
       capabilities: {
         aws: string;
         azure: string;
@@ -130,12 +138,68 @@ interface HomeTranslations {
       title: string;
       description: string;
     };
-    // Add the new properties here
     singleResult: string;
     multipleResults: string;
     viewAs: string;
     gridView: string;
     listView: string;
+    capabilities: string;
+    technologies: string;
+    search: {
+      noResults: string;
+    };
+    approach: {
+      title: string;
+      description: string;
+      step1: string;
+      step2: string;
+      step3: string;
+      step4: string;
+    };
+    benefits: {
+      title: string;
+      benefit1: string;
+      benefit2: string;
+      benefit3: string;
+      benefit4: string;
+      benefit5: string;
+    };
+    cta: {
+      title: string;
+      description: string;
+      button: string;
+    };
+    nextPage: string;
+    ai: {
+      title: string;
+      description: string;
+      fullDescription: string;
+    };
+    cybersecurity: {
+      title: string;
+      description: string;
+      fullDescription: string;
+    };
+    blockchain: {
+      title: string;
+      description: string;
+      fullDescription: string;
+    };
+    iot: {
+      title: string;
+      description: string;
+      fullDescription: string;
+    };
+    arvr: {
+      title: string;
+      description: string;
+      fullDescription: string;
+    };
+    datascience: {
+      title: string;
+      description: string;
+      fullDescription: string;
+    };
   };
   journey: {
     title: string;
@@ -285,7 +349,8 @@ export const translations: Translations = {
       ],
       web: {
         title: "Web Development",
-        description: "Creating modern, responsive websites and web applications tailored to your business needs and objectives.",
+        description: "Creating modern, responsive websites and web applications tailored to your business needs.",
+        fullDescription: "Our web development team crafts high-performance, responsive websites and web applications tailored to your specific business needs and objectives. We use cutting-edge technologies and follow best development practices to ensure your web presence not only looks great but also delivers exceptional functionality and user experience. From simple corporate websites to complex web platforms, we provide end-to-end development services that help your business establish a strong online presence.",
         capabilities: {
           responsive: "Responsive Design",
           ecommerce: "E-commerce Integration",
@@ -295,7 +360,8 @@ export const translations: Translations = {
       },
       crm: {
         title: "CRM Integration",
-        description: "Streamlining your business processes with custom CRM solutions that help manage customer relationships effectively.",
+        description: "Streamlining your business processes with custom CRM solutions for effective management.",
+        fullDescription: "Our CRM integration services help streamline your business processes with tailored Customer Relationship Management solutions. We can implement custom CRM systems or integrate existing platforms into your workflow to enhance customer engagement, automate repetitive tasks, and provide valuable insights into your business operations. Our experts analyze your unique requirements and develop CRM strategies that improve efficiency, increase sales, and strengthen customer relationships throughout the entire customer lifecycle.",
         capabilities: {
           automation: "Workflow Automation",
           analytics: "Customer Analytics",
@@ -305,7 +371,8 @@ export const translations: Translations = {
       },
       design: {
         title: "UI/UX Design",
-        description: "Crafting intuitive and engaging user experiences with beautiful interfaces that enhance user satisfaction and conversion.",
+        description: "Crafting intuitive and engaging user experiences with beautiful interfaces.",
+        fullDescription: "Our UI/UX design services focus on creating intuitive, engaging, and visually appealing digital experiences. We combine aesthetic appeal with functional design to create interfaces that are not only beautiful but also easy to navigate and use. Our design process involves extensive research, wireframing, prototyping, and user testing to ensure the final product meets both your business objectives and user expectations. We create designs that enhance user satisfaction and drive conversion rates, ultimately helping your business achieve its goals.",
         capabilities: {
           ui: "Interface Design",
           ux: "User Experience",
@@ -315,7 +382,8 @@ export const translations: Translations = {
       },
       seo: {
         title: "SEO Optimization",
-        description: "Improving your online visibility and organic search rankings to drive more qualified traffic to your website.",
+        description: "Improving your online visibility and organic search rankings for more qualified traffic.",
+        fullDescription: "Our comprehensive SEO optimization services are designed to increase your website's visibility in search engine results, drive more qualified traffic, and improve conversion rates. We conduct thorough technical audits, keyword research, content analysis, and competitive assessments to develop tailored SEO strategies. Our approach includes on-page optimization, technical SEO improvements, content creation, and off-site link building tactics. We provide regular performance reports and continually refine our strategies to keep your website ahead of algorithm changes and industry trends.",
         capabilities: {
           audit: "Technical SEO Audit",
           optimization: "Content Optimization",
@@ -325,7 +393,8 @@ export const translations: Translations = {
       },
       support: {
         title: "Technical Support",
-        description: "Providing ongoing maintenance and support to ensure your digital assets perform optimally at all times.",
+        description: "Providing ongoing maintenance and support to ensure optimal performance.",
+        fullDescription: "Our technical support services provide the ongoing maintenance and assistance needed to keep your digital assets performing optimally. We offer different support packages to match your specific needs, with options ranging from basic maintenance to comprehensive 24/7 support. Our team monitors your systems, performs regular updates, implements security patches, and quickly resolves any issues that arise. With our technical support, you can focus on running your business while we ensure your digital infrastructure remains secure, up-to-date, and functioning smoothly.",
         capabilities: {
           maintenance: "Regular Maintenance",
           hosting: "Hosting Solutions",
@@ -335,7 +404,8 @@ export const translations: Translations = {
       },
       api: {
         title: "API Development",
-        description: "Building robust APIs that enable seamless communication between different software systems and services.",
+        description: "Building robust APIs that enable seamless communication between different systems.",
+        fullDescription: "Our API development services focus on creating robust, secure, and scalable Application Programming Interfaces that enable seamless communication between different software systems. Whether you need to integrate third-party services, connect internal systems, or create APIs for external partners, our team has the expertise to deliver solutions that meet your specific requirements. We handle the entire development lifecycle, from design and documentation to implementation, testing, and maintenance. Our APIs are built with performance, security, and ease of use in mind, ensuring reliable data exchange and system interoperability.",
         capabilities: {
           integration: "System Integration",
           development: "Custom API Development",
@@ -345,7 +415,8 @@ export const translations: Translations = {
       },
       database: {
         title: "Database Solutions",
-        description: "Designing and implementing efficient database structures that securely store and manage your business data.",
+        description: "Designing and implementing efficient database structures for secure data management.",
+        fullDescription: "Our database solutions expertise covers the design, implementation, and optimization of database systems that securely store and efficiently manage your business data. We work with various database technologies, including relational, NoSQL, and graph databases, to create structures that best match your specific requirements. Our services include database architecture design, performance optimization, data migration, security implementation, and ongoing maintenance. We ensure your data is properly organized, easily accessible, protected from unauthorized access, and can scale as your business grows.",
         capabilities: {
           design: "Database Architecture",
           optimization: "Performance Optimization",
@@ -355,7 +426,8 @@ export const translations: Translations = {
       },
       mobile: {
         title: "Mobile Development",
-        description: "Developing intuitive mobile applications for iOS and Android platforms that extend your business reach.",
+        description: "Developing intuitive mobile applications for iOS and Android platforms.",
+        fullDescription: "Our mobile development team creates intuitive, high-performance applications for iOS and Android platforms that extend your business reach to mobile users. We develop native, hybrid, or cross-platform solutions depending on your specific requirements, budget, and timeline. Our comprehensive mobile development process covers everything from initial concept and design to development, testing, and app store submission. We focus on creating user-friendly interfaces, optimizing performance, ensuring security, and implementing analytics to help you continually improve your mobile application based on user feedback and behavior.",
         capabilities: {
           native: "Native Applications",
           hybrid: "Hybrid Solutions",
@@ -365,7 +437,8 @@ export const translations: Translations = {
       },
       cloud: {
         title: "Cloud Solutions",
-        description: "Leveraging cloud technologies to increase scalability, reliability, and security of your digital infrastructure.",
+        description: "Leveraging cloud technologies for increased scalability, reliability, and security.",
+        fullDescription: "Our cloud solutions help businesses leverage the power of cloud computing to increase scalability, reliability, and security while reducing infrastructure costs. We provide comprehensive cloud services, including migration planning, implementation, optimization, and ongoing management across major platforms like AWS, Microsoft Azure, and Google Cloud. Our experts assess your current infrastructure, design a tailored cloud strategy, and implement solutions that align with your business objectives. We also provide training and support to ensure your team can effectively utilize and manage the new cloud environment.",
         capabilities: {
           aws: "AWS Integration",
           azure: "Microsoft Azure",
@@ -381,7 +454,64 @@ export const translations: Translations = {
       multipleResults: "services found",
       viewAs: "View as",
       gridView: "Grid",
-      listView: "List"
+      listView: "List",
+      capabilities: "Capabilities",
+      technologies: "Technologies",
+      search: {
+        noResults: "No services found. Try a different search term."
+      },
+      approach: {
+        title: "Our Approach",
+        description: "We follow a systematic approach to deliver high-quality digital solutions",
+        step1: "We start with a thorough analysis of your business needs and objectives to understand what you want to achieve.",
+        step2: "Our team creates a detailed project plan with timelines, milestones, and deliverables to ensure smooth execution.",
+        step3: "We use an iterative development process, regularly sharing progress and incorporating your feedback.",
+        step4: "After thorough testing and quality assurance, we deploy your solution and provide ongoing support."
+      },
+      benefits: {
+        title: "Why Choose Us",
+        benefit1: "Experienced team of professionals with expertise across various digital domains",
+        benefit2: "Custom solutions tailored to your specific business needs and objectives",
+        benefit3: "Transparent communication and regular updates throughout the project",
+        benefit4: "Competitive pricing with flexible engagement models",
+        benefit5: "Ongoing support and maintenance to ensure your solution evolves with your business"
+      },
+      cta: {
+        title: "Ready to Transform Your Business?",
+        description: "Let us help you navigate the digital landscape and achieve your business goals with our comprehensive digital solutions.",
+        button: "Get Started"
+      },
+      nextPage: "Discuss Your Project",
+      ai: {
+        title: "AI Solutions",
+        description: "Advanced artificial intelligence solutions for business automation and insights.",
+        fullDescription: "Our AI Solutions service leverages cutting-edge artificial intelligence technologies to help businesses automate processes, gain deeper insights, and create innovative products and services. Our team of AI specialists can implement machine learning algorithms, natural language processing systems, computer vision applications, and predictive analytics tools tailored to your specific business needs. We focus on practical AI applications that deliver measurable results, whether you're looking to enhance customer experiences, optimize operations, or develop entirely new AI-powered products."
+      },
+      cybersecurity: {
+        title: "Cybersecurity",
+        description: "Protecting your digital assets against cyber threats with comprehensive security measures.",
+        fullDescription: "Our Cybersecurity services provide comprehensive protection for your digital assets against the increasingly sophisticated landscape of cyber threats. We offer vulnerability assessments, penetration testing, security audits, and implementation of robust security measures tailored to your specific business needs. Our security experts stay updated on the latest threats and compliance requirements to develop and maintain security strategies that safeguard your sensitive data, protect customer information, maintain business continuity, and preserve your reputation in the event of security incidents."
+      },
+      blockchain: {
+        title: "Blockchain Development",
+        description: "Building secure, transparent blockchain solutions for various industries.",
+        fullDescription: "Our Blockchain Development services help businesses leverage this revolutionary technology to create secure, transparent, and efficient solutions. Our blockchain experts design and implement custom applications across various industries, including finance, supply chain, healthcare, and digital identity. We develop smart contracts, decentralized applications (dApps), tokenization solutions, and blockchain integrations that address specific business challenges. Whether you're looking to improve transaction security, enhance transparency, or create new business models, our blockchain solutions provide the technical foundation for innovation."
+      },
+      iot: {
+        title: "IoT Solutions",
+        description: "Connecting physical and digital worlds with custom IoT systems for smart operations.",
+        fullDescription: "Our IoT Solutions service helps businesses connect their physical and digital worlds through custom Internet of Things (IoT) systems. We design and implement comprehensive IoT ecosystems that enable remote monitoring, automation, and data collection for smarter decision-making. Our IoT specialists work with various hardware platforms, sensors, connectivity protocols, and cloud services to create tailored solutions for industries ranging from manufacturing and logistics to healthcare and smart buildings. We focus on building secure, scalable, and reliable IoT systems that provide tangible business benefits through improved efficiency, enhanced safety, and new data-driven insights."
+      },
+      arvr: {
+        title: "AR/VR Development",
+        description: "Creating immersive experiences with augmented and virtual reality technologies.",
+        fullDescription: "Our AR/VR Development services focus on creating immersive and interactive experiences using Augmented Reality (AR) and Virtual Reality (VR) technologies. We develop custom AR/VR applications for various purposes, including training simulations, marketing campaigns, product visualizations, and entertainment experiences. Our team works with leading platforms and technologies to build engaging applications that run smoothly across various devices. Whether you want to showcase products in 3D, create virtual training environments, or develop interactive brand experiences, our AR/VR solutions help you engage users in entirely new ways."
+      },
+      datascience: {
+        title: "Data Science",
+        description: "Transforming raw data into valuable business insights with advanced analytics.",
+        fullDescription: "Our Data Science services help businesses transform their raw data into valuable insights and actionable intelligence. Our team of data scientists and analysts employs advanced statistical methods, machine learning algorithms, and visualization techniques to uncover patterns, predict trends, and optimize business processes. We offer end-to-end data science solutions, from data collection and cleaning to analysis, modeling, and implementation. Whether you need customer segmentation, demand forecasting, recommendation systems, or custom analytics dashboards, our data science expertise helps you make more informed business decisions based on solid data evidence."
+      }
     },
     journey: {
       title: "Your Digital Transformation Journey",
@@ -525,7 +655,8 @@ export const translations: Translations = {
       ],
       web: {
         title: "Веб-разработка",
-        description: "Создание современных, адаптивных веб-сайтов и веб-приложений, соответствующих потребностям и целям вашего бизнеса.",
+        description: "Создание современных, адаптивных веб-сайтов и веб-приложений для вашего бизнеса.",
+        fullDescription: "Наша команда веб-разработчиков создает высокопроизводительные, адаптивные веб-сайты и веб-приложения, учитывающие конкретные потребности и цели вашего бизнеса. Мы используем передовые технологии и следуем лучшим практикам разработки, чтобы ваше присутствие в интернете не только выглядело великолепно, но и обеспечивало исключительную функциональность и пользовательский опыт. От простых корпоративных сайтов до сложных веб-платформ, мы предоставляем полный цикл услуг разработки, которые помогают вашему бизнесу установить сильное онлайн-присутствие.",
         capabilities: {
           responsive: "Адаптивный дизайн",
           ecommerce: "Интеграция E-commerce",
@@ -535,7 +666,8 @@ export const translations: Translations = {
       },
       crm: {
         title: "Интеграция CRM",
-        description: "Оптимизация бизнес-процессов с помощью индивидуальных CRM-решений, которые помогают эффективно управлять отношениями с клиентами.",
+        description: "Оптимизация бизнес-процессов с помощью индивидуальных CRM-решений.",
+        fullDescription: "Наши услуги по интеграции CRM помогают оптимизировать бизнес-процессы с помощью индивидуальных решений для управления взаимоотношениями с клиентами. Мы можем внедрить пользовательские CRM-системы или интегрировать существующие платформы в ваш рабочий процесс для улучшения взаимодействия с клиентами, автоматизации повторяющихся задач и получения ценной информации о работе вашего бизнеса. Наши эксперты анализируют ваши уникальные требования и разрабатывают CRM-стратегии, которые повышают эффективность, увеличивают продажи и укрепляют отношения с клиентами на протяжении всего жизненного цикла клиента.",
         capabilities: {
           automation: "Автоматизация рабочих процессов",
           analytics: "Аналитика клиентов",
@@ -545,7 +677,8 @@ export const translations: Translations = {
       },
       design: {
         title: "UI/UX Дизайн",
-        description: "Создание интуитивно понятных и привлекательных пользовательских интерфейсов, которые улучшают удовлетворенность пользователей и конверсию.",
+        description: "Создание интуитивно понятных и привлекательных пользовательских интерфейсов.",
+        fullDescription: "Наши услуги по UI/UX дизайну направлены на создание интуитивно понятных, привлекательных и визуально приятных цифровых интерфейсов. Мы сочетаем эстетическую привлекательность с функциональным дизайном, чтобы создавать интерфейсы, которые не только красивы, но и просты в навигации и использовании. Наш процесс дизайна включает обширные исследования, создание каркасов, прототипирование и пользовательское тестирование, чтобы гарантировать, что конечный продукт соответствует как вашим бизнес-целям, так и ожиданиям пользователей. Мы создаем дизайны, которые повышают удовлетворенность пользователей и способствуют увеличению конверсии, в конечном итоге помогая вашему бизнесу достичь поставленных целей.",
         capabilities: {
           ui: "Дизайн интерфейса",
           ux: "Пользовательский опыт",
@@ -555,7 +688,8 @@ export const translations: Translations = {
       },
       seo: {
         title: "SEO Оптимизация",
-        description: "Повышение вашей видимости в интернете и органических позиций в поисковой выдаче для привлечения более квалифицированного трафика на ваш сайт.",
+        description: "Повышение вашей онлайн-видимости и органических позиций в поисковой выдаче.",
+        fullDescription: "Наши комплексные услуги по SEO-оптимизации направлены на повышение видимости вашего сайта в результатах поисковых систем, привлечение более качественного трафика и улучшение конверсии. Мы проводим тщательные технические аудиты, исследования ключевых слов, анализ контента и оценку конкурентов для разработки индивидуальных SEO-стратегий. Наш подход включает оптимизацию на странице, технические улучшения SEO, создание контента и тактики построения внешних ссылок. Мы предоставляем регулярные отчеты о эффективности и постоянно совершенствуем наши стратегии, чтобы ваш сайт оставался впереди изменений алгоритмов и отраслевых тенденций.",
         capabilities: {
           audit: "Технический SEO аудит",
           optimization: "Оптимизация контента",
@@ -565,7 +699,8 @@ export const translations: Translations = {
       },
       support: {
         title: "Техническая поддержка",
-        description: "Предоставление постоянного обслуживания и поддержки для обеспечения оптимальной работы ваших цифровых активов в любое время.",
+        description: "Предоставление постоянного обслуживания и поддержки для оптимальной работы.",
+        fullDescription: "Наши услуги технической поддержки обеспечивают постоянное обслуживание и помощь, необходимые для оптимальной работы ваших цифровых активов. Мы предлагаем различные пакеты поддержки, соответствующие вашим конкретным потребностям, с вариантами от базового обслуживания до комплексной круглосуточной поддержки. Наша команда следит за вашими системами, выполняет регулярные обновления, внедряет патчи безопасности и быстро решает возникающие проблемы. С нашей технической поддержкой вы можете сосредоточиться на управлении своим бизнесом, в то время как мы обеспечиваем безопасность, актуальность и бесперебойную работу вашей цифровой инфраструктуры.",
         capabilities: {
           maintenance: "Регулярное обслуживание",
           hosting: "Хостинг решения",
@@ -575,7 +710,8 @@ export const translations: Translations = {
       },
       api: {
         title: "Разработка API",
-        description: "Создание надежных API, обеспечивающих беспрепятственную коммуникацию между различными программными системами и сервисами.",
+        description: "Создание надежных API для беспрепятственной коммуникации между системами.",
+        fullDescription: "Наши услуги по разработке API сосредоточены на создании надежных, безопасных и масштабируемых интерфейсов программирования приложений, которые обеспечивают беспрепятственную коммуникацию между различными программными системами. Независимо от того, нужно ли вам интегрировать сторонние сервисы, соединить внутренние системы или создать API для внешних партнеров, наша команда обладает опытом для разработки решений, соответствующих вашим конкретным требованиям. Мы управляем всем жизненным циклом разработки, от проектирования и документации до реализации, тестирования и поддержки. Наши API создаются с учетом производительности, безопасности и простоты использования, обеспечивая надежный обмен данными и совместимость систем.",
         capabilities: {
           integration: "Системная интеграция",
           development: "Разработка индивидуальных API",
@@ -585,7 +721,8 @@ export const translations: Translations = {
       },
       database: {
         title: "Решения для баз данных",
-        description: "Проектирование и внедрение эффективных структур баз данных, которые безопасно хранят и управляют данными вашего бизнеса.",
+        description: "Проектирование и внедрение эффективных структур баз данных для управления данными.",
+        fullDescription: "Наш опыт в области решений для баз данных охватывает проектирование, внедрение и оптимизацию систем баз данных, которые надежно хранят и эффективно управляют данными вашего бизнеса. Мы работаем с различными технологиями баз данных, включая реляционные, NoSQL и графовые базы данных, чтобы создавать структуры, которые наилучшим образом соответствуют вашим конкретным требованиям. Наши услуги включают проектирование архитектуры базы данных, оптимизацию производительности, миграцию данных, внедрение безопасности и постоянное обслуживание. Мы гарантируем, что ваши данные правильно организованы, легко доступны, защищены от несанкционированного доступа и могут масштабироваться по мере роста вашего бизнеса.",
         capabilities: {
           design: "Архитектура базы данных",
           optimization: "Оптимизация производительности",
@@ -595,344 +732,10 @@ export const translations: Translations = {
       },
       mobile: {
         title: "Мобильная разработка",
-        description: "Разработка интуитивно понятных мобильных приложений для платформ iOS и Android, расширяющих охват вашего бизнеса.",
+        description: "Разработка интуитивных мобильных приложений для платформ iOS и Android.",
+        fullDescription: "Наша команда мобильной разработки создает интуитивно понятные, высокопроизводительные приложения для платформ iOS и Android, которые расширяют охват вашего бизнеса на мобильных пользователей. Мы разрабатываем нативные, гибридные или кроссплатформенные решения в зависимости от ваших конкретных требований, бюджета и сроков. Наш комплексный процесс разработки мобильных приложений охватывает все от первоначальной концепции и дизайна до разработки, тестирования и публикации в магазинах приложений. Мы сосредотачиваемся на создании удобных пользовательских интерфейсов, оптимизации производительности, обеспечении безопасности и внедрении аналитики, чтобы помочь вам постоянно улучшать ваше мобильное приложение на основе отзывов пользователей и их поведения.",
         capabilities: {
           native: "Нативные приложения",
           hybrid: "Гибридные решения",
           responsive: "Адаптивные веб-приложения",
-          pwa: "Прогрессивные веб-приложения"
-        }
-      },
-      cloud: {
-        title: "Облачные решения",
-        description: "Использование облачных технологий для повышения масштабируемости, надежности и безопасности вашей цифровой инфраструктуры.",
-        capabilities: {
-          aws: "Интеграция с AWS",
-          azure: "Microsoft Azure",
-          google: "Google Cloud",
-          scaling: "Автомасштабирование"
-        }
-      },
-      viewAll: {
-        title: "Посмотреть все услуги",
-        description: "Изучите наш полный спектр цифровых услуг, разработанных для процветания вашего бизнеса в цифровом ландшафте."
-      },
-      singleResult: "услуга найдена",
-      multipleResults: "услуг найдено",
-      viewAs: "Вид",
-      gridView: "Сетка",
-      listView: "Список"
-    },
-    journey: {
-      title: "Ваш путь к цифровому преображению",
-      subtitle: "Мы превращаем ваши идеи в эффективные цифровые решения, которые меняют правила игры",
-      step1: {
-        title: "Анализ и исследование",
-        description: "Мы детально анализируем ваш бизнес, определяем целевую аудиторию и формулируем ключевые цели для максимального эффекта."
-      },
-      step2: {
-        title: "Стратегическое планирование",
-        description: "Разрабатываем подробную дорожную карту с точными сроками, бюджетом и техническими требованиями для вашего проекта."
-      },
-      step3: {
-        title: "UI/UX дизайн",
-        description: "Создаем интуитивно понятные и привлекательные интерфейсы, которые удивляют пользователей и повышают конверсию."
-      },
-      step4: {
-        title: "Разработка",
-        description: "Превращаем концепцию в реальность, используя современные технологии и лучшие практики программирования для надежного результата."
-      },
-      step5: {
-        title: "Контроль качества",
-        description: "Проводим всестороннее тестирование на различных устройствах, гарантируем безупречную работу и высокую производительность."
-      },
-      step6: {
-        title: "Развертывание",
-        description: "Запускаем ваш продукт в рабочую среду с непрерывным мониторингом и оптимизацией для стабильной работы."
-      },
-      step7: {
-        title: "Обучение и поддержка",
-        description: "Предоставляем подробную документацию и обучение вашей команды для эффективного управления новым решением."
-      },
-      step8: {
-        title: "Успешное завершение",
-        description: "Празднуем запуск вашего успешного проекта и планируем дальнейшие улучшения для роста вашего бизнеса."
-      },
-      steps: {
-        research: "Исследование и стратегия",
-        design: "Дизайн и прототипирование",
-        development: "Разработка и тестирование",
-        launch: "Запуск и поддержка"
-      },
-      brief: {
-        title: "Заполните бриф проекта",
-        description: "Расскажите о вашем проекте подробнее — опишите задачи, цели и ожидаемые результаты. Мы изучим ваши потребности и свяжемся для обсуждения.",
-        button: "Заполнить бриф"
-      },
-      contact: {
-        title: "Cвяжитесь с нами напрямую",
-        description: "Остались вопросы или хотите обсудить проект лично? Наша команда готова выслушать ваши идеи и предложить оптимальное решение для вашего бизнеса.",
-        button: "Связаться с нами"
-      }
-    },
-    footer: {
-      services: "Услуги",
-      contact: "Связаться с нами",
-      privacy: "Политика конфиденциальности",
-      terms: "Условия использования",
-      rights: "Все права защищены",
-      address: "Прага, Чешская Республика",
-      about: {
-        title: "О Теко",
-        description: "Мы - цифровое агентство, ориентированное на создание инновационных решений для бизнеса, стремящегося к процветанию в цифровую эпоху.",
-        short_description: "Современные веб-сайты и интеграции для вашего бизнеса. Мы создаём цифровые решения, которые помогают вашему бизнесу расти."
-      },
-      links: {
-        title: "Быстрые ссылки",
-        privacy: "Политика конфиденциальности",
-        terms: "Условия использования"
-      },
-      copyright: "© 2023 Teko. Все права защищены."
-    }
-  },
-  cs: {
-    hero: {
-      title: "Digitální inovace pro váš podnik",
-      subtitle: "Vytváříme inovativní digitální řešení, která pomáhají vašemu podnikání růst a prosperovat v moderní technologické krajině.",
-      cta: "Prozkoumejte náš proces",
-      secondary_cta: "Naše služby",
-    },
-    navbar: {
-      home: "Domů",
-      services: "Služby",
-      about: "O nás",
-      brief: "Brief",
-    },
-    cta: {
-      button: "Začít",
-      subtitle: "Udělejte první krok k digitální transformaci",
-    },
-    services: {
-      title: "Naše služby",
-      subtitle: "Komplexní digitální řešení pro potřeby vašeho podnikání",
-      description: "Nabízíme širokou škálu digitálních služeb, které pomohou vašemu podnikání růst a uspět v digitálním věku",
-      show_all: "Zobrazit všechny služby",
-      search_placeholder: "Hledat službu...",
-      no_results: "Žádné služby nenalezeny. Zkuste jiný vyhledávací dotaz.",
-      items: [
-        {
-          id: 1,
-          title: "UI/UX Design",
-          description: "Vytváření intuitivních a poutavých uživatelských zážitků, které potěší vaše zákazníky.",
-          icon: "design",
-          price: "Od $2,000"
-        },
-        {
-          id: 2,
-          title: "Vývoj webových stránek",
-          description: "Budování rychlých, responzivních a bezpečných webových stránek, které dokonale reprezentují vaši značku.",
-          icon: "code",
-          price: "Od $3,500"
-        },
-        {
-          id: 3,
-          title: "Mobilní aplikace",
-          description: "Vývoj nativních a multiplatformních mobilních aplikací pro iOS a Android.",
-          icon: "smartphone",
-          price: "Od $5,000"
-        },
-        {
-          id: 4,
-          title: "E-commerce řešení",
-          description: "Vytváření e-shopů s bezproblémovou integrací plateb a řízením zásob.",
-          icon: "shopping-cart",
-          price: "Od $4,000"
-        },
-        {
-          id: 5,
-          title: "Digitální marketing",
-          description: "Implementace strategií založených na datech pro zvýšení vaší online viditelnosti a zapojení zákazníků.",
-          icon: "trending-up",
-          price: "Od $1,500/měsíc"
-        },
-        {
-          id: 6,
-          title: "Integrace softwaru",
-          description: "Propojení a automatizace vašich firemních systémů pro zlepšení efektivity a toku dat.",
-          icon: "git-merge",
-          price: "Od $2,500"
-        }
-      ],
-      web: {
-        title: "Vývoj webových stránek",
-        description: "Vytváření moderních, responzivních webových stránek a aplikací přizpůsobených potřebám a cílům vašeho podnikání.",
-        capabilities: {
-          responsive: "Responzivní design",
-          ecommerce: "E-commerce integrace",
-          cms: "Správa obsahu",
-          spa: "Jednostránkové aplikace"
-        }
-      },
-      crm: {
-        title: "Integrace CRM",
-        description: "Zefektivnění vašich obchodních procesů pomocí vlastních CRM řešení, která pomáhají efektivně řídit vztahy se zákazníky.",
-        capabilities: {
-          automation: "Automatizace pracovních postupů",
-          analytics: "Zákaznická analytika",
-          integration: "Integrace třetích stran",
-          custom: "Vlastní řešení"
-        }
-      },
-      design: {
-        title: "UI/UX Design",
-        description: "Vytváření intuitivních a poutavých uživatelských zkušeností s krásnými rozhraními, které zvyšují spokojenost uživatelů a konverzi.",
-        capabilities: {
-          ui: "Design rozhraní",
-          ux: "Uživatelská zkušenost",
-          branding: "Vizuální identita",
-          prototyping: "Interaktivní prototypy"
-        }
-      },
-      seo: {
-        title: "SEO Optimalizace",
-        description: "Zlepšení vaší online viditelnosti a organických pozic ve vyhledávání k přilákání více kvalifikovaného provozu na váš web.",
-        capabilities: {
-          audit: "Technický SEO audit",
-          optimization: "Optimalizace obsahu",
-          analytics: "Sledování výkonu",
-          local: "Lokální SEO"
-        }
-      },
-      support: {
-        title: "Technická podpora",
-        description: "Poskytování průběžné údržby a podpory pro zajištění optimálního výkonu vašich digitálních aktiv za všech okolností.",
-        capabilities: {
-          maintenance: "Pravidelná údržba",
-          hosting: "Hostingová řešení",
-          security: "Bezpečnostní aktualizace",
-          updates: "Aktualizace obsahu"
-        }
-      },
-      api: {
-        title: "Vývoj API",
-        description: "Vytváření robustních API, které umožňují bezproblémovou komunikaci mezi různými softwarovými systémy a službami.",
-        capabilities: {
-          integration: "Systémová integrace",
-          development: "Vývoj vlastních API",
-          testing: "Testování výkonu",
-          documentation: "Komplexní dokumentace"
-        }
-      },
-      database: {
-        title: "Databázová řešení",
-        description: "Navrhování a implementace efektivních databázových struktur, které bezpečně ukládají a spravují data vašeho podnikání.",
-        capabilities: {
-          design: "Databázová architektura",
-          optimization: "Optimalizace výkonu",
-          migration: "Migrace dat",
-          security: "Zabezpečení dat"
-        }
-      },
-      mobile: {
-        title: "Vývoj mobilních aplikací",
-        description: "Vývoj intuitivních mobilních aplikací pro platformy iOS a Android, které rozšiřují dosah vašeho podnikání.",
-        capabilities: {
-          native: "Nativní aplikace",
-          hybrid: "Hybridní řešení",
-          responsive: "Responzivní webové aplikace",
-          pwa: "Progresivní webové aplikace"
-        }
-      },
-      cloud: {
-        title: "Cloudová řešení",
-        description: "Využití cloudových technologií ke zvýšení škálovatelnosti, spolehlivosti a bezpečnosti vaší digitální infrastruktury.",
-        capabilities: {
-          aws: "AWS integrace",
-          azure: "Microsoft Azure",
-          google: "Google Cloud",
-          scaling: "Automatické škálování"
-        }
-      },
-      viewAll: {
-        title: "Zobrazit všechny služby",
-        description: "Prozkoumejte naši kompletní nabídku digitálních služeb navržených pro rozvoj vašeho podnikání v digitálním prostředí."
-      },
-      singleResult: "služba nalezena",
-      multipleResults: "služeb nalezeno",
-      viewAs: "Zobrazit jako",
-      gridView: "Mřížka",
-      listView: "Seznam"
-    },
-    journey: {
-      title: "Vaše cesta k digitální transformaci",
-      subtitle: "Přeměňujeme vaše nápady na efektivní digitální řešení, která mění pravidla hry",
-      step1: {
-        title: "Analýza a výzkum",
-        description: "Podrobně analyzujeme váš podnik, identifikujeme cílovou skupinu a formulujeme klíčové cíle pro maximální dopad."
-      },
-      step2: {
-        title: "Strategické plánování",
-        description: "Vytváříme podrobný plán s přesnými termíny, rozpočtem a technickými požadavky pro váš projekt."
-      },
-      step3: {
-        title: "UI/UX design",
-        description: "Vytváříme intuitivní a atraktivní rozhraní, které překvapují uživatele a zvyšují konverzi."
-      },
-      step4: {
-        title: "Vývoj",
-        description: "Přeměňujeme koncept v realitu pomocí moderních technologií a nejlepších programátorských postupů pro spolehlivé výsledky."
-      },
-      step5: {
-        title: "Kontrola kvality",
-        description: "Provádíme komplexní testování na různých zařízeních, zajišťujeme bezchybný provoz a vysoký výkon."
-      },
-      step6: {
-        title: "Nasazení",
-        description: "Spouštíme váš produkt v pracovním prostředí s nepřetržitým sledováním a optimalizací pro stabilní provoz."
-      },
-      step7: {
-        title: "Školení a podpora",
-        description: "Poskytujeme podrobnou dokumentaci a školení vašeho týmu pro efektivní správu nového řešení."
-      },
-      step8: {
-        title: "Úspěšné dokončení",
-        description: "Slavíme spuštění vašeho úspěšného projektu a plánujeme další vylepšení pro růst vašeho podnikání."
-      },
-      steps: {
-        research: "Výzkum a strategie",
-        design: "Design a prototypování",
-        development: "Vývoj a testování",
-        launch: "Spuštění a podpora"
-      },
-      brief: {
-        title: "Vyplňte projektový brief",
-        description: "Řekněte nám více o vašem projektu — popište své úkoly, cíle a očekávané výsledky. Prostudujeme vaše potřeby a kontaktujeme vás k diskusi.",
-        button: "Vyplnit brief"
-      },
-      contact: {
-        title: "Kontaktujte nás přímo",
-        description: "Máte otázky nebo chcete osobně projednat váš projekt? Náš tým je připraven vyslechnout vaše nápady a nabídnout optimální řešení pro vaše podnikání.",
-        button: "Kontaktujte nás"
-      }
-    },
-    footer: {
-      services: "Služby",
-      contact: "Kontaktujte nás",
-      privacy: "Zásady ochrany osobních údajů",
-      terms: "Podmínky služby",
-      rights: "Všechna práva vyhrazena",
-      address: "Praha, Česká republika",
-      about: {
-        title: "O Teko",
-        description: "Jsme digitální agentura zaměřená na vytváření inovativních řešení pro firmy, které chtějí prosperovat v digitální éře.",
-        short_description: "Moderní webové stránky a integrace pro vaše podnikání. Vytváříme digitální řešení, která pomáhají vašemu podnikání růst."
-      },
-      links: {
-        title: "Rychlé odkazy",
-        privacy: "Zásady ochrany osobních údajů",
-        terms: "Podmínky služby"
-      },
-      copyright: "© 2023 Teko. Všechna práva vyhrazena."
-    }
-  }
-};
+          pwa: "Про

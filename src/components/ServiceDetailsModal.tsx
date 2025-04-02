@@ -5,6 +5,7 @@ import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 interface ServiceCapability {
   name: string;
@@ -30,6 +31,7 @@ const ServiceDetailsModal: React.FC<ServiceDetailsModalProps> = ({
   service
 }) => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   
   if (!service) return null;
   
@@ -58,7 +60,7 @@ const ServiceDetailsModal: React.FC<ServiceDetailsModalProps> = ({
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h3 className="text-xl font-display font-medium mb-4 text-teko-white">
-              Capabilities
+              {t('services.capabilities')}
             </h3>
             <div className="space-y-3">
               {service.capabilities.map((capability, idx) => (
@@ -76,7 +78,7 @@ const ServiceDetailsModal: React.FC<ServiceDetailsModalProps> = ({
           
           <div>
             <h3 className="text-xl font-display font-medium mb-4 text-teko-white">
-              Technologies
+              {t('services.technologies')}
             </h3>
             <div className="flex flex-wrap gap-2">
               {service.technologies.map((tech, idx) => (
@@ -91,25 +93,80 @@ const ServiceDetailsModal: React.FC<ServiceDetailsModalProps> = ({
             
             <div className="mt-10 pt-4 border-t border-white/10">
               <h3 className="text-xl font-display font-medium mb-4 text-teko-white">
-                Ready to get started?
+                {t('services.cta.title')}
               </h3>
               <p className="text-teko-white/70 mb-4">
-                Contact us to discuss how our {service.title.toLowerCase()} services can benefit your business.
+                {t('services.cta.description')}
               </p>
               <Button 
                 onClick={handleContactClick}
                 className="bg-teko-purple hover:bg-teko-purple-dark text-white flex items-center gap-2 px-6 py-2"
               >
-                Get a quote <ArrowRight size={16} />
+                {t('services.cta.button')} <ArrowRight size={16} />
               </Button>
             </div>
           </div>
         </div>
         
         <div className="mt-8 p-4 rounded-lg bg-gradient-to-br from-teko-purple/10 to-transparent border border-teko-purple/20">
-          <p className="text-sm text-teko-white/80 italic">
-            Our {service.title.toLowerCase()} services are designed to help you achieve your business goals. 
-            We use cutting-edge technologies and best practices to deliver exceptional results.
+          <p className="text-sm text-teko-white/80">
+            {(() => {
+              // Определяем полное описание в зависимости от типа сервиса
+              const serviceId = service.id;
+              let translationKey;
+              
+              switch (serviceId) {
+                case 'web-development':
+                  translationKey = 'services.web.fullDescription';
+                  break;
+                case 'crm-solutions':
+                  translationKey = 'services.crm.fullDescription';
+                  break;
+                case 'ui-ux-design':
+                  translationKey = 'services.design.fullDescription';
+                  break;
+                case 'seo-optimization':
+                  translationKey = 'services.seo.fullDescription';
+                  break;
+                case 'technical-support':
+                  translationKey = 'services.support.fullDescription';
+                  break;
+                case 'api-integration':
+                  translationKey = 'services.api.fullDescription';
+                  break;
+                case 'database-solutions':
+                  translationKey = 'services.database.fullDescription';
+                  break;
+                case 'mobile-development':
+                  translationKey = 'services.mobile.fullDescription';
+                  break;
+                case 'cloud-solutions':
+                  translationKey = 'services.cloud.fullDescription';
+                  break;
+                case 'ai-solutions':
+                  translationKey = 'services.ai.fullDescription';
+                  break;
+                case 'cybersecurity':
+                  translationKey = 'services.cybersecurity.fullDescription';
+                  break;
+                case 'blockchain':
+                  translationKey = 'services.blockchain.fullDescription';
+                  break;
+                case 'iot-solutions':
+                  translationKey = 'services.iot.fullDescription';
+                  break;
+                case 'ar-vr':
+                  translationKey = 'services.arvr.fullDescription';
+                  break;
+                case 'data-science':
+                  translationKey = 'services.datascience.fullDescription';
+                  break;
+                default:
+                  return service.description;
+              }
+              
+              return t(translationKey);
+            })()}
           </p>
         </div>
       </DialogContent>
