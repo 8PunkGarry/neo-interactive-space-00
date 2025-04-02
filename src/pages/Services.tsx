@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -16,7 +15,7 @@ const Services = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
-  const servicesPerPage = 9;
+  const servicesPerPage = 6;
   const navigate = useNavigate();
   
   const serviceDetails = [
@@ -135,6 +134,84 @@ const Services = () => {
         { name: t('services.cloud.capabilities.azure'), icon: <Server size={16} /> },
         { name: t('services.cloud.capabilities.google'), icon: <Database size={16} /> },
         { name: t('services.cloud.capabilities.scaling'), icon: <BarChart3 size={16} /> }
+      ]
+    },
+    {
+      id: 'ai-solutions',
+      icon: <BarChart3 size={36} className="text-teko-purple" />,
+      title: 'AI Solutions',
+      description: 'Advanced artificial intelligence solutions for businesses that want to automate processes, gain deeper insights, and create innovative products and services. Our AI specialists can help implement machine learning, natural language processing, and computer vision solutions.',
+      technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Hugging Face', 'Computer Vision', 'NLP', 'MLOps'],
+      capabilities: [
+        { name: 'Machine Learning', icon: <Code size={16} /> },
+        { name: 'Natural Language Processing', icon: <Database size={16} /> },
+        { name: 'Computer Vision', icon: <Search size={16} /> },
+        { name: 'Predictive Analytics', icon: <BarChart3 size={16} /> }
+      ]
+    },
+    {
+      id: 'cybersecurity',
+      icon: <Shield size={36} className="text-teko-purple" />,
+      title: 'Cybersecurity',
+      description: 'Protect your digital assets with our comprehensive cybersecurity services. We offer vulnerability assessments, penetration testing, security audits, and implementation of robust security measures to safeguard your business against cyber threats.',
+      technologies: ['Firewall', 'Encryption', 'Multi-factor Authentication', 'Security Audits', 'Penetration Testing'],
+      capabilities: [
+        { name: 'Vulnerability Assessment', icon: <Search size={16} /> },
+        { name: 'Threat Detection', icon: <Shield size={16} /> },
+        { name: 'Incident Response', icon: <Server size={16} /> },
+        { name: 'Security Training', icon: <Headphones size={16} /> }
+      ]
+    },
+    {
+      id: 'blockchain',
+      icon: <Database size={36} className="text-teko-purple" />,
+      title: 'Blockchain Development',
+      description: 'Leverage the power of blockchain technology for your business with our specialized development services. We build secure, transparent, and efficient blockchain solutions for various industries including finance, supply chain, and digital identity.',
+      technologies: ['Ethereum', 'Solidity', 'Smart Contracts', 'DeFi', 'NFTs', 'Web3.js'],
+      capabilities: [
+        { name: 'Smart Contracts', icon: <Code size={16} /> },
+        { name: 'DApp Development', icon: <Globe size={16} /> },
+        { name: 'Tokenization', icon: <Database size={16} /> },
+        { name: 'Blockchain Integration', icon: <Server size={16} /> }
+      ]
+    },
+    {
+      id: 'iot-solutions',
+      icon: <Smartphone size={36} className="text-teko-purple" />,
+      title: 'IoT Solutions',
+      description: 'Connect your physical and digital worlds with our Internet of Things (IoT) solutions. We design and implement custom IoT systems that enable remote monitoring, automation, and data collection for smarter decision-making.',
+      technologies: ['Arduino', 'Raspberry Pi', 'MQTT', 'IoT Platforms', 'Sensors', 'Embedded Systems'],
+      capabilities: [
+        { name: 'Connected Devices', icon: <Smartphone size={16} /> },
+        { name: 'Remote Monitoring', icon: <Globe size={16} /> },
+        { name: 'Data Analytics', icon: <BarChart3 size={16} /> },
+        { name: 'Automation Systems', icon: <Server size={16} /> }
+      ]
+    },
+    {
+      id: 'ar-vr',
+      icon: <Globe size={36} className="text-teko-purple" />,
+      title: 'AR/VR Development',
+      description: 'Create immersive experiences with our Augmented Reality (AR) and Virtual Reality (VR) development services. We build interactive applications for training, marketing, entertainment, and more that engage users in entirely new ways.',
+      technologies: ['Unity3D', 'Unreal Engine', 'ARKit', 'ARCore', 'WebXR', 'VR Headsets'],
+      capabilities: [
+        { name: 'Interactive Experiences', icon: <Palette size={16} /> },
+        { name: '3D Modeling', icon: <Code size={16} /> },
+        { name: 'Spatial Computing', icon: <Globe size={16} /> },
+        { name: 'Cross-platform AR/VR', icon: <Smartphone size={16} /> }
+      ]
+    },
+    {
+      id: 'data-science',
+      icon: <BarChart3 size={36} className="text-teko-purple" />,
+      title: 'Data Science',
+      description: 'Transform your raw data into valuable business insights with our data science services. Our team of data scientists and analysts use advanced statistical techniques and machine learning algorithms to uncover patterns and predict trends.',
+      technologies: ['Python', 'R', 'SQL', 'Tableau', 'Power BI', 'Pandas', 'Hadoop', 'Spark'],
+      capabilities: [
+        { name: 'Data Analysis', icon: <BarChart3 size={16} /> },
+        { name: 'Statistical Modeling', icon: <Database size={16} /> },
+        { name: 'Predictive Analytics', icon: <Code size={16} /> },
+        { name: 'Data Visualization', icon: <Palette size={16} /> }
       ]
     }
   ];
@@ -272,14 +349,14 @@ const Services = () => {
                       />
                     </PaginationItem>
                     
-                    {[...Array(totalPages)].map((_, index) => (
-                      <PaginationItem key={index}>
+                    {[1, 2, 3].map((pageNumber) => (
+                      <PaginationItem key={pageNumber}>
                         <PaginationLink 
-                          isActive={currentPage === index + 1}
-                          onClick={() => setCurrentPage(index + 1)}
-                          className="cursor-pointer hover:bg-teko-purple/20 data-[active=true]:bg-teko-purple/30"
+                          isActive={currentPage === pageNumber}
+                          onClick={() => setCurrentPage(pageNumber)}
+                          className={`cursor-pointer hover:bg-teko-purple/20 data-[active=true]:bg-teko-purple/30 ${pageNumber > totalPages ? "pointer-events-none opacity-50" : ""}`}
                         >
-                          {index + 1}
+                          {pageNumber}
                         </PaginationLink>
                       </PaginationItem>
                     ))}
@@ -287,7 +364,7 @@ const Services = () => {
                     <PaginationItem>
                       <PaginationNext 
                         onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                        className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
+                        className={currentPage === totalPages || currentPage === 3 ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
                       />
                     </PaginationItem>
                   </PaginationContent>
