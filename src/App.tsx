@@ -16,6 +16,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import { AuthProvider } from './context/AuthContext';
 import { Toaster } from './components/ui/toaster';
 import { CapabilitiesProvider } from './context/CapabilitiesContext';
+import CookieConsent from './components/CookieConsent';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>
+          <CookieConsent />
           <Toaster />
         </CapabilitiesProvider>
       </LanguageProvider>
