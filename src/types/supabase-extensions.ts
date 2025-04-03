@@ -34,17 +34,17 @@ export interface ExtendedDatabase extends OriginalDatabase {
         };
         Relationships: [
           {
-            foreignKeyName: "chat_messages_recipient_id_fkey";
-            columns: ["recipient_id"];
-            isOneToOne: false;
-            referencedRelation: "admin_users";
-            referencedColumns: ["id"];
-          },
-          {
             foreignKeyName: "chat_messages_sender_id_fkey";
             columns: ["sender_id"];
             isOneToOne: false;
-            referencedRelation: "admin_users";
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "chat_messages_recipient_id_fkey";
+            columns: ["recipient_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
             referencedColumns: ["id"];
           }
         ];
