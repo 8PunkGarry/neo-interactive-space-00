@@ -881,4 +881,4 @@ export const translations: Translations = {
         launch: "Запуск"
       },
       brief: {
-        title: "За
+        title: "Заполнить проект
