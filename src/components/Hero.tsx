@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedLogo from './AnimatedLogo';
