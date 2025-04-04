@@ -1,3 +1,4 @@
+
 import { authTranslations } from './authTranslations';
 import React from 'react';
 
@@ -881,4 +882,307 @@ export const translations: Translations = {
         launch: "Запуск"
       },
       brief: {
-        title: "Заполнить проект
+        title: "Заполнить проектную заявку",
+        description: "Расскажите нам больше о потребностях и целях вашего проекта",
+        button: "Начать бриф"
+      },
+      contact: {
+        title: "Связаться с нами напрямую",
+        description: "Свяжитесь с нашей командой, чтобы обсудить ваш проект",
+        button: "Связаться с нами"
+      }
+    }
+  },
+  cs: {
+    // Add Czech translations if they exist, or placeholder values
+    navbar: {
+      home: "Domů",
+      about: "O nás",
+      services: "Služby",
+      brief: "Brief",
+      login: "Přihlášení",
+      signup: "Registrace",
+      profile: "Profil",
+      logout: "Odhlásit se",
+      chat: "Chat"
+    },
+    footerBasic: {
+      rights: "Všechna práva vyhrazena",
+      terms: "Podmínky služby",
+      privacy: "Zásady ochrany soukromí",
+      contact: "Kontaktujte nás"
+    },
+    footer: {
+      services: "Služby",
+      contact: "Kontakt",
+      privacy: "Zásady ochrany soukromí",
+      terms: "Podmínky služby",
+      rights: "Všechna práva vyhrazena",
+      address: "Praha, Česká republika",
+      about: {
+        title: "O nás",
+        description: "Jsme digitální agentura zaměřená na vytváření inovativních řešení pro firmy, které chtějí prosperovat v digitální éře.",
+        short_description: "Vytváříme digitální řešení, která pomáhají vašemu podnikání růst"
+      },
+      links: {
+        title: "Rychlé odkazy",
+        privacy: "Zásady ochrany soukromí",
+        terms: "Podmínky služby"
+      },
+      copyright: "© 2023 Teko. Všechna práva vyhrazena."
+    },
+    index: {
+      title: "Transformujte své podnikání pomocí digitální inovace",
+      subtitle: "Vytváříme špičková digitální řešení, která pomáhají vašemu podnikání prosperovat",
+      description: "Náš tým odborníků poskytuje digitální řešení na míru podle vašich specifických potřeb",
+      servicesTitle: "Naše služby",
+      servicesDescription: "Nabízíme širokou škálu digitálních služeb pro růst vašeho podnikání",
+      aboutTitle: "O nás",
+      aboutDescription: "Zjistěte více o naší společnosti a našem týmu",
+      contactTitle: "Kontaktujte nás",
+      contactDescription: "Spojte se s námi a prodiskutujte svůj projekt",
+      contactButton: "Kontaktujte nás"
+    },
+    about: {
+      title: "O nás",
+      description: "Jsme tým digitálních inovátorů, kteří se vášnivě věnují pomoci firmám k úspěchu",
+      missionTitle: "Naše mise",
+      missionDescription: "Poskytovat výjimečná digitální řešení, která pohánějí růst podnikání",
+      valuesTitle: "Naše hodnoty",
+      valuesDescription: "Věříme v transparentnost, inovace a spokojenost klientů",
+      teamTitle: "Náš tým",
+      teamDescription: "Seznamte se s odborníky stojícími za našimi digitálními řešeními"
+    },
+    services: {
+      title: "Naše služby",
+      description: "Komplexní digitální řešení pro všechny potřeby vašeho podnikání",
+      search: {
+        placeholder: "Hledat služby...",
+        noResults: "Nebyly nalezeny žádné služby. Zkuste jiný výraz pro vyhledávání."
+      },
+      filter: {
+        viewMode: "Režim zobrazení",
+        grid: "Mřížka",
+        list: "Seznam"
+      },
+      selectedCapabilities: {
+        title: "Vybrané schopnosti",
+        description: "Toto jsou schopnosti, které jste si vybrali pro svůj projekt."
+      },
+      web: {
+        title: "Vývoj webových stránek",
+        description: "Vytváření moderních, responzivních webových stránek, které zaujmou návštěvníky a podporují konverze",
+        fullDescription: "Naše služby vývoje webových stránek se zaměřují na vytváření rychlých, responzivních a uživatelsky přívětivých webových stránek, které efektivně reprezentují vaši značku. Používáme nejnovější technologie a postupujeme podle osvědčených postupů, abychom dodávali webové stránky, které jsou nejen vizuálně přitažlivé, ale také optimalizované pro výkon a vyhledávače.",
+        capabilities: {
+          responsive: "Responzivní design",
+          ecommerce: "Řešení pro e-commerce",
+          cms: "Systémy pro správu obsahu",
+          spa: "Single Page Applications"
+        }
+      },
+      crm: {
+        title: "CRM řešení",
+        description: "Zjednodušte své vztahy se zákazníky pomocí vlastních CRM řešení",
+        fullDescription: "Naše CRM řešení vám pomáhají efektivně spravovat vztahy se zákazníky, automatizovat rutinní úkoly a získávat cenné poznatky o chování zákazníků. Přizpůsobujeme CRM systémy tak, aby odpovídaly vašim specifickým obchodním potřebám, a integrujeme je s vašimi stávajícími systémy pro bezproblémový provoz.",
+        capabilities: {
+          automation: "Automatizace pracovních postupů",
+          analytics: "Analýza zákazníků",
+          integration: "Integrace třetích stran",
+          custom: "Vlastní řešení"
+        }
+      },
+      design: {
+        title: "UI/UX Design",
+        description: "Vytváření intuitivních a poutavých uživatelských zážitků pro vaše digitální produkty",
+        fullDescription: "Naše služby UI/UX designu se zaměřují na vytváření intuitivních, poutavých a vizuálně přitažlivých digitálních zážitků. Kombinujeme estetickou přitažlivost s funkčním designem, abychom zajistili, že vaši uživatelé se mohou snadno pohybovat a používat vaše digitální produkty a zároveň si užívat konzistentní a atraktivní rozhraní.",
+        capabilities: {
+          ui: "Design rozhraní",
+          ux: "Uživatelská zkušenost",
+          branding: "Vizuální identita",
+          prototyping: "Interaktivní prototypy"
+        }
+      },
+      seo: {
+        title: "SEO optimalizace",
+        description: "Zlepšete svou viditelnost ve výsledcích vyhledávání a přilákejte více kvalifikovaného provozu",
+        fullDescription: "Naše služby SEO optimalizace vám pomáhají umístit se výše ve výsledcích vyhledávačů, přivést na váš web více kvalifikovaného provozu a zlepšit míru konverze. Provádíme důkladný výzkum a implementujeme osvědčené strategie, abychom zajistili, že váš web získá viditelnost, kterou si zaslouží.",
+        capabilities: {
+          audit: "Technický SEO audit",
+          optimization: "Optimalizace obsahu",
+          analytics: "Sledování výkonu",
+          local: "Lokální SEO"
+        }
+      },
+      support: {
+        title: "Technická podpora",
+        description: "Spolehlivá technická podpora pro všechny vaše digitální produkty",
+        fullDescription: "Naše služby technické podpory vám poskytují pomoc, kterou potřebujete, aby vaše digitální produkty běžely hladce. Nabízíme rychlou a efektivní podporu pro řešení jakýchkoli problémů, na které můžete narazit, a pomáháme vám maximálně využít vaše digitální investice.",
+        capabilities: {
+          maintenance: "Pravidelná údržba",
+          hosting: "Hostingová řešení",
+          security: "Bezpečnostní aktualizace",
+          updates: "Aktualizace obsahu"
+        }
+      },
+      api: {
+        title: "API integrace",
+        description: "Propojte své systémy a aplikace pomocí bezproblémové API integrace",
+        fullDescription: "Naše služby API integrace vám pomáhají propojit různé systémy a aplikace, aby efektivně spolupracovaly. Vyvíjíme vlastní API a integrujeme existující, abychom zajistili hladký tok dat mezi vašimi různými obchodními nástroji a platformami.",
+        capabilities: {
+          integration: "Systémová integrace",
+          development: "Vývoj vlastních API",
+          testing: "Testování výkonu",
+          documentation: "Komplexní dokumentace"
+        }
+      },
+      database: {
+        title: "Databázová řešení",
+        description: "Efektivní návrh a správa databází pro vaše datové potřeby",
+        fullDescription: "Naše databázová řešení zajišťují efektivní ukládání, správu a přístup k vašim datům. Navrhujeme databázové struktury, které jsou optimalizovány pro vaše specifické potřeby, a poskytujeme průběžnou správu pro zajištění integrity a bezpečnosti dat.",
+        capabilities: {
+          design: "Architektura databáze",
+          optimization: "Optimalizace výkonu",
+          migration: "Migrace dat",
+          security: "Bezpečnost dat"
+        }
+      },
+      mobile: {
+        title: "Vývoj mobilních aplikací",
+        description: "Vytváření výkonných mobilních aplikací pro platformy iOS a Android",
+        fullDescription: "Naše služby vývoje mobilních aplikací se zaměřují na vytváření aplikací, které bezproblémově fungují na různých zařízeních a platformách. Vyvíjíme nativní a multiplatformní mobilní aplikace, které jsou optimalizovány pro výkon a poskytují vynikající uživatelskou zkušenost.",
+        capabilities: {
+          native: "Nativní aplikace",
+          hybrid: "Hybridní řešení",
+          responsive: "Responzivní webové aplikace",
+          pwa: "Progresivní webové aplikace"
+        }
+      },
+      cloud: {
+        title: "Cloudová řešení",
+        description: "Využijte sílu cloud computingu pro své podnikání",
+        fullDescription: "Naše cloudová řešení vám pomáhají využít sílu cloud computingu ke zlepšení efektivity, škálovatelnosti a bezpečnosti. Pomáháme s migrací do cloudu, správou infrastruktury a optimalizací, abychom zajistili, že získáte ze své cloudové investice maximum.",
+        capabilities: {
+          aws: "AWS integrace",
+          azure: "Microsoft Azure",
+          google: "Google Cloud",
+          scaling: "Automatické škálování"
+        }
+      },
+      viewAll: {
+        title: "Zobrazit všechny služby",
+        description: "Prozkoumejte naši kompletní nabídku digitálních služeb"
+      },
+      singleResult: "služba nalezena",
+      multipleResults: "služeb nalezeno",
+      viewAs: "Zobrazit jako",
+      gridView: "Mřížka",
+      listView: "Seznam",
+      capabilities: "Schopnosti",
+      technologies: "Technologie",
+      approach: {
+        title: "Náš přístup",
+        description: "Postupujeme systematicky, abychom dodávali vysoce kvalitní digitální řešení",
+        step1: "Začínáme důkladnou analýzou potřeb a cílů vašeho podnikání",
+        step2: "Náš tým vytváří podrobný projektový plán s časovými osami a výstupy",
+        step3: "Používáme iterativní proces vývoje s pravidelnou zpětnou vazbou",
+        step4: "Po testování a zajištění kvality nasazujeme vaše řešení a poskytujeme průběžnou podporu"
+      },
+      benefits: {
+        title: "Proč si vybrat nás",
+        benefit1: "Zkušený tým profesionálů",
+        benefit2: "Vlastní řešení přizpůsobená vašim potřebám",
+        benefit3: "Transparentní komunikace v průběhu celého projektu",
+        benefit4: "Konkurenceschopné ceny a flexibilní modely zapojení",
+        benefit5: "Průběžná podpora a údržba"
+      },
+      cta: {
+        title: "Připraveni začít?",
+        description: "Dovolte nám pomoci vám transformovat vaše podnikání pomocí našich digitálních řešení",
+        button: "Kontaktujte nás nyní"
+      },
+      nextPage: "Projednat váš projekt",
+      ai: {
+        title: "AI řešení",
+        description: "Využijte sílu umělé inteligence pro své podnikání",
+        fullDescription: "Naše AI řešení vám pomáhají využít sílu umělé inteligence k automatizaci procesů, získávání poznatků a vytváření inovativních produktů a služeb, které vám dávají konkurenční výhodu ve vašem odvětví."
+      },
+      cybersecurity: {
+        title: "Kybernetická bezpečnost",
+        description: "Chraňte své digitální aktiva komplexními bezpečnostními řešeními",
+        fullDescription: "Naše služby kybernetické bezpečnosti vám pomáhají chránit vaše digitální aktiva před hrozbami a zranitelnostmi. Implementujeme robustní bezpečnostní opatření k ochraně vašich dat a zajištění kontinuity podnikání."
+      },
+      blockchain: {
+        title: "Vývoj blockchainu",
+        description: "Využijte technologii blockchain pro zvýšenou bezpečnost a transparentnost",
+        fullDescription: "Naše služby vývoje blockchainu vám pomáhají implementovat bezpečná, transparentní a efektivní blockchain řešení pro různé aplikace, od řízení dodavatelského řetězce až po finanční transakce."
+      },
+      iot: {
+        title: "IoT řešení",
+        description: "Propojte zařízení a systémy pro chytřejší operace",
+        fullDescription: "Naše IoT řešení vám pomáhají propojit zařízení a systémy pro sběr a výměnu dat, což umožňuje chytřejší rozhodování a efektivnější operace v celém vašem podnikání."
+      },
+      arvr: {
+        title: "AR/VR vývoj",
+        description: "Vytvářejte poutavé zážitky s rozšířenou a virtuální realitou",
+        fullDescription: "Naše služby AR/VR vývoje vám pomáhají vytvářet poutavé a interaktivní zážitky, které zapojují uživatele zcela novými způsoby, ať už pro školení, marketing nebo zábavní účely."
+      },
+      datascience: {
+        title: "Datová věda",
+        description: "Proměňte svá data v cenné poznatky pomocí pokročilé analytiky",
+        fullDescription: "Naše služby datové vědy vám pomáhají extrahovat cenné poznatky z vašich dat pomocí pokročilé analytiky, strojového učení a vizualizačních technik pro podporu lepšího rozhodování."
+      }
+    },
+    journey: {
+      title: "Vaše digitální cesta",
+      subtitle: "Provázíme vás každým krokem vaší digitální transformace",
+      step1: {
+        title: "Objevování",
+        description: "Zjišťujeme o vašem podnikání, cílech a výzvách"
+      },
+      step2: {
+        title: "Plánování",
+        description: "Vytváříme podrobnou mapu pro vaše digitální řešení"
+      },
+      step3: {
+        title: "Design",
+        description: "Navrhujeme intuitivní a atraktivní uživatelská rozhraní"
+      },
+      step4: {
+        title: "Vývoj",
+        description: "Vytváříme vaše řešení pomocí nejnovějších technologií"
+      },
+      step5: {
+        title: "Testování",
+        description: "Důkladně testujeme vaše řešení pro zajištění kvality"
+      },
+      step6: {
+        title: "Nasazení",
+        description: "Spouštíme vaše řešení a zajišťujeme hladký provoz"
+      },
+      step7: {
+        title: "Podpora",
+        description: "Poskytujeme průběžnou podporu a údržbu"
+      },
+      step8: {
+        title: "Růst",
+        description: "Pomáháme vám vyvíjet a zlepšovat vaše digitální řešení"
+      },
+      steps: {
+        research: "Výzkum",
+        design: "Design",
+        development: "Vývoj",
+        launch: "Spuštění"
+      },
+      brief: {
+        title: "Vyplňte projektový brief",
+        description: "Řekněte nám více o potřebách a cílech vašeho projektu",
+        button: "Začít brief"
+      },
+      contact: {
+        title: "Kontaktujte nás přímo",
+        description: "Spojte se s naším týmem a prodiskutujte svůj projekt",
+        button: "Kontaktujte nás"
+      }
+    }
+  }
+};
