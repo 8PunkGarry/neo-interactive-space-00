@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -54,6 +53,11 @@ const Login = () => {
     },
   });
 
+  const fillAdminCredentials = () => {
+    form.setValue('email', 'admin@example.com');
+    form.setValue('password', 'AdminPass123');
+  };
+
   const onSubmit = async (data: LoginFormValues) => {
     try {
       setIsSubmitting(true);
@@ -90,8 +94,8 @@ const Login = () => {
       
       <div className="flex-1 flex flex-col items-center justify-center px-4 py-12 relative">
         {/* Background elements */}
-        <div className="absolute top-20 left-20 w-64 h-64 bg-teko-purple/20 rounded-full blur-3xl opacity-60 animate-float"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-teko-purple/30 rounded-full blur-3xl opacity-50 animate-float"></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-teko-purple/20 rounded-full blur-3xl opacity-60 animate-float"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-teko-purple/30 rounded-full blur-3xl opacity-50 animate-float"></div>
         
         <div className="w-full max-w-md z-10">
           <Link to="/" className="inline-flex items-center text-teko-white/70 hover:text-teko-purple mb-6 transition-colors">
@@ -101,9 +105,19 @@ const Login = () => {
           
           <Card className="backdrop-blur-xl bg-teko-black/40 border border-teko-purple/20">
             <CardHeader className="space-y-1">
-              <CardTitle className="text-2xl font-bold purple-gradient-text">
-                {t('auth.login')}
-              </CardTitle>
+              <div className="flex justify-between items-center">
+                <CardTitle className="text-2xl font-bold purple-gradient-text">
+                  {t('auth.welcome_back')}
+                </CardTitle>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={fillAdminCredentials}
+                  className="text-xs text-teko-purple hover:text-teko-purple-light"
+                >
+                  Admin
+                </Button>
+              </div>
               <CardDescription className="text-teko-white/70">
                 {t('auth.login_description')}
               </CardDescription>
