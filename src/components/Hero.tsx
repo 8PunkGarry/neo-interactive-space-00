@@ -117,7 +117,7 @@ const Hero = () => {
             }`}
             style={{ transitionDelay: '0.4s' }}
           >
-            {t('hero.title')}
+            Инновационные цифровые решения для вашего бизнеса
           </h1>
           
           <p 
@@ -140,7 +140,7 @@ const Hero = () => {
                 href="#journey" 
                 className="group relative overflow-hidden rounded-lg bg-teko-purple px-6 py-3 text-white text-lg font-medium transition-all duration-500 hover:bg-teko-purple-dark"
               >
-                <span className="relative z-10">{t('hero.cta')}</span>
+                <span className="relative z-10">Начать работу</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-teko-purple to-teko-gradient-end opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
               </a>
               
@@ -148,7 +148,7 @@ const Hero = () => {
                 href="#services" 
                 className="group relative overflow-hidden rounded-lg bg-transparent border border-teko-purple/50 px-6 py-3 text-white text-lg font-medium transition-all duration-500 hover:border-teko-purple hover:bg-teko-purple/10"
               >
-                <span className="relative z-10">{t('hero.secondary_cta')}</span>
+                <span className="relative z-10">Наши услуги</span>
                 <span className="absolute inset-0 bg-teko-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
               </a>
             </div>
