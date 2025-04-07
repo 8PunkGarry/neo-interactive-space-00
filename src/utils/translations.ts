@@ -1,213 +1,371 @@
-// Define the supported languages
 export type SupportedLanguage = 'en' | 'ru' | 'cs';
 
-// Define the translation structure
-export const translations = {
+// Translation structure
+export const translations: Record<SupportedLanguage, any> = {
   en: {
     hero: {
-      title: 'Innovative Digital Solutions for Your Business',
-      subtitle: 'We transform your ideas into powerful digital experiences with cutting-edge technology and expert development.',
-      cta: 'Get Started',
-      secondary_cta: 'Our Services'
+      title: "Innovative digital solutions for your business",
+      subtitle: "We transform your ideas into cutting-edge technology products that drive business growth and user engagement",
+      cta: "Get Started",
+      secondary_cta: "Our Services"
     },
     navbar: {
-      home: 'Home',
-      journey: 'Journey',
-      services: 'Services',
-      contact: 'Contact',
-      language: 'Language'
+      about: "About",
+      services: "Services",
+      brief: "Brief",
+      contact: "Contact",
+      login: "Login",
+      signup: "Sign Up",
+      profile: "Profile",
+      settings: "Settings",
+      logout: "Logout",
     },
     userJourney: {
-      title: 'Our User Journey',
-      step1: {
-        title: 'Discovery',
-        description: 'We start by understanding your business goals and challenges.'
-      },
-      step2: {
-        title: 'Planning',
-        description: 'We create a detailed plan to achieve your goals.'
-      },
-      step3: {
-        title: 'Development',
-        description: 'We develop your solution with the latest technologies.'
-      },
-      step4: {
-        title: 'Deployment',
-        description: 'We deploy your solution and provide ongoing support.'
-      }
+      title: "Our User Journey",
+      step1Title: "Briefing",
+      step1Description: "Detailed discussion to understand your business goals and project requirements.",
+      step2Title: "Prototyping",
+      step2Description: "Creating interactive prototypes to visualize the solution and gather early feedback.",
+      step3Title: "Development",
+      step3Description: "Full-scale development using agile methodologies to ensure flexibility and quality.",
+      step4Title: "Testing",
+      step4Description: "Rigorous testing and quality assurance to deliver a reliable and high-performance product.",
+      step5Title: "Deployment",
+      step5Description: "Smooth deployment and integration with your existing systems.",
+      step6Title: "Support",
+      step6Description: "Ongoing support and maintenance to ensure long-term success and continuous improvement."
     },
     services: {
-      title: 'Our Services',
-      service1: {
-        title: 'Web Development',
-        description: 'We create modern, responsive websites that are optimized for search engines and user experience.'
-      },
-      service2: {
-        title: 'Mobile App Development',
-        description: 'We develop native and cross-platform mobile apps for iOS and Android.'
-      },
-      service3: {
-        title: 'UI/UX Design',
-        description: 'We create beautiful, intuitive user interfaces that are optimized for user engagement and conversion.'
-      },
-      service4: {
-        title: 'Digital Marketing',
-        description: 'We help you reach your target audience with effective digital marketing strategies.'
-      },
-      service5: {
-        title: 'Cloud Solutions',
-        description: 'We help you migrate to the cloud and manage your cloud infrastructure.'
-      },
-      service6: {
-        title: 'IT Consulting',
-        description: 'We provide expert IT consulting services to help you optimize your IT infrastructure and processes.'
-      },
-      view_all: 'View All Services'
+      title: "Our Services",
+      viewAll: "View All Services",
+      service1Title: "Web Development",
+      service1Description: "Custom web applications tailored to your specific business needs.",
+      service2Title: "Mobile App Development",
+      service2Description: "Native and cross-platform mobile apps for iOS and Android.",
+      service3Title: "UI/UX Design",
+      service3Description: "User-centered design to create intuitive and engaging digital experiences.",
+      service4Title: "Cloud Solutions",
+      service4Description: "Scalable and secure cloud infrastructure to support your business growth.",
+      service5Title: "AI & Automation",
+      service5Description: "Artificial intelligence and automation solutions to streamline your operations.",
+      service6Title: "Digital Marketing",
+      service6Description: "Comprehensive digital marketing strategies to reach your target audience."
     },
     footer: {
-      contact: 'Contact Us',
-      address: '123 Main Street, Anytown, USA',
-      phone: '555-123-4567',
-      email: 'info@example.com',
-      copyright: 'Copyright © 2023 Teko Solutions. All rights reserved.'
-    }
+      company: "Company",
+      about: "About Us",
+      services: "Services",
+      contact: "Contact",
+      resources: "Resources",
+      blog: "Blog",
+      careers: "Careers",
+      help: "Help",
+      support: "Support",
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+      copyright: "© {year} Teko. All rights reserved."
+    },
+    briefPage: {
+      title: "Let's Start with a Brief",
+      subtitle: "Fill out the form below to help us understand your project needs.",
+      nameLabel: "Your Name",
+      emailLabel: "Your Email",
+      companyLabel: "Company Name",
+      projectTypeLabel: "Type of Project",
+      projectTypeOption1: "Web Development",
+      projectTypeOption2: "Mobile App Development",
+      projectTypeOption3: "UI/UX Design",
+      projectTypeOption4: "AI & Automation",
+      budgetLabel: "Estimated Budget",
+      budgetOption1: "Less than $5,000",
+      budgetOption2: "$5,000 - $10,000",
+      budgetOption3: "$10,000 - $20,000",
+      budgetOption4: "More than $20,000",
+      descriptionLabel: "Project Description",
+      submitButton: "Submit Brief",
+      successMessage: "Thank you! We have received your brief and will be in touch soon.",
+      errorMessage: "Oops! Something went wrong. Please try again."
+    },
+    servicesPage: {
+      title: "Our Services",
+      subtitle: "Explore our comprehensive suite of digital solutions designed to drive your business forward.",
+      webDevelopmentTitle: "Web Development",
+      webDevelopmentDescription: "Custom web applications tailored to your specific business needs. From e-commerce platforms to corporate websites, we build solutions that are scalable, secure, and user-friendly.",
+      mobileAppDevelopmentTitle: "Mobile App Development",
+      mobileAppDevelopmentDescription: "Native and cross-platform mobile apps for iOS and Android. We create engaging mobile experiences that enhance customer loyalty and drive business growth.",
+      uiUxDesignTitle: "UI/UX Design",
+      uiUxDesignDescription: "User-centered design to create intuitive and engaging digital experiences. Our design team focuses on usability, accessibility, and aesthetics to ensure your product stands out.",
+      cloudSolutionsTitle: "Cloud Solutions",
+      cloudSolutionsDescription: "Scalable and secure cloud infrastructure to support your business growth. We offer cloud migration, management, and optimization services to help you leverage the power of the cloud.",
+      aiAutomationTitle: "AI & Automation",
+      aiAutomationDescription: "Artificial intelligence and automation solutions to streamline your operations. We implement AI-powered tools to improve efficiency, reduce costs, and gain a competitive edge.",
+      digitalMarketingTitle: "Digital Marketing",
+      digitalMarketingDescription: "Comprehensive digital marketing strategies to reach your target audience. We offer SEO, PPC, social media marketing, and content marketing services to boost your online presence."
+    },
+    aboutPage: {
+      title: "About Us",
+      subtitle: "We are a team of passionate technologists and creative thinkers dedicated to transforming ideas into innovative digital solutions.",
+      missionTitle: "Our Mission",
+      missionDescription: "To empower businesses with cutting-edge technology that drives growth, enhances user engagement, and creates lasting value.",
+      visionTitle: "Our Vision",
+      visionDescription: "To be a global leader in digital innovation, recognized for our commitment to excellence, creativity, and customer success.",
+      teamTitle: "Meet Our Team",
+      teamDescription: "Our team consists of experienced developers, designers, and strategists who are experts in their respective fields.",
+      teamMember1Name: "John Doe",
+      teamMember1Title: "CEO",
+      teamMember2Name: "Jane Smith",
+      teamMember2Title: "CTO",
+      teamMember3Name: "Mike Johnson",
+      teamMember3Title: "Lead Designer",
+      valuesTitle: "Our Values",
+      value1: "Innovation",
+      value2: "Excellence",
+      value3: "Collaboration",
+      value4: "Customer Success"
+    },
   },
   ru: {
     hero: {
-      title: 'Инновационные цифровые решения для вашего бизнеса',
-      subtitle: 'Мы превращаем ваши идеи в мощные цифровые решения с использованием передовых технологий и профессиональной разработки.',
-      cta: 'Начать работу',
-      secondary_cta: 'Наши услуги'
+      title: "Инновационные цифровые решения для вашего бизнеса",
+      subtitle: "Мы превращаем ваши идеи в передовые технологические продукты, которые стимулируют рост бизнеса и вовлечение пользователей",
+      cta: "Начать работу",
+      secondary_cta: "Наши услуги"
     },
     navbar: {
-      home: 'Главная',
-      journey: 'Путь',
-      services: 'Услуги',
-      contact: 'Контакт',
-      language: 'Язык'
+      about: "О нас",
+      services: "Услуги",
+      brief: "Бриф",
+      contact: "Контакт",
+      login: "Войти",
+      signup: "Регистрация",
+      profile: "Профиль",
+      settings: "Настройки",
+      logout: "Выйти",
     },
     userJourney: {
-      title: 'Наш путь пользователя',
-      step1: {
-        title: 'Открытие',
-        description: 'Мы начинаем с понимания ваших бизнес-целей и задач.'
-      },
-      step2: {
-        title: 'Планирование',
-        description: 'Мы создаем подробный план для достижения ваших целей.'
-      },
-      step3: {
-        title: 'Разработка',
-        description: 'Мы разрабатываем ваше решение с использованием новейших технологий.'
-      },
-      step4: {
-        title: 'Развертывание',
-        description: 'Мы развертываем ваше решение и обеспечиваем постоянную поддержку.'
-      }
+      title: "Наш путь пользователя",
+      step1Title: "Брифинг",
+      step1Description: "Подробное обсуждение для понимания ваших бизнес-целей и требований проекта.",
+      step2Title: "Прототипирование",
+      step2Description: "Создание интерактивных прототипов для визуализации решения и сбора ранних отзывов.",
+      step3Title: "Разработка",
+      step3Description: "Полномасштабная разработка с использованием гибких методологий для обеспечения гибкости и качества.",
+      step4Title: "Тестирование",
+      step4Description: "Тщательное тестирование и контроль качества для обеспечения надежного и высокопроизводительного продукта.",
+      step5Title: "Развертывание",
+      step5Description: "Плавное развертывание и интеграция с вашими существующими системами.",
+      step6Title: "Поддержка",
+      step6Description: "Постоянная поддержка и обслуживание для обеспечения долгосрочного успеха и непрерывного улучшения."
     },
     services: {
-      title: 'Наши услуги',
-      service1: {
-        title: 'Веб-разработка',
-        description: 'Мы создаем современные, адаптивные веб-сайты, оптимизированные для поисковых систем и пользовательского опыта.'
-      },
-      service2: {
-        title: 'Разработка мобильных приложений',
-        description: 'Мы разрабатываем нативные и кроссплатформенные мобильные приложения для iOS и Android.'
-      },
-      service3: {
-        title: 'UI/UX Дизайн',
-        description: 'Мы создаем красивые, интуитивно понятные пользовательские интерфейсы, оптимизированные для вовлечения пользователей и конверсии.'
-      },
-      service4: {
-        title: 'Цифровой маркетинг',
-        description: 'Мы помогаем вам охватить вашу целевую аудиторию с помощью эффективных стратегий цифрового маркетинга.'
-      },
-      service5: {
-        title: 'Облачные решения',
-        description: 'Мы помогаем вам перейти в облако и управлять вашей облачной инфраструктурой.'
-      },
-      service6: {
-        title: 'ИТ-консалтинг',
-        description: 'Мы предоставляем экспертные услуги ИТ-консалтинга, чтобы помочь вам оптимизировать вашу ИТ-инфраструктуру и процессы.'
-      },
-      view_all: 'Посмотреть все услуги'
+      title: "Наши услуги",
+      viewAll: "Посмотреть все услуги",
+      service1Title: "Веб-разработка",
+      service1Description: "Индивидуальные веб-приложения, адаптированные к вашим конкретным потребностям бизнеса.",
+      service2Title: "Разработка мобильных приложений",
+      service2Description: "Нативные и кроссплатформенные мобильные приложения для iOS и Android.",
+      service3Title: "UI/UX Дизайн",
+      service3Description: "Ориентированный на пользователя дизайн для создания интуитивно понятного и привлекательного цифрового опыта.",
+      service4Title: "Облачные решения",
+      service4Description: "Масштабируемая и безопасная облачная инфраструктура для поддержки роста вашего бизнеса.",
+      service5Title: "ИИ и автоматизация",
+      service5Description: "Решения на основе искусственного интеллекта и автоматизации для оптимизации ваших операций.",
+      service6Title: "Цифровой маркетинг",
+      service6Description: "Комплексные стратегии цифрового маркетинга для охвата вашей целевой аудитории."
     },
     footer: {
-      contact: 'Свяжитесь с нами',
-      address: '123 Main Street, Anytown, USA',
-      phone: '555-123-4567',
-      email: 'info@example.com',
-      copyright: 'Copyright © 2023 Teko Solutions. Все права защищены.'
-    }
+      company: "Компания",
+      about: "О нас",
+      services: "Услуги",
+      contact: "Контакт",
+      resources: "Ресурсы",
+      blog: "Блог",
+      careers: "Карьера",
+      help: "Помощь",
+      support: "Поддержка",
+      privacy: "Политика конфиденциальности",
+      terms: "Условия использования",
+      copyright: "© {year} Teko. Все права защищены."
+    },
+    briefPage: {
+      title: "Давайте начнем с брифа",
+      subtitle: "Заполните форму ниже, чтобы помочь нам понять потребности вашего проекта.",
+      nameLabel: "Ваше имя",
+      emailLabel: "Ваш адрес электронной почты",
+      companyLabel: "Название компании",
+      projectTypeLabel: "Тип проекта",
+      projectTypeOption1: "Веб-разработка",
+      projectTypeOption2: "Разработка мобильных приложений",
+      projectTypeOption3: "UI/UX Дизайн",
+      projectTypeOption4: "ИИ и автоматизация",
+      budgetLabel: "Предполагаемый бюджет",
+      budgetOption1: "Менее $5,000",
+      budgetOption2: "$5,000 - $10,000",
+      budgetOption3: "$10,000 - $20,000",
+      budgetOption4: "Более $20,000",
+      descriptionLabel: "Описание проекта",
+      submitButton: "Отправить бриф",
+      successMessage: "Спасибо! Мы получили ваш бриф и свяжемся с вами в ближайшее время.",
+      errorMessage: "Ой! Что-то пошло не так. Пожалуйста, попробуйте еще раз."
+    },
+    servicesPage: {
+      title: "Наши услуги",
+      subtitle: "Ознакомьтесь с нашим полным набором цифровых решений, разработанных для продвижения вашего бизнеса.",
+      webDevelopmentTitle: "Веб-разработка",
+      webDevelopmentDescription: "Индивидуальные веб-приложения, адаптированные к вашим конкретным потребностям бизнеса. От платформ электронной коммерции до корпоративных веб-сайтов, мы создаем решения, которые являются масштабируемыми, безопасными и удобными для пользователя.",
+      mobileAppDevelopmentTitle: "Разработка мобильных приложений",
+      mobileAppDevelopmentDescription: "Нативные и кроссплатформенные мобильные приложения для iOS и Android. Мы создаем привлекательный мобильный опыт, который повышает лояльность клиентов и способствует росту бизнеса.",
+      uiUxDesignTitle: "UI/UX Дизайн",
+      uiUxDesignDescription: "Ориентированный на пользователя дизайн для создания интуитивно понятного и привлекательного цифрового опыта. Наша команда дизайнеров фокусируется на удобстве использования, доступности и эстетике, чтобы ваш продукт выделялся.",
+      cloudSolutionsTitle: "Облачные решения",
+      cloudSolutionsDescription: "Масштабируемая и безопасная облачная инфраструктура для поддержки роста вашего бизнеса. Мы предлагаем услуги миграции, управления и оптимизации облака, чтобы помочь вам использовать возможности облака.",
+      aiAutomationTitle: "ИИ и автоматизация",
+      aiAutomationDescription: "Решения на основе искусственного интеллекта и автоматизации для оптимизации ваших операций. Мы внедряем инструменты на базе ИИ для повышения эффективности, снижения затрат и получения конкурентного преимущества.",
+      digitalMarketingTitle: "Цифровой маркетинг",
+      digitalMarketingDescription: "Комплексные стратегии цифрового маркетинга для охвата вашей целевой аудитории. Мы предлагаем SEO, PPC, маркетинг в социальных сетях и контент-маркетинг для повышения вашего присутствия в Интернете."
+    },
+    aboutPage: {
+      title: "О нас",
+      subtitle: "Мы - команда увлеченных технологов и креативных мыслителей, стремящихся превратить идеи в инновационные цифровые решения.",
+      missionTitle: "Наша миссия",
+      missionDescription: "Предоставлять предприятиям передовые технологии, которые стимулируют рост, повышают вовлеченность пользователей и создают долгосрочную ценность.",
+      visionTitle: "Наше видение",
+      visionDescription: "Быть мировым лидером в области цифровых инноваций, признанным за нашу приверженность совершенству, креативности и успеху клиентов.",
+      teamTitle: "Встречайте нашу команду",
+      teamDescription: "Наша команда состоит из опытных разработчиков, дизайнеров и стратегов, которые являются экспертами в своих областях.",
+      teamMember1Name: "Иван Иванов",
+      teamMember1Title: "Генеральный директор",
+      teamMember2Name: "Елена Смирнова",
+      teamMember2Title: "Технический директор",
+      teamMember3Name: "Михаил Петров",
+      teamMember3Title: "Ведущий дизайнер",
+      valuesTitle: "Наши ценности",
+      value1: "Инновации",
+      value2: "Совершенство",
+      value3: "Сотрудничество",
+      value4: "Успех клиентов"
+    },
   },
   cs: {
     hero: {
-      title: 'Inovativní digitální řešení pro vaše podnikání',
-      subtitle: 'Přeměňujeme vaše nápady na silné digitální zkušenosti pomocí nejmodernějších technologií a odborného vývoje.',
-      cta: 'Začít',
-      secondary_cta: 'Naše služby'
+      title: "Inovativní digitální řešení pro vaše podnikání",
+      subtitle: "Transformujeme vaše nápady do špičkových technologických produktů, které podporují růst podnikání a zapojení uživatelů",
+      cta: "Začít",
+      secondary_cta: "Naše služby"
     },
     navbar: {
-      home: 'Domů',
-      journey: 'Cesta',
-      services: 'Služby',
-      contact: 'Kontakt',
-      language: 'Jazyk'
+      about: "O nás",
+      services: "Služby",
+      brief: "Brief",
+      contact: "Kontakt",
+      login: "Přihlásit se",
+      signup: "Registrovat se",
+      profile: "Profil",
+      settings: "Nastavení",
+      logout: "Odhlásit se",
     },
     userJourney: {
-      title: 'Naše uživatelská cesta',
-      step1: {
-        title: 'Objev',
-        description: 'Začínáme pochopením vašich obchodních cílů a výzev.'
-      },
-      step2: {
-        title: 'Plánování',
-        description: 'Vytváříme podrobný plán k dosažení vašich cílů.'
-      },
-      step3: {
-        title: 'Vývoj',
-        description: 'Vyvíjíme vaše řešení s nejnovějšími technologiemi.'
-      },
-      step4: {
-        title: 'Nasazení',
-        description: 'Nasazujeme vaše řešení a poskytujeme průběžnou podporu.'
-      }
+      title: "Naše uživatelská cesta",
+      step1Title: "Briefing",
+      step1Description: "Podrobná diskuze pro pochopení vašich obchodních cílů a požadavků projektu.",
+      step2Title: "Prototypování",
+      step2Description: "Vytváření interaktivních prototypů pro vizualizaci řešení a sběr rané zpětné vazby.",
+      step3Title: "Vývoj",
+      step3Description: "Plnohodnotný vývoj s využitím agilních metodologií pro zajištění flexibility a kvality.",
+      step4Title: "Testování",
+      step4Description: "Důkladné testování a kontrola kvality pro zajištění spolehlivého a vysoce výkonného produktu.",
+      step5Title: "Nasazení",
+      step5Description: "Hladké nasazení a integrace s vašimi stávajícími systémy.",
+      step6Title: "Podpora",
+      step6Description: "Průběžná podpora a údržba pro zajištění dlouhodobého úspěchu a neustálého zlepšování."
     },
     services: {
-      title: 'Naše služby',
-      service1: {
-        title: 'Vývoj webových stránek',
-        description: 'Vytváříme moderní, responzivní webové stránky, které jsou optimalizovány pro vyhledávače a uživatelskou zkušenost.'
-      },
-      service2: {
-        title: 'Vývoj mobilních aplikací',
-        description: 'Vyvíjíme nativní a multiplatformní mobilní aplikace pro iOS a Android.'
-      },
-      service3: {
-        title: 'UI/UX Design',
-        description: 'Vytváříme krásná, intuitivní uživatelská rozhraní, která jsou optimalizována pro zapojení uživatelů a konverzi.'
-      },
-      service4: {
-        title: 'Digitální marketing',
-        description: 'Pomáháme vám oslovit vaši cílovou skupinu pomocí efektivních strategií digitálního marketingu.'
-      },
-      service5: {
-        title: 'Cloudová řešení',
-        description: 'Pomáháme vám migrovat do cloudu a spravovat vaši cloudovou infrastrukturu.'
-      },
-      service6: {
-        title: 'IT poradenství',
-        description: 'Poskytujeme odborné služby IT poradenství, které vám pomohou optimalizovat vaši IT infrastrukturu a procesy.'
-      },
-      view_all: 'Zobrazit všechny služby'
+      title: "Naše služby",
+      viewAll: "Zobrazit všechny služby",
+      service1Title: "Vývoj webových stránek",
+      service1Description: "Webové aplikace na míru, přizpůsobené vašim konkrétním obchodním potřebám.",
+      service2Title: "Vývoj mobilních aplikací",
+      service2Description: "Nativní a multiplatformní mobilní aplikace pro iOS a Android.",
+      service3Title: "UI/UX Design",
+      service3Description: "Design zaměřený na uživatele pro vytváření intuitivních a poutavých digitálních zážitků.",
+      service4Title: "Cloudová řešení",
+      service4Description: "Škálovatelná a bezpečná cloudová infrastruktura pro podporu růstu vašeho podnikání.",
+      service5Title: "AI a automatizace",
+      service5Description: "Řešení umělé inteligence a automatizace pro zefektivnění vašich operací.",
+      service6Title: "Digitální marketing",
+      service6Description: "Komplexní strategie digitálního marketingu pro oslovení vašeho cílového publika."
     },
     footer: {
-      contact: 'Kontaktujte nás',
-      address: '123 Main Street, Anytown, USA',
-      phone: '555-123-4567',
-      email: 'info@example.com',
-      copyright: 'Copyright © 2023 Teko Solutions. Všechna práva vyhrazena.'
-    }
+      company: "Společnost",
+      about: "O nás",
+      services: "Služby",
+      contact: "Kontakt",
+      resources: "Zdroje",
+      blog: "Blog",
+      careers: "Kariéra",
+      help: "Pomoc",
+      support: "Podpora",
+      privacy: "Zásady ochrany osobních údajů",
+      terms: "Podmínky služby",
+      copyright: "© {year} Teko. Všechna práva vyhrazena."
+    },
+    briefPage: {
+      title: "Začněme s briefem",
+      subtitle: "Vyplňte formulář níže, abyste nám pomohli pochopit potřeby vašeho projektu.",
+      nameLabel: "Vaše jméno",
+      emailLabel: "Váš e-mail",
+      companyLabel: "Název společnosti",
+      projectTypeLabel: "Typ projektu",
+      projectTypeOption1: "Vývoj webových stránek",
+      projectTypeOption2: "Vývoj mobilních aplikací",
+      projectTypeOption3: "UI/UX Design",
+      projectTypeOption4: "AI a automatizace",
+      budgetLabel: "Odhadovaný rozpočet",
+      budgetOption1: "Méně než $5,000",
+      budgetOption2: "$5,000 - $10,000",
+      budgetOption3: "$10,000 - $20,000",
+      budgetOption4: "Více než $20,000",
+      descriptionLabel: "Popis projektu",
+      submitButton: "Odeslat brief",
+      successMessage: "Děkujeme! Obdrželi jsme váš brief a brzy se vám ozveme.",
+      errorMessage: "Jejda! Něco se pokazilo. Zkuste to prosím znovu."
+    },
+    servicesPage: {
+      title: "Naše služby",
+      subtitle: "Prozkoumejte naši komplexní sadu digitálních řešení navržených k posunu vašeho podnikání vpřed.",
+      webDevelopmentTitle: "Vývoj webových stránek",
+      webDevelopmentDescription: "Webové aplikace na míru, přizpůsobené vašim konkrétním obchodním potřebám. Od platforem elektronického obchodování po firemní webové stránky, vytváříme řešení, která jsou škálovatelná, bezpečná a uživatelsky přívětivá.",
+      mobileAppDevelopmentTitle: "Vývoj mobilních aplikací",
+      mobileAppDevelopmentDescription: "Nativní a multiplatformní mobilní aplikace pro iOS a Android. Vytváříme poutavé mobilní zážitky, které zvyšují loajalitu zákazníků a podporují růst podnikání.",
+      uiUxDesignTitle: "UI/UX Design",
+      uiUxDesignDescription: "Design zaměřený na uživatele pro vytváření intuitivních a poutavých digitálních zážitků. Náš tým designérů se zaměřuje na použitelnost, přístupnost a estetiku, aby váš produkt vynikl.",
+      cloudSolutionsTitle: "Cloudová řešení",
+      cloudSolutionsDescription: "Škálovatelná a bezpečná cloudová infrastruktura pro podporu růstu vašeho podnikání. Nabízíme cloudovou migraci, správu a optimalizaci, abychom vám pomohli využít sílu cloudu.",
+      aiAutomationTitle: "AI a automatizace",
+      aiAutomationDescription: "Řešení umělé inteligence a automatizace pro zefektivnění vašich operací. Implementujeme nástroje poháněné umělou inteligencí ke zlepšení efektivity, snížení nákladů a získání konkurenční výhody.",
+      digitalMarketingTitle: "Digitální marketing",
+      digitalMarketingDescription: "Komplexní strategie digitálního marketingu pro oslovení vašeho cílového publika. Nabízíme SEO, PPC, marketing na sociálních médiích a obsahový marketing pro zvýšení vaší online přítomnosti."
+    },
+    aboutPage: {
+      title: "O nás",
+      subtitle: "Jsme tým zapálených technologů a kreativních myslitelů, kteří se věnují transformaci nápadů na inovativní digitální řešení.",
+      missionTitle: "Naše mise",
+      missionDescription: "Poskytovat podnikům špičkové technologie, které podporují růst, zvyšují zapojení uživatelů a vytvářejí trvalou hodnotu.",
+      visionTitle: "Naše vize",
+      visionDescription: "Být globálním lídrem v oblasti digitálních inovací, uznávaným pro naši oddanost dokonalosti, kreativitě a úspěchu zákazníků.",
+      teamTitle: "Seznamte se s naším týmem",
+      teamDescription: "Náš tým se skládá ze zkušených vývojářů, designérů a stratégů, kteří jsou odborníky ve svých oborech.",
+      teamMember1Name: "Jan Novák",
+      teamMember1Title: "Generální ředitel",
+      teamMember2Name: "Jana Svobodová",
+      teamMember2Title: "Technická ředitelka",
+      teamMember3Name: "Petr Dvořák",
+      teamMember3Title: "Vedoucí designér",
+      valuesTitle: "Naše hodnoty",
+      value1: "Inovace",
+      value2: "Dokonalost",
+      value3: "Spolupráce",
+      value4: "Úspěch zákazníků"
+    },
   }
 };
