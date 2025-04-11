@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -18,14 +17,19 @@ import { motion } from 'framer-motion';
 import ServiceSearch from '@/components/ServiceSearch';
 import { Card, CardContent } from '@/components/ui/card';
 
-// Mock data for services, in a real app this would come from your API/database
-const mockServices = [
+const allServices = [
   { id: '1', name: 'Web Development', description: 'Custom websites and web applications' },
   { id: '2', name: 'Mobile App Development', description: 'iOS and Android applications' },
   { id: '3', name: 'UI/UX Design', description: 'User interface and experience design' },
   { id: '4', name: 'E-commerce Solutions', description: 'Online stores and payment processing' },
   { id: '5', name: 'SEO Optimization', description: 'Search engine optimization services' },
   { id: '6', name: 'Content Marketing', description: 'Blog posts, articles, and social media content' },
+  { id: '7', name: 'Graphic Design', description: 'Logos, branding, and visual identity' },
+  { id: '8', name: 'Cloud Services', description: 'AWS, Azure, and Google Cloud solutions' },
+  { id: '9', name: 'DevOps', description: 'CI/CD, deployment automation, and infrastructure' },
+  { id: '10', name: 'Data Analytics', description: 'Business intelligence and data visualization' },
+  { id: '11', name: 'Cybersecurity', description: 'Security audits, testing, and implementation' },
+  { id: '12', name: 'AI & Machine Learning', description: 'Custom AI solutions and integrations' }
 ];
 
 const Brief = () => {
@@ -42,11 +46,9 @@ const Brief = () => {
   const [budget, setBudget] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showServiceSearch, setShowServiceSearch] = useState(false);
   const [searchResults, setSearchResults] = useState<Array<{id: string; name: string; description?: string}>>([]);
   const [selectedServices, setSelectedServices] = useState<Array<{id: string; name: string; description?: string}>>([]);
   
-  // Function to search for services based on search term
   const handleServiceSearch = (term: string) => {
     setSearchTerm(term);
     
@@ -55,8 +57,7 @@ const Brief = () => {
       return;
     }
     
-    // Filter services based on search term
-    const filtered = mockServices.filter(service => 
+    const filtered = allServices.filter(service => 
       service.name.toLowerCase().includes(term.toLowerCase()) || 
       (service.description && service.description.toLowerCase().includes(term.toLowerCase()))
     );
@@ -64,14 +65,12 @@ const Brief = () => {
     setSearchResults(filtered);
   };
   
-  // Function to handle selection of a service from search results
   const handleSelectService = (service: {id: string; name: string; description?: string}) => {
     if (!selectedServices.some(s => s.id === service.id)) {
       setSelectedServices([...selectedServices, service]);
     }
   };
   
-  // Function to remove a selected service
   const handleRemoveService = (serviceId: string) => {
     setSelectedServices(selectedServices.filter(service => service.id !== serviceId));
   };
@@ -170,10 +169,6 @@ const Brief = () => {
     }
   };
   
-  const toggleServiceSearch = () => {
-    setShowServiceSearch(!showServiceSearch);
-  };
-  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -183,28 +178,11 @@ const Brief = () => {
       }
     }
   };
-
-  const searchBlockTitle = language === 'en' ? 'Find Services' : 
-                           language === 'ru' ? 'Поиск услуг' : 
-                           'Hledat služby';
-                           
-  const searchBlockDescription = language === 'en' ? 'Search for services to include in your brief' : 
-                                language === 'ru' ? 'Найдите услуги для включения в вашу заявку' : 
-                                'Vyhledejte služby, které chcete zahrnout do svého briefa';
-                                
-  const searchToggleText = language === 'en' ? (showServiceSearch ? 'Hide service search' : 'Show service search') : 
-                           language === 'ru' ? (showServiceSearch ? 'Скрыть поиск услуг' : 'Показать поиск услуг') : 
-                           (showServiceSearch ? 'Skrýt vyhledávání služeb' : 'Zobrazit vyhledávání služeb');
   
-  // Service section label translations
   const serviceLabel = language === 'en' ? 'Search for services *' : 
                       language === 'ru' ? 'Поиск услуг *' : 
                       'Vyhledat služby *';
                       
-  const serviceSearchPlaceholder = language === 'en' ? 'Type to search for services' : 
-                                  language === 'ru' ? 'Введите для поиска услуг' : 
-                                  'Zadejte pro vyhledání služeb';
-                                  
   const selectedServicesLabel = language === 'en' ? 'Selected Services' : 
                                language === 'ru' ? 'Выбранные услуги' : 
                                'Vybrané služby';
@@ -226,42 +204,7 @@ const Brief = () => {
                language === 'ru' ? 'Расскажите нам о вашем проекте, и мы свяжемся с вами для обсуждения деталей' : 
                'Řekněte nám o svém projektu a my vás budeme kontaktovat pro další podrobnosti'}
             </p>
-
-            <Button 
-              variant="outline" 
-              onClick={toggleServiceSearch} 
-              className="mt-6 bg-transparent border border-teko-purple/50 hover:bg-teko-purple/10 hover:border-teko-purple text-teko-white"
-            >
-              <Search className="mr-2" size={16} />
-              {searchToggleText}
-            </Button>
           </div>
-          
-          {showServiceSearch && (
-            <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="max-w-3xl mx-auto mb-12"
-            >
-              <Card className="bg-white/5 backdrop-blur-sm border border-teko-purple/20 overflow-hidden">
-                <CardContent className="p-6">
-                  <h2 className="text-2xl font-display font-bold text-teko-white mb-2 flex items-center">
-                    <Search className="mr-2 text-teko-purple" size={20} />
-                    {searchBlockTitle}
-                  </h2>
-                  <p className="text-teko-white/70 mb-6">
-                    {searchBlockDescription}
-                  </p>
-                  <ServiceSearch 
-                    onSearch={handleServiceSearch} 
-                    variant="brief"
-                    autoFocus
-                  />
-                </CardContent>
-              </Card>
-            </motion.div>
-          )}
           
           {selectedCapabilities.length > 0 && (
             <motion.div 
@@ -365,7 +308,6 @@ const Brief = () => {
                 </select>
               </div>
               
-              {/* New service search field that matches form style */}
               <div>
                 <Label className="text-teko-white/90 mb-2">
                   {serviceLabel}
@@ -381,7 +323,6 @@ const Brief = () => {
                   />
                 </div>
                 
-                {/* Display selected services */}
                 {selectedServices.length > 0 && (
                   <div className="mt-3 p-3 bg-teko-purple/10 backdrop-blur-sm border border-teko-purple/20 rounded-md">
                     <div className="flex items-center gap-2 text-teko-purple-light mb-2">
