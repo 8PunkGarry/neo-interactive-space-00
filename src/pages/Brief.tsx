@@ -15,7 +15,7 @@ import SelectedCapabilities from '@/components/SelectedCapabilities';
 import { useCapabilities } from '@/context/CapabilitiesContext';
 import { motion } from 'framer-motion';
 import ServiceSearch from '@/components/ServiceSearch';
-import { Card, CardContent } from '@/components/ui/card';
+import AnimatedBackground from '@/components/AnimatedBackground';
 
 const allServices = [
   { id: '1', name: 'Web Development', description: 'Custom websites and web applications' },
@@ -188,12 +188,18 @@ const Brief = () => {
                                'Vybrané služby';
   
   return (
-    <div className="min-h-screen bg-teko-black">
+    <div className="min-h-screen bg-teko-black relative overflow-hidden">
+      <AnimatedBackground />
       <Navbar />
       
-      <main className="pt-32 pb-20">
+      <main className="pt-32 pb-20 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-teko-white">
               {language === 'en' ? 'Submit your brief' : 
                language === 'ru' ? 'Отправьте вашу заявку' : 
@@ -204,7 +210,7 @@ const Brief = () => {
                language === 'ru' ? 'Расскажите нам о вашем проекте, и мы свяжемся с вами для обсуждения деталей' : 
                'Řekněte nám o svém projektu a my vás budeme kontaktovat pro další podrobnosti'}
             </p>
-          </div>
+          </motion.div>
           
           {selectedCapabilities.length > 0 && (
             <motion.div 
@@ -234,7 +240,12 @@ const Brief = () => {
             </motion.div>
           )}
           
-          <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8">
+          <motion.div 
+            className="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <Label className="text-teko-white/90 mb-2">
@@ -415,7 +426,7 @@ const Brief = () => {
                 </Button>
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </main>
       

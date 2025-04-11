@@ -6,6 +6,7 @@ import UserJourney from '../components/UserJourney';
 import ServiceGrid from '../components/ServiceGrid';
 import Footer from '../components/Footer';
 import { useLanguage } from '../context/LanguageContext';
+import AnimatedBackground from '@/components/AnimatedBackground';
 
 const Index = () => {
   const { language } = useLanguage();
@@ -40,7 +41,8 @@ const Index = () => {
   }, [language]); // Re-run when language changes to ensure proper animations
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-teko-black via-teko-black to-teko-black/95 bg-fixed">
+    <div className="min-h-screen bg-teko-black relative overflow-hidden">
+      <AnimatedBackground className="opacity-70" />
       <Navbar />
       <Hero />
       <div id="journey" className="relative z-10 bg-transparent">
