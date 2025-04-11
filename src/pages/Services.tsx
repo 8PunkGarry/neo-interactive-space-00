@@ -4,26 +4,19 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ServiceSearch from '../components/ServiceSearch';
 import ServiceFilter from '../components/ServiceFilter';
-import ServiceDetailsModal from '../components/ServiceDetailsModal';
 import { useLanguage } from '../context/LanguageContext';
 import { Badge } from '@/components/ui/badge';
 import { Server, Code, Globe, Database, Smartphone, Cloud, BarChart3, Shield, Search, Palette, Headphones, ArrowRight } from 'lucide-react';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import SelectedCapabilities from '@/components/SelectedCapabilities';
-import { useCapabilities } from '@/context/CapabilitiesContext';
-import { motion } from 'framer-motion';
 
 const Services = () => {
   const { t } = useLanguage();
-  const { selectedCapabilities, removeCapability } = useCapabilities();
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedService, setSelectedService] = useState<any>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const servicesPerPage = 6;
+  const servicesPerPage = 9;
   const navigate = useNavigate();
   
   const serviceDetails = [
@@ -31,7 +24,7 @@ const Services = () => {
       id: 'web-development',
       icon: <Globe size={36} className="text-teko-purple" />,
       title: t('services.web.title'),
-      description: t('services.web.description'),
+      description: t('services.web.fullDescription'),
       technologies: ['React', 'Angular', 'Vue.js', 'Next.js', 'WordPress', 'PHP', 'Node.js', 'Express'],
       capabilities: [
         { name: t('services.web.capabilities.responsive'), icon: <Smartphone size={16} /> },
@@ -44,7 +37,7 @@ const Services = () => {
       id: 'crm-solutions',
       icon: <BarChart3 size={36} className="text-teko-purple" />,
       title: t('services.crm.title'),
-      description: t('services.crm.description'),
+      description: t('services.crm.fullDescription'),
       technologies: ['Salesforce', 'HubSpot', 'Zoho', 'Microsoft Dynamics', 'Custom CRM Solutions'],
       capabilities: [
         { name: t('services.crm.capabilities.automation'), icon: <Server size={16} /> },
@@ -57,7 +50,7 @@ const Services = () => {
       id: 'ui-ux-design',
       icon: <Palette size={36} className="text-teko-purple" />,
       title: t('services.design.title'),
-      description: t('services.design.description'),
+      description: t('services.design.fullDescription'),
       technologies: ['Figma', 'Adobe XD', 'Sketch', 'Photoshop', 'Illustrator', 'InVision'],
       capabilities: [
         { name: t('services.design.capabilities.ui'), icon: <Palette size={16} /> },
@@ -70,7 +63,7 @@ const Services = () => {
       id: 'seo-optimization',
       icon: <Search size={36} className="text-teko-purple" />,
       title: t('services.seo.title'),
-      description: t('services.seo.description'),
+      description: t('services.seo.fullDescription'),
       technologies: ['Google Analytics', 'SEMrush', 'Ahrefs', 'Moz', 'Google Search Console', 'Yoast SEO'],
       capabilities: [
         { name: t('services.seo.capabilities.audit'), icon: <Search size={16} /> },
@@ -83,7 +76,7 @@ const Services = () => {
       id: 'technical-support',
       icon: <Headphones size={36} className="text-teko-purple" />,
       title: t('services.support.title'),
-      description: t('services.support.description'),
+      description: t('services.support.fullDescription'),
       technologies: ['24/7 Support', 'Ticketing Systems', 'Live Chat', 'Remote Assistance', 'Proactive Monitoring'],
       capabilities: [
         { name: t('services.support.capabilities.maintenance'), icon: <Server size={16} /> },
@@ -96,7 +89,7 @@ const Services = () => {
       id: 'api-integration',
       icon: <Code size={36} className="text-teko-purple" />,
       title: t('services.api.title'),
-      description: t('services.api.description'),
+      description: t('services.api.fullDescription'),
       technologies: ['REST', 'GraphQL', 'SOAP', 'Webhook', 'OAuth', 'Swagger', 'Postman'],
       capabilities: [
         { name: t('services.api.capabilities.integration'), icon: <Server size={16} /> },
@@ -109,7 +102,7 @@ const Services = () => {
       id: 'database-solutions',
       icon: <Database size={36} className="text-teko-purple" />,
       title: t('services.database.title'),
-      description: t('services.database.description'),
+      description: t('services.database.fullDescription'),
       technologies: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase', 'Redis', 'SQLite', 'Oracle', 'SQL Server'],
       capabilities: [
         { name: t('services.database.capabilities.design'), icon: <Palette size={16} /> },
@@ -122,7 +115,7 @@ const Services = () => {
       id: 'mobile-development',
       icon: <Smartphone size={36} className="text-teko-purple" />,
       title: t('services.mobile.title'),
-      description: t('services.mobile.description'),
+      description: t('services.mobile.fullDescription'),
       technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'iOS', 'Android', 'Xamarin', 'Ionic'],
       capabilities: [
         { name: t('services.mobile.capabilities.native'), icon: <Smartphone size={16} /> },
@@ -135,91 +128,13 @@ const Services = () => {
       id: 'cloud-solutions',
       icon: <Cloud size={36} className="text-teko-purple" />,
       title: t('services.cloud.title'),
-      description: t('services.cloud.description'),
+      description: t('services.cloud.fullDescription'),
       technologies: ['AWS', 'Azure', 'Google Cloud', 'Digital Ocean', 'Heroku', 'Netlify', 'Vercel', 'Docker', 'Kubernetes'],
       capabilities: [
         { name: t('services.cloud.capabilities.aws'), icon: <Cloud size={16} /> },
         { name: t('services.cloud.capabilities.azure'), icon: <Server size={16} /> },
         { name: t('services.cloud.capabilities.google'), icon: <Database size={16} /> },
         { name: t('services.cloud.capabilities.scaling'), icon: <BarChart3 size={16} /> }
-      ]
-    },
-    {
-      id: 'ai-solutions',
-      icon: <BarChart3 size={36} className="text-teko-purple" />,
-      title: t('services.ai.title'),
-      description: t('services.ai.description'),
-      technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Hugging Face', 'Computer Vision', 'NLP', 'MLOps'],
-      capabilities: [
-        { name: 'Machine Learning', icon: <Code size={16} /> },
-        { name: 'Natural Language Processing', icon: <Database size={16} /> },
-        { name: 'Computer Vision', icon: <Search size={16} /> },
-        { name: 'Predictive Analytics', icon: <BarChart3 size={16} /> }
-      ]
-    },
-    {
-      id: 'cybersecurity',
-      icon: <Shield size={36} className="text-teko-purple" />,
-      title: t('services.cybersecurity.title'),
-      description: t('services.cybersecurity.description'),
-      technologies: ['Firewall', 'Encryption', 'Multi-factor Authentication', 'Security Audits', 'Penetration Testing'],
-      capabilities: [
-        { name: 'Vulnerability Assessment', icon: <Search size={16} /> },
-        { name: 'Threat Detection', icon: <Shield size={16} /> },
-        { name: 'Incident Response', icon: <Server size={16} /> },
-        { name: 'Security Training', icon: <Headphones size={16} /> }
-      ]
-    },
-    {
-      id: 'blockchain',
-      icon: <Database size={36} className="text-teko-purple" />,
-      title: t('services.blockchain.title'),
-      description: t('services.blockchain.description'),
-      technologies: ['Ethereum', 'Solidity', 'Smart Contracts', 'DeFi', 'NFTs', 'Web3.js'],
-      capabilities: [
-        { name: 'Smart Contracts', icon: <Code size={16} /> },
-        { name: 'DApp Development', icon: <Globe size={16} /> },
-        { name: 'Tokenization', icon: <Database size={16} /> },
-        { name: 'Blockchain Integration', icon: <Server size={16} /> }
-      ]
-    },
-    {
-      id: 'iot-solutions',
-      icon: <Smartphone size={36} className="text-teko-purple" />,
-      title: t('services.iot.title'),
-      description: t('services.iot.description'),
-      technologies: ['Arduino', 'Raspberry Pi', 'MQTT', 'IoT Platforms', 'Sensors', 'Embedded Systems'],
-      capabilities: [
-        { name: 'Connected Devices', icon: <Smartphone size={16} /> },
-        { name: 'Remote Monitoring', icon: <Globe size={16} /> },
-        { name: 'Data Analytics', icon: <BarChart3 size={16} /> },
-        { name: 'Automation Systems', icon: <Server size={16} /> }
-      ]
-    },
-    {
-      id: 'ar-vr',
-      icon: <Globe size={36} className="text-teko-purple" />,
-      title: t('services.arvr.title'),
-      description: t('services.arvr.description'),
-      technologies: ['Unity3D', 'Unreal Engine', 'ARKit', 'ARCore', 'WebXR', 'VR Headsets'],
-      capabilities: [
-        { name: 'Interactive Experiences', icon: <Palette size={16} /> },
-        { name: '3D Modeling', icon: <Code size={16} /> },
-        { name: 'Spatial Computing', icon: <Globe size={16} /> },
-        { name: 'Cross-platform AR/VR', icon: <Smartphone size={16} /> }
-      ]
-    },
-    {
-      id: 'data-science',
-      icon: <BarChart3 size={36} className="text-teko-purple" />,
-      title: t('services.datascience.title'),
-      description: t('services.datascience.description'),
-      technologies: ['Python', 'R', 'SQL', 'Tableau', 'Power BI', 'Pandas', 'Hadoop', 'Spark'],
-      capabilities: [
-        { name: 'Data Analysis', icon: <BarChart3 size={16} /> },
-        { name: 'Statistical Modeling', icon: <Database size={16} /> },
-        { name: 'Predictive Analytics', icon: <Code size={16} /> },
-        { name: 'Data Visualization', icon: <Palette size={16} /> }
       ]
     }
   ];
@@ -243,31 +158,6 @@ const Services = () => {
   
   const goToContactPage = () => {
     navigate('/brief');
-  };
-  
-  const handleServiceClick = (service: any) => {
-    setSelectedService(service);
-    setIsModalOpen(true);
-  };
-  
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  
-  // Animation variants for selected capabilities
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { 
-        staggerChildren: 0.1
-      }
-    }
-  };
-  
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
   };
   
   return (
@@ -297,20 +187,6 @@ const Services = () => {
             />
           </div>
           
-          {selectedCapabilities.length > 0 && (
-            <motion.div 
-              className="relative z-[22] mt-6"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <SelectedCapabilities
-                capabilities={selectedCapabilities}
-                onRemove={removeCapability}
-              />
-            </motion.div>
-          )}
-          
           <div className="mt-8 mb-12 relative z-[20]">
             <div className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'} gap-8`}>
               {currentServices.map((service, index) => (
@@ -318,9 +194,8 @@ const Services = () => {
                   key={service.id} 
                   id={service.id}
                   className="relative z-[15]"
-                  onClick={() => handleServiceClick(service)}
                 >
-                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full relative z-[10] transition-all duration-300 hover:bg-white/5 cursor-pointer hover:border-teko-purple/20 hover:shadow-lg hover:shadow-teko-purple/5">
+                  <div className="glass-card rounded-xl p-8 backdrop-blur-sm border border-white/10 h-full relative z-[10]">
                     <div className={`flex ${viewMode === 'grid' ? 'flex-col' : 'flex-col md:flex-row'} gap-8`}>
                       <div className="flex-shrink-0 flex items-start justify-center">
                         <div className="w-20 h-20 rounded-xl bg-teko-purple/20 flex items-center justify-center">
@@ -397,14 +272,14 @@ const Services = () => {
                       />
                     </PaginationItem>
                     
-                    {[1, 2, 3].map((pageNumber) => (
-                      <PaginationItem key={pageNumber}>
+                    {[...Array(totalPages)].map((_, index) => (
+                      <PaginationItem key={index}>
                         <PaginationLink 
-                          isActive={currentPage === pageNumber}
-                          onClick={() => setCurrentPage(pageNumber)}
-                          className={`cursor-pointer hover:bg-teko-purple/20 data-[active=true]:bg-teko-purple/30 ${pageNumber > totalPages ? "pointer-events-none opacity-50" : ""}`}
+                          isActive={currentPage === index + 1}
+                          onClick={() => setCurrentPage(index + 1)}
+                          className="cursor-pointer hover:bg-teko-purple/20 data-[active=true]:bg-teko-purple/30"
                         >
-                          {pageNumber}
+                          {index + 1}
                         </PaginationLink>
                       </PaginationItem>
                     ))}
@@ -412,7 +287,7 @@ const Services = () => {
                     <PaginationItem>
                       <PaginationNext 
                         onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                        className={currentPage === totalPages || currentPage === 3 ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
+                        className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer hover:bg-teko-purple/20"}
                       />
                     </PaginationItem>
                   </PaginationContent>
@@ -495,12 +370,6 @@ const Services = () => {
           </div>
         </div>
       </main>
-      
-      <ServiceDetailsModal 
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        service={selectedService}
-      />
       
       <Footer />
     </div>

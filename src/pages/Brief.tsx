@@ -1,27 +1,23 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuthContext } from '@/context/AuthContext';
 import { Button } from '../components/ui/button';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import SelectedCapabilities from '@/components/SelectedCapabilities';
-import { useCapabilities } from '@/context/CapabilitiesContext';
-import { motion } from 'framer-motion';
 
 const Brief = () => {
   const { t, language } = useLanguage();
   const { user } = useAuthContext();
   const { toast } = useToast();
   const navigate = useNavigate();
-  const { selectedCapabilities, removeCapability, clearCapabilities } = useCapabilities();
   
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -29,23 +25,6 @@ const Brief = () => {
   const [description, setDescription] = useState('');
   const [budget, setBudget] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  // Pre-fill description with selected capabilities if any
-  useEffect(() => {
-    if (selectedCapabilities.length > 0 && !description) {
-      const capabilitiesText = selectedCapabilities
-        .map(cap => `${cap.serviceName}: ${cap.name}`)
-        .join('\n');
-      
-      const prefilledText = language === 'en' 
-        ? `Selected capabilities:\n${capabilitiesText}\n\nAdditional information:`
-        : language === 'ru'
-        ? `Выбранные возможности:\n${capabilitiesText}\n\nДополнительная информация:`
-        : `Vybrané schopnosti:\n${capabilitiesText}\n\nDalší informace:`;
-      
-      setDescription(prefilledText);
-    }
-  }, [selectedCapabilities, description, language]);
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,11 +51,7 @@ const Brief = () => {
         email: email,
         service_type: projectType,
         comment: description,
-        budget,
-        capabilities: selectedCapabilities.map(cap => ({ 
-          service: cap.serviceName, 
-          capability: cap.name 
-        }))
+        budget
       };
       
       const { error } = await supabase
@@ -94,13 +69,12 @@ const Brief = () => {
                      "Děkujeme! Prohlédneme si váš brief a brzy vás budeme kontaktovat.",
       });
       
-      // Reset form and clear capabilities
+      // Reset form
       setName('');
       setEmail('');
       setProjectType('website');
       setDescription('');
       setBudget('');
-      clearCapabilities();
       
       // Redirect to home page after submission
       setTimeout(() => navigate('/'), 2000);
@@ -122,15 +96,7 @@ const Brief = () => {
     }
   };
   
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { 
-        staggerChildren: 0.1
-      }
-    }
-  };
+  console.log("Brief component is rendering");
   
   return (
     <div className="min-h-screen bg-teko-black">
@@ -150,34 +116,6 @@ const Brief = () => {
                'Řekněte nám o svém projektu a my vás budeme kontaktovat pro další podrobnosti'}
             </p>
           </div>
-          
-          {selectedCapabilities.length > 0 && (
-            <motion.div 
-              className="max-w-3xl mx-auto mb-8"
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-            >
-              <div className="p-6 bg-teko-purple/10 backdrop-blur-sm border border-teko-purple/20 rounded-xl">
-                <div className="flex items-center gap-2 text-teko-purple-light mb-4">
-                  <CheckCircle size={20} />
-                  <h3 className="text-xl font-display font-medium">
-                    {language === 'en' ? 'Selected Capabilities' : 
-                    language === 'ru' ? 'Выбранные возможности' : 
-                    'Vybrané schopnosti'}
-                    <span className="ml-2 text-sm bg-teko-purple/30 text-teko-white px-2 py-1 rounded-full">
-                      {selectedCapabilities.length}
-                    </span>
-                  </h3>
-                </div>
-                
-                <SelectedCapabilities
-                  capabilities={selectedCapabilities}
-                  onRemove={removeCapability}
-                />
-              </div>
-            </motion.div>
-          )}
           
           <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8">
             <form className="space-y-6" onSubmit={handleSubmit}>
