@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -17,6 +18,16 @@ import { motion } from 'framer-motion';
 import ServiceSearch from '@/components/ServiceSearch';
 import { Card, CardContent } from '@/components/ui/card';
 
+// Mock data for services, in a real app this would come from your API/database
+const mockServices = [
+  { id: '1', name: 'Web Development', description: 'Custom websites and web applications' },
+  { id: '2', name: 'Mobile App Development', description: 'iOS and Android applications' },
+  { id: '3', name: 'UI/UX Design', description: 'User interface and experience design' },
+  { id: '4', name: 'E-commerce Solutions', description: 'Online stores and payment processing' },
+  { id: '5', name: 'SEO Optimization', description: 'Search engine optimization services' },
+  { id: '6', name: 'Content Marketing', description: 'Blog posts, articles, and social media content' },
+];
+
 const Brief = () => {
   const { t, language } = useLanguage();
   const { user } = useAuthContext();
@@ -32,6 +43,38 @@ const Brief = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [showServiceSearch, setShowServiceSearch] = useState(false);
+  const [searchResults, setSearchResults] = useState<Array<{id: string; name: string; description?: string}>>([]);
+  const [selectedServices, setSelectedServices] = useState<Array<{id: string; name: string; description?: string}>>([]);
+  
+  // Function to search for services based on search term
+  const handleServiceSearch = (term: string) => {
+    setSearchTerm(term);
+    
+    if (term.trim() === '') {
+      setSearchResults([]);
+      return;
+    }
+    
+    // Filter services based on search term
+    const filtered = mockServices.filter(service => 
+      service.name.toLowerCase().includes(term.toLowerCase()) || 
+      (service.description && service.description.toLowerCase().includes(term.toLowerCase()))
+    );
+    
+    setSearchResults(filtered);
+  };
+  
+  // Function to handle selection of a service from search results
+  const handleSelectService = (service: {id: string; name: string; description?: string}) => {
+    if (!selectedServices.some(s => s.id === service.id)) {
+      setSelectedServices([...selectedServices, service]);
+    }
+  };
+  
+  // Function to remove a selected service
+  const handleRemoveService = (serviceId: string) => {
+    setSelectedServices(selectedServices.filter(service => service.id !== serviceId));
+  };
   
   useEffect(() => {
     if (selectedCapabilities.length > 0 && !description) {
@@ -78,6 +121,10 @@ const Brief = () => {
         capabilities: selectedCapabilities.map(cap => ({ 
           service: cap.serviceName, 
           capability: cap.name 
+        })),
+        selected_services: selectedServices.map(service => ({
+          id: service.id,
+          name: service.name
         }))
       };
       
@@ -102,6 +149,7 @@ const Brief = () => {
       setDescription('');
       setBudget('');
       clearCapabilities();
+      setSelectedServices([]);
       
       setTimeout(() => navigate('/'), 2000);
     } catch (error) {
@@ -120,10 +168,6 @@ const Brief = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
-  
-  const handleServiceSearch = (term: string) => {
-    setSearchTerm(term);
   };
   
   const toggleServiceSearch = () => {
@@ -151,6 +195,19 @@ const Brief = () => {
   const searchToggleText = language === 'en' ? (showServiceSearch ? 'Hide service search' : 'Show service search') : 
                            language === 'ru' ? (showServiceSearch ? 'Скрыть поиск услуг' : 'Показать поиск услуг') : 
                            (showServiceSearch ? 'Skrýt vyhledávání služeb' : 'Zobrazit vyhledávání služeb');
+  
+  // Service section label translations
+  const serviceLabel = language === 'en' ? 'Search for services *' : 
+                      language === 'ru' ? 'Поиск услуг *' : 
+                      'Vyhledat služby *';
+                      
+  const serviceSearchPlaceholder = language === 'en' ? 'Type to search for services' : 
+                                  language === 'ru' ? 'Введите для поиска услуг' : 
+                                  'Zadejte pro vyhledání služeb';
+                                  
+  const selectedServicesLabel = language === 'en' ? 'Selected Services' : 
+                               language === 'ru' ? 'Выбранные услуги' : 
+                               'Vybrané služby';
   
   return (
     <div className="min-h-screen bg-teko-black">
@@ -306,6 +363,55 @@ const Brief = () => {
                      'Ostatní'}
                   </option>
                 </select>
+              </div>
+              
+              {/* New service search field that matches form style */}
+              <div>
+                <Label className="text-teko-white/90 mb-2">
+                  {serviceLabel}
+                </Label>
+                <div className="relative">
+                  <ServiceSearch
+                    onSearch={handleServiceSearch}
+                    variant="form"
+                    className="w-full"
+                    showResults={true}
+                    searchResults={searchResults}
+                    onSelectResult={handleSelectService}
+                  />
+                </div>
+                
+                {/* Display selected services */}
+                {selectedServices.length > 0 && (
+                  <div className="mt-3 p-3 bg-teko-purple/10 backdrop-blur-sm border border-teko-purple/20 rounded-md">
+                    <div className="flex items-center gap-2 text-teko-purple-light mb-2">
+                      <CheckCircle size={16} />
+                      <h4 className="text-sm font-medium">
+                        {selectedServicesLabel}
+                        <span className="ml-2 text-xs bg-teko-purple/30 text-teko-white px-2 py-0.5 rounded-full">
+                          {selectedServices.length}
+                        </span>
+                      </h4>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedServices.map((service) => (
+                        <div 
+                          key={service.id}
+                          className="inline-flex items-center gap-1.5 px-3 py-1 bg-teko-purple/20 text-teko-white/90 rounded-full text-sm"
+                        >
+                          {service.name}
+                          <button
+                            type="button"
+                            className="text-teko-white/60 hover:text-teko-white"
+                            onClick={() => handleRemoveService(service.id)}
+                          >
+                            ×
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
               
               <div>
