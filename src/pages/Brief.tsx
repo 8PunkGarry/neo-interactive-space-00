@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -6,7 +5,7 @@ import Footer from '../components/Footer';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuthContext } from '@/context/AuthContext';
 import { Button } from '../components/ui/button';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,6 +14,8 @@ import { Label } from '@/components/ui/label';
 import SelectedCapabilities from '@/components/SelectedCapabilities';
 import { useCapabilities } from '@/context/CapabilitiesContext';
 import { motion } from 'framer-motion';
+import ServiceSearch from '@/components/ServiceSearch';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Brief = () => {
   const { t, language } = useLanguage();
@@ -29,8 +30,9 @@ const Brief = () => {
   const [description, setDescription] = useState('');
   const [budget, setBudget] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showServiceSearch, setShowServiceSearch] = useState(false);
   
-  // Pre-fill description with selected capabilities if any
   useEffect(() => {
     if (selectedCapabilities.length > 0 && !description) {
       const capabilitiesText = selectedCapabilities
@@ -94,7 +96,6 @@ const Brief = () => {
                      "Děkujeme! Prohlédneme si váš brief a brzy vás budeme kontaktovat.",
       });
       
-      // Reset form and clear capabilities
       setName('');
       setEmail('');
       setProjectType('website');
@@ -102,7 +103,6 @@ const Brief = () => {
       setBudget('');
       clearCapabilities();
       
-      // Redirect to home page after submission
       setTimeout(() => navigate('/'), 2000);
     } catch (error) {
       console.error(language === 'en' ? 'Error submitting brief:' : 
@@ -122,6 +122,14 @@ const Brief = () => {
     }
   };
   
+  const handleServiceSearch = (term: string) => {
+    setSearchTerm(term);
+  };
+  
+  const toggleServiceSearch = () => {
+    setShowServiceSearch(!showServiceSearch);
+  };
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -131,6 +139,18 @@ const Brief = () => {
       }
     }
   };
+
+  const searchBlockTitle = language === 'en' ? 'Find Services' : 
+                           language === 'ru' ? 'Поиск услуг' : 
+                           'Hledat služby';
+                           
+  const searchBlockDescription = language === 'en' ? 'Search for services to include in your brief' : 
+                                language === 'ru' ? 'Найдите услуги для включения в вашу заявку' : 
+                                'Vyhledejte služby, které chcete zahrnout do svého briefa';
+                                
+  const searchToggleText = language === 'en' ? (showServiceSearch ? 'Hide service search' : 'Show service search') : 
+                           language === 'ru' ? (showServiceSearch ? 'Скрыть поиск услуг' : 'Показать поиск услуг') : 
+                           (showServiceSearch ? 'Skrýt vyhledávání služeb' : 'Zobrazit vyhledávání služeb');
   
   return (
     <div className="min-h-screen bg-teko-black">
@@ -149,7 +169,42 @@ const Brief = () => {
                language === 'ru' ? 'Расскажите нам о вашем проекте, и мы свяжемся с вами для обсуждения деталей' : 
                'Řekněte nám o svém projektu a my vás budeme kontaktovat pro další podrobnosti'}
             </p>
+
+            <Button 
+              variant="outline" 
+              onClick={toggleServiceSearch} 
+              className="mt-6 bg-transparent border border-teko-purple/50 hover:bg-teko-purple/10 hover:border-teko-purple text-teko-white"
+            >
+              <Search className="mr-2" size={16} />
+              {searchToggleText}
+            </Button>
           </div>
+          
+          {showServiceSearch && (
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="max-w-3xl mx-auto mb-12"
+            >
+              <Card className="bg-white/5 backdrop-blur-sm border border-teko-purple/20 overflow-hidden">
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-display font-bold text-teko-white mb-2 flex items-center">
+                    <Search className="mr-2 text-teko-purple" size={20} />
+                    {searchBlockTitle}
+                  </h2>
+                  <p className="text-teko-white/70 mb-6">
+                    {searchBlockDescription}
+                  </p>
+                  <ServiceSearch 
+                    onSearch={handleServiceSearch} 
+                    variant="brief"
+                    autoFocus
+                  />
+                </CardContent>
+              </Card>
+            </motion.div>
+          )}
           
           {selectedCapabilities.length > 0 && (
             <motion.div 

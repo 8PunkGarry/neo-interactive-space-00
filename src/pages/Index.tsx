@@ -40,13 +40,13 @@ const Index = () => {
   }, [language]); // Re-run when language changes to ensure proper animations
 
   return (
-    <div className="min-h-screen bg-teko-black">
+    <div className="min-h-screen bg-gradient-to-b from-teko-black via-teko-black to-teko-black/95 bg-fixed">
       <Navbar />
       <Hero />
-      <div id="journey">
+      <div id="journey" className="relative z-10 bg-transparent">
         <UserJourney />
       </div>
-      <div id="services">
+      <div id="services" className="relative z-10 bg-transparent">
         <ServiceGrid limitToThree={true} />
       </div>
       <Footer />
