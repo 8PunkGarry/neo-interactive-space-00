@@ -4,10 +4,6 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from './use-toast';
 import { Session, User } from '@supabase/supabase-js';
 
-// Test credentials for easy login:
-// Email: test@example.com
-// Password: Test123456
-
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
@@ -22,15 +18,14 @@ export function useAuth() {
         setUser(currentSession?.user ?? null);
 
         if (event === 'SIGNED_IN') {
-          const userName = currentSession?.user?.user_metadata?.full_name || 'User';
           toast({
             title: "Login Successful",
-            description: `Welcome back, ${userName}!`
+            description: "Welcome to teko.sup!"
           });
         } else if (event === 'SIGNED_OUT') {
           toast({
             title: "Signed Out",
-            description: "You have been signed out successfully."
+            description: "You have been signed out."
           });
         }
       }
@@ -59,11 +54,6 @@ export function useAuth() {
       });
 
       if (error) throw error;
-      
-      toast({
-        title: "Registration Successful",
-        description: "Welcome to teko.sup! Please check your email to confirm your account."
-      });
       
       return { success: true };
     } catch (error: any) {

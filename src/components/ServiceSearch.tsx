@@ -19,7 +19,7 @@ const ServiceSearch: React.FC<ServiceSearchProps> = ({ onSearch }) => {
   };
 
   return (
-    <div className="relative max-w-2xl mx-auto mb-8">
+    <div className="relative max-w-md mx-auto mb-12">
       <div className="relative">
         <Input
           type="text"

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Home, MessageCircle, Briefcase, FileText } from 'lucide-react';
+import { Menu, X, Home, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import AnimatedLogo from './AnimatedLogo';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -32,14 +32,16 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navClasses = `
-    fixed top-0 left-0 w-full z-[9999] transition-all duration-300
+    fixed top-0 left-0 w-full z-50 transition-all duration-300
     ${scrolled ? 'backdrop-blur-lg bg-teko-black/80 py-3 shadow-lg' : 'py-5'}
   `;
 
   const navLinks = [
+    // Added Home link at the beginning
     { to: '/', label: 'Home', icon: Home },
-    { to: '/services', label: t('navbar.services'), icon: Briefcase },
-    { to: '/brief', label: t('navbar.brief'), icon: FileText },
+    { to: '/services', label: t('navbar.services') },
+    { to: '/brief', label: t('navbar.brief') },
+    // Replaced About with Chat
     { to: '/chat', label: 'Chat', icon: MessageCircle },
   ];
 
