@@ -1,11 +1,16 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
 import { Mail, MapPin, Send, Instagram, MessageCircle } from 'lucide-react';
+import PrivacyPolicyDialog from './PrivacyPolicyDialog';
+import TermsOfServiceDialog from './TermsOfServiceDialog';
 
 const Footer = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
 
   return (
     <footer className="bg-gradient-to-b from-transparent to-teko-black/80 pt-16 pb-8 relative">
@@ -98,14 +103,20 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
+                <button 
+                  className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300 text-left bg-transparent"
+                  onClick={() => setIsPrivacyOpen(true)}
+                >
                   {t('footer.privacy')}
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300">
+                <button 
+                  className="text-teko-white/70 hover:text-teko-purple transition-colors duration-300 text-left bg-transparent"
+                  onClick={() => setIsTermsOpen(true)}
+                >
                   {t('footer.terms')}
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -144,6 +155,18 @@ const Footer = () => {
           <p>© {currentYear} teko.sup. {t('footer.rights')}.</p>
         </div>
       </div>
+
+      {/* Privacy Policy Dialog */}
+      <PrivacyPolicyDialog 
+        isOpen={isPrivacyOpen} 
+        onOpenChange={setIsPrivacyOpen} 
+      />
+
+      {/* Terms of Service Dialog */}
+      <TermsOfServiceDialog 
+        isOpen={isTermsOpen} 
+        onOpenChange={setIsTermsOpen} 
+      />
     </footer>
   );
 };
