@@ -16,34 +16,29 @@ import { LanguageProvider } from './context/LanguageContext';
 import { AuthProvider } from './context/AuthContext';
 import { Toaster } from './components/ui/toaster';
 import { CapabilitiesProvider } from './context/CapabilitiesContext';
-import CookieConsent from './components/CookieConsent';
-import { SupabaseProvider } from './context/SupabaseContext';
 
 function App() {
   return (
     <AuthProvider>
       <LanguageProvider>
         <CapabilitiesProvider>
-          <SupabaseProvider>
-            <Router>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/brief" element={<Brief />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/chat" element={<Chat />} />
-                <Route path="/client/:id" element={<Client />} />
-                <Route path="/company/:id" element={<Company />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Router>
-            <CookieConsent />
-            <Toaster />
-          </SupabaseProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/brief" element={<Brief />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/client/:id" element={<Client />} />
+              <Route path="/company/:id" element={<Company />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Router>
+          <Toaster />
         </CapabilitiesProvider>
       </LanguageProvider>
     </AuthProvider>

@@ -1,13 +1,12 @@
 
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { MessageCircle, LogIn, User } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useAuthContext } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
-import ChatInterface from '@/components/ChatInterface';
 import {
   Card,
   CardContent,
@@ -19,15 +18,7 @@ import {
 
 const Chat = () => {
   const { t, language } = useLanguage();
-  const { user, loading } = useAuthContext();
-  const navigate = useNavigate();
-  
-  // If loading is done and user is not authenticated, redirect to login
-  useEffect(() => {
-    if (!loading && !user) {
-      navigate('/login', { state: { from: '/chat' } });
-    }
-  }, [user, loading, navigate]);
+  const { user } = useAuthContext();
   
   const getAuthMessage = () => {
     if (language === 'ru') {
@@ -39,32 +30,72 @@ const Chat = () => {
     }
   };
 
-  // Show loading state while checking authentication
-  if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col bg-teko-black text-teko-white">
-        <Navbar />
-        <main className="flex-grow pt-28 pb-16 flex items-center justify-center">
-          <div className="w-12 h-12 border-4 border-teko-purple/30 border-t-teko-purple rounded-full animate-spin"></div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+  const getComingSoonMessage = () => {
+    if (language === 'ru') {
+      return 'Функция чата скоро появится! Спасибо за ваше терпение.';
+    } else if (language === 'cs') {
+      return 'Funkce chatu bude brzy k dispozici! Děkujeme za vaši trpělivost.';
+    } else {
+      return 'Chat functionality coming soon! Thank you for your patience.';
+    }
+  };
 
-  // If no user after loading, component will redirect (handled in useEffect)
-  if (!user) {
-    return (
-      <div className="min-h-screen flex flex-col bg-teko-black text-teko-white">
-        <Navbar />
-        <main className="flex-grow pt-28 pb-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="flex justify-center mb-6">
-                <MessageCircle size={64} className="text-teko-purple" />
+  return (
+    <div className="min-h-screen flex flex-col bg-teko-black text-teko-white">
+      <Navbar />
+      <main className="flex-grow pt-28 pb-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="flex justify-center mb-6">
+              <MessageCircle size={64} className="text-teko-purple" />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('navbar.chat')}</h1>
+            
+            {user ? (
+              // Authenticated user view
+              <div className="space-y-8">
+                <p className="text-xl text-teko-white/80 mb-10">
+                  {language === 'ru' ? 'Здравствуйте, ' + user.user_metadata.full_name + '! Здесь вы можете начать общение с нами.' : 
+                   language === 'cs' ? 'Dobrý den, ' + user.user_metadata.full_name + '! Zde můžete zahájit konverzaci s námi.' :
+                   'Hello, ' + user.user_metadata.full_name + '! You can start a conversation with us here.'}
+                </p>
+                
+                <Card className="bg-teko-dark-gray border-teko-purple/20">
+                  <CardHeader>
+                    <CardTitle className="text-teko-white text-2xl">
+                      {language === 'ru' ? 'Ваш персональный чат' : 
+                       language === 'cs' ? 'Váš osobní chat' :
+                       'Your Personal Chat'}
+                    </CardTitle>
+                    <CardDescription className="text-teko-white/70">
+                      {language === 'ru' ? 'Безопасное и приватное общение' : 
+                       language === 'cs' ? 'Bezpečná a soukromá komunikace' :
+                       'Secure and private communication'}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="p-6 text-center">
+                      <p className="text-lg text-teko-white/70 mb-4">
+                        {getComingSoonMessage()}
+                      </p>
+                      <div className="h-32 flex items-center justify-center">
+                        <div className="relative">
+                          <div className="w-12 h-12 border-4 border-teko-purple/30 border-t-teko-purple rounded-full animate-spin"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                  <CardFooter className="justify-center">
+                    <p className="text-sm text-teko-white/60">
+                      {language === 'ru' ? 'Мы усердно работаем, чтобы предоставить вам наилучший опыт общения' : 
+                       language === 'cs' ? 'Usilovně pracujeme na tom, abychom vám poskytli co nejlepší zážitek z chatu' :
+                       'We are working hard to provide you with the best chat experience'}
+                    </p>
+                  </CardFooter>
+                </Card>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('navbar.chat')}</h1>
-              
+            ) : (
+              // Non-authenticated user view
               <div className="space-y-8">
                 <p className="text-xl text-teko-white/80 mb-6">
                   {getAuthMessage()}
@@ -110,30 +141,7 @@ const Chat = () => {
                   </CardFooter>
                 </Card>
               </div>
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen flex flex-col bg-teko-black text-teko-white">
-      <Navbar />
-      <main className="flex-grow pt-28 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex justify-center mb-6">
-              <MessageCircle size={64} className="text-teko-purple" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-10 text-center">
-              {language === 'ru' ? 'Чат поддержки' : 
-               language === 'cs' ? 'Chat podpory' : 
-               'Support Chat'}
-            </h1>
-            
-            <ChatInterface />
+            )}
           </div>
         </div>
       </main>
