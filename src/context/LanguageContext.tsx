@@ -29,6 +29,13 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       }
     }
     
+    // For custom keys not in translations
+    if (key === 'navbar.chat') {
+      if (language === 'ru') return 'Чат';
+      if (language === 'cs') return 'Chat';
+      return 'Chat';
+    }
+    
     // Try regular translations
     let value: any = translations[language];
     

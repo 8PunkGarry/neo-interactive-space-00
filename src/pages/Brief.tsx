@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
@@ -5,7 +6,7 @@ import Footer from '../components/Footer';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuthContext } from '@/context/AuthContext';
 import { Button } from '../components/ui/button';
-import { ArrowRight, CheckCircle, Search } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,23 +15,6 @@ import { Label } from '@/components/ui/label';
 import SelectedCapabilities from '@/components/SelectedCapabilities';
 import { useCapabilities } from '@/context/CapabilitiesContext';
 import { motion } from 'framer-motion';
-import ServiceSearch from '@/components/ServiceSearch';
-import AnimatedBackground from '@/components/AnimatedBackground';
-
-const allServices = [
-  { id: '1', name: 'Web Development', description: 'Custom websites and web applications' },
-  { id: '2', name: 'Mobile App Development', description: 'iOS and Android applications' },
-  { id: '3', name: 'UI/UX Design', description: 'User interface and experience design' },
-  { id: '4', name: 'E-commerce Solutions', description: 'Online stores and payment processing' },
-  { id: '5', name: 'SEO Optimization', description: 'Search engine optimization services' },
-  { id: '6', name: 'Content Marketing', description: 'Blog posts, articles, and social media content' },
-  { id: '7', name: 'Graphic Design', description: 'Logos, branding, and visual identity' },
-  { id: '8', name: 'Cloud Services', description: 'AWS, Azure, and Google Cloud solutions' },
-  { id: '9', name: 'DevOps', description: 'CI/CD, deployment automation, and infrastructure' },
-  { id: '10', name: 'Data Analytics', description: 'Business intelligence and data visualization' },
-  { id: '11', name: 'Cybersecurity', description: 'Security audits, testing, and implementation' },
-  { id: '12', name: 'AI & Machine Learning', description: 'Custom AI solutions and integrations' }
-];
 
 const Brief = () => {
   const { t, language } = useLanguage();
@@ -45,36 +29,8 @@ const Brief = () => {
   const [description, setDescription] = useState('');
   const [budget, setBudget] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<Array<{id: string; name: string; description?: string}>>([]);
-  const [selectedServices, setSelectedServices] = useState<Array<{id: string; name: string; description?: string}>>([]);
   
-  const handleServiceSearch = (term: string) => {
-    setSearchTerm(term);
-    
-    if (term.trim() === '') {
-      setSearchResults([]);
-      return;
-    }
-    
-    const filtered = allServices.filter(service => 
-      service.name.toLowerCase().includes(term.toLowerCase()) || 
-      (service.description && service.description.toLowerCase().includes(term.toLowerCase()))
-    );
-    
-    setSearchResults(filtered);
-  };
-  
-  const handleSelectService = (service: {id: string; name: string; description?: string}) => {
-    if (!selectedServices.some(s => s.id === service.id)) {
-      setSelectedServices([...selectedServices, service]);
-    }
-  };
-  
-  const handleRemoveService = (serviceId: string) => {
-    setSelectedServices(selectedServices.filter(service => service.id !== serviceId));
-  };
-  
+  // Pre-fill description with selected capabilities if any
   useEffect(() => {
     if (selectedCapabilities.length > 0 && !description) {
       const capabilitiesText = selectedCapabilities
@@ -120,10 +76,6 @@ const Brief = () => {
         capabilities: selectedCapabilities.map(cap => ({ 
           service: cap.serviceName, 
           capability: cap.name 
-        })),
-        selected_services: selectedServices.map(service => ({
-          id: service.id,
-          name: service.name
         }))
       };
       
@@ -142,14 +94,15 @@ const Brief = () => {
                      "Děkujeme! Prohlédneme si váš brief a brzy vás budeme kontaktovat.",
       });
       
+      // Reset form and clear capabilities
       setName('');
       setEmail('');
       setProjectType('website');
       setDescription('');
       setBudget('');
       clearCapabilities();
-      setSelectedServices([]);
       
+      // Redirect to home page after submission
       setTimeout(() => navigate('/'), 2000);
     } catch (error) {
       console.error(language === 'en' ? 'Error submitting brief:' : 
@@ -179,27 +132,13 @@ const Brief = () => {
     }
   };
   
-  const serviceLabel = language === 'en' ? 'Search for services *' : 
-                      language === 'ru' ? 'Поиск услуг *' : 
-                      'Vyhledat služby *';
-                      
-  const selectedServicesLabel = language === 'en' ? 'Selected Services' : 
-                               language === 'ru' ? 'Выбранные услуги' : 
-                               'Vybrané služby';
-  
   return (
-    <div className="min-h-screen bg-teko-black relative overflow-hidden">
-      <AnimatedBackground />
+    <div className="min-h-screen bg-teko-black">
       <Navbar />
       
-      <main className="pt-32 pb-20 relative z-10">
+      <main className="pt-32 pb-20">
         <div className="container mx-auto px-4">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-teko-white">
               {language === 'en' ? 'Submit your brief' : 
                language === 'ru' ? 'Отправьте вашу заявку' : 
@@ -210,7 +149,7 @@ const Brief = () => {
                language === 'ru' ? 'Расскажите нам о вашем проекте, и мы свяжемся с вами для обсуждения деталей' : 
                'Řekněte nám o svém projektu a my vás budeme kontaktovat pro další podrobnosti'}
             </p>
-          </motion.div>
+          </div>
           
           {selectedCapabilities.length > 0 && (
             <motion.div 
@@ -240,12 +179,7 @@ const Brief = () => {
             </motion.div>
           )}
           
-          <motion.div 
-            className="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <Label className="text-teko-white/90 mb-2">
@@ -321,53 +255,6 @@ const Brief = () => {
               
               <div>
                 <Label className="text-teko-white/90 mb-2">
-                  {serviceLabel}
-                </Label>
-                <div className="relative">
-                  <ServiceSearch
-                    onSearch={handleServiceSearch}
-                    variant="form"
-                    className="w-full"
-                    showResults={true}
-                    searchResults={searchResults}
-                    onSelectResult={handleSelectService}
-                  />
-                </div>
-                
-                {selectedServices.length > 0 && (
-                  <div className="mt-3 p-3 bg-teko-purple/10 backdrop-blur-sm border border-teko-purple/20 rounded-md">
-                    <div className="flex items-center gap-2 text-teko-purple-light mb-2">
-                      <CheckCircle size={16} />
-                      <h4 className="text-sm font-medium">
-                        {selectedServicesLabel}
-                        <span className="ml-2 text-xs bg-teko-purple/30 text-teko-white px-2 py-0.5 rounded-full">
-                          {selectedServices.length}
-                        </span>
-                      </h4>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedServices.map((service) => (
-                        <div 
-                          key={service.id}
-                          className="inline-flex items-center gap-1.5 px-3 py-1 bg-teko-purple/20 text-teko-white/90 rounded-full text-sm"
-                        >
-                          {service.name}
-                          <button
-                            type="button"
-                            className="text-teko-white/60 hover:text-teko-white"
-                            onClick={() => handleRemoveService(service.id)}
-                          >
-                            ×
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-              
-              <div>
-                <Label className="text-teko-white/90 mb-2">
                   {language === 'en' ? 'Project description *' : 
                    language === 'ru' ? 'Описание проекта *' : 
                    'Popis projektu *'}
@@ -426,7 +313,7 @@ const Brief = () => {
                 </Button>
               </div>
             </form>
-          </motion.div>
+          </div>
         </div>
       </main>
       

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Send, Loader2, UserCheck, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -7,8 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { useSupabase } from '@/context/SupabaseContext';
 
 interface Message {
   id: string;
@@ -21,29 +22,22 @@ interface Message {
   isAdmin?: boolean;
 }
 
-interface Profile {
-  id: string;
-  full_name: string | null;
-  user_type: string;
-}
-
 const ChatInterface = () => {
   const { user } = useAuthContext();
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
-  const supabase = useSupabase();
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isSending, setIsSending] = useState(false);
-  const [adminUsers, setAdminUsers] = useState<Profile[]>([]);
+  const [adminUsers, setAdminUsers] = useState<any[]>([]);
   const [selectedAdmin, setSelectedAdmin] = useState<string | null>(null);
   const [isUserAdmin, setIsUserAdmin] = useState(false);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
   const [isTyping, setIsTyping] = useState(false);
   const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [userProfiles, setUserProfiles] = useState<Record<string, Profile>>({});
 
+  // Get text based on the current language
   const getText = () => {
     if (language === 'ru') {
       return {
@@ -104,6 +98,7 @@ const ChatInterface = () => {
 
   const text = getText();
 
+  // Check if current user is admin
   useEffect(() => {
     if (!user) return;
 
@@ -120,20 +115,22 @@ const ChatInterface = () => {
     };
 
     checkUserType();
-  }, [user, supabase]);
+  }, [user]);
 
+  // Fetch admin users
   useEffect(() => {
     if (!user) return;
 
     const fetchAdmins = async () => {
       const { data, error } = await supabase
         .from('profiles')
-        .select('id, full_name, user_type')
+        .select('id, full_name')
         .eq('user_type', 'admin');
 
       if (!error && data) {
         setAdminUsers(data);
         
+        // If user is not an admin and there's at least one admin, select the first one
         if (!isUserAdmin && data.length > 0) {
           setSelectedAdmin(data[0].id);
         }
@@ -141,26 +138,9 @@ const ChatInterface = () => {
     };
 
     fetchAdmins();
-  }, [user, isUserAdmin, supabase]);
+  }, [user, isUserAdmin]);
 
-  const fetchProfiles = async (userIds: string[]) => {
-    if (userIds.length === 0) return;
-    
-    const uniqueIds = [...new Set(userIds)];
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('id, full_name, user_type')
-      .in('id', uniqueIds);
-      
-    if (!error && data) {
-      const profilesMap: Record<string, Profile> = {};
-      data.forEach(profile => {
-        profilesMap[profile.id] = profile;
-      });
-      setUserProfiles(prev => ({ ...prev, ...profilesMap }));
-    }
-  };
-
+  // Fetch messages
   useEffect(() => {
     if (!user) return;
 
@@ -174,15 +154,18 @@ const ChatInterface = () => {
           sender_id,
           recipient_id,
           created_at,
-          is_read
+          is_read,
+          profiles!chat_messages_sender_id_fkey(full_name, user_type)
         `)
         .order('created_at', { ascending: true });
 
       if (isUserAdmin) {
+        // If admin and a specific recipient is selected
         if (selectedAdmin) {
           query = query.or(`sender_id.eq.${selectedAdmin},recipient_id.eq.${selectedAdmin}`);
         }
       } else {
+        // If client, only show messages between them and admins
         query = query.or(`sender_id.eq.${user.id},recipient_id.eq.${user.id}`);
       }
 
@@ -196,23 +179,11 @@ const ChatInterface = () => {
           description: "Failed to load chat messages."
         });
       } else if (data) {
-        const userIds = new Set<string>();
-        data.forEach(msg => {
-          if (msg.sender_id) userIds.add(msg.sender_id);
-          if (msg.recipient_id) userIds.add(msg.recipient_id);
-        });
-        
-        await fetchProfiles(Array.from(userIds));
-        
-        const formattedMessages = data.map(msg => {
-          const senderProfile = userProfiles[msg.sender_id];
-          return {
-            ...msg,
-            senderName: senderProfile?.full_name || 'Unknown User',
-            isAdmin: senderProfile?.user_type === 'admin'
-          };
-        });
-        
+        const formattedMessages = data.map(msg => ({
+          ...msg,
+          senderName: msg.profiles?.full_name || 'Unknown User',
+          isAdmin: msg.profiles?.user_type === 'admin'
+        }));
         setMessages(formattedMessages);
       }
       setIsLoading(false);
@@ -220,6 +191,7 @@ const ChatInterface = () => {
 
     fetchMessages();
 
+    // Set up real-time subscription for new messages
     const subscription = supabase
       .channel('chat_changes')
       .on('postgres_changes', 
@@ -228,49 +200,62 @@ const ChatInterface = () => {
           schema: 'public', 
           table: 'chat_messages' 
         }, 
-        async payload => {
-          const newMsg = payload.new as Message;
-          
-          if (newMsg.sender_id && !userProfiles[newMsg.sender_id]) {
-            await fetchProfiles([newMsg.sender_id]);
-          }
-          
-          const senderProfile = userProfiles[newMsg.sender_id];
-          
-          const formattedMsg = {
-            ...newMsg,
-            senderName: senderProfile?.full_name || 'Unknown User',
-            isAdmin: senderProfile?.user_type === 'admin'
-          };
-          
-          let isRelevant = false;
-          if (isUserAdmin) {
-            if (!selectedAdmin) {
-              isRelevant = true;
-            } else {
-              isRelevant = newMsg.sender_id === selectedAdmin || newMsg.recipient_id === selectedAdmin;
-            }
-          } else {
-            isRelevant = newMsg.sender_id === user.id || newMsg.recipient_id === user.id;
-          }
-          
-          if (isRelevant) {
-            setMessages(prev => [...prev, formattedMsg]);
-          }
+        payload => {
+          // Fetch the full message with profile info
+          supabase
+            .from('chat_messages')
+            .select(`
+              id,
+              content,
+              sender_id,
+              recipient_id,
+              created_at,
+              is_read,
+              profiles!chat_messages_sender_id_fkey(full_name, user_type)
+            `)
+            .eq('id', payload.new.id)
+            .single()
+            .then(({ data, error }) => {
+              if (!error && data) {
+                const newMsg = {
+                  ...data,
+                  senderName: data.profiles?.full_name || 'Unknown User',
+                  isAdmin: data.profiles?.user_type === 'admin'
+                };
+                
+                // Check if message is relevant to current view
+                let isRelevant = false;
+                if (isUserAdmin) {
+                  if (!selectedAdmin) {
+                    isRelevant = true; // All messages view for admin
+                  } else {
+                    isRelevant = data.sender_id === selectedAdmin || data.recipient_id === selectedAdmin;
+                  }
+                } else {
+                  isRelevant = data.sender_id === user.id || data.recipient_id === user.id;
+                }
+                
+                if (isRelevant) {
+                  setMessages(prev => [...prev, newMsg]);
+                }
+              }
+            });
         })
       .subscribe();
 
     return () => {
       supabase.removeChannel(subscription);
     };
-  }, [user, isUserAdmin, selectedAdmin, toast, supabase, userProfiles]);
+  }, [user, isUserAdmin, selectedAdmin, toast]);
 
+  // Auto-scroll to bottom when messages change
   useEffect(() => {
     if (endOfMessagesRef.current) {
       endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages]);
 
+  // Mark messages as read
   useEffect(() => {
     if (!user || messages.length === 0) return;
 
@@ -292,8 +277,9 @@ const ChatInterface = () => {
     };
 
     markAsRead();
-  }, [messages, user, supabase]);
+  }, [messages, user]);
 
+  // Simulate typing status
   const simulateTyping = () => {
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef.current);
@@ -315,9 +301,11 @@ const ChatInterface = () => {
     try {
       let recipientId = null;
       
+      // If user is not admin, send to selected admin (or first admin if none selected)
       if (!isUserAdmin) {
         recipientId = selectedAdmin || (adminUsers.length > 0 ? adminUsers[0].id : null);
       } 
+      // If user is admin and has selected a recipient
       else if (selectedAdmin) {
         recipientId = selectedAdmin;
       }
@@ -362,6 +350,7 @@ const ChatInterface = () => {
     }
   };
 
+  // Format date
   const formatMessageDate = (dateStr: string) => {
     const date = new Date(dateStr);
     const today = new Date();
@@ -380,6 +369,7 @@ const ChatInterface = () => {
     }
   };
 
+  // Group messages by date
   const groupMessagesByDate = () => {
     const groups: { date: string; messages: Message[] }[] = [];
     let currentDate = '';
@@ -418,6 +408,7 @@ const ChatInterface = () => {
 
   return (
     <div className="flex flex-col h-[calc(100vh-200px)] md:h-[600px] bg-teko-black/20 backdrop-blur-sm border border-teko-purple/20 rounded-xl overflow-hidden">
+      {/* Chat header */}
       <div className="bg-teko-purple/20 backdrop-blur-md p-4 border-b border-teko-purple/30">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold text-teko-white flex items-center">
@@ -462,6 +453,7 @@ const ChatInterface = () => {
         </div>
       </div>
       
+      {/* Chat messages */}
       <ScrollArea className="flex-1 p-4">
         {isLoading ? (
           <div className="h-full flex items-center justify-center">
@@ -489,7 +481,7 @@ const ChatInterface = () => {
                   <div className="flex-grow border-t border-teko-purple/20"></div>
                 </div>
                 
-                {group.messages.map((message) => {
+                {group.messages.map((message, index) => {
                   const isCurrentUser = message.sender_id === user.id;
                   
                   return (
@@ -547,6 +539,7 @@ const ChatInterface = () => {
               </div>
             ))}
             
+            {/* Typing indicator */}
             <AnimatePresence>
               {isTyping && (
                 <motion.div 
@@ -570,6 +563,7 @@ const ChatInterface = () => {
         )}
       </ScrollArea>
       
+      {/* Message input */}
       <form onSubmit={handleSendMessage} className="border-t border-teko-purple/20 p-3">
         <div className="flex items-end gap-2">
           <Textarea
